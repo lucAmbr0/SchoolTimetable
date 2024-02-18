@@ -47,6 +47,11 @@ h5 {
     --darkTextCol2: rgb(20, 20, 20);
     --darkTextCol3: rgb(30, 30, 30);
     --darkTextCol4: rgb(40, 40, 40);
+    --lightTextCol0: white;
+    --lightTextCol1: rgb(240, 240, 240);
+    --lightTextCol2: rgb(230, 230, 230);
+    --lightTextCol3: rgb(220, 220, 220);
+    --lightTextCol4: rgb(210, 210, 210);
 
     --solidColorBackground1: linear-gradient(45deg,
             rgb(86, 173, 236),
@@ -55,11 +60,17 @@ h5 {
             rgb(129, 202, 255),
             rgb(210, 236, 255));
     --lightSolidBackground1: rgba(255, 255, 255, 1);
+    --lightSolidBackground2: rgba(245, 245, 245, 1);
+    --lightSolidBackground3: rgba(235, 235, 235, 1);
+    --lightSolidBackground4: rgba(225, 225, 225, 1);
     --lightTransBackground1: rgba(255, 255, 255, 0.6);
     --lightTransBackground2: rgba(255, 255, 255, 0.4);
     --lightTransBackground3: rgba(255, 255, 255, 0.2);
     --lightTransBackground4: rgba(255, 255, 255, 0.1);
-    --darkSolidBackground1: rgba(20, 20, 20, 1);
+    --darkSolidBackground1: rgba(10, 10, 10, 1);
+    --darkSolidBackground2: rgba(20, 20, 20, 1);
+    --darkSolidBackground3: rgba(30, 30, 30, 1);
+    --darkSolidBackground4: rgba(40, 40, 40, 1);
     --darkTransBackground1: rgba(0, 0, 0, 0.6);
     --darkTransBackground2: rgba(0, 0, 0, 0.4);
     --darkTransBackground3: rgba(0, 0, 0, 0.2);
@@ -123,6 +134,7 @@ h5 {
 #schoolDisplay {
     text-align: center;
     color: var(--darkTextCol4);
+    margin-bottom: 10px;
 }
 
 #yourClassBox {
@@ -166,6 +178,13 @@ h5 {
     margin: 15px auto;
     border-radius: 1px;
     background-color: var(--darkTransBackground2);
+}
+
+#secondaryBoxesLabel {
+    text-align: center;
+    font-family: var(--StandardTextFont);
+    font-size: 1.4em;
+    margin: 10px 0 -10px 0;
 }
 
 .matesBox {
@@ -213,7 +232,7 @@ h5 {
 }
 
 #navbar {
-    height: 80px;
+    height: 6.5vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -223,16 +242,58 @@ h5 {
     bottom: 0;
     left: 0;
     width: 100vw;
-    background-color: var(--darkSolidBackground1);
+    background-color: var(--lightSolidBackground2);
 }
 
 .navbarBtn {
-    background-color: lime;
+    background-color: transparent;
     width: 30%;
     margin: 10px;
     height: 100%;
     display: flex;
     text-align: center;
     align-items: center;
+    justify-content: center;
+    font-weight: 400;
     flex-direction: column;
+    z-index: 2;
+}
+
+.navbarBtn p {
+    margin: 5px 0;
+    font-family: var(--StandardTextFont);
+    color: var(--darkTextCol2);
+    line-height: 0.7;
+    font-size: 1em;
+    color: var(text);
+}
+
+.material-symbols-outlined {
+    color: var(--darkTextCol3);
+}
+
+.navbarBtn span {
+    margin: 5px 0;
+    padding: 3px 22px;
+    border-radius: 20px;
+    font-size: 1.7em;
+}
+
+.navbarIconActive {
+    background-color: rgba(55, 172, 255, 0.5);
+    /* color: hsl(205, 100%, 85%); */
+}
+
+.navbarLabelActive {
+    font-weight: 700;
+}
+
+#navbarFixed {
+    display: block;
+    position: relative;
+    z-index: -1;
+    bottom: 0;
+    width: 100%;
+    height: 9vh;
+    background-color: transparent;
 }
