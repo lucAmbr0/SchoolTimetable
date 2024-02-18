@@ -89,7 +89,7 @@ h5 {
     left: 0;
     position: fixed;
     width: 100%;
-    height: 12vh;
+    height: 11vh;
     background: var(--solidColorBackground1);
     box-shadow: 0 0px 10px black;
     z-index: 2;
@@ -104,7 +104,7 @@ h5 {
     position: static;
     top: 0;
     left: 0;
-    height: 14vh;
+    height: 12vh;
     width: 100%;
     background-color: transparent;
 }
@@ -122,12 +122,13 @@ h5 {
     color: var(--darkTextCol1);
     font-weight: 700;
     line-height: 1.1;
-    font-size: 3.5em;
+    font-size: 3em;
 }
 
 #greetingDisplay {
     margin-top: 20px;
     text-align: center;
+    font-size: 1.5em;
     color: var(--darkTextCol2);
 }
 
@@ -175,7 +176,7 @@ h5 {
     width: 90%;
     display: flex;
     height: 2px;
-    margin: 15px auto;
+    margin: 20px auto 15px auto;
     border-radius: 1px;
     background-color: var(--darkTransBackground2);
 }
@@ -237,7 +238,7 @@ h5 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 10px 0 15px 0;
     position: fixed;
     bottom: 0;
     left: 0;
