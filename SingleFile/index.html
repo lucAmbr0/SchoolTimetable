@@ -1,0 +1,496 @@
+<html>
+  <head>
+    <!--
+                    ++ School Timetables ++
+            Made by @luca.ambroo_ <3 
+            GitHub: https://github.com/lucAmbr0/
+            IG: https://www.instagram.com/luca.ambroo_/  
+        -->
+    <title>School Timetable</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+  </head>
+  <body>
+    <style>
+      /* 
+    School Timetable - CSS stylesheet
+    What're you doing here?
+*/
+
+      /* ---------------  MAIN RULES  --------------- */
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
+        scrollbar-width: none;
+      }
+
+      body {
+        margin: 0;
+        background: var(--solidColorBackground2);
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      ::selection {
+        background-color: transparent;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: Poppins;
+        margin: 0;
+      }
+
+      /* -------------------- FONTS --------------------*/
+
+      /* Normal text: font-family: 'Noto Sans', sans-serif; */
+      /* Headings/Titles: font-family: 'Helvetica', 'Poppins', sans-serif; */
+
+      /* ---------------  ANIMATION  --------------- */
+
+      @keyframes navbarLabel {
+        from {
+          opacity: 0.3;
+          padding: 3px 0px;
+        }
+        to {
+          opacity: 1;
+          padding: 3px 20px;
+        }
+      }
+
+      /* ---------------  VARIABLES  --------------- */
+
+      :root {
+        --darkTextCol0: black;
+        --darkTextCol1: rgb(10, 10, 10);
+        --darkTextCol2: rgb(20, 20, 20);
+        --darkTextCol3: rgb(30, 30, 30);
+        --darkTextCol4: rgb(40, 40, 40);
+        --lightTextCol0: white;
+        --lightTextCol1: rgb(240, 240, 240);
+        --lightTextCol2: rgb(230, 230, 230);
+        --lightTextCol3: rgb(220, 220, 220);
+        --lightTextCol4: rgb(210, 210, 210);
+
+        --solidColorBackground1: linear-gradient(
+          45deg,
+          rgb(86, 173, 236),
+          rgb(55, 172, 255)
+        );
+        --solidColorBackground2: linear-gradient(
+          0deg,
+          rgb(129, 202, 255),
+          rgb(210, 236, 255)
+        );
+        --lightSolidBackground1: rgba(255, 255, 255, 1);
+        --lightSolidBackground2: rgba(245, 245, 245, 1);
+        --lightSolidBackground3: rgba(235, 235, 235, 1);
+        --lightSolidBackground4: rgba(225, 225, 225, 1);
+        --lightTransBackground1: rgba(255, 255, 255, 0.6);
+        --lightTransBackground2: rgba(255, 255, 255, 0.4);
+        --lightTransBackground3: rgba(255, 255, 255, 0.2);
+        --lightTransBackground4: rgba(255, 255, 255, 0.1);
+        --darkSolidBackground1: rgba(10, 10, 10, 1);
+        --darkSolidBackground2: rgba(20, 20, 20, 1);
+        --darkSolidBackground3: rgba(30, 30, 30, 1);
+        --darkSolidBackground4: rgba(40, 40, 40, 1);
+        --darkTransBackground1: rgba(0, 0, 0, 0.6);
+        --darkTransBackground2: rgba(0, 0, 0, 0.4);
+        --darkTransBackground3: rgba(0, 0, 0, 0.2);
+        --darkTransBackground4: rgba(0, 0, 0, 0.1);
+
+        --HeadingFont: "Poppins";
+        --StandardTextFont: "Noto Sans";
+      }
+
+      /* ---------------  APP TABS  --------------- */
+
+      .appTabsShown {
+        display: block;
+      }
+
+      .appTabsHidden {
+        display: none;
+      }
+
+      /* ---------------  STYLESHEET  --------------- */
+
+      #topNotchContainer {
+        display: flex;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        position: fixed;
+        width: 100%;
+        height: 11vh;
+        background: var(--solidColorBackground1);
+        box-shadow: 0 0px 10px black;
+        z-index: 2;
+        color: var(--textCol3);
+        text-align: center;
+        border-radius: 0 0 10% 10%;
+        padding: 1vh 0;
+      }
+
+      #topNotchFixed {
+        display: flex;
+        position: static;
+        top: 0;
+        left: 0;
+        height: 12vh;
+        width: 100%;
+        background-color: transparent;
+      }
+
+      #dayDisplay {
+        font-family: var(--HeadingFont);
+        color: var(--darkTextCol1);
+        font-weight: 600;
+        font-size: 2em;
+        line-height: 1.2;
+      }
+
+      #timeDisplay {
+        font-family: var(--HeadingFont);
+        color: var(--darkTextCol1);
+        font-weight: 700;
+        line-height: 1.1;
+        font-size: 3em;
+      }
+
+      #greetingDisplay {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.5em;
+        color: var(--darkTextCol2);
+      }
+
+      #schoolDisplay {
+        text-align: center;
+        color: var(--darkTextCol4);
+        margin-bottom: 10px;
+      }
+
+      #yourClassBox {
+        width: 92%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+        padding: 5px 0;
+        background-color: var(--lightTransBackground2);
+        border-radius: 20px;
+        border: solid 2px rgba(100, 100, 100, 0.7);
+        box-shadow: 0 1px 8px black;
+        text-align: center;
+      }
+
+      #userClassroomDisplay {
+        font-size: 2.3em;
+        color: var(--darkTextCol2);
+      }
+
+      #userComplexDisplay {
+        line-height: 0.8;
+        font-weight: 600;
+        font-size: 1.3em;
+        color: var(--darkTextCol3);
+      }
+
+      #userSubjectAndTeacher {
+        font-size: 1.5em;
+        font-weight: 600s;
+        font-family: var(--StandardTextFont);
+        color: var(--darkTextCol3);
+        margin: 10px 0;
+      }
+
+      .horizontalLine {
+        width: 90%;
+        display: flex;
+        height: 2px;
+        margin: 20px auto 15px auto;
+        border-radius: 1px;
+        background-color: var(--darkTransBackground2);
+      }
+
+      #secondaryBoxesLabel {
+        text-align: center;
+        font-family: var(--StandardTextFont);
+        font-size: 1.4em;
+        margin: 10px 0 -10px 0;
+      }
+
+      .matesBox {
+        width: 90%;
+        height: fit-content;
+        background-color: var(--lightTransBackground3);
+        display: block;
+        border: solid 2px rgba(100, 100, 100, 0.7);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        margin: 20px auto;
+        padding: 5px 0;
+      }
+
+      .matesRoomDisplay {
+        font-weight: 600;
+        text-align: center;
+        font-size: 2em;
+        color: var(--darkTextCol2);
+      }
+
+      .matesBoxGrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0px 15px;
+        color: var(--darkTextCol3);
+        font-family: var(--StandardTextFont);
+        font-size: 1.3em;
+      }
+
+      .matesClass,
+      .matesSubject {
+        text-align: left;
+      }
+
+      .matesNotes,
+      .matesTeacher {
+        text-align: right;
+      }
+
+      .matesBoxGrid p {
+        margin: 5px 0;
+        color: var(--darkTextCol3);
+        font-weight: 500;
+      }
+
+      #navbar {
+        height: 6.5vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0 15px 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        background-color: var(--lightSolidBackground2);
+        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .navbarBtn {
+        background-color: transparent;
+        width: 30%;
+        margin: 10px;
+        height: 100%;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+        flex-direction: column;
+        z-index: 2;
+      }
+
+      .navbarBtn p {
+        margin: 5px 0;
+        font-family: var(--StandardTextFont);
+        color: var(--darkTextCol2);
+        line-height: 0.7;
+        font-size: 1em;
+        color: var(text);
+      }
+
+      .material-symbols-outlined {
+        color: var(--darkTextCol3);
+      }
+
+      .navbarBtn span {
+        margin: 5px 0;
+        padding: 3px 20px;
+        font-weight: 400;
+        border-radius: 20px;
+        font-size: 1.7em;
+        font-weight: 500;
+      }
+
+      .navbarIconActive {
+        animation: navbarLabel 0.25s ease forwards;
+        background-color: rgba(55, 172, 255, 0.5);
+        /* color: hsl(205, 100%, 85%); */
+      }
+
+      .navbarLabelActive {
+        font-weight: 700;
+      }
+
+      #navbarFixed {
+        display: block;
+        position: relative;
+        z-index: -1;
+        bottom: 0;
+        width: 100%;
+        height: 9vh;
+        background-color: transparent;
+      }
+    </style>
+    <div id="topNotchContainer">
+      <h1 id="dayDisplay">Saturday 17 Feb</h1>
+      <h2 id="timeDisplay">17:41</h2>
+    </div>
+    <div id="topNotchFixed"></div>
+    <div class="appTabs" id="setTimeTab"></div>
+    <div class="appTabs" id="nowTab">
+      <h2 id="greetingDisplay">
+        Welcome, <span id="nameDisplay">Yourname</span> -
+        <span id="displayClass">2AS</span>
+      </h2>
+      <h3 id="schoolDisplay">Harvard University - Cambridge</h3>
+      <div id="yourClassBox">
+        <h1 id="userClassroomDisplay">Room 20</h1>
+        <h3 id="userComplexDisplay">Complex C</h3>
+        <h2 id="userSubjectAndTeacher">Maths - Bezos J.</h2>
+      </div>
+      <div class="horizontalLine"></div>
+      <h3 id="secondaryBoxesLabel">Your mates</h3>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+    </div>
+    <div class="appTabs" id="settingsTab"></div>
+    <nav id="navbar">
+      <div class="navbarBtn" onclick="navbarAction(0)">
+        <span class="material-symbols-outlined navbarIcon">
+          manage_history
+        </span>
+        <p class="navbarLabel">Set Time</p>
+      </div>
+      <div class="navbarBtn" onclick="navbarAction(1)">
+        <span class="material-symbols-outlined navbarIcon navbarIconActive">
+          home
+        </span>
+        <p class="navbarLabel navbarLabelActive">Now</p>
+      </div>
+      <div class="navbarBtn" onclick="navbarAction(2)">
+        <span class="material-symbols-outlined navbarIcon"> settings </span>
+        <p class="navbarLabel">Settings</p>
+      </div>
+    </nav>
+    <div id="navbarFixed"></div>
+    <script>
+      /* 
+    School Timetable - JavaScript Functions
+    What're you doing here?
+*/
+
+      // ---------------  NAVBAR  ---------------
+
+      let currentTab = 1;
+      const navbar = document.getElementById("navbar");
+      const navbarBtn = document.querySelectorAll(".navbarBtn");
+      const navbarIcon = document.querySelectorAll(".navbarIcon");
+      const navbarLabel = document.querySelectorAll(".navbarLabel");
+      const appTabs = document.querySelectorAll(".appTabs");
+      appTabs[0].classList.add("appTabsShown");
+
+      function navbarAction(tab) {
+        if (currentTab !== tab) {
+          currentTab = tab;
+          navbarIcon.forEach((item) =>
+            item.classList.remove("navbarIconActive")
+          );
+          navbarLabel.forEach((item) =>
+            item.classList.remove("navbarLabelActive")
+          );
+          navbarIcon[tab].classList.add("navbarIconActive");
+          navbarLabel[tab].classList.add("navbarLabelActive");
+          appTabs.forEach((appTab) => appTab.classList.remove("appTabsShown"));
+          appTabs.forEach((appTab) => appTab.classList.add("appTabsHidden"));
+          appTabs[tab].classList.remove("appTabsHidden");
+          appTabs[tab].classList.add("appTabsShown");
+        }
+      }
+    </script>
+  </body>
+</html>
+
+<!--
+              _..._
+            .'     '.      _
+           /    .-""-\   _/ \
+         .-|   /:.   |  |   |
+         |  \  |:.   /.-'-./
+         | .-'-;:__.'    =/
+         .'=  *=|     _.='
+        /   _.  |    ;
+       ;-.-'|    \   |     @lucAmbr0
+      /   | \    _\  _\
+      \__/'._;.  ==' ==\
+              \    \   |
+              /    /   /
+             /-._/-._/
+             \   `\  \
+              `-._/._/
+-->
