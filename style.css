@@ -9,6 +9,68 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    margin: 0;
+    background: var(--background2);
+}
+
 ::selection {
     background-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: Poppins;
+    margin: 0;
+}
+
+/* -------------------- FONTS --------------------*/
+
+/* Normal text: font-family: 'Noto Sans', sans-serif; */
+/* Headings/Titles: font-family: 'Helvetica', 'Poppins', sans-serif; */
+
+/* ---------------  VARIABLES  --------------- */
+
+:root {
+    --textCol0: black;
+    --textCol1: rgb(10, 10, 10);
+    --textCol2: rgb(20, 20, 20);
+    --textCol3: rgb(30, 30, 30);
+    --textCol4: rgb(40, 40, 40);
+
+    --background1: linear-gradient(45deg, rgb(86, 173, 236), rgb(55, 172, 255));
+    --background2: linear-gradient(0deg, rgb(129, 202, 255), rgb(210, 236, 255));
+
+    --HeadingFont: "Poppins";
+    --StandardTextFont: "Noto Sans";
+
+}
+
+/* ---------------  STYLESHEET  --------------- */
+
+#topNotchContainer {
+    display: sticky;
+    background: var(--background1);
+    box-shadow: 0 0px 10px black;
+    z-index: 2;
+    color: var(--textCol3);
+    text-align: center;
+    border-radius: 0 0 25% 25%;
+    padding: 10px;
+}
+
+#dayDisplay {
+    font-family: var(--HeadingFont);
+    font-weight: 600;
+    font-size: 2em;
+}
+
+#timeDisplay {
+    font-family: var(--HeadingFont);
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 3.5em;
 }
