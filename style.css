@@ -1,0 +1,14 @@
+/* 
+    School Timetable - CSS stylesheet
+    What're you doing here?
+*/
+
+/* ---------------  MAIN RULES  --------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: transparent;
+}
