@@ -39,6 +39,19 @@ h5 {
 /* Normal text: font-family: 'Noto Sans', sans-serif; */
 /* Headings/Titles: font-family: 'Helvetica', 'Poppins', sans-serif; */
 
+/* ---------------  ANIMATION  --------------- */
+
+@keyframes navbarLabel {
+    from {
+        opacity: 0.3;
+        padding: 3px 0px;
+    }
+    to {
+        opacity: 1;
+        padding: 3px 20px;
+    }
+}
+
 /* ---------------  VARIABLES  --------------- */
 
 :root {
@@ -78,6 +91,16 @@ h5 {
 
     --HeadingFont: "Poppins";
     --StandardTextFont: "Noto Sans";
+}
+
+/* ---------------  APP TABS  --------------- */
+
+.appTabsShown {
+    display: block;
+}
+
+.appTabsHidden {
+    display: none;
 }
 
 /* ---------------  STYLESHEET  --------------- */
@@ -200,10 +223,10 @@ h5 {
     padding: 5px 0;
 }
 
-.matesClassDisplay {
+.matesRoomDisplay {
     font-weight: 600;
     text-align: center;
-    font-size: 1.8em;
+    font-size: 2em;
     color: var(--darkTextCol2);
 }
 
@@ -213,7 +236,7 @@ h5 {
     padding: 0px 15px;
     color: var(--darkTextCol3);
     font-family: var(--StandardTextFont);
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 .matesClass,
@@ -244,6 +267,7 @@ h5 {
     left: 0;
     width: 100vw;
     background-color: var(--lightSolidBackground2);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3);
 }
 
 .navbarBtn {
@@ -275,12 +299,15 @@ h5 {
 
 .navbarBtn span {
     margin: 5px 0;
-    padding: 3px 22px;
+    padding: 3px 20px;
+    font-weight: 400;
     border-radius: 20px;
     font-size: 1.7em;
+    font-weight: 500;
 }
 
 .navbarIconActive {
+    animation: navbarLabel 0.25s ease forwards;
     background-color: rgba(55, 172, 255, 0.5);
     /* color: hsl(205, 100%, 85%); */
 }

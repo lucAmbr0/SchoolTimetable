@@ -26,74 +26,86 @@
       <h2 id="timeDisplay">17:41</h2>
     </div>
     <div id="topNotchFixed"></div>
+    <div class="appTabs" id="setTimeTab">
+        
+    </div>
+    <div class="appTabs" id="nowTab">
     <h2 id="greetingDisplay">
-      Welcome, <span id="nameDisplay">Alessandro</span> -
-      <span id="displayClass">2AS</span>
-    </h2>
-    <h3 id="schoolDisplay">Harvard University - Cambridge</h3>
-    <div id="yourClassBox">
-      <h1 id="userClassroomDisplay">Room 20</h1>
-      <h3 id="userComplexDisplay">Complex C</h3>
-      <h2 id="userSubjectAndTeacher">Maths - Bezos J.</h2>
-    </div>
-    <div class="horizontalLine"></div>
-    <h3 id="secondaryBoxesLabel">Your mates</h3>
-    <div class="matesBox">
-      <h2 class="matesClassDisplay">Lab. Elettronica 2</h2>
-      <div class="matesBoxGrid">
-        <p class="matesClass">1BS</p>
-        <p class="matesNotes">Mark, John</p>
-        <p class="matesSubject">English</p>
-        <p class="matesTeacher">Armstrong N.</p>
+        Welcome, <span id="nameDisplay">Yourname</span> -
+        <span id="displayClass">2AS</span>
+      </h2>
+      <h3 id="schoolDisplay">Harvard University - Cambridge</h3>
+      <div id="yourClassBox">
+        <h1 id="userClassroomDisplay">Room 20</h1>
+        <h3 id="userComplexDisplay">Complex C</h3>
+        <h2 id="userSubjectAndTeacher">Maths - Bezos J.</h2>
+      </div>
+      <div class="horizontalLine"></div>
+      <h3 id="secondaryBoxesLabel">Your mates</h3>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass">1BS</p>
+          <p class="matesNotes">Mark, John</p>
+          <p class="matesSubject">English</p>
+          <p class="matesTeacher">Armstrong N.</p>
+        </div>
       </div>
     </div>
-    <div class="matesBox">
-      <h2 class="matesClassDisplay">Lab. Elettronica 2</h2>
-      <div class="matesBoxGrid">
-        <p class="matesClass">1BS</p>
-        <p class="matesNotes">Mark, John</p>
-        <p class="matesSubject">English</p>
-        <p class="matesTeacher">Armstrong N.</p>
-      </div>
-    </div>
-    <div class="matesBox">
-      <h2 class="matesClassDisplay">Lab. Elettronica 2</h2>
-      <div class="matesBoxGrid">
-        <p class="matesClass">1BS</p>
-        <p class="matesNotes">Mark, John</p>
-        <p class="matesSubject">English</p>
-        <p class="matesTeacher">Armstrong N.</p>
-      </div>
-    </div>
-    <div class="matesBox">
-      <h2 class="matesClassDisplay">Lab. Elettronica 2</h2>
-      <div class="matesBoxGrid">
-        <p class="matesClass">1BS</p>
-        <p class="matesNotes">Mark, John</p>
-        <p class="matesSubject">English</p>
-        <p class="matesTeacher">Armstrong N.</p>
-      </div>
-    </div>
-    <div class="matesBox">
-      <h2 class="matesClassDisplay">Lab. Elettronica 2</h2>
-      <div class="matesBoxGrid">
-        <p class="matesClass">1BS</p>
-        <p class="matesNotes">Mark, John</p>
-        <p class="matesSubject">English</p>
-        <p class="matesTeacher">Armstrong N.</p>
-      </div>
+    <div class="appTabs" id="settingsTab">
+
     </div>
     <nav id="navbar">
-      <div class="navbarBtn">
-        <span class="material-symbols-outlined"> manage_history </span>
+      <div class="navbarBtn" onclick="navbarAction(0)">
+        <span class="material-symbols-outlined navbarIcon">
+          manage_history
+        </span>
         <p class="navbarLabel">Set Time</p>
       </div>
-      <div class="navbarBtn">
-        <span class="material-symbols-outlined navbarIconActive"> home </span>
+      <div class="navbarBtn" onclick="navbarAction(1)">
+        <span class="material-symbols-outlined navbarIcon navbarIconActive">
+          home
+        </span>
         <p class="navbarLabel navbarLabelActive">Now</p>
       </div>
-      <div class="navbarBtn">
-        <span class="material-symbols-outlined"> settings </span>
+      <div class="navbarBtn" onclick="navbarAction(2)">
+        <span class="material-symbols-outlined navbarIcon"> settings </span>
         <p class="navbarLabel">Settings</p>
       </div>
     </nav>
