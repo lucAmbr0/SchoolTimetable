@@ -29,10 +29,10 @@
     <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
       <h2 class="greetingDisplay">
-        Welcome, <span id="nameDisplay">Yourname</span> -
-        <span id="displayClass">2AS</span>
+       Welcome<span id="nameDisplay"></span>
+        <span id="classDisplay"></span>
       </h2>
-      <h3 id="schoolDisplay">Harvard University - Cambridge</h3>
+      <h3 id="schoolDisplay"></h3>
       <div id="yourClassBox">
         <h1 id="userClassroomDisplay">Room 20</h1>
         <h3 id="userComplexDisplay">Complex C</h3>
@@ -95,8 +95,57 @@
           <input type="text" id="userNameInput" />
           <label for="userClassInput">Class </label>
           <input type="text" id="userClassInput" />
-          <label for="userSchoolName">School name </label>
-          <input type="text" id="userSchoolName" />
+          <label for="userSchoolNameInput">School name </label>
+          <input type="text" id="userSchoolNameInput" />
+        </div>
+        <button
+          class="submitBtn"
+          id="submitUserInfoBtn"
+          onclick="updateUserInfo()"
+        >
+          Confirm
+        </button>
+        <div class="horizontalLine"></div>
+        <div id="userClassForm">
+          <div class="userDataDayAndHourContainer">
+            <select id="userDaySelection" name="day">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+            </select>
+            <select id="userHourSelection" name="hour">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="userDataGrid">
+            <label for="userRoomInput">Room</label>
+            <input type="text" class="userRoomInput" />
+            <label for="userComplexInput">Complex</label>
+            <input type="text" class="userComplexInput" />
+            <label for="userSubjectInput">Subject</label>
+            <input type="text" class="userSubjectInput" />
+            <label for="userTeacherInput">Teacher</label>
+            <input type="text" class="userTeacherInput" />
+          </div>
+        </div>
+        <button class="submitBtn" id="submitUserClassTimesBtn">Confirm</button>
+      </div>
+
+      <!-- <div class="matesSettings">
+        <h1 class="settingHeader">Class 1</h1>
+        <div id="userDataForm">
+          <label for="mateClassName">Class name</label>
+          <input type="text" id="mateClassName" />
+          <label for="mateNames">Mates names</label>
+          <input type="text" id="mateNames" />
         </div>
         <button id="submitUserInfoBtn">Confirm</button>
         <div class="horizontalLine"></div>
@@ -122,8 +171,6 @@
             <div class="userDataGrid">
               <label for="userClassInput">Class</label>
               <input type="text" class="userClassInput" />
-              <label for="userComplexInput">Complex</label>
-              <input type="text" class="userComplexInput" />
               <label for="userSubjectInput">Subject</label>
               <input type="text" class="userSubjectInput" />
               <label for="userTeacherInput">Teacher</label>
@@ -131,7 +178,7 @@
             </div>
         </div>
         <button id="submitUserInfoBtn">Confirm</button>
-      </div>
+      </div> -->
     </div>
     <nav id="navbar">
       <div class="navbarBtn" onclick="navbarAction(0)">
