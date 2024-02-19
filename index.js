@@ -34,45 +34,7 @@ function navbarAction(tab) {
 // ---------------  PERSONAL DATA DISPLAY  ---------------
 
 // Here are all the instructions and variables that write data to the frontend html
-// Now Tab variables that contain user's info
-const nameDisplay = document.getElementById("nameDisplay");
-const classDisplay = document.getElementById("classDisplay");
-const schoolDisplay = document.getElementById("schoolDisplay");
 
-function displayUserInfo() {
-  // Triggers if there is saved data and fills all html fields that already have data
-
-  // Writes data in Now Tab
-  nameDisplay.textContent = ", "+user.name;
-  classDisplay.textContent = " - "+user.className;
-  schoolDisplay.textContent = user.schoolName;
-
-  // Writes data to input fields in settings tab
-  userNameInput.value = user.name;
-  userClassInput.value = user.className;
-  userSchoolNameInput.value = user.schoolName;
-
-
-}
-
-// ---------------  PERSONAL DATA INPUT  ---------------
-
-// JavaScript variables that contain user's info
-let userDaySelected;
-let userHourSelected;
-class UserInfo {
-  constructor(name, className, schoolName) {
-    this.name = name;
-    this.className = className;
-    this.schoolName = schoolName;
-    this.room = [[]];
-    this.complex = [[]];
-    this.subject = [[]];
-    this.teacher = [[]];
-  }
-}
-
-let user = new UserInfo("YourName", "2CL", "SchoolName - AndCityMaybe");
 // Variable reference to user data HTML inputs
 const userNameInput = document.getElementById("userNameInput");
 const userClassInput = document.getElementById("userClassInput");
@@ -84,11 +46,70 @@ const submitUserInfoBtn = document.getElementById("submitUserInfoBtn");
 const userDaySelection = document.getElementById("userDaySelection");
 const userHourSelection = document.getElementById("userHourSelection");
 // Info for user's class
-const userRoomInput = document.getElementById("userRoomInput");
-const userComplexInput = document.getElementById("userComplexInput");
-const userSubjectInput = document.getElementById("userSubjectInput");
-const userTeacherInput = document.getElementById("userTeacherInput");
+const userRoomInput = document.querySelectorAll(".userRoomInput");
+const userComplexInput = document.querySelectorAll(".userComplexInput");
+const userSubjectInput = document.querySelectorAll(".userSubjectInput");
+const userTeacherInput = document.querySelectorAll(".userTeacherInput");
 const submitUserClassTimesBtn = document.getElementById("submitUserClassTimesBtn");
+
+// Now Tab variables that contain user's info
+const nameDisplay = document.getElementById("nameDisplay");
+const classDisplay = document.getElementById("classDisplay");
+const schoolDisplay = document.getElementById("schoolDisplay");
+
+function displayUserInfo() {
+  // Triggers if there is saved data and fills all html fields that already have data
+
+  // Writes data in Now Tab
+  nameDisplay.textContent = ", " + user.name;
+  classDisplay.textContent = " - " + user.className;
+  schoolDisplay.textContent = user.schoolName;
+
+  // Writes data to input fields in settings tab
+  userNameInput.value = user.name;
+  userClassInput.value = user.className;
+  userSchoolNameInput.value = user.schoolName;
+}
+
+function displayUserClassInfo() {
+  // Triggers if there is saved data and fills all html fields that already have data
+  userRoomInput[0].value = user.room[0][0];
+  userComplexInput[0].value = user.complex[0][0];
+  userSubjectInput[0].value = user.subject[0][0];
+  userTeacherInput[0].value = user.teacher[0][0];
+}
+
+// ---------------  PERSONAL DATA INPUT  ---------------
+
+// JavaScript variables that contain user's info
+class UserInfo {
+  constructor(name, className, schoolName) {
+    this.name = name;
+    this.className = className;
+    this.schoolName = schoolName;
+    this.room = [[]];
+    this.complex = [[]];
+    this.subject = [[]];
+    this.teacher = [[]];
+    if (!localStorage.getItem('user_room')) this.fillArrays();
+  }
+
+  fillArrays() {
+    // Define the size of the arrays (adjust as needed)
+    const rows = 6;
+    const columns = 6;
+
+    // Fill each array with empty strings
+    for (let i = 0; i < rows; i++) {
+      this.room[i] = Array(columns).fill("");
+      this.complex[i] = Array(columns).fill("");
+      this.subject[i] = Array(columns).fill("");
+      this.teacher[i] = Array(columns).fill("");
+    }
+  }
+}
+
+let user = new UserInfo("YourName", "2CL", "SchoolName - AndCityMaybe");
 
 getUserInfoFromLocalStorage();
 function getUserInfoFromLocalStorage() {
@@ -121,5 +142,97 @@ function updateUserInfo() {
   if (localStorage.getItem('user_name') || localStorage.getItem('user_className') || localStorage.getItem('user_schoolName')) {
     window.alert("Saved data successfully!");
     displayUserInfo();
+  }
+}
+
+let previousDayState = 0;
+let previousHourState = 0;
+userDaySelection.addEventListener("change", updateUserClassGrid);
+userHourSelection.addEventListener("change", updateUserClassGrid);
+
+function updateUserClassGrid() {
+  // This function updates the input element fields every time the user changes day or hour, even without clicking submit
+
+  // First it saves in the previous location of day and hour the data that was in it
+  user.room[previousDayState][previousHourState] = userRoomInput[0].value;
+  user.complex[previousDayState][previousHourState] = userComplexInput[0].value;
+  user.subject[previousDayState][previousHourState] = userSubjectInput[0].value;
+  user.teacher[previousDayState][previousHourState] = userTeacherInput[0].value;
+  // WARNING!!! As of now this data is NOT saved in localStorage, only when the user clicks Submit all data gets saved in localStorage.
+
+  // and then changes the input to where it should be
+  let dayIndex = null;
+  switch (userDaySelection.value) {
+    case 'monday':
+      dayIndex = 0;
+      break;
+    case 'tuesday':
+      dayIndex = 1;
+      break;
+    case 'wednesday':
+      dayIndex = 2;
+      break;
+    case 'thursday':
+      dayIndex = 3;
+      break;
+    case 'friday':
+      dayIndex = 4;
+      break;
+    case 'saturday':
+      dayIndex = 5;
+      break;
+  }
+  let hourIndex = null;
+  switch (userHourSelection.value) {
+    case '1':
+      hourIndex = 0;
+      break;
+    case '2':
+      hourIndex = 1;
+      break;
+    case '3':
+      hourIndex = 2;
+      break;
+    case '4':
+      hourIndex = 3;
+      break;
+    case '5':
+      hourIndex = 4;
+      break;
+    case '6':
+      hourIndex = 5;
+      break;
+  }
+  changeUserInputLabels(dayIndex, hourIndex);
+}
+
+function changeUserInputLabels(dayIndex, hourIndex) {
+  userRoomInput[0].value = user.room[dayIndex][hourIndex];
+  userComplexInput[0].value = user.complex[dayIndex][hourIndex];
+  userSubjectInput[0].value = user.subject[dayIndex][hourIndex];
+  userTeacherInput[0].value = user.teacher[dayIndex][hourIndex];
+  // Finally, the current day and hour index are saved in 'previous' so it saves them when the user change label
+  previousDayState = dayIndex;
+  previousHourState = hourIndex;
+}
+
+function updateUserClassInfo() {
+  // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
+  updateUserClassGrid();
+  localStorage.setItem('user_roomARR', JSON.stringify(user.room));
+  localStorage.setItem('user_complexARR', JSON.stringify(user.complex));
+  localStorage.setItem('user_subjectARR', JSON.stringify(user.subject));
+  localStorage.setItem('user_teacherARR', JSON.stringify(user.teacher));
+}
+
+getUserClassInfoFromLocalStorage();
+function getUserClassInfoFromLocalStorage() {
+  // If it finds a key "isThereData" in user's browser, it reads the data and writes it to the variables
+  if (localStorage.getItem('isThereData')) {
+    user.room = JSON.parse(localStorage.getItem('user_roomARR'));
+    user.complex = JSON.parse(localStorage.getItem('user_complexARR'));
+    user.subject = JSON.parse(localStorage.getItem('user_subjectARR'));
+    user.teacher = JSON.parse(localStorage.getItem('user_teacherARR'));
+    displayUserClassInfo();
   }
 }
