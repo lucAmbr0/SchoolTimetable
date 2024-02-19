@@ -19,10 +19,11 @@ body {
     background: var(--solidColorBackground2);
     width: 100%;
     overflow-x: hidden;
+    user-select: none;
 }
 
 ::selection {
-    background-color: transparent;
+    background-color: var(--darkTransBackground3);
 }
 
 h1,
@@ -247,7 +248,7 @@ h5 {
     background-color: var(--lightTransBackground3);
     display: block;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     margin: 20px auto;
     padding: 5px 0;
@@ -389,7 +390,7 @@ label {
     background-color: var(--lightTransBackground2);
     border-radius: 20px;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 1px 8px var(--darkTransBackground1);
+    box-shadow: 0 2px 8px var(--darkTransBackground1);
 }
 
 .settingHeader {
