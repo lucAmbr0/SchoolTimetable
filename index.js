@@ -15,7 +15,7 @@ const appTabs = document.querySelectorAll(".appTabs");
 appTabs.forEach(appTab => appTab.classList.remove("appTabsShown"));
 appTabs.forEach(appTab => appTab.classList.add("appTabsHidden"));
 
-navbarAction(2);
+navbarAction(1);
 
 function navbarAction(tab) {
   if (currentTab !== tab) {
@@ -266,4 +266,13 @@ function displayUserToNowTab() {
       userSubjectAndTeacher.textContent = "There's no data here :(";
     }
   }
+}
+
+
+// ---------------  DARK MODE [WORK IN PROGRESS]  ---------------
+
+trigger();
+
+function trigger() {
+  document.body.classList.toggle("darkModeVariables");
 }

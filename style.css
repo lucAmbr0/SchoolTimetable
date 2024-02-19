@@ -23,7 +23,7 @@ body {
 }
 
 ::selection {
-    background-color: var(--darkTransBackground3);
+    background-color: var(--OPPtranspCol8);
 }
 
 h1,
@@ -70,6 +70,7 @@ h5 {
     from {
         opacity: 0.3;
     }
+
     to {
         opacity: 1;
     }
@@ -78,42 +79,87 @@ h5 {
 /* ---------------  VARIABLES  --------------- */
 
 :root {
-    --darkTextCol0: black;
-    --darkTextCol1: rgb(10, 10, 10);
-    --darkTextCol2: rgb(20, 20, 20);
-    --darkTextCol3: rgb(30, 30, 30);
-    --darkTextCol4: rgb(40, 40, 40);
-    --lightTextCol0: white;
-    --lightTextCol1: rgb(240, 240, 240);
-    --lightTextCol2: rgb(230, 230, 230);
-    --lightTextCol3: rgb(220, 220, 220);
-    --lightTextCol4: rgb(210, 210, 210);
-
     --solidColorBackground1: linear-gradient(45deg,
             rgba(86, 173, 236, 0.3),
             rgba(55, 172, 255, 0.3));
     --solidColorBackground2: linear-gradient(0deg,
-            rgb(129, 202, 255),
-            rgb(210, 236, 255));
-    --lightSolidBackground1: rgba(255, 255, 255, 1);
-    --lightSolidBackground2: rgba(245, 245, 245, 1);
-    --lightSolidBackground3: rgba(235, 235, 235, 1);
-    --lightSolidBackground4: rgba(225, 225, 225, 1);
-    --lightTransBackground1: rgba(255, 255, 255, 0.6);
-    --lightTransBackground2: rgba(255, 255, 255, 0.4);
-    --lightTransBackground3: rgba(255, 255, 255, 0.2);
-    --lightTransBackground4: rgba(255, 255, 255, 0.1);
-    --darkSolidBackground1: rgba(10, 10, 10, 1);
-    --darkSolidBackground2: rgba(20, 20, 20, 1);
-    --darkSolidBackground3: rgba(30, 30, 30, 1);
-    --darkSolidBackground4: rgba(40, 40, 40, 1);
-    --darkTransBackground1: rgba(0, 0, 0, 0.6);
-    --darkTransBackground2: rgba(0, 0, 0, 0.4);
-    --darkTransBackground3: rgba(0, 0, 0, 0.2);
-    --darkTransBackground4: rgba(0, 0, 0, 0.1);
+            hsl(205, 100%, 70%),
+            hsl(205, 100%, 70%));
+
+    /* VAR COLORS */
+    --solidCol0: rgba(255, 255, 255, 1);
+    --solidCol1: rgba(245, 245, 245, 1);
+    --solidCol2: rgba(235, 235, 235, 1);
+    --solidCol3: rgba(225, 225, 225, 1);
+    --solidCol4: rgba(215, 215, 215, 1);
+
+    --transpCol1: rgba(255, 255, 255, 0.9);
+    --transpCol2: rgba(255, 255, 255, 0.8);
+    --transpCol3: rgba(255, 255, 255, 0.7);
+    --transpCol4: rgba(255, 255, 255, 0.6);
+    --transpCol5: rgba(255, 255, 255, 0.5);
+    --transpCol6: rgba(255, 255, 255, 0.4);
+    --transpCol7: rgba(255, 255, 255, 0.3);
+    --transpCol8: rgba(255, 255, 255, 0.2);
+    --transpCol9: rgba(255, 255, 255, 0.1);
+
+
+    /* OPPOSITES */
+    --OPPsolidCol0: rgba(0, 0, 0, 1);
+    --OPPsolidCol1: rgba(10, 10, 10, 1);
+    --OPPsolidCol2: rgba(20, 20, 20, 1);
+    --OPPsolidCol3: rgba(30, 30, 30, 1);
+    --OPPsolidCol4: rgba(40, 40, 40, 1);
+
+    --OPPtranspCol1: rgba(0, 0, 0, 0.9);
+    --OPPtranspCol2: rgba(0, 0, 0, 0.8);
+    --OPPtranspCol3: rgba(0, 0, 0, 0.7);
+    --OPPtranspCol4: rgba(0, 0, 0, 0.6);
+    --OPPtranspCol5: rgba(0, 0, 0, 0.5);
+    --OPPtranspCol6: rgba(0, 0, 0, 0.4);
+    --OPPtranspCol7: rgba(0, 0, 0, 0.3);
+    --OPPtranspCol8: rgba(0, 0, 0, 0.2);
+    --OPPtranspCol9: rgba(0, 0, 0, 0.1);
+
 
     --HeadingFont: "Poppins";
     --StandardTextFont: "Noto Sans";
+}
+
+.darkModeVariables {
+    /* VAR COLORS */
+    --solidCol0: rgba(0, 0, 0, 1);
+    --solidCol1: rgba(10, 10, 10, 1);
+    --solidCol2: rgba(20, 20, 20, 1);
+    --solidCol3: rgba(30, 30, 30, 1);
+    --solidCol4: rgba(40, 40, 40, 1);
+
+    --transpCol1: rgba(0, 0, 0, 0.9);
+    --transpCol2: rgba(0, 0, 0, 0.8);
+    --transpCol3: rgba(0, 0, 0, 0.7);
+    --transpCol4: rgba(0, 0, 0, 0.6);
+    --transpCol5: rgba(0, 0, 0, 0.5);
+    --transpCol6: rgba(0, 0, 0, 0.4);
+    --transpCol7: rgba(0, 0, 0, 0.3);
+    --transpCol8: rgba(0, 0, 0, 0.2);
+    --transpCol9: rgba(0, 0, 0, 0.1);
+
+    /* OPPOSITES */
+    --OPPsolidCol0: rgba(255, 255, 255, 1);
+    --OPPsolidCol1: rgba(245, 245, 245, 1);
+    --OPPsolidCol2: rgba(235, 235, 235, 1);
+    --OPPsolidCol3: rgba(225, 225, 225, 1);
+    --OPPsolidCol4: rgba(215, 215, 215, 1);
+
+    --OPPtranspCol1: rgba(255, 255, 255, 0.9);
+    --OPPtranspCol2: rgba(255, 255, 255, 0.8);
+    --OPPtranspCol3: rgba(255, 255, 255, 0.7);
+    --OPPtranspCol4: rgba(255, 255, 255, 0.6);
+    --OPPtranspCol5: rgba(255, 255, 255, 0.5);
+    --OPPtranspCol6: rgba(255, 255, 255, 0.4);
+    --OPPtranspCol7: rgba(255, 255, 255, 0.3);
+    --OPPtranspCol8: rgba(255, 255, 255, 0.2);
+    --OPPtranspCol9: rgba(255, 255, 255, 0.1);
 }
 
 /* ---------------  APP TABS  --------------- */
@@ -162,7 +208,7 @@ h5 {
 
 #dayDisplay {
     font-family: var(--HeadingFont);
-    color: var(--darkTextCol1);
+    color: var(--OPPsolidCol1);
     font-weight: 500;
     font-size: 2em;
     line-height: 1.2;
@@ -170,7 +216,7 @@ h5 {
 
 #timeDisplay {
     font-family: var(--HeadingFont);
-    color: var(--darkTextCol1);
+    color: var(--OPPsolidCol1);
     font-weight: 600;
     line-height: 1.1;
     font-size: 3em;
@@ -181,12 +227,12 @@ h5 {
     margin-top: 20px;
     text-align: center;
     font-size: 1.5em;
-    color: var(--darkTextCol2);
+    color: var(--OPPsolidCol2);
 }
 
 #schoolDisplay {
     text-align: center;
-    color: var(--darkTextCol4);
+    color: var(--OPPsolidCol4);
     margin-bottom: 10px;
 }
 
@@ -197,7 +243,7 @@ h5 {
     flex-direction: column;
     margin: 10px auto 20px auto;
     padding: 5px 0;
-    background-color: var(--lightTransBackground2);
+    background-color: var(--transpCol6);
     border-radius: 20px;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -207,7 +253,7 @@ h5 {
 #userClassroomDisplay {
     font-size: 2.3em;
     font-weight: 600;
-    color: var(--darkTextCol2);
+    color: var(--OPPsolidCol2);
 }
 
 #userComplexDisplay {
@@ -215,14 +261,14 @@ h5 {
     font-weight: 400;
     font-size: 1.3em;
     font-family: var(--StandardTextFont);
-    color: var(--darkTextCol3);
+    color: var(--OPPsolidCol3);
 }
 
 #userSubjectAndTeacher {
     font-size: 1.5em;
     font-weight: 500;
     font-family: var(--StandardTextFont);
-    color: var(--darkTextCol3);
+    color: var(--OPPsolidCol3);
     margin: 10px 0;
 }
 
@@ -232,12 +278,13 @@ h5 {
     height: 2px;
     margin: 15px auto 15px auto;
     border-radius: 1px;
-    background-color: var(--darkTransBackground2);
+    background-color: var(--OPPtranspCol6);
 }
 
 #secondaryBoxesLabel {
     text-align: center;
     font-family: var(--StandardTextFont);
+    color: var(--OPPsolidCol3);
     font-size: 1.4em;
     margin: 10px 0 -10px 0;
 }
@@ -245,7 +292,7 @@ h5 {
 .matesBox {
     width: 90%;
     height: fit-content;
-    background-color: var(--lightTransBackground3);
+    background-color: var(--transpCol8);
     display: block;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
@@ -258,14 +305,14 @@ h5 {
     font-weight: 500;
     text-align: center;
     font-size: 2em;
-    color: var(--darkTextCol2);
+    color: var(--OPPsolidCol2);
 }
 
 .matesBoxGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 0px 15px;
-    color: var(--darkTextCol3);
+    color: var(--OPPsolidCol3);
     font-family: var(--StandardTextFont);
     font-size: 1.3em;
 }
@@ -282,7 +329,7 @@ h5 {
 
 .matesBoxGrid p {
     margin: 5px 0;
-    color: var(--darkTextCol3);
+    color: var(--OPPsolidCol3);
     font-family: var(--StandardTextFont);
     font-weight: 400;
 }
@@ -298,7 +345,7 @@ h5 {
     bottom: 0;
     left: 0;
     width: 100vw;
-    background-color: var(--lightSolidBackground2);
+    background-color: var(--solidCol1);
     box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -319,14 +366,14 @@ h5 {
 .navbarBtn p {
     margin: 5px 0;
     font-family: var(--StandardTextFont);
-    color: var(--darkTextCol2);
+    color: var(--OPPsolidCol2);
     line-height: 0.7;
     font-size: 1em;
     color: var(text);
 }
 
 .material-symbols-outlined {
-    color: var(--darkTextCol3);
+    color: var(--OPPsolidCol3);
 }
 
 .navbarBtn span {
@@ -364,8 +411,8 @@ input,
 select {
     border-radius: 8px;
     border: solid 1px rgba(128, 128, 128, 0.7);
-    background-color: var(--lightTransBackground1);
-    color: var(--darkTextCol2);
+    background-color: var(--transpCol4);
+    color: var(--OPPsolidCol2);
     text-align: left;
     margin: 0px 10px;
     font-size: 1em;
@@ -376,7 +423,7 @@ label {
     font-family: Noto Sans;
     text-align: left;
     margin: 10px 10px 2px 10px;
-    color: var(--darkTextCol2);
+    color: var(--OPPsolidCol2);
     font-size: 1.2em;
 }
 
@@ -387,10 +434,10 @@ label {
     flex-direction: column;
     margin: 10px auto 30px auto;
     padding: 5px 0;
-    background-color: var(--lightTransBackground2);
+    background-color: var(--transpCol6);
     border-radius: 20px;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 2px 8px var(--darkTransBackground1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .settingHeader {
@@ -400,7 +447,7 @@ label {
     text-align: center;
     margin-top: 5px;
     margin-bottom: 5px;
-    color: var(--darkTextCol2);
+    color: var(--OPPsolidCol2);
 }
 
 #userDataForm {
@@ -422,7 +469,7 @@ label {
     background-color: rgba(55, 144, 208, 0.5);
     /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.8); */
     /* border: solid 2px var(--lightTextCol1); */
-    color: var(--darkTextCol3);
+    color: var(--OPPsolidCol3);
     transition: 0.3s background-color ease;
 }
 
@@ -463,8 +510,8 @@ label {
     flex-direction: column;
     margin: 10px auto;
     padding: 5px 0;
-    background-color: var(--lightTransBackground2);
+    background-color: var(--transpCol6);
     border-radius: 20px;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 1px 8px var(--darkTransBackground1);
+    box-shadow: 0 1px 8px var(--OPPtranspCol4);
 }
