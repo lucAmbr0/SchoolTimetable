@@ -5,13 +5,17 @@
 
 // ---------------  NAVBAR  ---------------
 
-let currentTab = 1;
+let currentTab = null;
 const navbar = document.getElementById("navbar");
 const navbarBtn = document.querySelectorAll(".navbarBtn");
 const navbarIcon = document.querySelectorAll(".navbarIcon");
 const navbarLabel = document.querySelectorAll(".navbarLabel");
 const appTabs = document.querySelectorAll(".appTabs");
-appTabs[0].classList.add("appTabsShown");
+
+appTabs.forEach(appTab => appTab.classList.remove("appTabsShown"));
+appTabs.forEach(appTab => appTab.classList.add("appTabsHidden"));
+
+navbarAction(1);
 
 function navbarAction(tab) {
   if (currentTab !== tab) {
