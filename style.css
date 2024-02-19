@@ -83,8 +83,8 @@ h5 {
             rgba(86, 173, 236, 0.3),
             rgba(55, 172, 255, 0.3));
     --solidColorBackground2: linear-gradient(0deg,
-            rgb(129, 202, 255),
-            rgb(210, 236, 255));
+            hsl(205, 100%, 70%),
+            hsl(205, 100%, 70%));
 
     /* VAR COLORS */
     --solidCol0: rgba(255, 255, 255, 1);
@@ -284,6 +284,7 @@ h5 {
 #secondaryBoxesLabel {
     text-align: center;
     font-family: var(--StandardTextFont);
+    color: var(--OPPsolidCol3);
     font-size: 1.4em;
     margin: 10px 0 -10px 0;
 }
@@ -436,7 +437,7 @@ label {
     background-color: var(--transpCol6);
     border-radius: 20px;
     /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 2px 8px var(--OPPtranspCol4);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .settingHeader {
