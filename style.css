@@ -126,8 +126,8 @@ h5 {
     --StandardTextFont: "Noto Sans";
 }
 
-.darkModeVariables {
-    /* VAR COLORS */
+/* .darkModeVariables {
+    VAR COLORS
     --solidCol0: rgba(0, 0, 0, 1);
     --solidCol1: rgba(10, 10, 10, 1);
     --solidCol2: rgba(20, 20, 20, 1);
@@ -144,7 +144,7 @@ h5 {
     --transpCol8: rgba(0, 0, 0, 0.2);
     --transpCol9: rgba(0, 0, 0, 0.1);
 
-    /* OPPOSITES */
+    OPPOSITES
     --OPPsolidCol0: rgba(255, 255, 255, 1);
     --OPPsolidCol1: rgba(245, 245, 245, 1);
     --OPPsolidCol2: rgba(235, 235, 235, 1);
@@ -160,7 +160,7 @@ h5 {
     --OPPtranspCol7: rgba(255, 255, 255, 0.3);
     --OPPtranspCol8: rgba(255, 255, 255, 0.2);
     --OPPtranspCol9: rgba(255, 255, 255, 0.1);
-}
+} */
 
 /* ---------------  APP TABS  --------------- */
 
