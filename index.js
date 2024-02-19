@@ -26,3 +26,5 @@ function navbarAction(tab) {
     appTabs[tab].classList.add("appTabsShown");
   }
 }
+
+navbarAction(2);
