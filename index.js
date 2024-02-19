@@ -31,7 +31,7 @@ function navbarAction(tab) {
   }
 }
 
-// ---------------  PERSONAL DATA DISPLAY  ---------------
+// ---------------  PERSONAL DATA ON SETTINGS TAB  ---------------
 
 // Here are all the instructions and variables that write data to the frontend html
 
@@ -216,6 +216,7 @@ function updateUserClassInfo() {
   localStorage.setItem('user_complexARR', JSON.stringify(user.complex));
   localStorage.setItem('user_subjectARR', JSON.stringify(user.subject));
   localStorage.setItem('user_teacherARR', JSON.stringify(user.teacher));
+  displayUserToNowTab();
 }
 
 function displayUserClassInfo() {
@@ -235,5 +236,34 @@ function getUserClassInfoFromLocalStorage() {
     user.subject = JSON.parse(localStorage.getItem('user_subjectARR'));
     user.teacher = JSON.parse(localStorage.getItem('user_teacherARR'));
     displayUserClassInfo();
+    displayUserToNowTab();
+  }
+}
+
+// ---------------  SHOWING USER CLASS DATA TO NOW TAB  ---------------
+
+// Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
+
+// USER'S DATA
+displayUserToNowTab();
+function displayUserToNowTab() {
+  // USERS CLASS DATA IN NOW TAB
+  const userClassroomDisplay = document.getElementById("userClassroomDisplay");
+  const userComplexDisplay = document.getElementById("userComplexDisplay");
+  const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
+  const date = new Date(); // object containing time info
+  let schoolHourStart = 8; // standard hour when school starts is 8
+  const hour = date.getHours() - schoolHourStart;
+  const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
+  // const day = 0; >>> DEBUG
+  // const hour = 8 - schoolHourStart; >>> DEBUG
+  if (day != 7) {
+    userClassroomDisplay.textContent = user.room[day][hour];
+    userComplexDisplay.textContent = user.complex[day][hour];
+    if (user.subject[day][hour]) {
+      userSubjectAndTeacher.textContent = user.subject[day][hour] + " - " + user.teacher[day][hour];
+    } else {
+      userSubjectAndTeacher.textContent = "There's no data here :(";
+    }
   }
 }
