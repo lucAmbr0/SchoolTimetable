@@ -26,11 +26,9 @@
       <h2 id="timeDisplay">17:41</h2>
     </div>
     <div id="topNotchFixed"></div>
-    <div class="appTabs" id="setTimeTab">
-        
-    </div>
+    <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
-    <h2 id="greetingDisplay">
+      <h2 class="greetingDisplay">
         Welcome, <span id="nameDisplay">Yourname</span> -
         <span id="displayClass">2AS</span>
       </h2>
@@ -89,7 +87,51 @@
       </div>
     </div>
     <div class="appTabs" id="settingsTab">
-
+      <h2 class="greetingDisplay">Settings</h2>
+      <div class="personalSettings">
+        <h1 class="settingHeader">Your data</h1>
+        <div id="userDataForm">
+          <label for="userNameInput">Name </label>
+          <input type="text" id="userNameInput" />
+          <label for="userClassInput">Class </label>
+          <input type="text" id="userClassInput" />
+          <label for="userSchoolName">School name </label>
+          <input type="text" id="userSchoolName" />
+        </div>
+        <button id="submitUserInfoBtn">Confirm</button>
+        <div class="horizontalLine"></div>
+        <div id="userClassForm">
+          <div class="userDataDayAndHourContainer">
+            <select id="userDaySelection" name="day">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+            </select>
+            <select id="userHourSelection" name="hour">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+            <div class="userDataGrid">
+              <label for="userClassInput">Class</label>
+              <input type="text" class="userClassInput" />
+              <label for="userComplexInput">Complex</label>
+              <input type="text" class="userComplexInput" />
+              <label for="userSubjectInput">Subject</label>
+              <input type="text" class="userSubjectInput" />
+              <label for="userTeacherInput">Teacher</label>
+              <input type="text" class="userTeacherInput" />
+            </div>
+        </div>
+        <button id="submitUserInfoBtn">Confirm</button>
+      </div>
     </div>
     <nav id="navbar">
       <div class="navbarBtn" onclick="navbarAction(0)">
