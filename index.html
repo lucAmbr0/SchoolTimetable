@@ -29,7 +29,7 @@
     <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
       <h2 class="greetingDisplay">
-       Welcome<span id="nameDisplay"></span>
+        Welcome<span id="nameDisplay"></span>
         <span id="classDisplay"></span>
       </h2>
       <h3 id="schoolDisplay"></h3>
@@ -88,8 +88,8 @@
     </div>
     <div class="appTabs" id="settingsTab">
       <h2 class="greetingDisplay">Settings</h2>
-      <div class="personalSettings">
-        <h1 class="settingHeader">Your data</h1>
+      <details id="personalSettings" open>
+        <summary class="settingHeader">Your data</summary>
         <div id="userDataForm">
           <label for="userNameInput">Name </label>
           <input type="text" id="userNameInput" />
@@ -116,7 +116,9 @@
               <option value="friday">Friday</option>
               <option value="saturday">Saturday</option>
             </select>
-            <label for="userDaySelection" style="margin: 10px 0 2px 0;">at</label>
+            <label for="userDaySelection" style="margin: 5px 0 2px 0"
+              >at</label
+            >
             <select id="userHourSelection" name="hour">
               <option value="1">1</option>
               <option value="2">2</option>
@@ -125,7 +127,9 @@
               <option value="5">5</option>
               <option value="6">6</option>
             </select>
-            <label for="userHourSelection" style="margin: 10px 10px 2px 0;">hour</label>
+            <label for="userHourSelection" style="margin: 5px 10px 2px 0"
+              >hour</label
+            >
           </div>
           <div class="userDataGrid">
             <label for="userRoomInput">Room</label>
@@ -138,8 +142,14 @@
             <input type="text" class="userTeacherInput" />
           </div>
         </div>
-        <button class="submitBtn" id="submitUserClassTimesBtn" onclick="updateUserClassInfo()">Confirm</button>
-      </div>
+        <button
+          class="submitBtn"
+          id="submitUserClassTimesBtn"
+          onclick="updateUserClassInfo()"
+        >
+          Confirm
+        </button>
+      </details>
 
       <!-- <div class="matesSettings">
         <h1 class="settingHeader">Class 1</h1>

@@ -15,7 +15,7 @@ const appTabs = document.querySelectorAll(".appTabs");
 appTabs.forEach(appTab => appTab.classList.remove("appTabsShown"));
 appTabs.forEach(appTab => appTab.classList.add("appTabsHidden"));
 
-navbarAction(1);
+navbarAction(2);
 
 function navbarAction(tab) {
   if (currentTab !== tab) {

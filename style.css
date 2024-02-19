@@ -65,6 +65,15 @@ h5 {
     }
 }
 
+@keyframes settingContent {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 /* ---------------  VARIABLES  --------------- */
 
 :root {
@@ -370,7 +379,7 @@ label {
     font-size: 1.2em;
 }
 
-.personalSettings {
+#personalSettings {
     width: 92%;
     height: fit-content;
     display: flex;
@@ -384,32 +393,35 @@ label {
 }
 
 .settingHeader {
+    font-size: 1.8em;
+    font-family: var(--HeadingFont);
     font-weight: 500;
     text-align: center;
     margin-top: 5px;
-    margin-bottom: -10px;
+    margin-bottom: 5px;
+    color: var(--darkTextCol2);
 }
 
 #userDataForm {
     display: flex;
     flex-direction: column;
-    margin: 10px 5px;
+    margin: 0px 5px 10px 5px;
 }
 
 .submitBtn {
     text-align: center;
+    display: flex;
     margin: 0px 15px 10px auto;
     padding: 5px 10px;
-    width: 30%;
     font-size: 20px;
     font-family: Noto Sans;
     border-radius: 15px;
     border: none;
-    color: var(--lightTextCol1);
     font-weight: 600;
-    background-color: rgb(55, 144, 208);
+    background-color: rgba(55, 144, 208, 0.5);
     /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.8); */
-    border: solid 2px var(--lightTextCol1);
+    /* border: solid 2px var(--lightTextCol1); */
+    color: var(--darkTextCol3);
     transition: 0.3s background-color ease;
 }
 
@@ -423,11 +435,12 @@ label {
 .userDataDayAndHourContainer select {
     font-size: 1.2em;
     font-weight: 600;
+    padding: 2px 7px;
     font-family: var(--StandardTextFont);
 }
 
 .submitBtn:hover {
-    background-color: rgb(30, 127, 197);
+    background-color: rgba(41, 118, 174, 0.5);
 }
 
 .userDataGrid {
