@@ -71,14 +71,6 @@ function displayUserInfo() {
   userSchoolNameInput.value = user.schoolName;
 }
 
-function displayUserClassInfo() {
-  // Triggers if there is saved data and fills all html fields that already have data
-  userRoomInput[0].value = user.room[0][0];
-  userComplexInput[0].value = user.complex[0][0];
-  userSubjectInput[0].value = user.subject[0][0];
-  userTeacherInput[0].value = user.teacher[0][0];
-}
-
 // ---------------  PERSONAL DATA INPUT  ---------------
 
 // JavaScript variables that contain user's info
@@ -113,8 +105,8 @@ let user = new UserInfo("YourName", "2CL", "SchoolName - AndCityMaybe");
 
 getUserInfoFromLocalStorage();
 function getUserInfoFromLocalStorage() {
-  // If it finds a key "isThereData" in user's browser, it reads the data and writes it to the variables
-  if (localStorage.getItem('isThereData')) {
+  // If it finds the key "user_name" in user's browser, it reads the data and writes it to the variables
+  if (localStorage.getItem('user_name')) {
     user.name = localStorage.getItem('user_name');
     user.className = localStorage.getItem('user_className');
     user.schoolName = localStorage.getItem('user_schoolName');
@@ -219,10 +211,19 @@ function changeUserInputLabels(dayIndex, hourIndex) {
 function updateUserClassInfo() {
   // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
   updateUserClassGrid();
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   localStorage.setItem('user_roomARR', JSON.stringify(user.room));
   localStorage.setItem('user_complexARR', JSON.stringify(user.complex));
   localStorage.setItem('user_subjectARR', JSON.stringify(user.subject));
   localStorage.setItem('user_teacherARR', JSON.stringify(user.teacher));
+}
+
+function displayUserClassInfo() {
+  // Triggers if there is saved data and fills all html fields that already have data
+  userRoomInput[0].value = user.room[0][0];
+  userComplexInput[0].value = user.complex[0][0];
+  userSubjectInput[0].value = user.subject[0][0];
+  userTeacherInput[0].value = user.teacher[0][0];
 }
 
 getUserClassInfoFromLocalStorage();
