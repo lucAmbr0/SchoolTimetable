@@ -438,6 +438,7 @@ label {
 
 .userDataGrid input,
 .userDataGrid label {
+    font-weight: 300;
     margin: 5px 10px;
 }
 
