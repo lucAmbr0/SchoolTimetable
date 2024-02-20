@@ -253,10 +253,10 @@ function displayUserToNowTab() {
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
   const date = new Date(); // object containing time info
   let schoolHourStart = 8; // standard hour when school starts is 8
-  const hour = date.getHours() - schoolHourStart;
-  const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
-  // const day = 0; >>> DEBUG
-  // const hour = 8 - schoolHourStart; >>> DEBUG
+  // const hour = date.getHours() - schoolHourStart;
+  // const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
+  const day = 0; // >>> DEBUG
+  const hour = 8 - schoolHourStart; // >>> DEBUG
   if (day != 7) {
     userClassroomDisplay.textContent = user.room[day][hour];
     userComplexDisplay.textContent = user.complex[day][hour];
@@ -273,6 +273,6 @@ function displayUserToNowTab() {
 
 // trigger();
 
-// function trigger() {
-//   document.body.classList.toggle("darkModeVariables");
-// }
+function trigger() {
+  document.body.classList.toggle("darkModeVariables");
+}

@@ -16,10 +16,11 @@ html {
 
 body {
     margin: 0;
-    background: var(--solidColorBackground2);
+    background: var(--bodyBackground);
     width: 100%;
     overflow-x: hidden;
     user-select: none;
+    transition: 0.5s background ease;
 }
 
 ::selection {
@@ -44,8 +45,8 @@ h5 {
 
 @keyframes navbarLabel {
     from {
-        opacity: 0.8;
-        padding: 3px 0px;
+        opacity: 1;
+        padding: 3px 5px;
     }
 
     to {
@@ -79,19 +80,29 @@ h5 {
 /* ---------------  VARIABLES  --------------- */
 
 :root {
-    --solidColorBackground1: linear-gradient(45deg,
+    --accentColor0: linear-gradient(45deg,
             rgba(86, 173, 236, 0.3),
             rgba(55, 172, 255, 0.3));
-    --solidColorBackground2: linear-gradient(0deg,
+    --accentColor1: linear-gradient(0deg,
             hsl(205, 100%, 70%),
             hsl(205, 100%, 70%));
 
+    --solidAccentColor0: rgba(55, 172, 255, 1);
+    --solidAccentColor1: rgba(0, 49, 115, 1);
+    --solidAccentColor2: rgba(3, 18, 37, 1);
+
+    --transAccentColor0: rgba(55, 172, 255, 0.6);
+    --transAccentColor1: rgba(84, 180, 249, 0.6);
+    --transAccentColor2: rgba(3, 18, 37, 0.5);
+    --transAccentColor3: rgba(0, 49, 115, 0.07);
+    --bodyBackground: rgba(0, 49, 115, 0.12);
+
     /* VAR COLORS */
     --solidCol0: rgba(255, 255, 255, 1);
-    --solidCol1: rgba(245, 245, 245, 1);
-    --solidCol2: rgba(235, 235, 235, 1);
-    --solidCol3: rgba(225, 225, 225, 1);
-    --solidCol4: rgba(215, 215, 215, 1);
+    --solidCol1: rgba(235, 235, 235, 1);
+    --solidCol2: rgba(225, 225, 225, 1);
+    --solidCol3: rgba(215, 215, 215, 1);
+    --solidCol4: rgba(205, 205, 205, 1);
 
     --transpCol1: rgba(255, 255, 255, 0.9);
     --transpCol2: rgba(255, 255, 255, 0.8);
@@ -103,13 +114,20 @@ h5 {
     --transpCol8: rgba(255, 255, 255, 0.2);
     --transpCol9: rgba(255, 255, 255, 0.1);
 
+    --boxShadow0: 0 0 10px rgba(0, 0, 0, 1);
+    --boxShadow1: 0 0 20px rgba(0, 0, 0, 0.3);
+    --boxShadow2: 0 2px 10px rgba(0, 0, 0, 0.5);
+    --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+    --boxBorder: none;
 
     /* OPPOSITES */
     --OPPsolidCol0: rgba(0, 0, 0, 1);
-    --OPPsolidCol1: rgba(10, 10, 10, 1);
-    --OPPsolidCol2: rgba(20, 20, 20, 1);
-    --OPPsolidCol3: rgba(30, 30, 30, 1);
-    --OPPsolidCol4: rgba(40, 40, 40, 1);
+    --OPPsolidCol1: rgba(20, 20, 20, 1);
+    --OPPsolidCol2: rgba(30, 30, 30, 1);
+    --OPPsolidCol3: rgba(40, 40, 40, 1);
+    --OPPsolidCol4: rgba(50, 50, 50, 1);
 
     --OPPtranspCol1: rgba(0, 0, 0, 0.9);
     --OPPtranspCol2: rgba(0, 0, 0, 0.8);
@@ -121,18 +139,34 @@ h5 {
     --OPPtranspCol8: rgba(0, 0, 0, 0.2);
     --OPPtranspCol9: rgba(0, 0, 0, 0.1);
 
-
     --HeadingFont: "Poppins";
     --StandardTextFont: "Noto Sans";
 }
 
-/* .darkModeVariables {
-    VAR COLORS
+.darkModeVariables {
+    --accentColor0: linear-gradient(45deg,
+            hsla(205, 80%, 43%, 0.3),
+            hsla(205, 100%, 41%, 0.3));
+    --accentColor1: linear-gradient(0deg,
+            hsl(205, 100%, 50%),
+            hsl(205, 100%, 50%));
+
+    --solidAccentColor0: rgba(55, 172, 255, 1);
+    --solidAccentColor1: rgb(161, 188, 220);
+    --solidAccentColor2: rgba(71, 94, 125, 0.5);
+
+    --transAccentColor0: rgba(6, 59, 97, 0.6);
+    --transAccentColor1: rgba(65, 147, 255, 0.5);
+    --transAccentColor2: rgba(35, 47, 63, 0.5);
+    --transAccentColor3: rgba(0, 49, 115, 0.03);
+    --bodyBackground: rgb(8, 12, 17);
+
+    /* VAR COLORS */
     --solidCol0: rgba(0, 0, 0, 1);
-    --solidCol1: rgba(10, 10, 10, 1);
-    --solidCol2: rgba(20, 20, 20, 1);
-    --solidCol3: rgba(30, 30, 30, 1);
-    --solidCol4: rgba(40, 40, 40, 1);
+    --solidCol1: rgba(20, 20, 20, 1);
+    --solidCol2: rgba(30, 30, 30, 1);
+    --solidCol3: rgba(40, 40, 40, 1);
+    --solidCol4: rgba(50, 50, 50, 1);
 
     --transpCol1: rgba(0, 0, 0, 0.9);
     --transpCol2: rgba(0, 0, 0, 0.8);
@@ -144,12 +178,20 @@ h5 {
     --transpCol8: rgba(0, 0, 0, 0.2);
     --transpCol9: rgba(0, 0, 0, 0.1);
 
-    OPPOSITES
+    --boxShadow0: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow1: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow2: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow3: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow4: 0 0 0 rgba(0, 0, 0, 0);
+
+    --boxBorder: solid 1px rgba(255, 255, 255, 0.2);
+
+    /* OPPOSITES */
     --OPPsolidCol0: rgba(255, 255, 255, 1);
-    --OPPsolidCol1: rgba(245, 245, 245, 1);
-    --OPPsolidCol2: rgba(235, 235, 235, 1);
-    --OPPsolidCol3: rgba(225, 225, 225, 1);
-    --OPPsolidCol4: rgba(215, 215, 215, 1);
+    --OPPsolidCol1: rgba(235, 235, 235, 1);
+    --OPPsolidCol2: rgba(225, 225, 225, 1);
+    --OPPsolidCol3: rgba(215, 215, 215, 1);
+    --OPPsolidCol4: rgba(205, 205, 205, 1);
 
     --OPPtranspCol1: rgba(255, 255, 255, 0.9);
     --OPPtranspCol2: rgba(255, 255, 255, 0.8);
@@ -160,7 +202,7 @@ h5 {
     --OPPtranspCol7: rgba(255, 255, 255, 0.3);
     --OPPtranspCol8: rgba(255, 255, 255, 0.2);
     --OPPtranspCol9: rgba(255, 255, 255, 0.1);
-} */
+}
 
 /* ---------------  APP TABS  --------------- */
 
@@ -186,8 +228,8 @@ h5 {
     position: fixed;
     width: 100%;
     height: 11vh;
-    background: var(--solidColorBackground1);
-    box-shadow: 0 0px 10px black;
+    background: var(--accentColor0);
+    box-shadow: var(--boxShadow0);
     z-index: 2;
     color: var(--textCol3);
     text-align: center;
@@ -227,7 +269,7 @@ h5 {
     margin-top: 20px;
     text-align: center;
     font-size: 1.5em;
-    color: var(--OPPsolidCol2);
+    color: var(--OPPsolidCol3);
 }
 
 #schoolDisplay {
@@ -245,15 +287,15 @@ h5 {
     padding: 5px 0;
     background-color: var(--transpCol6);
     border-radius: 20px;
-    /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    border: var(--boxBorder);
+    box-shadow: var(--boxShadow2);
     text-align: center;
 }
 
 #userClassroomDisplay {
     font-size: 2.3em;
-    font-weight: 600;
-    color: var(--OPPsolidCol2);
+    font-weight: 500;
+    color: var(--OPPsolidCol3);
 }
 
 #userComplexDisplay {
@@ -261,14 +303,14 @@ h5 {
     font-weight: 400;
     font-size: 1.3em;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol3);
+    color: var(--OPPsolidCol4);
 }
 
 #userSubjectAndTeacher {
     font-size: 1.5em;
     font-weight: 500;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol3);
+    color: var(--OPPsolidCol4);
     margin: 10px 0;
 }
 
@@ -278,13 +320,13 @@ h5 {
     height: 2px;
     margin: 15px auto 15px auto;
     border-radius: 1px;
-    background-color: var(--OPPtranspCol6);
+    background-color: var(--transAccentColor2);
 }
 
 #secondaryBoxesLabel {
     text-align: center;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol3);
+    color: var(--OPPsolidCol4);
     font-size: 1.4em;
     margin: 10px 0 -10px 0;
 }
@@ -292,10 +334,10 @@ h5 {
 .matesBox {
     width: 90%;
     height: fit-content;
-    background-color: var(--transpCol8);
+    background-color: var(--transpCol6);
     display: block;
-    /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    border: var(--boxBorder);
+    box-shadow: var(--boxShadow4);
     border-radius: 20px;
     margin: 20px auto;
     padding: 5px 0;
@@ -305,7 +347,7 @@ h5 {
     font-weight: 500;
     text-align: center;
     font-size: 2em;
-    color: var(--OPPsolidCol2);
+    color: var(--OPPsolidCol3);
 }
 
 .matesBoxGrid {
@@ -346,7 +388,8 @@ h5 {
     left: 0;
     width: 100vw;
     background-color: var(--solidCol1);
-    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3);
+    border-top: var(--boxBorder);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .navbarBtn {
@@ -386,9 +429,9 @@ h5 {
 }
 
 .navbarIconActive {
-    animation: navbarLabel 0.25s ease forwards;
-    background-color: rgba(55, 172, 255, 0.5);
-    color: hsl(205, 100%, 25%);
+    animation: navbarLabel 0.20s ease forwards;
+    background-color: var(--transAccentColor0);
+    color: var(--solidAccentColor1);
 }
 
 .navbarLabelActive {
@@ -411,8 +454,8 @@ input,
 select {
     border-radius: 8px;
     border: solid 1px rgba(128, 128, 128, 0.7);
-    background-color: var(--transpCol4);
-    color: var(--OPPsolidCol2);
+    background-color: var(--transAccentColor3);
+    color: var(--OPPsolidCol4);
     text-align: left;
     margin: 0px 10px;
     font-size: 1em;
@@ -422,6 +465,7 @@ select {
 label {
     font-family: Noto Sans;
     text-align: left;
+    font-weight: 400;
     margin: 10px 10px 2px 10px;
     color: var(--OPPsolidCol2);
     font-size: 1.2em;
@@ -432,12 +476,12 @@ label {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    margin: 10px auto 30px auto;
+    margin: 30px auto 30px auto;
     padding: 5px 0;
     background-color: var(--transpCol6);
     border-radius: 20px;
-    /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    border: var(--boxBorder);
+    box-shadow: var(--boxShadow3);
 }
 
 .settingHeader {
@@ -466,9 +510,8 @@ label {
     border-radius: 15px;
     border: none;
     font-weight: 600;
-    background-color: rgba(55, 144, 208, 0.5);
-    /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.8); */
-    /* border: solid 2px var(--lightTextCol1); */
+    background-color: var(--transAccentColor1);
+    border: var(--boxBorder);
     color: var(--OPPsolidCol3);
     transition: 0.3s background-color ease;
 }
@@ -484,6 +527,8 @@ label {
     font-size: 1.2em;
     font-weight: 600;
     padding: 2px 7px;
+    border-color: var(--solidAccentColor2);
+    background-color: var(--transAccentColor3);
     font-family: var(--StandardTextFont);
 }
 
@@ -499,8 +544,16 @@ label {
 
 .userDataGrid input,
 .userDataGrid label {
-    font-weight: 300;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
     margin: 5px 10px;
+}
+
+.userDataGrid input,
+#userDataForm input {
+    font-weight: 400;
+    border-color: var(--solidAccentColor2);
 }
 
 .matesSettings {
@@ -512,6 +565,6 @@ label {
     padding: 5px 0;
     background-color: var(--transpCol6);
     border-radius: 20px;
-    /* border: solid 2px rgba(100, 100, 100, 0.7); */
-    box-shadow: 0 1px 8px var(--OPPtranspCol4);
+    border: var(--boxBorder);
+    box-shadow: var(--boxShadow3);
 }
