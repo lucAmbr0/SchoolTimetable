@@ -20,7 +20,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     user-select: none;
-    transition: 0.5s background ease;
+    transition: 0.3s background ease;
 }
 
 ::selection {
@@ -83,9 +83,6 @@ h5 {
     --accentColor0: linear-gradient(45deg,
             rgba(86, 173, 236, 0.3),
             rgba(55, 172, 255, 0.3));
-    --accentColor1: linear-gradient(0deg,
-            hsl(205, 100%, 70%),
-            hsl(205, 100%, 70%));
 
     --solidAccentColor0: rgba(55, 172, 255, 1);
     --solidAccentColor1: rgba(0, 49, 115, 1);
@@ -120,7 +117,7 @@ h5 {
     --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.5);
     --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
 
-    --boxBorder: none;
+    --boxBorderColor: transparent;
 
     /* OPPOSITES */
     --OPPsolidCol0: rgba(0, 0, 0, 1);
@@ -129,15 +126,15 @@ h5 {
     --OPPsolidCol3: rgba(40, 40, 40, 1);
     --OPPsolidCol4: rgba(50, 50, 50, 1);
 
-    --OPPtranspCol1: rgba(0, 0, 0, 0.9);
-    --OPPtranspCol2: rgba(0, 0, 0, 0.8);
-    --OPPtranspCol3: rgba(0, 0, 0, 0.7);
-    --OPPtranspCol4: rgba(0, 0, 0, 0.6);
-    --OPPtranspCol5: rgba(0, 0, 0, 0.5);
-    --OPPtranspCol6: rgba(0, 0, 0, 0.4);
-    --OPPtranspCol7: rgba(0, 0, 0, 0.3);
-    --OPPtranspCol8: rgba(0, 0, 0, 0.2);
-    --OPPtranspCol9: rgba(0, 0, 0, 0.1);
+    --OPPtranspCol1: rgba(0, 0, 0, 0.6);
+    --OPPtranspCol2: rgba(0, 0, 0, 0.5);
+    --OPPtranspCol3: rgba(0, 0, 0, 0.4);
+    --OPPtranspCol4: rgba(0, 0, 0, 0.3);
+    --OPPtranspCol5: rgba(0, 0, 0, 0.2);
+    --OPPtranspCol6: rgba(0, 0, 0, 0.15);
+    --OPPtranspCol7: rgba(0, 0, 0, 0.1);
+    /* --OPPtranspCol8: rgba(0, 0, 0, 0.1); */
+    /* --OPPtranspCol9: rgba(0, 0, 0, 0.1); */
 
     --HeadingFont: "Poppins";
     --StandardTextFont: "Noto Sans";
@@ -147,19 +144,17 @@ h5 {
     --accentColor0: linear-gradient(45deg,
             hsla(205, 80%, 43%, 0.3),
             hsla(205, 100%, 41%, 0.3));
-    --accentColor1: linear-gradient(0deg,
-            hsl(205, 100%, 50%),
-            hsl(205, 100%, 50%));
 
     --solidAccentColor0: rgba(55, 172, 255, 1);
     --solidAccentColor1: rgb(161, 188, 220);
     --solidAccentColor2: rgba(71, 94, 125, 0.5);
 
-    --transAccentColor0: rgba(6, 59, 97, 0.6);
+    --transAccentColor0: rgba(12, 91, 147, 0.7);
     --transAccentColor1: rgba(65, 147, 255, 0.5);
     --transAccentColor2: rgba(35, 47, 63, 0.5);
+    --boxBorderColor: rgba(35,47,63,0.5); /* always must be the same as --transAccentColor2 */
     --transAccentColor3: rgba(0, 49, 115, 0.03);
-    --bodyBackground: rgb(8, 12, 17);
+    --bodyBackground: rgb(18, 25, 35);
 
     /* VAR COLORS */
     --solidCol0: rgba(0, 0, 0, 1);
@@ -168,23 +163,21 @@ h5 {
     --solidCol3: rgba(40, 40, 40, 1);
     --solidCol4: rgba(50, 50, 50, 1);
 
-    --transpCol1: rgba(0, 0, 0, 0.9);
-    --transpCol2: rgba(0, 0, 0, 0.8);
-    --transpCol3: rgba(0, 0, 0, 0.7);
-    --transpCol4: rgba(0, 0, 0, 0.6);
-    --transpCol5: rgba(0, 0, 0, 0.5);
-    --transpCol6: rgba(0, 0, 0, 0.4);
-    --transpCol7: rgba(0, 0, 0, 0.3);
-    --transpCol8: rgba(0, 0, 0, 0.2);
-    --transpCol9: rgba(0, 0, 0, 0.1);
+    --transpCol1: rgba(0, 0, 0, 0.6);
+    --transpCol2: rgba(0, 0, 0, 0.5);
+    --transpCol3: rgba(0, 0, 0, 0.4);
+    --transpCol4: rgba(0, 0, 0, 0.3);
+    --transpCol5: rgba(0, 0, 0, 0.2);
+    --transpCol6: rgba(0, 0, 0, 0.15);
+    --transpCol7: rgba(0, 0, 0, 0.1);
+    /* --transpCol8: rgba(0, 0, 0, 0.1); */
+    /* --transpCol9: rgba(0, 0, 0, 0.1); */
 
     --boxShadow0: 0 0 0 rgba(0, 0, 0, 0);
     --boxShadow1: 0 0 0 rgba(0, 0, 0, 0);
     --boxShadow2: 0 0 0 rgba(0, 0, 0, 0);
     --boxShadow3: 0 0 0 rgba(0, 0, 0, 0);
     --boxShadow4: 0 0 0 rgba(0, 0, 0, 0);
-
-    --boxBorder: solid 1px rgba(255, 255, 255, 0.2);
 
     /* OPPOSITES */
     --OPPsolidCol0: rgba(255, 255, 255, 1);
@@ -223,19 +216,21 @@ h5 {
 #topNotchContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     top: 0;
     left: 0;
     position: fixed;
     width: 100%;
-    height: 11vh;
+    height: 10vh;
     background: var(--accentColor0);
-    box-shadow: var(--boxShadow0);
+    box-shadow: var(--boxShadow4);
     z-index: 2;
     color: var(--textCol3);
     text-align: center;
     border-radius: 0 0 10% 10%;
     padding: 1vh 0;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(15px);
 }
 
 #topNotchFixed {
@@ -243,7 +238,7 @@ h5 {
     position: static;
     top: 0;
     left: 0;
-    height: 12vh;
+    height: 11vh;
     width: 100%;
     background-color: transparent;
 }
@@ -252,7 +247,7 @@ h5 {
     font-family: var(--HeadingFont);
     color: var(--OPPsolidCol1);
     font-weight: 500;
-    font-size: 2em;
+    font-size: 1.8em;
     line-height: 1.2;
 }
 
@@ -261,7 +256,7 @@ h5 {
     color: var(--OPPsolidCol1);
     font-weight: 600;
     line-height: 1.1;
-    font-size: 3em;
+    font-size: 2.8em;
 }
 
 .greetingDisplay {
@@ -275,6 +270,7 @@ h5 {
 #schoolDisplay {
     text-align: center;
     color: var(--OPPsolidCol4);
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -287,7 +283,9 @@ h5 {
     padding: 5px 0;
     background-color: var(--transpCol6);
     border-radius: 20px;
-    border: var(--boxBorder);
+    border: solid 2px;
+    border-color: var(--boxBorderColor);
+    border-width: 2px;
     box-shadow: var(--boxShadow2);
     text-align: center;
 }
@@ -336,7 +334,9 @@ h5 {
     height: fit-content;
     background-color: var(--transpCol6);
     display: block;
-    border: var(--boxBorder);
+    border: solid 2px;
+    border-color: var(--boxBorderColor);
+    border-width: 1.5px;
     box-shadow: var(--boxShadow4);
     border-radius: 20px;
     margin: 20px auto;
@@ -388,7 +388,8 @@ h5 {
     left: 0;
     width: 100vw;
     background-color: var(--solidCol1);
-    border-top: var(--boxBorder);
+    border-top: solid 2px;
+    border-color: var(--boxBorderColor);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -478,9 +479,10 @@ label {
     flex-direction: column;
     margin: 30px auto 30px auto;
     padding: 5px 0;
-    background-color: var(--transpCol6);
+    background-color: var(--transpCol7);
     border-radius: 20px;
-    border: var(--boxBorder);
+    border: solid 2px;
+    border-color: var(--boxBorderColor);
     box-shadow: var(--boxShadow3);
 }
 
@@ -511,7 +513,6 @@ label {
     border: none;
     font-weight: 600;
     background-color: var(--transAccentColor1);
-    border: var(--boxBorder);
     color: var(--OPPsolidCol3);
     transition: 0.3s background-color ease;
 }
@@ -532,8 +533,8 @@ label {
     font-family: var(--StandardTextFont);
 }
 
-.submitBtn:hover {
-    background-color: rgba(41, 118, 174, 0.5);
+.submitBtn:active {
+    background-color: var(--solidAccentColor2);
 }
 
 .userDataGrid {
@@ -565,6 +566,7 @@ label {
     padding: 5px 0;
     background-color: var(--transpCol6);
     border-radius: 20px;
-    border: var(--boxBorder);
+    border: solid 2px;
+    border-color: var(--boxBorderColor);
     box-shadow: var(--boxShadow3);
 }
