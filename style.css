@@ -20,6 +20,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     user-select: none;
+    transition: 0.5s background ease;
 }
 
 ::selection {
@@ -91,7 +92,7 @@ h5 {
     --solidAccentColor2: rgba(3, 18, 37, 1);
 
     --transAccentColor0: rgba(55, 172, 255, 0.6);
-    --transAccentColor1: rgba(40, 156, 239, 0.6);
+    --transAccentColor1: rgba(84, 180, 249, 0.6);
     --transAccentColor2: rgba(3, 18, 37, 0.5);
     --transAccentColor3: rgba(0, 49, 115, 0.07);
     --bodyBackground: rgba(0, 49, 115, 0.12);
@@ -155,9 +156,9 @@ h5 {
     --solidAccentColor2: rgba(71, 94, 125, 0.5);
 
     --transAccentColor0: rgba(6, 59, 97, 0.6);
-    --transAccentColor1: rgba(33, 91, 168, 0.7);
+    --transAccentColor1: rgba(65, 147, 255, 0.5);
     --transAccentColor2: rgba(35, 47, 63, 0.5);
-    --transAccentColor3: rgba(0, 49, 115, 0.07);
+    --transAccentColor3: rgba(0, 49, 115, 0.03);
     --bodyBackground: rgb(8, 12, 17);
 
     /* VAR COLORS */
@@ -510,6 +511,7 @@ label {
     border: none;
     font-weight: 600;
     background-color: var(--transAccentColor1);
+    border: var(--boxBorder);
     color: var(--OPPsolidCol3);
     transition: 0.3s background-color ease;
 }
@@ -544,13 +546,13 @@ label {
 .userDataGrid label {
     display: flex;
     align-items: center;
-    font-weight: 400;
+    font-weight: 500;
     margin: 5px 10px;
 }
 
 .userDataGrid input,
 #userDataForm input {
-    font-weight: 300;
+    font-weight: 400;
     border-color: var(--solidAccentColor2);
 }
 
