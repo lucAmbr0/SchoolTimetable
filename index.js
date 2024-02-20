@@ -5,7 +5,6 @@
 
 // ---------------  NAVBAR  ---------------
 
-let currentTab = null;
 const navbar = document.getElementById("navbar");
 const navbarBtn = document.querySelectorAll(".navbarBtn");
 const navbarIcon = document.querySelectorAll(".navbarIcon");
@@ -15,11 +14,20 @@ const appTabs = document.querySelectorAll(".appTabs");
 appTabs.forEach(appTab => appTab.classList.remove("appTabsShown"));
 appTabs.forEach(appTab => appTab.classList.add("appTabsHidden"));
 
-navbarAction(1);
+let tab;
+let currentTab = -1;
+if (localStorage.getItem('tab')) {
+  tab = parseInt(localStorage.getItem('tab'));
+} else {
+  tab = 1;
+}
+
+navbarAction(tab);
 
 function navbarAction(tab) {
   if (currentTab !== tab) {
     currentTab = tab;
+    localStorage.setItem('tab', tab);
     navbarIcon.forEach(item => item.classList.remove("navbarIconActive"));
     navbarLabel.forEach(item => item.classList.remove("navbarLabelActive"));
     navbarIcon[tab].classList.add("navbarIconActive");
