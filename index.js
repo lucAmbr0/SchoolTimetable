@@ -273,6 +273,6 @@ function displayUserToNowTab() {
 
 // trigger();
 
-// function trigger() {
-//   document.body.classList.toggle("darkModeVariables");
-// }
+function trigger() {
+  document.body.classList.toggle("darkModeVariables");
+}
