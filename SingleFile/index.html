@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
     />
   </head>
   <body>
@@ -40,13 +40,15 @@
 
       body {
         margin: 0;
-        background: var(--solidColorBackground2);
+        background: var(--bodyBackground);
         width: 100%;
         overflow-x: hidden;
+        user-select: none;
+        transition: 0.3s background ease;
       }
 
       ::selection {
-        background-color: transparent;
+        background-color: var(--OPPtranspCol8);
       }
 
       h1,
@@ -54,71 +56,174 @@
       h3,
       h4,
       h5 {
-        font-family: Poppins;
+        font-family: var(--HeadingFont);
         margin: 0;
       }
 
       /* -------------------- FONTS --------------------*/
 
       /* Normal text: font-family: 'Noto Sans', sans-serif; */
-      /* Headings/Titles: font-family: 'Helvetica', 'Poppins', sans-serif; */
+      /* Headings/Titles: font-family: 'PT Sans', 'Poppins', sans-serif; */
 
       /* ---------------  ANIMATION  --------------- */
 
       @keyframes navbarLabel {
         from {
-          opacity: 0.3;
-          padding: 3px 0px;
+          opacity: 1;
+          padding: 3px 5px;
         }
+
         to {
           opacity: 1;
           padding: 3px 20px;
         }
       }
 
+      @keyframes appTab {
+        from {
+          opacity: 0.3;
+          scale: 0.97;
+        }
+
+        to {
+          opacity: 1;
+          scale: 1;
+        }
+      }
+
+      @keyframes settingContent {
+        from {
+          opacity: 0.3;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
       /* ---------------  VARIABLES  --------------- */
 
       :root {
-        --darkTextCol0: black;
-        --darkTextCol1: rgb(10, 10, 10);
-        --darkTextCol2: rgb(20, 20, 20);
-        --darkTextCol3: rgb(30, 30, 30);
-        --darkTextCol4: rgb(40, 40, 40);
-        --lightTextCol0: white;
-        --lightTextCol1: rgb(240, 240, 240);
-        --lightTextCol2: rgb(230, 230, 230);
-        --lightTextCol3: rgb(220, 220, 220);
-        --lightTextCol4: rgb(210, 210, 210);
-
-        --solidColorBackground1: linear-gradient(
+        --accentColor0: linear-gradient(
           45deg,
-          rgb(86, 173, 236),
-          rgb(55, 172, 255)
+          rgba(86, 173, 236, 0.3),
+          rgba(55, 172, 255, 0.3)
         );
-        --solidColorBackground2: linear-gradient(
-          0deg,
-          rgb(129, 202, 255),
-          rgb(210, 236, 255)
-        );
-        --lightSolidBackground1: rgba(255, 255, 255, 1);
-        --lightSolidBackground2: rgba(245, 245, 245, 1);
-        --lightSolidBackground3: rgba(235, 235, 235, 1);
-        --lightSolidBackground4: rgba(225, 225, 225, 1);
-        --lightTransBackground1: rgba(255, 255, 255, 0.6);
-        --lightTransBackground2: rgba(255, 255, 255, 0.4);
-        --lightTransBackground3: rgba(255, 255, 255, 0.2);
-        --lightTransBackground4: rgba(255, 255, 255, 0.1);
-        --darkSolidBackground1: rgba(10, 10, 10, 1);
-        --darkSolidBackground2: rgba(20, 20, 20, 1);
-        --darkSolidBackground3: rgba(30, 30, 30, 1);
-        --darkSolidBackground4: rgba(40, 40, 40, 1);
-        --darkTransBackground1: rgba(0, 0, 0, 0.6);
-        --darkTransBackground2: rgba(0, 0, 0, 0.4);
-        --darkTransBackground3: rgba(0, 0, 0, 0.2);
-        --darkTransBackground4: rgba(0, 0, 0, 0.1);
+
+        --solidAccentColor0: rgba(55, 172, 255, 1);
+        --solidAccentColor1: rgba(0, 49, 115, 1);
+        --solidAccentColor2: rgba(3, 18, 37, 1);
+
+        --transAccentColor0: rgba(55, 172, 255, 0.6);
+        --transAccentColor1: rgba(84, 180, 249, 0.6);
+        --transAccentColor2: rgba(3, 18, 37, 0.5);
+        --transAccentColor3: rgba(0, 49, 115, 0.07);
+        --bodyBackground: rgba(0, 49, 115, 0.12);
+
+        /* VAR COLORS */
+        --solidCol0: rgba(255, 255, 255, 1);
+        --solidCol1: rgba(235, 235, 235, 1);
+        --solidCol2: rgba(225, 225, 225, 1);
+        --solidCol3: rgba(215, 215, 215, 1);
+        --solidCol4: rgba(205, 205, 205, 1);
+
+        --transpCol1: rgba(255, 255, 255, 0.9);
+        --transpCol2: rgba(255, 255, 255, 0.8);
+        --transpCol3: rgba(255, 255, 255, 0.7);
+        --transpCol4: rgba(255, 255, 255, 0.6);
+        --transpCol5: rgba(255, 255, 255, 0.5);
+        --transpCol6: rgba(255, 255, 255, 0.4);
+        --transpCol7: rgba(255, 255, 255, 0.3);
+        --transpCol8: rgba(255, 255, 255, 0.2);
+        --transpCol9: rgba(255, 255, 255, 0.1);
+
+        --boxShadow0: 0 0 10px rgba(0, 0, 0, 1);
+        --boxShadow1: 0 0 20px rgba(0, 0, 0, 0.3);
+        --boxShadow2: 0 2px 10px rgba(0, 0, 0, 0.5);
+        --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.5);
+        --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+        --boxBorderColor: transparent;
+
+        /* OPPOSITES */
+        --OPPsolidCol0: rgba(0, 0, 0, 1);
+        --OPPsolidCol1: rgba(20, 20, 20, 1);
+        --OPPsolidCol2: rgba(30, 30, 30, 1);
+        --OPPsolidCol3: rgba(40, 40, 40, 1);
+        --OPPsolidCol4: rgba(50, 50, 50, 1);
+
+        --OPPtranspCol1: rgba(0, 0, 0, 0.6);
+        --OPPtranspCol2: rgba(0, 0, 0, 0.5);
+        --OPPtranspCol3: rgba(0, 0, 0, 0.4);
+        --OPPtranspCol4: rgba(0, 0, 0, 0.3);
+        --OPPtranspCol5: rgba(0, 0, 0, 0.2);
+        --OPPtranspCol6: rgba(0, 0, 0, 0.15);
+        --OPPtranspCol7: rgba(0, 0, 0, 0.1);
+        /* --OPPtranspCol8: rgba(0, 0, 0, 0.1); */
+        /* --OPPtranspCol9: rgba(0, 0, 0, 0.1); */
 
         --HeadingFont: "Poppins";
         --StandardTextFont: "Noto Sans";
+      }
+
+      .darkModeVariables {
+        --accentColor0: linear-gradient(
+          45deg,
+          hsla(205, 80%, 43%, 0.3),
+          hsla(205, 100%, 41%, 0.3)
+        );
+
+        --solidAccentColor0: rgba(55, 172, 255, 1);
+        --solidAccentColor1: rgb(161, 188, 220);
+        --solidAccentColor2: rgba(71, 94, 125, 0.5);
+
+        --transAccentColor0: rgba(12, 91, 147, 0.7);
+        --transAccentColor1: rgba(65, 147, 255, 0.5);
+        --transAccentColor2: rgba(35, 47, 63, 0.5);
+        --boxBorderColor: rgba(35, 47, 63, 0.5);
+        /* always must be the same as --transAccentColor2 */
+        --transAccentColor3: rgba(0, 49, 115, 0.03);
+        --bodyBackground: rgb(18, 25, 35);
+
+        /* VAR COLORS */
+        --solidCol0: rgba(0, 0, 0, 1);
+        --solidCol1: rgba(20, 20, 20, 1);
+        --solidCol2: rgba(30, 30, 30, 1);
+        --solidCol3: rgba(40, 40, 40, 1);
+        --solidCol4: rgba(50, 50, 50, 1);
+
+        --transpCol1: rgba(0, 0, 0, 0.6);
+        --transpCol2: rgba(0, 0, 0, 0.5);
+        --transpCol3: rgba(0, 0, 0, 0.4);
+        --transpCol4: rgba(0, 0, 0, 0.3);
+        --transpCol5: rgba(0, 0, 0, 0.2);
+        --transpCol6: rgba(0, 0, 0, 0.15);
+        --transpCol7: rgba(0, 0, 0, 0.1);
+        /* --transpCol8: rgba(0, 0, 0, 0.1); */
+        /* --transpCol9: rgba(0, 0, 0, 0.1); */
+
+        --boxShadow0: 0 0 0 rgba(0, 0, 0, 0);
+        --boxShadow1: 0 0 0 rgba(0, 0, 0, 0);
+        --boxShadow2: 0 0 0 rgba(0, 0, 0, 0);
+        --boxShadow3: 0 0 0 rgba(0, 0, 0, 0);
+        --boxShadow4: 0 0 0 rgba(0, 0, 0, 0);
+
+        /* OPPOSITES */
+        --OPPsolidCol0: rgba(255, 255, 255, 1);
+        --OPPsolidCol1: rgba(235, 235, 235, 1);
+        --OPPsolidCol2: rgba(225, 225, 225, 1);
+        --OPPsolidCol3: rgba(215, 215, 215, 1);
+        --OPPsolidCol4: rgba(205, 205, 205, 1);
+
+        --OPPtranspCol1: rgba(255, 255, 255, 0.9);
+        --OPPtranspCol2: rgba(255, 255, 255, 0.8);
+        --OPPtranspCol3: rgba(255, 255, 255, 0.7);
+        --OPPtranspCol4: rgba(255, 255, 255, 0.6);
+        --OPPtranspCol5: rgba(255, 255, 255, 0.5);
+        --OPPtranspCol6: rgba(255, 255, 255, 0.4);
+        --OPPtranspCol7: rgba(255, 255, 255, 0.3);
+        --OPPtranspCol8: rgba(255, 255, 255, 0.2);
+        --OPPtranspCol9: rgba(255, 255, 255, 0.1);
       }
 
       /* ---------------  APP TABS  --------------- */
@@ -131,23 +236,30 @@
         display: none;
       }
 
-      /* ---------------  STYLESHEET  --------------- */
+      /* ---------------  NOW TAB  --------------- */
+
+      .appTabs {
+        animation: appTab 0.3s ease forwards;
+      }
 
       #topNotchContainer {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         top: 0;
         left: 0;
         position: fixed;
         width: 100%;
-        height: 11vh;
-        background: var(--solidColorBackground1);
-        box-shadow: 0 0px 10px black;
+        height: 10vh;
+        background: var(--accentColor0);
+        box-shadow: var(--boxShadow4);
         z-index: 2;
         color: var(--textCol3);
         text-align: center;
         border-radius: 0 0 10% 10%;
         padding: 1vh 0;
+        backdrop-filter: blur(15px);
       }
 
       #topNotchFixed {
@@ -155,38 +267,41 @@
         position: static;
         top: 0;
         left: 0;
-        height: 12vh;
+        height: 11vh;
         width: 100%;
+        margin-bottom: 20px;
         background-color: transparent;
       }
 
       #dayDisplay {
         font-family: var(--HeadingFont);
-        color: var(--darkTextCol1);
-        font-weight: 600;
-        font-size: 2em;
+        color: var(--OPPsolidCol1);
+        font-weight: 500;
+        font-size: 1.8em;
         line-height: 1.2;
       }
 
       #timeDisplay {
         font-family: var(--HeadingFont);
-        color: var(--darkTextCol1);
-        font-weight: 700;
+        color: var(--OPPsolidCol1);
+        font-weight: 600;
         line-height: 1.1;
-        font-size: 3em;
+        font-size: 2.8em;
       }
 
-      #greetingDisplay {
-        margin-top: 20px;
+      .greetingDisplay {
+        font-weight: 600;
+        margin-top: 0px;
         text-align: center;
         font-size: 1.5em;
-        color: var(--darkTextCol2);
+        color: var(--OPPsolidCol3);
       }
 
       #schoolDisplay {
         text-align: center;
-        color: var(--darkTextCol4);
-        margin-bottom: 10px;
+        color: var(--OPPsolidCol4);
+        font-weight: 400;
+        margin-bottom: -20px;
       }
 
       #yourClassBox {
@@ -194,32 +309,36 @@
         height: fit-content;
         display: flex;
         flex-direction: column;
-        margin: 10px auto;
+        margin: 30px auto 20px auto;
         padding: 5px 0;
-        background-color: var(--lightTransBackground2);
+        background-color: var(--transpCol6);
         border-radius: 20px;
-        border: solid 2px rgba(100, 100, 100, 0.7);
-        box-shadow: 0 1px 8px black;
+        border: solid 2px;
+        border-color: var(--boxBorderColor);
+        border-width: 2px;
+        box-shadow: var(--boxShadow2);
         text-align: center;
       }
 
       #userClassroomDisplay {
         font-size: 2.3em;
-        color: var(--darkTextCol2);
+        font-weight: 500;
+        color: var(--OPPsolidCol3);
       }
 
       #userComplexDisplay {
         line-height: 0.8;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 1.3em;
-        color: var(--darkTextCol3);
+        font-family: var(--StandardTextFont);
+        color: var(--OPPsolidCol4);
       }
 
       #userSubjectAndTeacher {
         font-size: 1.5em;
-        font-weight: 600s;
+        font-weight: 500;
         font-family: var(--StandardTextFont);
-        color: var(--darkTextCol3);
+        color: var(--OPPsolidCol4);
         margin: 10px 0;
       }
 
@@ -227,14 +346,15 @@
         width: 90%;
         display: flex;
         height: 2px;
-        margin: 20px auto 15px auto;
+        margin: 15px auto 15px auto;
         border-radius: 1px;
-        background-color: var(--darkTransBackground2);
+        background-color: var(--transAccentColor2);
       }
 
       #secondaryBoxesLabel {
         text-align: center;
         font-family: var(--StandardTextFont);
+        color: var(--OPPsolidCol4);
         font-size: 1.4em;
         margin: 10px 0 -10px 0;
       }
@@ -242,27 +362,29 @@
       .matesBox {
         width: 90%;
         height: fit-content;
-        background-color: var(--lightTransBackground3);
+        background-color: var(--transpCol6);
         display: block;
-        border: solid 2px rgba(100, 100, 100, 0.7);
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+        border: solid 2px;
+        border-color: var(--boxBorderColor);
+        border-width: 1.5px;
+        box-shadow: var(--boxShadow4);
         border-radius: 20px;
         margin: 20px auto;
         padding: 5px 0;
       }
 
       .matesRoomDisplay {
-        font-weight: 600;
+        font-weight: 500;
         text-align: center;
         font-size: 2em;
-        color: var(--darkTextCol2);
+        color: var(--OPPsolidCol3);
       }
 
       .matesBoxGrid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         padding: 0px 15px;
-        color: var(--darkTextCol3);
+        color: var(--OPPsolidCol3);
         font-family: var(--StandardTextFont);
         font-size: 1.3em;
       }
@@ -279,8 +401,9 @@
 
       .matesBoxGrid p {
         margin: 5px 0;
-        color: var(--darkTextCol3);
-        font-weight: 500;
+        color: var(--OPPsolidCol3);
+        font-family: var(--StandardTextFont);
+        font-weight: 400;
       }
 
       #navbar {
@@ -294,8 +417,11 @@
         bottom: 0;
         left: 0;
         width: 100vw;
-        background-color: var(--lightSolidBackground2);
-        box-shadow: 0 0px 20px rgba(0, 0, 0, 0.3);
+        background-color: var(--solidCol1);
+        border-top: solid 2px;
+        border-color: var(--boxBorderColor);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        transition: 0.3s background-color ease;
       }
 
       .navbarBtn {
@@ -315,14 +441,14 @@
       .navbarBtn p {
         margin: 5px 0;
         font-family: var(--StandardTextFont);
-        color: var(--darkTextCol2);
+        color: var(--OPPsolidCol2);
         line-height: 0.7;
         font-size: 1em;
         color: var(text);
       }
 
       .material-symbols-outlined {
-        color: var(--darkTextCol3);
+        color: var(--OPPsolidCol3);
       }
 
       .navbarBtn span {
@@ -335,9 +461,10 @@
       }
 
       .navbarIconActive {
-        animation: navbarLabel 0.25s ease forwards;
-        background-color: rgba(55, 172, 255, 0.5);
-        /* color: hsl(205, 100%, 85%); */
+        animation: navbarLabel 0.2s ease forwards;
+        background-color: var(--transAccentColor0);
+        color: var(--solidAccentColor1);
+        transition: 0.3s background-color ease;
       }
 
       .navbarLabelActive {
@@ -353,6 +480,198 @@
         height: 9vh;
         background-color: transparent;
       }
+
+      /* ---------------  SETTINGS TAB  --------------- */
+
+      input,
+      select {
+        border-radius: 8px;
+        border: solid 1px rgba(128, 128, 128, 0.7);
+        background-color: var(--transAccentColor3);
+        color: var(--OPPsolidCol4);
+        text-align: left;
+        margin: 0px 10px;
+        font-size: 1em;
+        padding: 7px;
+      }
+
+      label {
+        font-family: Noto Sans;
+        text-align: left;
+        font-weight: 400;
+        margin: 10px 10px 2px 10px;
+        color: var(--OPPsolidCol2);
+        font-size: 1.2em;
+      }
+
+      #settingsTab {
+        padding-top: 10px;
+      }
+
+      .settingsSection {
+        width: 92%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto 15px auto;
+        padding: 5px 0;
+        background-color: var(--transpCol7);
+        border-radius: 20px;
+        border: solid 2px;
+        border-color: var(--boxBorderColor);
+        box-shadow: var(--boxShadow3);
+      }
+
+      .settingHeader {
+        font-size: 1.8em;
+        font-family: var(--HeadingFont);
+        font-weight: 500;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        color: var(--OPPsolidCol2);
+      }
+
+      #userDataForm {
+        display: flex;
+        flex-direction: column;
+        margin: 0px 5px 10px 5px;
+      }
+
+      .submitBtn {
+        text-align: center;
+        display: flex;
+        margin: 0px 15px 10px auto;
+        padding: 5px 10px;
+        font-size: 20px;
+        font-family: Noto Sans;
+        border-radius: 15px;
+        border: none;
+        font-weight: 600;
+        background-color: var(--transAccentColor1);
+        color: var(--OPPsolidCol3);
+        transition: 0.3s background-color ease;
+      }
+
+      .userDataDayAndHourContainer {
+        width: 100%;
+        display: flex;
+        margin: 10px auto;
+        justify-content: center;
+      }
+
+      .userDataDayAndHourContainer select {
+        font-size: 1.2em;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-color: var(--solidAccentColor2);
+        background-color: var(--transAccentColor3);
+        font-family: var(--StandardTextFont);
+      }
+
+      .submitBtn:active {
+        background-color: var(--solidAccentColor2);
+      }
+
+      .userDataGrid {
+        display: grid;
+        grid-template-columns: 3fr 7fr;
+        margin: 10px 5px;
+      }
+
+      .userDataGrid input,
+      .userDataGrid label {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        margin: 5px 10px;
+      }
+
+      .userDataGrid input,
+      #userDataForm input {
+        font-weight: 400;
+        border-color: var(--solidAccentColor2);
+      }
+
+      .matesSettings {
+        width: 92%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        margin: 10px auto;
+        padding: 5px 0;
+        background-color: var(--transpCol6);
+        border-radius: 20px;
+        border: solid 2px;
+        border-color: var(--boxBorderColor);
+        box-shadow: var(--boxShadow3);
+      }
+
+      /* ---------------  APP SETTINGS SECTION  --------------- */
+
+      .switch-container {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        margin: 10px 5px;
+        align-items: center;
+      }
+
+      .switch-container input,
+      .switch-container label {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        margin: 5px 10px;
+      }
+
+      .switch-label {
+        grid-column: 1;
+        font-family: Noto Sans;
+        text-align: left;
+        font-weight: 400;
+        margin: 0 10px 0 10px;
+        color: var(--OPPsolidCol2);
+        font-size: 1.2em;
+      }
+
+      .switch {
+        grid-column: 2;
+        justify-self: end;
+      }
+
+      .switch-input {
+        display: none !important;
+      }
+
+      .switch-toggle {
+        position: relative;
+        display: inline-block;
+        width: 65px;
+        height: 40px;
+        background-color: var(--solidCol4);
+        border-radius: 20px;
+        cursor: pointer;
+      }
+
+      .switch-toggle:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: transform 0.3s;
+      }
+
+      .switch-input:checked + .switch-toggle {
+        background-color: var(--transAccentColor1);
+      }
+
+      .switch-input:checked + .switch-toggle:before {
+        transform: translateX(25px);
+      }
     </style>
     <div id="topNotchContainer">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
@@ -361,11 +680,13 @@
     <div id="topNotchFixed"></div>
     <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
-      <h2 id="greetingDisplay">
-        Welcome, <span id="nameDisplay">Yourname</span> -
-        <span id="displayClass">2AS</span>
-      </h2>
-      <h3 id="schoolDisplay">Harvard University - Cambridge</h3>
+      <div id="greetingDisplay">
+        <h2 class="greetingDisplay">
+          Welcome<span id="nameDisplay"></span>
+          <span id="classDisplay"></span>
+        </h2>
+        <h3 id="schoolDisplay"></h3>
+      </div>
       <div id="yourClassBox">
         <h1 id="userClassroomDisplay">Room 20</h1>
         <h3 id="userComplexDisplay">Complex C</h3>
@@ -419,7 +740,141 @@
         </div>
       </div>
     </div>
-    <div class="appTabs" id="settingsTab"></div>
+    <div class="appTabs" id="settingsTab">
+      <!-- <h2 class="greetingDisplay">Settings</h2> -->
+      <details class="settingsSection" open>
+        <summary class="settingHeader">App Settings</summary>
+        <div class="switch-container">
+          <div class="switch-label">Dark mode</div>
+          <div class="switch">
+            <input
+              type="checkbox"
+              id="darkModeSwitch"
+              class="switch-input"
+              onchange="toggleDarkMode()"
+            />
+            <label for="darkModeSwitch" class="switch-toggle"></label>
+          </div>
+          <div class="switch-label">Show Greeting</div>
+          <div class="switch">
+            <input
+              type="checkbox"
+              id="showGreetingSwitch"
+              class="switch-input"
+              onchange="toggleShowGreetingState()"
+              checked
+            />
+            <label for="showGreetingSwitch" class="switch-toggle"></label>
+          </div>
+          <!-- <div class="switch-label">IDKSWITCH2</div>
+          <div class="switch">
+            <input type="checkbox" id="IDKSWITCH2" class="switch-input">
+            <label for="IDKSWITCH2" class="switch-toggle"></label>
+          </div> -->
+        </div>
+      </details>
+      <details class="settingsSection" open>
+        <summary class="settingHeader">Your data</summary>
+        <div id="userDataForm">
+          <label for="userNameInput">Name </label>
+          <input type="text" id="userNameInput" />
+          <label for="userClassInput">Class </label>
+          <input type="text" id="userClassInput" />
+          <label for="userSchoolNameInput">School name </label>
+          <input type="text" id="userSchoolNameInput" />
+        </div>
+        <button
+          class="submitBtn"
+          id="submitUserInfoBtn"
+          onclick="updateUserInfo()"
+        >
+          Confirm
+        </button>
+        <div class="horizontalLine"></div>
+        <div id="userClassForm">
+          <div class="userDataDayAndHourContainer">
+            <select id="userDaySelection" name="day">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+            </select>
+            <label for="userDaySelection" style="margin: 5px 0 2px 0">at</label>
+            <select id="userHourSelection" name="hour">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+            <label for="userHourSelection" style="margin: 5px 10px 2px 0"
+              >hour</label
+            >
+          </div>
+          <div class="userDataGrid">
+            <label for="userRoomInput">Room</label>
+            <input type="text" class="userRoomInput" />
+            <label for="userComplexInput">Complex</label>
+            <input type="text" class="userComplexInput" />
+            <label for="userSubjectInput">Subject</label>
+            <input type="text" class="userSubjectInput" />
+            <label for="userTeacherInput">Teacher</label>
+            <input type="text" class="userTeacherInput" />
+          </div>
+        </div>
+        <button
+          class="submitBtn"
+          id="submitUserClassTimesBtn"
+          onclick="updateUserClassInfo()"
+        >
+          Confirm
+        </button>
+      </details>
+
+      <!-- <div class="matesSettings">
+        <h1 class="settingHeader">Class 1</h1>
+        <div id="userDataForm">
+          <label for="mateClassName">Class name</label>
+          <input type="text" id="mateClassName" />
+          <label for="mateNames">Mates names</label>
+          <input type="text" id="mateNames" />
+        </div>
+        <button id="submitUserInfoBtn">Confirm</button>
+        <div class="horizontalLine"></div>
+        <div id="userClassForm">
+          <div class="userDataDayAndHourContainer">
+            <select id="userDaySelection" name="day">
+              <option value="monday">Monday</option>
+              <option value="tuesday">Tuesday</option>
+              <option value="wednesday">Wednesday</option>
+              <option value="thursday">Thursday</option>
+              <option value="friday">Friday</option>
+              <option value="saturday">Saturday</option>
+            </select>
+            <select id="userHourSelection" name="hour">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+            <div class="userDataGrid">
+              <label for="userClassInput">Class</label>
+              <input type="text" class="userClassInput" />
+              <label for="userSubjectInput">Subject</label>
+              <input type="text" class="userSubjectInput" />
+              <label for="userTeacherInput">Teacher</label>
+              <input type="text" class="userTeacherInput" />
+            </div>
+        </div>
+        <button id="submitUserInfoBtn">Confirm</button>
+      </div> -->
+    </div>
     <nav id="navbar">
       <div class="navbarBtn" onclick="navbarAction(0)">
         <span class="material-symbols-outlined navbarIcon">
@@ -439,7 +894,7 @@
       </div>
     </nav>
     <div id="navbarFixed"></div>
-    <script>
+    <script src="">
       /* 
     School Timetable - JavaScript Functions
     What're you doing here?
@@ -447,17 +902,31 @@
 
       // ---------------  NAVBAR  ---------------
 
-      let currentTab = 1;
       const navbar = document.getElementById("navbar");
       const navbarBtn = document.querySelectorAll(".navbarBtn");
       const navbarIcon = document.querySelectorAll(".navbarIcon");
       const navbarLabel = document.querySelectorAll(".navbarLabel");
       const appTabs = document.querySelectorAll(".appTabs");
-      appTabs[0].classList.add("appTabsShown");
+
+      appTabs.forEach((appTab) => appTab.classList.remove("appTabsShown"));
+      appTabs.forEach((appTab) => appTab.classList.add("appTabsHidden"));
+
+      // This displays the last tab the user was in when closed the app (default is Now Tab)
+      let tab;
+      let currentTab = -1;
+      if (localStorage.getItem("tab")) {
+        tab = parseInt(localStorage.getItem("tab"));
+      } else {
+        tab = 1;
+      }
+
+      // Calls the function to display the right tab
+      navbarAction(tab);
 
       function navbarAction(tab) {
         if (currentTab !== tab) {
           currentTab = tab;
+          localStorage.setItem("tab", tab);
           navbarIcon.forEach((item) =>
             item.classList.remove("navbarIconActive")
           );
@@ -471,6 +940,321 @@
           appTabs[tab].classList.remove("appTabsHidden");
           appTabs[tab].classList.add("appTabsShown");
         }
+      }
+
+      // ---------------  PERSONAL DATA ON SETTINGS TAB  ---------------
+
+      // Here are all the instructions and variables that write data to the frontend html
+
+      // Variable reference to user data HTML inputs
+      const userNameInput = document.getElementById("userNameInput");
+      const userClassInput = document.getElementById("userClassInput");
+      const userSchoolNameInput = document.getElementById(
+        "userSchoolNameInput"
+      );
+      const submitUserInfoBtn = document.getElementById("submitUserInfoBtn");
+
+      // Variable reference to user class HTML inputs
+      // Day and Hour for user's class
+      const userDaySelection = document.getElementById("userDaySelection");
+      const userHourSelection = document.getElementById("userHourSelection");
+      // Info for user's class
+      const userRoomInput = document.querySelectorAll(".userRoomInput");
+      const userComplexInput = document.querySelectorAll(".userComplexInput");
+      const userSubjectInput = document.querySelectorAll(".userSubjectInput");
+      const userTeacherInput = document.querySelectorAll(".userTeacherInput");
+      const submitUserClassTimesBtn = document.getElementById(
+        "submitUserClassTimesBtn"
+      );
+
+      // Now Tab variables that contain user's info
+      const nameDisplay = document.getElementById("nameDisplay");
+      const classDisplay = document.getElementById("classDisplay");
+      const schoolDisplay = document.getElementById("schoolDisplay");
+
+      function displayUserInfo() {
+        // Triggers if there is saved data and fills all html fields that already have data
+
+        // Writes data in Now Tab
+        nameDisplay.textContent = ", " + user.name;
+        classDisplay.textContent = " - " + user.className;
+        schoolDisplay.textContent = user.schoolName;
+
+        // Writes data to input fields in settings tab
+        userNameInput.value = user.name;
+        userClassInput.value = user.className;
+        userSchoolNameInput.value = user.schoolName;
+      }
+
+      // ---------------  PERSONAL DATA INPUT  ---------------
+
+      // JavaScript variables that contain user's info
+      class UserInfo {
+        constructor(name, className, schoolName) {
+          this.name = name;
+          this.className = className;
+          this.schoolName = schoolName;
+          this.room = [[]];
+          this.complex = [[]];
+          this.subject = [[]];
+          this.teacher = [[]];
+          if (!localStorage.getItem("user_room")) this.fillArrays();
+        }
+
+        fillArrays() {
+          // Define the size of the arrays (adjust as needed)
+          const rows = 6;
+          const columns = 6;
+
+          // Fill each array with empty strings
+          for (let i = 0; i < rows; i++) {
+            this.room[i] = Array(columns).fill("");
+            this.complex[i] = Array(columns).fill("");
+            this.subject[i] = Array(columns).fill("");
+            this.teacher[i] = Array(columns).fill("");
+          }
+        }
+      }
+
+      let user = new UserInfo("YourName", "2CL", "SchoolName - AndCityMaybe");
+
+      getUserInfoFromLocalStorage();
+      function getUserInfoFromLocalStorage() {
+        // If it finds the key "user_name" in user's browser, it reads the data and writes it to the variables
+        if (localStorage.getItem("user_name")) {
+          user.name = localStorage.getItem("user_name");
+          user.className = localStorage.getItem("user_className");
+          user.schoolName = localStorage.getItem("user_schoolName");
+          displayUserInfo();
+        }
+      }
+
+      function updateUserInfo() {
+        // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
+        localStorage.setItem("isThereData", "HEYYY I'M HEREEE");
+        if (userNameInput.value) {
+          user.name = userNameInput.value;
+          localStorage.setItem("user_name", user.name);
+        }
+        if (userClassInput.value) {
+          user.className = userClassInput.value;
+          localStorage.setItem("user_className", user.className);
+        }
+        if (userSchoolNameInput.value) {
+          user.schoolName = userSchoolNameInput.value;
+          localStorage.setItem("user_schoolName", user.schoolName);
+        }
+
+        // If there's even one of these items in localStorage, refreshes data in Now Tab
+        if (
+          localStorage.getItem("user_name") ||
+          localStorage.getItem("user_className") ||
+          localStorage.getItem("user_schoolName")
+        ) {
+          displayUserInfo();
+        }
+      }
+
+      let previousDayState = 0;
+      let previousHourState = 0;
+      userDaySelection.addEventListener("change", updateUserClassGrid);
+      userHourSelection.addEventListener("change", updateUserClassGrid);
+
+      function updateUserClassGrid() {
+        // This function updates the input element fields every time the user changes day or hour, even without clicking submit
+
+        // First it saves in the previous location of day and hour the data that was in it
+        user.room[previousDayState][previousHourState] = userRoomInput[0].value;
+        user.complex[previousDayState][previousHourState] =
+          userComplexInput[0].value;
+        user.subject[previousDayState][previousHourState] =
+          userSubjectInput[0].value;
+        user.teacher[previousDayState][previousHourState] =
+          userTeacherInput[0].value;
+        // WARNING!!! As of now this data is NOT saved in localStorage, only when the user clicks Submit all data gets saved in localStorage.
+
+        // and then changes the input to where it should be
+        let dayIndex = null;
+        switch (userDaySelection.value) {
+          case "monday":
+            dayIndex = 0;
+            break;
+          case "tuesday":
+            dayIndex = 1;
+            break;
+          case "wednesday":
+            dayIndex = 2;
+            break;
+          case "thursday":
+            dayIndex = 3;
+            break;
+          case "friday":
+            dayIndex = 4;
+            break;
+          case "saturday":
+            dayIndex = 5;
+            break;
+        }
+        let hourIndex = null;
+        switch (userHourSelection.value) {
+          case "1":
+            hourIndex = 0;
+            break;
+          case "2":
+            hourIndex = 1;
+            break;
+          case "3":
+            hourIndex = 2;
+            break;
+          case "4":
+            hourIndex = 3;
+            break;
+          case "5":
+            hourIndex = 4;
+            break;
+          case "6":
+            hourIndex = 5;
+            break;
+        }
+        changeUserInputLabels(dayIndex, hourIndex);
+      }
+
+      function changeUserInputLabels(dayIndex, hourIndex) {
+        userRoomInput[0].value = user.room[dayIndex][hourIndex];
+        userComplexInput[0].value = user.complex[dayIndex][hourIndex];
+        userSubjectInput[0].value = user.subject[dayIndex][hourIndex];
+        userTeacherInput[0].value = user.teacher[dayIndex][hourIndex];
+        // Finally, the current day and hour index are saved in 'previous' so it saves them when the user change label
+        previousDayState = dayIndex;
+        previousHourState = hourIndex;
+      }
+
+      function updateUserClassInfo() {
+        // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
+        updateUserClassGrid();
+        localStorage.setItem("isThereData", "HEYYY I'M HEREEE");
+        localStorage.setItem("user_roomARR", JSON.stringify(user.room));
+        localStorage.setItem("user_complexARR", JSON.stringify(user.complex));
+        localStorage.setItem("user_subjectARR", JSON.stringify(user.subject));
+        localStorage.setItem("user_teacherARR", JSON.stringify(user.teacher));
+        displayUserToNowTab();
+      }
+
+      function displayUserClassInfo() {
+        // Triggers if there is saved data and fills all html fields that already have data
+        userRoomInput[0].value = user.room[0][0];
+        userComplexInput[0].value = user.complex[0][0];
+        userSubjectInput[0].value = user.subject[0][0];
+        userTeacherInput[0].value = user.teacher[0][0];
+      }
+
+      getUserClassInfoFromLocalStorage();
+      function getUserClassInfoFromLocalStorage() {
+        // If it finds a key "isThereData" in user's browser, it reads the data and writes it to the variables
+        if (localStorage.getItem("isThereData")) {
+          user.room = JSON.parse(localStorage.getItem("user_roomARR"));
+          user.complex = JSON.parse(localStorage.getItem("user_complexARR"));
+          user.subject = JSON.parse(localStorage.getItem("user_subjectARR"));
+          user.teacher = JSON.parse(localStorage.getItem("user_teacherARR"));
+          displayUserClassInfo();
+          displayUserToNowTab();
+        }
+      }
+
+      // ---------------  SHOWING USER CLASS DATA TO NOW TAB  ---------------
+
+      // Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
+
+      // USER'S DATA
+      displayUserToNowTab();
+      function displayUserToNowTab() {
+        // USERS CLASS DATA IN NOW TAB
+        const userClassroomDisplay = document.getElementById(
+          "userClassroomDisplay"
+        );
+        const userComplexDisplay =
+          document.getElementById("userComplexDisplay");
+        const userSubjectAndTeacher = document.getElementById(
+          "userSubjectAndTeacher"
+        );
+        const date = new Date(); // object containing time info
+        let schoolHourStart = 8; // standard hour when school starts is 8
+        const hour = date.getHours() - schoolHourStart;
+        const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
+        // const day = 0; // >>> DEBUG
+        // const hour = 8 - schoolHourStart; // >>> DEBUG
+        if (day != 7) {
+          userClassroomDisplay.textContent = user.room[day][hour];
+          userComplexDisplay.textContent = user.complex[day][hour];
+          if (user.subject[day][hour]) {
+            userSubjectAndTeacher.textContent =
+              user.subject[day][hour] + " - " + user.teacher[day][hour];
+          } else {
+            userSubjectAndTeacher.textContent = "There's no data here :(";
+          }
+        }
+      }
+
+      // ---------------  DARK MODE  ---------------
+
+      const darkModeSwitch = document.getElementById("darkModeSwitch"); // reference to the switch <input> item which actually is a checkbox type
+      let darkModeState; // stores whether dark mode is active or not (0-1)
+
+      findThemeStateAtLoad(); // When the page loads look for user's dark theme choice in local storage, if there isn't activates light mode
+      function findThemeStateAtLoad() {
+        if (localStorage.getItem("darkModeState")) {
+          darkModeState = localStorage.getItem("darkModeState");
+          if (darkModeState == "1") {
+            document.body.classList.add("darkModeVariables");
+            darkModeSwitch.checked = true;
+          }
+        } else darkModeState = "0";
+        localStorage.setItem("darkModeState", darkModeState);
+      }
+
+      function toggleDarkMode() {
+        // triggered when the switch is clicked
+        if (darkModeSwitch.checked) {
+          document.body.classList.add("darkModeVariables");
+          darkModeState = "1";
+        } else if (!darkModeSwitch.checked) {
+          document.body.classList.remove("darkModeVariables");
+          darkModeState = "0";
+        }
+        localStorage.setItem("darkModeState", darkModeState);
+      }
+
+      // ---------------  SHOW/HIDE WELCOME MESSAGE  ---------------
+
+      const showGreetingSwitch = document.getElementById("showGreetingSwitch"); // reference to the switch <input> item which actually is a checkbox type
+      let showGreetingState; // stores whether the option of showing Greeting is active or not (0-1)
+
+      findShowGreetingStateAtLoad(); // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes true by default
+      function findShowGreetingStateAtLoad() {
+        if (localStorage.getItem("showGreetingState")) {
+          showGreetingState = localStorage.getItem("showGreetingState");
+          if (showGreetingState == "1") {
+            document.getElementById("greetingDisplay").style.display = "block";
+            showGreetingSwitch.checked = true;
+          } else {
+            showGreetingState = "0";
+            showGreetingSwitch.checked = false;
+            toggleShowGreetingState();
+          }
+        } else showGreetingState = "1";
+        localStorage.setItem("showGreetingState", showGreetingState);
+      }
+
+      function toggleShowGreetingState() {
+        // triggered when the switch is clicked
+        if (showGreetingSwitch.checked) {
+          document.getElementById("greetingDisplay").style.display = "block";
+          showGreetingState = "1";
+        } else if (!showGreetingSwitch.checked) {
+          document.getElementById("greetingDisplay").style.display = "none";
+          showGreetingState = "0";
+        }
+        localStorage.setItem("showGreetingState", showGreetingState);
       }
     </script>
   </body>
