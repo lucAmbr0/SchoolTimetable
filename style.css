@@ -241,6 +241,7 @@ h5 {
     left: 0;
     height: 11vh;
     width: 100%;
+    margin-bottom: 20px;
     background-color: transparent;
 }
 
@@ -262,7 +263,7 @@ h5 {
 
 .greetingDisplay {
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 0px;
     text-align: center;
     font-size: 1.5em;
     color: var(--OPPsolidCol3);
@@ -272,7 +273,7 @@ h5 {
     text-align: center;
     color: var(--OPPsolidCol4);
     font-weight: 500;
-    margin-bottom: 10px;
+    margin-bottom: -20px;
 }
 
 #yourClassBox {
@@ -280,7 +281,7 @@ h5 {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    margin: 10px auto 20px auto;
+    margin: 30px auto 20px auto;
     padding: 5px 0;
     background-color: var(--transpCol6);
     border-radius: 20px;
@@ -392,6 +393,7 @@ h5 {
     border-top: solid 2px;
     border-color: var(--boxBorderColor);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s background-color ease;
 }
 
 .navbarBtn {
@@ -434,6 +436,7 @@ h5 {
     animation: navbarLabel 0.20s ease forwards;
     background-color: var(--transAccentColor0);
     color: var(--solidAccentColor1);
+    transition: 0.3s background-color ease;
 }
 
 .navbarLabelActive {
@@ -482,7 +485,7 @@ label {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    margin: 20px auto 0px auto;
+    margin: 0px auto 15px auto;
     padding: 5px 0;
     background-color: var(--transpCol7);
     border-radius: 20px;
@@ -617,7 +620,7 @@ label {
     display: inline-block;
     width: 65px;
     height: 40px;
-    background-color: #ccc;
+    background-color: var(--solidCol4);
     border-radius: 20px;
     cursor: pointer;
   }

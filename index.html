@@ -21,18 +21,20 @@
     />
   </head>
   <body>
-    <div id="topNotchContainer" onclick="trigger()">
+    <div id="topNotchContainer">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
       <h2 id="timeDisplay">17:41</h2>
     </div>
     <div id="topNotchFixed"></div>
     <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
-      <h2 class="greetingDisplay">
-        Welcome<span id="nameDisplay"></span>
-        <span id="classDisplay"></span>
-      </h2>
-      <h3 id="schoolDisplay"></h3>
+      <div id="greetingDisplay">
+        <h2 class="greetingDisplay">
+          Welcome<span id="nameDisplay"></span>
+          <span id="classDisplay"></span>
+        </h2>
+        <h3 id="schoolDisplay"></h3>
+      </div>
       <div id="yourClassBox">
         <h1 id="userClassroomDisplay">Room 20</h1>
         <h3 id="userComplexDisplay">Complex C</h3>
@@ -93,15 +95,26 @@
         <div class="switch-container">
           <div class="switch-label">Dark mode</div>
           <div class="switch">
-            <input type="checkbox" id="darkModeSwitch" class="switch-input" onchange="toggleDarkMode()">
+            <input
+              type="checkbox"
+              id="darkModeSwitch"
+              class="switch-input"
+              onchange="toggleDarkMode()"
+            />
             <label for="darkModeSwitch" class="switch-toggle"></label>
           </div>
-          <!-- <div class="switch-label">IDKSWITCH</div>
+          <div class="switch-label">Show Greeting</div>
           <div class="switch">
-            <input type="checkbox" id="IDKSWITCH" class="switch-input">
-            <label for="IDKSWITCH" class="switch-toggle"></label>
+            <input
+              type="checkbox"
+              id="showGreetingSwitch"
+              class="switch-input"
+              onchange="toggleShowGreetingState()"
+              checked
+            />
+            <label for="showGreetingSwitch" class="switch-toggle"></label>
           </div>
-          <div class="switch-label">IDKSWITCH2</div>
+          <!-- <div class="switch-label">IDKSWITCH2</div>
           <div class="switch">
             <input type="checkbox" id="IDKSWITCH2" class="switch-input">
             <label for="IDKSWITCH2" class="switch-toggle"></label>
