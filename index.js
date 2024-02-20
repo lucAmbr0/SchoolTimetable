@@ -271,8 +271,30 @@ function displayUserToNowTab() {
 
 // ---------------  DARK MODE [WORK IN PROGRESS]  ---------------
 
-// trigger();
+const darkModeSwitch = document.getElementById("darkModeSwitch");
+let darkModeState;
 
-// function trigger() {
-//   document.body.classList.toggle("darkModeVariables");
-// }
+findThemeStateAtLoad();
+function findThemeStateAtLoad() {
+  if (localStorage.getItem('darkModeState')) {
+    darkModeState = localStorage.getItem('darkModeState');
+    if (darkModeState == "1") {
+      document.body.classList.add("darkModeVariables");
+      darkModeSwitch.checked = true;
+    }
+  }
+  else darkModeState = "0";
+  localStorage.setItem('darkModeState', darkModeState);
+}
+
+function toggleDarkMode() {
+  if (darkModeSwitch.checked) {
+    document.body.classList.add("darkModeVariables");
+    darkModeState = "1";
+  }
+  else if (!darkModeSwitch.checked) {
+    document.body.classList.remove("darkModeVariables");
+    darkModeState = "0";
+  }
+  localStorage.setItem('darkModeState', darkModeState);
+}
