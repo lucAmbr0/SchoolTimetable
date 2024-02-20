@@ -5,7 +5,6 @@
 
 // ---------------  NAVBAR  ---------------
 
-let currentTab = null;
 const navbar = document.getElementById("navbar");
 const navbarBtn = document.querySelectorAll(".navbarBtn");
 const navbarIcon = document.querySelectorAll(".navbarIcon");
@@ -15,11 +14,22 @@ const appTabs = document.querySelectorAll(".appTabs");
 appTabs.forEach(appTab => appTab.classList.remove("appTabsShown"));
 appTabs.forEach(appTab => appTab.classList.add("appTabsHidden"));
 
-navbarAction(1);
+// This displays the last tab the user was in when closed the app (default is Now Tab)
+let tab;
+let currentTab = -1;
+if (localStorage.getItem('tab')) {
+  tab = parseInt(localStorage.getItem('tab'));
+} else {
+  tab = 1;
+}
+
+// Calls the function to display the right tab
+navbarAction(tab);
 
 function navbarAction(tab) {
   if (currentTab !== tab) {
     currentTab = tab;
+    localStorage.setItem('tab', tab);
     navbarIcon.forEach(item => item.classList.remove("navbarIconActive"));
     navbarLabel.forEach(item => item.classList.remove("navbarLabelActive"));
     navbarIcon[tab].classList.add("navbarIconActive");
@@ -130,9 +140,8 @@ function updateUserInfo() {
     localStorage.setItem('user_schoolName', user.schoolName);
   }
 
-  // If there's even one of these items in localStorage, displays a message to tell user that data is saved
+  // If there's even one of these items in localStorage, refreshes data in Now Tab
   if (localStorage.getItem('user_name') || localStorage.getItem('user_className') || localStorage.getItem('user_schoolName')) {
-    window.alert("Saved data successfully!");
     displayUserInfo();
   }
 }
@@ -253,10 +262,10 @@ function displayUserToNowTab() {
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
   const date = new Date(); // object containing time info
   let schoolHourStart = 8; // standard hour when school starts is 8
-  // const hour = date.getHours() - schoolHourStart;
-  // const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
-  const day = 0; // >>> DEBUG
-  const hour = 8 - schoolHourStart; // >>> DEBUG
+  const hour = date.getHours() - schoolHourStart;
+  const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
+  // const day = 0; // >>> DEBUG
+  // const hour = 8 - schoolHourStart; // >>> DEBUG
   if (day != 7) {
     userClassroomDisplay.textContent = user.room[day][hour];
     userComplexDisplay.textContent = user.complex[day][hour];
@@ -268,13 +277,12 @@ function displayUserToNowTab() {
   }
 }
 
+// ---------------  DARK MODE  ---------------
 
-// ---------------  DARK MODE [WORK IN PROGRESS]  ---------------
+const darkModeSwitch = document.getElementById("darkModeSwitch"); // reference to the switch <input> item which actually is a checkbox type
+let darkModeState; // stores whether dark mode is active or not (0-1)
 
-const darkModeSwitch = document.getElementById("darkModeSwitch");
-let darkModeState;
-
-findThemeStateAtLoad();
+findThemeStateAtLoad(); // When the page loads look for user's dark theme choice in local storage, if there isn't activates light mode 
 function findThemeStateAtLoad() {
   if (localStorage.getItem('darkModeState')) {
     darkModeState = localStorage.getItem('darkModeState');
@@ -287,7 +295,7 @@ function findThemeStateAtLoad() {
   localStorage.setItem('darkModeState', darkModeState);
 }
 
-function toggleDarkMode() {
+function toggleDarkMode() { // triggered when the switch is clicked
   if (darkModeSwitch.checked) {
     document.body.classList.add("darkModeVariables");
     darkModeState = "1";
@@ -297,4 +305,39 @@ function toggleDarkMode() {
     darkModeState = "0";
   }
   localStorage.setItem('darkModeState', darkModeState);
+}
+
+// ---------------  SHOW/HIDE WELCOME MESSAGE  ---------------
+
+const showGreetingSwitch = document.getElementById("showGreetingSwitch"); // reference to the switch <input> item which actually is a checkbox type
+let showGreetingState; // stores whether the option of showing Greeting is active or not (0-1)
+
+findShowGreetingStateAtLoad();  // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes true by default 
+function findShowGreetingStateAtLoad() {
+  if (localStorage.getItem('showGreetingState')) {
+    showGreetingState = localStorage.getItem('showGreetingState');
+    if (showGreetingState == "1") {
+      document.getElementById("greetingDisplay").style.display = "block";
+      showGreetingSwitch.checked = true;
+    }
+    else {
+      showGreetingState = "0";
+      showGreetingSwitch.checked = false;
+      toggleShowGreetingState();
+    }
+  }
+  else showGreetingState = "1";
+  localStorage.setItem('showGreetingState', showGreetingState);
+}
+
+function toggleShowGreetingState() { // triggered when the switch is clicked
+  if (showGreetingSwitch.checked) {
+    document.getElementById("greetingDisplay").style.display = "block";
+    showGreetingState = "1";
+  }
+  else if (!showGreetingSwitch.checked) {
+    document.getElementById("greetingDisplay").style.display = "none";
+    showGreetingState = "0";
+  }
+  localStorage.setItem('showGreetingState', showGreetingState);
 }
