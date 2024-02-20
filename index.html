@@ -88,7 +88,27 @@
     </div>
     <div class="appTabs" id="settingsTab">
       <!-- <h2 class="greetingDisplay">Settings</h2> -->
-      <details id="personalSettings" open>
+      <details class="settingsSection" open>
+        <summary class="settingHeader">App Settings</summary>
+        <div class="switch-container">
+          <div class="switch-label">Dark mode</div>
+          <div class="switch">
+            <input type="checkbox" id="darkModeSwitch" class="switch-input" onchange="toggleDarkMode()">
+            <label for="darkModeSwitch" class="switch-toggle"></label>
+          </div>
+          <!-- <div class="switch-label">IDKSWITCH</div>
+          <div class="switch">
+            <input type="checkbox" id="IDKSWITCH" class="switch-input">
+            <label for="IDKSWITCH" class="switch-toggle"></label>
+          </div>
+          <div class="switch-label">IDKSWITCH2</div>
+          <div class="switch">
+            <input type="checkbox" id="IDKSWITCH2" class="switch-input">
+            <label for="IDKSWITCH2" class="switch-toggle"></label>
+          </div> -->
+        </div>
+      </details>
+      <details class="settingsSection" open>
         <summary class="settingHeader">Your data</summary>
         <div id="userDataForm">
           <label for="userNameInput">Name </label>
@@ -116,9 +136,7 @@
               <option value="friday">Friday</option>
               <option value="saturday">Saturday</option>
             </select>
-            <label for="userDaySelection" style="margin: 5px 0 2px 0"
-              >at</label
-            >
+            <label for="userDaySelection" style="margin: 5px 0 2px 0">at</label>
             <select id="userHourSelection" name="hour">
               <option value="1">1</option>
               <option value="2">2</option>
