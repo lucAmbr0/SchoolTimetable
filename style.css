@@ -46,7 +46,7 @@ h5 {
 @keyframes navbarLabel {
     from {
         opacity: 1;
-        padding: 3px 5px;
+        padding: 3px 0px;
     }
 
     to {
@@ -152,10 +152,10 @@ h5 {
     --transAccentColor0: rgba(12, 91, 147, 0.7);
     --transAccentColor1: rgba(65, 147, 255, 0.5);
     --transAccentColor2: rgba(35, 47, 63, 0.5);
-    --boxBorderColor: rgba(35, 47, 63, 0.5);
+    --boxBorderColor: rgba(61, 81, 109, 0.5);
     /* always must be the same as --transAccentColor2 */
     --transAccentColor3: rgba(0, 49, 115, 0.03);
-    --bodyBackground: rgb(18, 25, 35);
+    --bodyBackground: rgb(15, 20, 29);
 
     /* VAR COLORS */
     --solidCol0: rgba(0, 0, 0, 1);
@@ -283,7 +283,7 @@ h5 {
     flex-direction: column;
     margin: 30px auto 20px auto;
     padding: 5px 0;
-    background-color: var(--transpCol6);
+    background-color: var(--transpCol4);
     border-radius: 20px;
     border: solid 2px;
     border-color: var(--boxBorderColor);
@@ -334,7 +334,7 @@ h5 {
 .matesBox {
     width: 90%;
     height: fit-content;
-    background-color: var(--transpCol6);
+    background-color: var(--transpCol4);
     display: block;
     border: solid 2px;
     border-color: var(--boxBorderColor);
@@ -433,7 +433,7 @@ h5 {
 }
 
 .navbarIconActive {
-    animation: navbarLabel 0.20s ease forwards;
+    animation: navbarLabel 0.25s ease forwards;
     background-color: var(--transAccentColor0);
     color: var(--solidAccentColor1);
     transition: 0.3s background-color ease;
@@ -449,7 +449,7 @@ h5 {
     z-index: -1;
     bottom: 0;
     width: 100%;
-    height: 9vh;
+    height: 10vh;
     background-color: transparent;
 }
 
@@ -487,7 +487,7 @@ label {
     flex-direction: column;
     margin: 0px auto 15px auto;
     padding: 5px 0;
-    background-color: var(--transpCol7);
+    background-color: var(--transpCol4);
     border-radius: 20px;
     border: solid 2px;
     border-color: var(--boxBorderColor);
@@ -504,10 +504,34 @@ label {
     color: var(--OPPsolidCol2);
 }
 
-#userDataForm {
+.dataForm {
     display: flex;
     flex-direction: column;
     margin: 0px 5px 10px 5px;
+    transition: opacity 0.3s ease;
+}
+
+#greetingNotShownBox {
+    text-align: center;
+    display: flex;
+    margin: 15px 0 -5px 0;
+    justify-content: center;
+}
+
+#greetingNotShownBox label {
+    margin: auto 2.5px;
+    text-decoration: underline var(--OPPtranspCol3);
+    color: var(--OPPsolidCol3);
+}
+
+#greetingNotShownBox span {
+     margin: auto 2.5px;
+     color: var(--OPPtranspCol1);
+
+}
+
+#submitUserInfoBtn {
+    transition: opacity 0.3s ease;
 }
 
 .submitBtn {
@@ -525,17 +549,18 @@ label {
     transition: 0.3s background-color ease;
 }
 
-.userDataDayAndHourContainer {
+.dataDayAndHourContainer {
     width: 100%;
     display: flex;
     margin: 10px auto;
     justify-content: center;
 }
 
-.userDataDayAndHourContainer select {
+.dataDayAndHourContainer select {
     font-size: 1.2em;
     font-weight: 600;
-    padding: 2px 7px;
+    padding: 2px 5px;
+    margin-bottom: 3px;
     border-color: var(--solidAccentColor2);
     background-color: var(--transAccentColor3);
     font-family: var(--StandardTextFont);
@@ -545,39 +570,49 @@ label {
     background-color: var(--solidAccentColor2);
 }
 
-.userDataGrid {
+.dataGrid {
     display: grid;
     grid-template-columns: 3fr 7fr;
     margin: 10px 5px;
 }
 
-.userDataGrid input,
-.userDataGrid label {
+.dataGrid input,
+.dataGrid label {
     display: flex;
     align-items: center;
     font-weight: 500;
     margin: 5px 10px;
 }
 
-.userDataGrid input,
-#userDataForm input {
+.dataGrid input,
+.dataForm input {
     font-weight: 400;
     border-color: var(--solidAccentColor2);
 }
 
-.matesSettings {
-    width: 92%;
-    height: fit-content;
+/* ---------------  SCHOOLMATES SECTION IN SETTINGS  --------------- */
+
+.matesClassNumSelectionBox {
     display: flex;
-    flex-direction: column;
-    margin: 10px auto;
-    padding: 5px 0;
-    background-color: var(--transpCol6);
-    border-radius: 20px;
-    border: solid 2px;
-    border-color: var(--boxBorderColor);
-    box-shadow: var(--boxShadow3);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 -5px 0;
 }
+
+.matesClassNumSelectionBox label {
+    margin: 0;
+}
+
+.matesClassNumSelectionBox select {
+    font-weight: 600;
+    font-size: 1.2em;
+    padding: 2px 5px;
+    border-color: var(--solidAccentColor2);
+    background-color: var(--transAccentColor3);
+    font-family: var(--StandardTextFont);
+}
+
 
 /* ---------------  APP SETTINGS SECTION  --------------- */
 

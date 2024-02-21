@@ -93,11 +93,11 @@ class UserInfo {
     this.complex = [[]];
     this.subject = [[]];
     this.teacher = [[]];
-    if (!localStorage.getItem('user_room')) this.fillArrays();
+    if (!localStorage.getItem('user_roomARR')) this.fillArrays();
   }
 
   fillArrays() {
-    // Define the size of the arrays (adjust as needed)
+    // Define the size of the arrays
     const rows = 6;
     const columns = 6;
 
@@ -111,7 +111,7 @@ class UserInfo {
   }
 }
 
-let user = new UserInfo("YourName", "2CL", "SchoolName - AndCityMaybe");
+let user = new UserInfo("-", "-", "-");
 
 getUserInfoFromLocalStorage();
 function getUserInfoFromLocalStorage() {
@@ -254,7 +254,7 @@ function getUserClassInfoFromLocalStorage() {
 // Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
 
 // USER'S DATA
-displayUserToNowTab();
+displayUserToNowTab()
 function displayUserToNowTab() {
   // USERS CLASS DATA IN NOW TAB
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
@@ -262,10 +262,10 @@ function displayUserToNowTab() {
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
   const date = new Date(); // object containing time info
   let schoolHourStart = 8; // standard hour when school starts is 8
-  const hour = date.getHours() - schoolHourStart;
-  const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
-  // const day = 0; // >>> DEBUG
-  // const hour = 8 - schoolHourStart; // >>> DEBUG
+  // const hour = date.getHours() - schoolHourStart;
+  // const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
+  const day = 0; // >>> DEBUG
+  const hour = 8 - schoolHourStart; // >>> DEBUG
   if (day != 7) {
     userClassroomDisplay.textContent = user.room[day][hour];
     userComplexDisplay.textContent = user.complex[day][hour];
@@ -334,10 +334,135 @@ function toggleShowGreetingState() { // triggered when the switch is clicked
   if (showGreetingSwitch.checked) {
     document.getElementById("greetingDisplay").style.display = "block";
     showGreetingState = "1";
+    document.getElementById("userDataForm").style.opacity = "1";
+    document.getElementById("submitUserInfoBtn").style.opacity = "1";
+    document.getElementById("greetingNotShownBox").style.display = "none";
   }
   else if (!showGreetingSwitch.checked) {
     document.getElementById("greetingDisplay").style.display = "none";
     showGreetingState = "0";
+    document.getElementById("userDataForm").style.opacity = "0.5";
+    document.getElementById("submitUserInfoBtn").style.opacity = "0.5";
+    document.getElementById("greetingNotShownBox").style.display = "flex";
   }
   localStorage.setItem('showGreetingState', showGreetingState);
 }
+
+// ---------------  MANAGING AND SAVING DATA ABOUT MATES  ---------------
+
+// JavaScript variables that contain mates' info
+class matesInfo {
+  constructor(name, className) {
+    this.classMatesNames = name;
+    this.className = className;
+    this.room = [[]];
+    this.subject = [[]];
+    this.teacher = [[]];
+    if (!localStorage.getItem('mates_roomARR')) this.fillArrays();
+  }
+
+  fillArrays() {
+    // Define the size of the arrays
+    const rows = 6;
+    const columns = 6;
+
+    // Fill each array with empty strings
+    for (let i = 0; i < rows; i++) {
+      this.room[i] = Array(columns).fill("");
+      this.subject[i] = Array(columns).fill("");
+      this.teacher[i] = Array(columns).fill("");
+    }
+  }
+}
+
+let mates = [];
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+
+getMatesInfoFromLocalStorage();
+function getMatesInfoFromLocalStorage() {
+  // If it finds the key "mates_name" in user's browser, it reads the data and writes it to the variables
+  mates.forEach(mate => {
+    if (localStorage.getItem('mates_classMatesNames')) {
+      mate.name = localStorage.getItem('mates_classMatesNames');
+      mate.className = localStorage.getItem('mates_className');
+      // displayInfo(); TO ADD DISPLAY MATES INFO
+    }
+  });
+}
+
+const matesClassInput = document.getElementById("matesClassInput");
+const matesNamesInput = document.getElementById("matesNamesInput");
+
+let mateObjIndex = 0;
+let previousMateObject = 0;
+
+function updateMatesClassInfo() {
+  // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
+  if (matesClassInput.value) {
+    mates[mateObjIndex].className = matesClassInput.value;
+  }
+  if (matesNamesInput.value) {
+    mates[mateObjIndex].classMatesNames = matesNamesInput.value;
+  }
+
+  displayUserInfo();
+}
+
+const classNumberSelection = document.getElementById("classNumberSelection");
+
+classNumberSelection.addEventListener("change", changeMatesIndexLabels);
+
+function changeMatesIndexLabels() {
+  mates[previousMateObject].className = matesClassInput.value;
+  mates[previousMateObject].classMatesNames = matesNamesInput.value;
+
+  mateObjIndex = classNumberSelection.value-1;
+
+  matesClassInput.value = mates[mateObjIndex].className;
+  matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+
+  previousMateObject = mateObjIndex;
+}
+
+
+
+
+
+
+
+// ---------------  DATE AND TIME DISPLAY  ---------------
+
+const dayDisplay = document.getElementById("dayDisplay");
+const timeDisplay = document.getElementById("timeDisplay");
+
+updateDateTime();
+function updateDateTime() {
+  // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
+  displayUserToNowTab();
+
+  // UPDATING TIME AND DATE
+  const currentDate = new Date();
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const dayOfWeek = days[currentDate.getDay()];
+  const dayOfMonth = currentDate.getDate();
+  const month = months[currentDate.getMonth()];
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+
+  dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
+  timeText = hours + ':' + minutes;
+
+  dayDisplay.textContent = dateText;
+  timeDisplay.textContent = timeText;
+}
+
+// Initial call to update immediately and then every 2 seconds
+setInterval(updateDateTime, 2000);
+
