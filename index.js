@@ -382,25 +382,31 @@ mates.push(new matesInfo("", "", ""));
 mates.push(new matesInfo("", "", ""));
 mates.push(new matesInfo("", "", ""));
 
-getMatesInfoFromLocalStorage();
-function getMatesInfoFromLocalStorage() {
-  // If it finds the key "mates_name" in user's browser, it reads the data and writes it to the variables
-  mates.forEach(mate => {
-    if (localStorage.getItem('mates_classMatesNames')) {
-      mate.name = localStorage.getItem('mates_classMatesNames');
-      mate.className = localStorage.getItem('mates_className');
-      // displayInfo(); TO ADD DISPLAY MATES INFO
-    }
-  });
-}
-
 const matesClassInput = document.getElementById("matesClassInput");
 const matesNamesInput = document.getElementById("matesNamesInput");
 
 let mateObjIndex = 0;
 let previousMateObject = 0;
 
-function updateMatesClassInfo() {
+getMatesInfoFromLocalStorage();
+function getMatesInfoFromLocalStorage() {
+  // If it finds the key "mates_name" in user's browser, it reads the data and writes it to the variables
+  if (localStorage.getItem('mates_OBJECT')) {
+    let tempMatesOBJECT = JSON.parse(localStorage.getItem('mates_OBJECT'));
+    mates.forEach((mate, index) => {
+      mate.classMatesNames = tempMatesOBJECT[index].classMatesNames;
+      mate.className = tempMatesOBJECT[index].className;
+    })
+    displayMatesInfo();
+  }
+}
+
+function displayMatesInfo() {
+  matesClassInput.value = mates[mateObjIndex].className;
+  matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+}
+
+function updateMatesInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   if (matesClassInput.value) {
@@ -410,7 +416,8 @@ function updateMatesClassInfo() {
     mates[mateObjIndex].classMatesNames = matesNamesInput.value;
   }
 
-  displayUserInfo();
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
+  localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
 }
 
 const classNumberSelection = document.getElementById("classNumberSelection");
@@ -421,15 +428,21 @@ function changeMatesIndexLabels() {
   mates[previousMateObject].className = matesClassInput.value;
   mates[previousMateObject].classMatesNames = matesNamesInput.value;
 
-  mateObjIndex = classNumberSelection.value-1;
+  mateObjIndex = classNumberSelection.value - 1;
 
-  matesClassInput.value = mates[mateObjIndex].className;
-  matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+  matesClassInput.value = mates[mateObjIndex].className.trim();
+  matesNamesInput.value = mates[mateObjIndex].classMatesNames.trim();
 
   previousMateObject = mateObjIndex;
 }
 
+function updateMatesClassInfo() {
+  // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
+  updateMatesInfo();
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
+  localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
 
+}
 
 
 
