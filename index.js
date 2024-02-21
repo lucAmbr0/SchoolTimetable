@@ -385,6 +385,10 @@ mates.push(new matesInfo("", "", ""));
 const matesClassInput = document.getElementById("matesClassInput");
 const matesNamesInput = document.getElementById("matesNamesInput");
 
+const matesRoomInput = document.getElementById("matesRoomInput");
+const matesSubjectInput = document.getElementById("matesSubjectInput");
+const matesTeacherInput = document.getElementById("matesTeacherInput");
+
 let mateObjIndex = 0;
 let previousMateObject = 0;
 
@@ -396,7 +400,10 @@ function getMatesInfoFromLocalStorage() {
     mates.forEach((mate, index) => {
       mate.classMatesNames = tempMatesOBJECT[index].classMatesNames;
       mate.className = tempMatesOBJECT[index].className;
-    })
+      mate.room = tempMatesOBJECT[index].room;
+      mate.subject = tempMatesOBJECT[index].subject;
+      mate.teacher = tempMatesOBJECT[index].teacher;
+    });
     displayMatesInfo();
   }
 }
@@ -404,6 +411,9 @@ function getMatesInfoFromLocalStorage() {
 function displayMatesInfo() {
   matesClassInput.value = mates[mateObjIndex].className;
   matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+  matesRoomInput.value = mates[mateObjIndex].room[0][0];
+  matesSubjectInput.value = mates[mateObjIndex].subject[0][0];
+  matesTeacherInput.value = mates[mateObjIndex].teacher[0][0];
 }
 
 function updateMatesInfo() {
@@ -444,8 +454,10 @@ function changeMatesIndexLabels() {
 function updateMatesClassInfo() {
   // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
   updateMatesInfo();
+  updateMatesClassGrid();
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
+  console.log("EVATROIA");
 }
 
 // DAYS AND HOURS PART (MATES)
@@ -455,10 +467,6 @@ let MATEpreviousHourState = 0;
 
 const matesDaySelection = document.getElementById("matesDaySelection");
 const matesHourSelection = document.getElementById("matesHourSelection");
-
-const matesRoomInput = document.getElementById("matesRoomInput");
-const matesSubjectInput = document.getElementById("matesSubjectInput");
-const matesTeacherInput = document.getElementById("matesTeacherInput");
 
 matesDaySelection.addEventListener("change", updateMatesClassGrid);
 matesHourSelection.addEventListener("change", updateMatesClassGrid);
@@ -522,7 +530,6 @@ function changeMatesClassInfoLabel(dayIndex, hourIndex) {
   MATEpreviousDayState = dayIndex;
   MATEpreviousHourState = hourIndex;
 }
-
 
 // ---------------  DATE AND TIME DISPLAY  ---------------
 
