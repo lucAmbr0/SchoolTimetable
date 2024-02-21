@@ -77,6 +77,17 @@ h5 {
     }
 }
 
+@keyframes getStarted {
+    from {
+        opacity: 0;
+        scale: 0.4;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
 /* ---------------  VARIABLES  --------------- */
 
 :root {
@@ -210,6 +221,53 @@ h5 {
 
 /* ---------------  NOW TAB  --------------- */
 
+#letsStartMessage {
+    background-color: var(--transAccentColor1);
+    margin: 35% 10% 50px 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+    height: 40%;
+    padding: 10px 20px;
+    box-shadow: var(--boxShadow3);
+    border: solid 3px;
+    border-color: var(--boxBorderColor);
+    border-radius: 50px;
+    transition: 0.4s scale ease;
+    animation: getStarted 0.8s ease;
+}
+
+#letsStartMessage:active {
+    scale: 0.8;
+}
+
+#letsStartMessage h1 {
+    display: flex;
+    justify-content: center;
+    box-shadow: none;
+    font-size: 3vh;
+    padding: 10px;
+    border: none;
+    margin: 0;
+    text-align: center;
+    color: var(--OPPsolidCol4);
+    background-color: transparent;
+    font-family: var(--StandardTextFont);
+    font-weight: 700;
+}
+
+#letsStartMessage span {
+    font-size: 40vw;
+    color: var(--solidAccentColor1);
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    display: flex;
+    padding: 0;
+    margin: 10% 0 20px 0;
+}
+
 .appTabs {
     animation: appTab 0.3s ease forwards;
 }
@@ -282,7 +340,7 @@ h5 {
     display: flex;
     flex-direction: column;
     margin: 30px auto 20px auto;
-    padding: 5px 0;
+    padding: 5px 0 10px 0;
     background-color: var(--transpCol4);
     border-radius: 20px;
     border: solid 2px;
@@ -301,6 +359,7 @@ h5 {
 #userComplexDisplay {
     line-height: 0.8;
     font-weight: 400;
+    margin-bottom: 2.5px;
     font-size: 1.3em;
     font-family: var(--StandardTextFont);
     color: var(--OPPsolidCol4);
@@ -311,7 +370,7 @@ h5 {
     font-weight: 500;
     font-family: var(--StandardTextFont);
     color: var(--OPPsolidCol4);
-    margin: 10px 0;
+    margin: 2.5px 0 0 0;
 }
 
 .horizontalLine {
@@ -355,6 +414,7 @@ h5 {
 .matesBoxGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin: 8px 0;
     padding: 0px 15px;
     color: var(--OPPsolidCol3);
     font-family: var(--StandardTextFont);
@@ -372,7 +432,7 @@ h5 {
 }
 
 .matesBoxGrid p {
-    margin: 5px 0;
+    margin: 2px 0;
     color: var(--OPPsolidCol3);
     font-family: var(--StandardTextFont);
     font-weight: 400;

@@ -28,6 +28,12 @@
     <div id="topNotchFixed"></div>
     <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
+      <div id="letsStartMessage" onclick="getStarted()">
+        <h1>
+          Welcome to<br />School Timetable!<br />Let's get started!
+        </h1>
+        <span class="material-symbols-outlined"> person_play </span>
+      </div>
       <div id="greetingDisplay">
         <h2 class="greetingDisplay">
           Welcome<span id="nameDisplay"></span>
@@ -40,15 +46,51 @@
         <h3 id="userComplexDisplay"></h3>
         <h2 id="userSubjectAndTeacher"></h2>
       </div>
-      <div class="horizontalLine"></div>
+      <div class="horizontalLine" id="userMatesSeparator"></div>
       <h3 id="secondaryBoxesLabel">Your mates</h3>
       <div class="matesBox">
-        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
+        <h2 class="matesRoomDisplay"></h2>
         <div class="matesBoxGrid">
-          <p class="matesClass">1BS</p>
-          <p class="matesNotes">Mark, John</p>
-          <p class="matesSubject">English</p>
-          <p class="matesTeacher">Armstrong N.</p>
+          <p class="matesClass"></p>
+          <p class="matesNotes"></p>
+          <p class="matesSubject"></p>
+          <p class="matesTeacher"></p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay"></h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass"></p>
+          <p class="matesNotes"></p>
+          <p class="matesSubject"></p>
+          <p class="matesTeacher"></p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay"></h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass"></p>
+          <p class="matesNotes"></p>
+          <p class="matesSubject"></p>
+          <p class="matesTeacher"></p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay"></h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass"></p>
+          <p class="matesNotes"></p>
+          <p class="matesSubject"></p>
+          <p class="matesTeacher"></p>
+        </div>
+      </div>
+      <div class="matesBox">
+        <h2 class="matesRoomDisplay"></h2>
+        <div class="matesBoxGrid">
+          <p class="matesClass"></p>
+          <p class="matesNotes"></p>
+          <p class="matesSubject"></p>
+          <p class="matesTeacher"></p>
         </div>
       </div>
     </div>
@@ -85,7 +127,7 @@
           </div> -->
         </div>
       </details>
-      <details class="settingsSection">
+      <details class="settingsSection" open>
         <summary class="settingHeader">Your data</summary>
         <div id="greetingNotShownBox">
           <span class="material-symbols-outlined"> info </span>
@@ -189,7 +231,9 @@
               <option value="friday">Friday</option>
               <option value="saturday">Saturday</option>
             </select>
-            <label for="matesDaySelection" style="margin: 5px 0 2px 0">at</label>
+            <label for="matesDaySelection" style="margin: 5px 0 2px 0"
+              >at</label
+            >
             <select id="matesHourSelection" name="hour">
               <option value="1">1</option>
               <option value="2">2</option>
