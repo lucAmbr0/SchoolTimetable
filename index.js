@@ -425,13 +425,18 @@ const classNumberSelection = document.getElementById("classNumberSelection");
 classNumberSelection.addEventListener("change", changeMatesIndexLabels);
 
 function changeMatesIndexLabels() {
+  updateMatesClassGrid();
   mates[previousMateObject].className = matesClassInput.value;
   mates[previousMateObject].classMatesNames = matesNamesInput.value;
-
+  
+  
   mateObjIndex = classNumberSelection.value - 1;
 
   matesClassInput.value = mates[mateObjIndex].className.trim();
   matesNamesInput.value = mates[mateObjIndex].classMatesNames.trim();
+  matesRoomInput.value = mates[mateObjIndex].room[MATEpreviousDayState][MATEpreviousHourState];
+  matesSubjectInput.value = mates[mateObjIndex].subject[MATEpreviousDayState][MATEpreviousHourState];
+  matesTeacherInput.value = mates[mateObjIndex].teacher[MATEpreviousDayState][MATEpreviousHourState];
 
   previousMateObject = mateObjIndex;
 }
@@ -441,11 +446,82 @@ function updateMatesClassInfo() {
   updateMatesInfo();
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
-
 }
 
+// DAYS AND HOURS PART (MATES)
 
+let MATEpreviousDayState = 0;
+let MATEpreviousHourState = 0;
 
+const matesDaySelection = document.getElementById("matesDaySelection");
+const matesHourSelection = document.getElementById("matesHourSelection");
+
+const matesRoomInput = document.getElementById("matesRoomInput");
+const matesSubjectInput = document.getElementById("matesSubjectInput");
+const matesTeacherInput = document.getElementById("matesTeacherInput");
+
+matesDaySelection.addEventListener("change", updateMatesClassGrid);
+matesHourSelection.addEventListener("change", updateMatesClassGrid);
+
+function updateMatesClassGrid() {
+  mates[mateObjIndex].room[MATEpreviousDayState][MATEpreviousHourState] = matesRoomInput.value;
+  mates[mateObjIndex].subject[MATEpreviousDayState][MATEpreviousHourState] = matesSubjectInput.value;
+  mates[mateObjIndex].teacher[MATEpreviousDayState][MATEpreviousHourState] = matesTeacherInput.value;
+
+  let MATEdayIndex = null;
+  switch (matesDaySelection.value) {
+    case 'monday':
+      MATEdayIndex = 0;
+      break;
+    case 'tuesday':
+      MATEdayIndex = 1;
+      break;
+    case 'wednesday':
+      MATEdayIndex = 2;
+      break;
+    case 'thursday':
+      MATEdayIndex = 3;
+      break;
+    case 'friday':
+      MATEdayIndex = 4;
+      break;
+    case 'saturday':
+      MATEdayIndex = 5;
+      break;
+  }
+
+  let MATEhourIndex = null;
+  switch (matesHourSelection.value) {
+    case '1':
+      MATEhourIndex = 0;
+      break;
+    case '2':
+      MATEhourIndex = 1;
+      break;
+    case '3':
+      MATEhourIndex = 2;
+      break;
+    case '4':
+      MATEhourIndex = 3;
+      break;
+    case '5':
+      MATEhourIndex = 4;
+      break;
+    case '6':
+      MATEhourIndex = 5;
+      break;
+  }
+  changeMatesClassInfoLabel(MATEdayIndex, MATEhourIndex);
+}
+
+function changeMatesClassInfoLabel(dayIndex, hourIndex) {
+  matesRoomInput.value = mates[mateObjIndex].room[dayIndex][hourIndex];
+  matesSubjectInput.value = mates[mateObjIndex].subject[dayIndex][hourIndex];
+  matesTeacherInput.value = mates[mateObjIndex].teacher[dayIndex][hourIndex];
+
+  MATEpreviousDayState = dayIndex;
+  MATEpreviousHourState = hourIndex;
+}
 
 
 // ---------------  DATE AND TIME DISPLAY  ---------------
