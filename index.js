@@ -299,7 +299,8 @@ function displayUserToNowTab(day, hour) {
 
 const darkModeSwitch = document.getElementById("darkModeSwitch"); // reference to the switch <input> item which actually is a checkbox type
 let darkModeState; // stores whether dark mode is active or not (0-1)
-let activeTheme = "blueTheme";
+const themeSelection = document.getElementById("themeSelection");
+let activeTheme = getThemeFromStorage();
 
 findThemeStateAtLoad(); // When the page loads look for user's dark theme choice in local storage, if there isn't activates light mode 
 function findThemeStateAtLoad() {
@@ -310,18 +311,18 @@ function findThemeStateAtLoad() {
     }
   }
   else darkModeState = "0";
-  setTheme(activeTheme);
+  setTheme();
   localStorage.setItem('darkModeState', darkModeState);
 }
 
 function toggleDarkMode() { // triggered when the switch is clicked
   if (darkModeSwitch.checked) {
     darkModeState = "1";
-    setTheme(activeTheme);
+    setTheme();
   }
   else if (!darkModeSwitch.checked) {
     darkModeState = "0";
-    setTheme(activeTheme);
+    setTheme();
   }
   localStorage.setItem('darkModeState', darkModeState);
 }
@@ -604,28 +605,35 @@ function displayMatesToNowTab(day, hour) {
 
 // ---------------  THEMES AND COLOR ACCENTS  ---------------
 
-getThemeFromStorage();
+themeSelection.addEventListener("change", () => {
+  activeTheme = themeSelection.value;
+  setTheme();
+});
+
 function getThemeFromStorage() {
   if (!localStorage.getItem('theme')) {
-    activeTheme = "blueTheme";
+    return "blueTheme";
   } else {
-    activeTheme = localStorage.getItem('theme');
+    return localStorage.getItem('theme');
   }
-  setTheme(activeTheme);
 }
 
-function setTheme(themeColor) {
+function setTheme() {
+  themeSelection.value = activeTheme;
   document.body.classList.remove("DARKblueTheme");
   document.body.classList.remove("LIGHTblueTheme");
+  document.body.classList.remove("DARKgreenTheme");
+  document.body.classList.remove("LIGHTgreenTheme");
   document.body.classList.remove("darkModeVariables");
   if (darkModeState == "1") {
     document.body.classList.add("darkModeVariables");
-    document.body.classList.add("DARK"+themeColor);    
+    document.body.classList.add("DARK"+activeTheme);    
   }
   else {
     document.body.classList.remove("darkModeVariables");
-    document.body.classList.add("LIGHT"+themeColor);    
+    document.body.classList.add("LIGHT"+activeTheme);    
   }
+  localStorage.setItem('theme',activeTheme)
 }
 
 

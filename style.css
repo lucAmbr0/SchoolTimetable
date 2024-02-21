@@ -101,16 +101,16 @@
             rgba(86, 173, 236, 0.3),
             rgba(55, 172, 255, 0.3));
 
-    --solidAccentColor0: rgba(55, 172, 255, 1);
+    --solidAccentColor0: rgb(103, 192, 255);
     --solidAccentColor1: rgba(0, 49, 115, 1);
     --solidAccentColor2: rgba(3, 18, 37, 1);
 
     --transAccentColor0: rgba(55, 172, 255, 0.6);
-    --transAccentColor1: rgba(84, 180, 249, 0.6);
+    --transAccentColor1: rgba(101, 163, 208, 0.8);
     --transAccentColor2: rgba(3, 18, 37, 0.5);
     --transAccentColor3: rgba(0, 49, 115, 0.07);
+    --transAccentColor4: rgba(124, 183, 225, 0.6);
     --bodyBackground: rgb(224, 229, 237);
-
 }
 
 .DARKblueTheme {
@@ -118,7 +118,7 @@
             hsla(205, 80%, 43%, 0.3),
             hsla(205, 100%, 41%, 0.3));
 
-    --solidAccentColor0: rgba(55, 172, 255, 1);
+    --solidAccentColor0: rgb(17, 75, 116);
     --solidAccentColor1: rgb(161, 188, 220);
     --solidAccentColor2: rgba(71, 94, 125, 0.5);
 
@@ -128,7 +128,43 @@
     --boxBorderColor: rgba(61, 81, 109, 0.5);
     /* always must be the same as --transAccentColor2 */
     --transAccentColor3: rgba(0, 49, 115, 0.03);
+    --transAccentColor4: rgba(24, 35, 43, 0.6);
     --bodyBackground: rgb(15, 20, 29);
+}
+
+.LIGHTgreenTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(76, 218, 48, 0.3),
+            rgba(15, 87, 15, 0.3));
+
+    --solidAccentColor0: rgb(157, 202, 157);
+    --solidAccentColor1: rgb(19, 90, 16);
+    --solidAccentColor2: rgb(3, 37, 6);
+
+    --transAccentColor0: rgba(118, 174, 121, 0.6);
+    --transAccentColor1: rgba(88, 152, 88, 0.8);
+    --transAccentColor2: rgba(3, 37, 3, 0.5);
+    --transAccentColor3: rgba(0, 115, 12, 0.07);
+    --transAccentColor4: rgba(190, 233, 190, 0.4);
+    --bodyBackground: rgb(222, 231, 226);
+}
+
+.DARKgreenTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(74, 105, 69, 0.3),
+            rgba(28, 67, 28, 0.3));
+
+    --solidAccentColor0: rgb(76, 107, 76);
+    --solidAccentColor1: rgb(125, 164, 127);
+    --solidAccentColor2: rgb(10, 22, 11);
+
+    --transAccentColor0: rgba(18, 69, 16, 0.6);
+    --transAccentColor1: rgba(88, 152, 88, 0.8);
+    --transAccentColor2: rgba(3, 37, 3, 0.5);
+    --transAccentColor3: rgba(13, 59, 18, 0.07);
+    --transAccentColor4: rgba(190, 233, 190, 0.4);
+    --boxBorderColor: rgba(23, 44, 23, 0.5);
+    --bodyBackground: rgb(13, 16, 13);
 }
 
 
@@ -231,7 +267,7 @@ h5 {
 /* ---------------  NOW TAB  --------------- */
 
 #letsStartMessage {
-    background-color: var(--transAccentColor1);
+    background-color: var(--transAccentColor4);
     margin: 35% 10% 50px 10%;
     display: flex;
     flex-direction: column;
@@ -613,7 +649,7 @@ label {
     border-radius: 15px;
     border: none;
     font-weight: 600;
-    background-color: var(--transAccentColor1);
+    background-color: var(--solidAccentColor0);
     color: var(--OPPsolidCol3);
     transition: 0.3s background-color ease;
 }
@@ -696,7 +732,7 @@ label {
 .switch-container label {
     display: flex;
     align-items: center;
-    font-weight: 500;
+    /* font-weight: 500; */
     margin: 5px 10px;
 }
 
@@ -747,4 +783,10 @@ label {
 
 .switch-input:checked+.switch-toggle:before {
     transform: translateX(25px);
+}
+
+#themeSelection {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    height: 35px;
 }

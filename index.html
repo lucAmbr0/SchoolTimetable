@@ -29,9 +29,7 @@
     <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
       <div id="letsStartMessage" onclick="getStarted()">
-        <h1>
-          Welcome to<br />School Timetable!<br />Let's get started!
-        </h1>
+        <h1>Welcome to<br />School Timetable!<br />Let's get started!</h1>
         <span class="material-symbols-outlined"> person_play </span>
       </div>
       <div id="greetingDisplay">
@@ -116,7 +114,7 @@
               id="showGreetingSwitch"
               class="switch-input"
               onchange="toggleShowGreetingState()"
-              checked
+              
             />
             <label for="showGreetingSwitch" class="switch-toggle"></label>
           </div>
@@ -125,6 +123,11 @@
             <input type="checkbox" id="IDKSWITCH2" class="switch-input">
             <label for="IDKSWITCH2" class="switch-toggle"></label>
           </div> -->
+          <label for="themeSelection" class="switch-label">Color theme:</label>
+          <select name="theme" id="themeSelection">
+            <option value="blueTheme">Blue</option>
+            <option value="greenTheme">Green</option>
+          </select>
         </div>
       </details>
       <details class="settingsSection" open>
