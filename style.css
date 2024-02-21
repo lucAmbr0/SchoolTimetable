@@ -3,6 +3,171 @@
     What're you doing here?
 */
 
+/* ---------------  VARIABLES  --------------- */
+
+:root {
+
+    /* VAR COLORS */
+    --solidCol0: rgba(255, 255, 255, 1);
+    --solidCol1: rgba(235, 235, 235, 1);
+    --solidCol2: rgba(225, 225, 225, 1);
+    --solidCol3: rgba(215, 215, 215, 1);
+    --solidCol4: rgba(205, 205, 205, 1);
+
+    --transpCol1: rgba(255, 255, 255, 0.9);
+    --transpCol2: rgba(255, 255, 255, 0.8);
+    --transpCol3: rgba(255, 255, 255, 0.7);
+    --transpCol4: rgba(255, 255, 255, 0.6);
+    --transpCol5: rgba(255, 255, 255, 0.5);
+    --transpCol6: rgba(255, 255, 255, 0.4);
+    --transpCol7: rgba(255, 255, 255, 0.3);
+    --transpCol8: rgba(255, 255, 255, 0.2);
+    --transpCol9: rgba(255, 255, 255, 0.1);
+
+    --boxShadow0: 0 0 10px rgba(0, 0, 0, 1);
+    --boxShadow1: 0 0 20px rgba(0, 0, 0, 0.3);
+    --boxShadow2: 0 2px 10px rgba(0, 0, 0, 0.5);
+    --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
+
+    --boxBorderColor: transparent;
+
+    /* OPPOSITES */
+    --OPPsolidCol0: rgba(0, 0, 0, 1);
+    --OPPsolidCol1: rgba(20, 20, 20, 1);
+    --OPPsolidCol2: rgba(30, 30, 30, 1);
+    --OPPsolidCol3: rgba(40, 40, 40, 1);
+    --OPPsolidCol4: rgba(50, 50, 50, 1);
+
+    --OPPtranspCol1: rgba(0, 0, 0, 0.6);
+    --OPPtranspCol2: rgba(0, 0, 0, 0.5);
+    --OPPtranspCol3: rgba(0, 0, 0, 0.4);
+    --OPPtranspCol4: rgba(0, 0, 0, 0.3);
+    --OPPtranspCol5: rgba(0, 0, 0, 0.2);
+    --OPPtranspCol6: rgba(0, 0, 0, 0.15);
+    --OPPtranspCol7: rgba(0, 0, 0, 0.1);
+    /* --OPPtranspCol8: rgba(0, 0, 0, 0.1); */
+    /* --OPPtranspCol9: rgba(0, 0, 0, 0.1); */
+
+    --HeadingFont: "Poppins";
+    --StandardTextFont: "Noto Sans";
+}
+
+.darkModeVariables {
+
+    /* VAR COLORS */
+    --solidCol0: rgba(0, 0, 0, 1);
+    --solidCol1: rgba(20, 20, 20, 1);
+    --solidCol2: rgba(30, 30, 30, 1);
+    --solidCol3: rgba(40, 40, 40, 1);
+    --solidCol4: rgba(50, 50, 50, 1);
+
+    --transpCol1: rgba(0, 0, 0, 0.6);
+    --transpCol2: rgba(0, 0, 0, 0.5);
+    --transpCol3: rgba(0, 0, 0, 0.4);
+    --transpCol4: rgba(0, 0, 0, 0.3);
+    --transpCol5: rgba(0, 0, 0, 0.2);
+    --transpCol6: rgba(0, 0, 0, 0.15);
+    --transpCol7: rgba(0, 0, 0, 0.1);
+    /* --transpCol8: rgba(0, 0, 0, 0.1); */
+    /* --transpCol9: rgba(0, 0, 0, 0.1); */
+
+    --boxShadow0: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow1: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow2: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow3: 0 0 0 rgba(0, 0, 0, 0);
+    --boxShadow4: 0 0 0 rgba(0, 0, 0, 0);
+
+    /* OPPOSITES */
+    --OPPsolidCol0: rgba(255, 255, 255, 1);
+    --OPPsolidCol1: rgba(235, 235, 235, 1);
+    --OPPsolidCol2: rgba(225, 225, 225, 1);
+    --OPPsolidCol3: rgba(215, 215, 215, 1);
+    --OPPsolidCol4: rgba(205, 205, 205, 1);
+
+    --OPPtranspCol1: rgba(255, 255, 255, 0.9);
+    --OPPtranspCol2: rgba(255, 255, 255, 0.8);
+    --OPPtranspCol3: rgba(255, 255, 255, 0.7);
+    --OPPtranspCol4: rgba(255, 255, 255, 0.6);
+    --OPPtranspCol5: rgba(255, 255, 255, 0.5);
+    --OPPtranspCol6: rgba(255, 255, 255, 0.4);
+    --OPPtranspCol7: rgba(255, 255, 255, 0.3);
+    --OPPtranspCol8: rgba(255, 255, 255, 0.2);
+    --OPPtranspCol9: rgba(255, 255, 255, 0.1);
+}
+
+.LIGHTblueTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(86, 173, 236, 0.3),
+            rgba(55, 172, 255, 0.3));
+
+    --solidAccentColor0: rgb(103, 192, 255);
+    --solidAccentColor1: rgba(0, 49, 115, 1);
+    --solidAccentColor2: rgba(3, 18, 37, 1);
+
+    --transAccentColor0: rgba(55, 172, 255, 0.6);
+    --transAccentColor1: rgba(101, 163, 208, 0.8);
+    --transAccentColor2: rgba(3, 18, 37, 0.5);
+    --transAccentColor3: rgba(0, 49, 115, 0.07);
+    --transAccentColor4: rgba(124, 183, 225, 0.6);
+    --bodyBackground: rgb(224, 229, 237);
+}
+
+.DARKblueTheme {
+    --accentColor0: linear-gradient(45deg,
+            hsla(205, 80%, 43%, 0.3),
+            hsla(205, 100%, 41%, 0.3));
+
+    --solidAccentColor0: rgb(17, 75, 116);
+    --solidAccentColor1: rgb(161, 188, 220);
+    --solidAccentColor2: rgba(71, 94, 125, 0.5);
+
+    --transAccentColor0: rgba(12, 91, 147, 0.7);
+    --transAccentColor1: rgba(65, 147, 255, 0.5);
+    --transAccentColor2: rgba(35, 47, 63, 0.5);
+    --boxBorderColor: rgba(61, 81, 109, 0.5);
+    /* always must be the same as --transAccentColor2 */
+    --transAccentColor3: rgba(0, 49, 115, 0.03);
+    --transAccentColor4: rgba(24, 35, 43, 0.6);
+    --bodyBackground: rgb(15, 20, 29);
+}
+
+.LIGHTgreenTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(76, 218, 48, 0.3),
+            rgba(15, 87, 15, 0.3));
+
+    --solidAccentColor0: rgb(157, 202, 157);
+    --solidAccentColor1: rgb(19, 90, 16);
+    --solidAccentColor2: rgb(3, 37, 6);
+
+    --transAccentColor0: rgba(118, 174, 121, 0.6);
+    --transAccentColor1: rgba(88, 152, 88, 0.8);
+    --transAccentColor2: rgba(3, 37, 3, 0.5);
+    --transAccentColor3: rgba(0, 115, 12, 0.07);
+    --transAccentColor4: rgba(190, 233, 190, 0.4);
+    --bodyBackground: rgb(222, 231, 226);
+}
+
+.DARKgreenTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(74, 105, 69, 0.3),
+            rgba(28, 67, 28, 0.3));
+
+    --solidAccentColor0: rgb(76, 107, 76);
+    --solidAccentColor1: rgb(125, 164, 127);
+    --solidAccentColor2: rgb(10, 22, 11);
+
+    --transAccentColor0: rgba(18, 69, 16, 0.6);
+    --transAccentColor1: rgba(88, 152, 88, 0.8);
+    --transAccentColor2: rgba(3, 37, 3, 0.5);
+    --transAccentColor3: rgba(13, 59, 18, 0.07);
+    --transAccentColor4: rgba(190, 233, 190, 0.4);
+    --boxBorderColor: rgba(23, 44, 23, 0.5);
+    --bodyBackground: rgb(13, 16, 13);
+}
+
+
 /* ---------------  MAIN RULES  --------------- */
 
 html {
@@ -82,131 +247,11 @@ h5 {
         opacity: 0;
         scale: 0.4;
     }
+
     to {
         opacity: 1;
         scale: 1;
     }
-}
-
-/* ---------------  VARIABLES  --------------- */
-
-:root {
-    --accentColor0: linear-gradient(45deg,
-            rgba(86, 173, 236, 0.3),
-            rgba(55, 172, 255, 0.3));
-
-    --solidAccentColor0: rgba(55, 172, 255, 1);
-    --solidAccentColor1: rgba(0, 49, 115, 1);
-    --solidAccentColor2: rgba(3, 18, 37, 1);
-
-    --transAccentColor0: rgba(55, 172, 255, 0.6);
-    --transAccentColor1: rgba(84, 180, 249, 0.6);
-    --transAccentColor2: rgba(3, 18, 37, 0.5);
-    --transAccentColor3: rgba(0, 49, 115, 0.07);
-    --bodyBackground: rgba(0, 49, 115, 0.12);
-
-    /* VAR COLORS */
-    --solidCol0: rgba(255, 255, 255, 1);
-    --solidCol1: rgba(235, 235, 235, 1);
-    --solidCol2: rgba(225, 225, 225, 1);
-    --solidCol3: rgba(215, 215, 215, 1);
-    --solidCol4: rgba(205, 205, 205, 1);
-
-    --transpCol1: rgba(255, 255, 255, 0.9);
-    --transpCol2: rgba(255, 255, 255, 0.8);
-    --transpCol3: rgba(255, 255, 255, 0.7);
-    --transpCol4: rgba(255, 255, 255, 0.6);
-    --transpCol5: rgba(255, 255, 255, 0.5);
-    --transpCol6: rgba(255, 255, 255, 0.4);
-    --transpCol7: rgba(255, 255, 255, 0.3);
-    --transpCol8: rgba(255, 255, 255, 0.2);
-    --transpCol9: rgba(255, 255, 255, 0.1);
-
-    --boxShadow0: 0 0 10px rgba(0, 0, 0, 1);
-    --boxShadow1: 0 0 20px rgba(0, 0, 0, 0.3);
-    --boxShadow2: 0 2px 10px rgba(0, 0, 0, 0.5);
-    --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.5);
-    --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
-
-    --boxBorderColor: transparent;
-
-    /* OPPOSITES */
-    --OPPsolidCol0: rgba(0, 0, 0, 1);
-    --OPPsolidCol1: rgba(20, 20, 20, 1);
-    --OPPsolidCol2: rgba(30, 30, 30, 1);
-    --OPPsolidCol3: rgba(40, 40, 40, 1);
-    --OPPsolidCol4: rgba(50, 50, 50, 1);
-
-    --OPPtranspCol1: rgba(0, 0, 0, 0.6);
-    --OPPtranspCol2: rgba(0, 0, 0, 0.5);
-    --OPPtranspCol3: rgba(0, 0, 0, 0.4);
-    --OPPtranspCol4: rgba(0, 0, 0, 0.3);
-    --OPPtranspCol5: rgba(0, 0, 0, 0.2);
-    --OPPtranspCol6: rgba(0, 0, 0, 0.15);
-    --OPPtranspCol7: rgba(0, 0, 0, 0.1);
-    /* --OPPtranspCol8: rgba(0, 0, 0, 0.1); */
-    /* --OPPtranspCol9: rgba(0, 0, 0, 0.1); */
-
-    --HeadingFont: "Poppins";
-    --StandardTextFont: "Noto Sans";
-}
-
-.darkModeVariables {
-    --accentColor0: linear-gradient(45deg,
-            hsla(205, 80%, 43%, 0.3),
-            hsla(205, 100%, 41%, 0.3));
-
-    --solidAccentColor0: rgba(55, 172, 255, 1);
-    --solidAccentColor1: rgb(161, 188, 220);
-    --solidAccentColor2: rgba(71, 94, 125, 0.5);
-
-    --transAccentColor0: rgba(12, 91, 147, 0.7);
-    --transAccentColor1: rgba(65, 147, 255, 0.5);
-    --transAccentColor2: rgba(35, 47, 63, 0.5);
-    --boxBorderColor: rgba(61, 81, 109, 0.5);
-    /* always must be the same as --transAccentColor2 */
-    --transAccentColor3: rgba(0, 49, 115, 0.03);
-    --bodyBackground: rgb(15, 20, 29);
-
-    /* VAR COLORS */
-    --solidCol0: rgba(0, 0, 0, 1);
-    --solidCol1: rgba(20, 20, 20, 1);
-    --solidCol2: rgba(30, 30, 30, 1);
-    --solidCol3: rgba(40, 40, 40, 1);
-    --solidCol4: rgba(50, 50, 50, 1);
-
-    --transpCol1: rgba(0, 0, 0, 0.6);
-    --transpCol2: rgba(0, 0, 0, 0.5);
-    --transpCol3: rgba(0, 0, 0, 0.4);
-    --transpCol4: rgba(0, 0, 0, 0.3);
-    --transpCol5: rgba(0, 0, 0, 0.2);
-    --transpCol6: rgba(0, 0, 0, 0.15);
-    --transpCol7: rgba(0, 0, 0, 0.1);
-    /* --transpCol8: rgba(0, 0, 0, 0.1); */
-    /* --transpCol9: rgba(0, 0, 0, 0.1); */
-
-    --boxShadow0: 0 0 0 rgba(0, 0, 0, 0);
-    --boxShadow1: 0 0 0 rgba(0, 0, 0, 0);
-    --boxShadow2: 0 0 0 rgba(0, 0, 0, 0);
-    --boxShadow3: 0 0 0 rgba(0, 0, 0, 0);
-    --boxShadow4: 0 0 0 rgba(0, 0, 0, 0);
-
-    /* OPPOSITES */
-    --OPPsolidCol0: rgba(255, 255, 255, 1);
-    --OPPsolidCol1: rgba(235, 235, 235, 1);
-    --OPPsolidCol2: rgba(225, 225, 225, 1);
-    --OPPsolidCol3: rgba(215, 215, 215, 1);
-    --OPPsolidCol4: rgba(205, 205, 205, 1);
-
-    --OPPtranspCol1: rgba(255, 255, 255, 0.9);
-    --OPPtranspCol2: rgba(255, 255, 255, 0.8);
-    --OPPtranspCol3: rgba(255, 255, 255, 0.7);
-    --OPPtranspCol4: rgba(255, 255, 255, 0.6);
-    --OPPtranspCol5: rgba(255, 255, 255, 0.5);
-    --OPPtranspCol6: rgba(255, 255, 255, 0.4);
-    --OPPtranspCol7: rgba(255, 255, 255, 0.3);
-    --OPPtranspCol8: rgba(255, 255, 255, 0.2);
-    --OPPtranspCol9: rgba(255, 255, 255, 0.1);
 }
 
 /* ---------------  APP TABS  --------------- */
@@ -222,7 +267,7 @@ h5 {
 /* ---------------  NOW TAB  --------------- */
 
 #letsStartMessage {
-    background-color: var(--transAccentColor1);
+    background-color: var(--transAccentColor4);
     margin: 35% 10% 50px 10%;
     display: flex;
     flex-direction: column;
@@ -585,8 +630,8 @@ label {
 }
 
 #greetingNotShownBox span {
-     margin: auto 2.5px;
-     color: var(--OPPtranspCol1);
+    margin: auto 2.5px;
+    color: var(--OPPtranspCol1);
 
 }
 
@@ -604,7 +649,7 @@ label {
     border-radius: 15px;
     border: none;
     font-weight: 600;
-    background-color: var(--transAccentColor1);
+    background-color: var(--solidAccentColor0);
     color: var(--OPPsolidCol3);
     transition: 0.3s background-color ease;
 }
@@ -681,17 +726,17 @@ label {
     grid-template-columns: 7fr 3fr;
     margin: 10px 5px;
     align-items: center;
-  }
+}
 
-  .switch-container input,
-  .switch-container label {
+.switch-container input,
+.switch-container label {
     display: flex;
     align-items: center;
-    font-weight: 500;
-    margin: 5px 10px; 
-  }
-  
-  .switch-label {
+    /* font-weight: 500; */
+    margin: 5px 10px;
+}
+
+.switch-label {
     grid-column: 1;
     font-family: Noto Sans;
     text-align: left;
@@ -699,18 +744,18 @@ label {
     margin: 0 10px 0 10px;
     color: var(--OPPsolidCol2);
     font-size: 1.2em;
-  }
-  
-  .switch {
+}
+
+.switch {
     grid-column: 2;
     justify-self: end;
-  }
-  
-  .switch-input {
-    display: none !important;
-  }
+}
 
-  .switch-toggle {
+.switch-input {
+    display: none !important;
+}
+
+.switch-toggle {
     position: relative;
     display: inline-block;
     width: 65px;
@@ -718,9 +763,9 @@ label {
     background-color: var(--solidCol4);
     border-radius: 20px;
     cursor: pointer;
-  }
-  
-  .switch-toggle:before {
+}
+
+.switch-toggle:before {
     content: '';
     position: absolute;
     top: 5px;
@@ -730,13 +775,18 @@ label {
     background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s;
-  }
-  
-  .switch-input:checked + .switch-toggle {
+}
+
+.switch-input:checked+.switch-toggle {
     background-color: var(--transAccentColor1);
-  }
-  
-  .switch-input:checked + .switch-toggle:before {
+}
+
+.switch-input:checked+.switch-toggle:before {
     transform: translateX(25px);
-  }
-  
+}
+
+#themeSelection {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    height: 35px;
+}

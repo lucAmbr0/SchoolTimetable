@@ -299,28 +299,30 @@ function displayUserToNowTab(day, hour) {
 
 const darkModeSwitch = document.getElementById("darkModeSwitch"); // reference to the switch <input> item which actually is a checkbox type
 let darkModeState; // stores whether dark mode is active or not (0-1)
+const themeSelection = document.getElementById("themeSelection");
+let activeTheme = getThemeFromStorage();
 
 findThemeStateAtLoad(); // When the page loads look for user's dark theme choice in local storage, if there isn't activates light mode 
 function findThemeStateAtLoad() {
   if (localStorage.getItem('darkModeState')) {
     darkModeState = localStorage.getItem('darkModeState');
     if (darkModeState == "1") {
-      document.body.classList.add("darkModeVariables");
       darkModeSwitch.checked = true;
     }
   }
   else darkModeState = "0";
+  setTheme();
   localStorage.setItem('darkModeState', darkModeState);
 }
 
 function toggleDarkMode() { // triggered when the switch is clicked
   if (darkModeSwitch.checked) {
-    document.body.classList.add("darkModeVariables");
     darkModeState = "1";
+    setTheme();
   }
   else if (!darkModeSwitch.checked) {
-    document.body.classList.remove("darkModeVariables");
     darkModeState = "0";
+    setTheme();
   }
   localStorage.setItem('darkModeState', darkModeState);
 }
@@ -600,6 +602,41 @@ function displayMatesToNowTab(day, hour) {
   }
 }
 
+
+// ---------------  THEMES AND COLOR ACCENTS  ---------------
+
+themeSelection.addEventListener("change", () => {
+  activeTheme = themeSelection.value;
+  setTheme();
+});
+
+function getThemeFromStorage() {
+  if (!localStorage.getItem('theme')) {
+    return "blueTheme";
+  } else {
+    return localStorage.getItem('theme');
+  }
+}
+
+function setTheme() {
+  themeSelection.value = activeTheme;
+  document.body.classList.remove("DARKblueTheme");
+  document.body.classList.remove("LIGHTblueTheme");
+  document.body.classList.remove("DARKgreenTheme");
+  document.body.classList.remove("LIGHTgreenTheme");
+  document.body.classList.remove("darkModeVariables");
+  if (darkModeState == "1") {
+    document.body.classList.add("darkModeVariables");
+    document.body.classList.add("DARK"+activeTheme);    
+  }
+  else {
+    document.body.classList.remove("darkModeVariables");
+    document.body.classList.add("LIGHT"+activeTheme);    
+  }
+  localStorage.setItem('theme',activeTheme)
+}
+
+
 // ---------------  DATE AND TIME DISPLAY  ---------------
 
 const dayDisplay = document.getElementById("dayDisplay");
@@ -607,7 +644,6 @@ const timeDisplay = document.getElementById("timeDisplay");
 let currentDate = new Date();
 updateDateTime();
 function updateDateTime() {
-
   // UPDATING TIME AND DATE
   currentDate = new Date();
   let day = currentDate.getDay();
