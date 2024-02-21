@@ -93,11 +93,11 @@ class UserInfo {
     this.complex = [[]];
     this.subject = [[]];
     this.teacher = [[]];
-    if (!localStorage.getItem('user_room')) this.fillArrays();
+    if (!localStorage.getItem('user_roomARR')) this.fillArrays();
   }
 
   fillArrays() {
-    // Define the size of the arrays (adjust as needed)
+    // Define the size of the arrays
     const rows = 6;
     const columns = 6;
 
@@ -111,7 +111,7 @@ class UserInfo {
   }
 }
 
-let user = new UserInfo("YourName", "2CL", "SchoolName - AndCityMaybe");
+let user = new UserInfo("-", "-", "-");
 
 getUserInfoFromLocalStorage();
 function getUserInfoFromLocalStorage() {
@@ -254,7 +254,7 @@ function getUserClassInfoFromLocalStorage() {
 // Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
 
 // USER'S DATA
-displayUserToNowTab();
+displayUserToNowTab()
 function displayUserToNowTab() {
   // USERS CLASS DATA IN NOW TAB
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
@@ -334,10 +334,54 @@ function toggleShowGreetingState() { // triggered when the switch is clicked
   if (showGreetingSwitch.checked) {
     document.getElementById("greetingDisplay").style.display = "block";
     showGreetingState = "1";
+    document.getElementById("userDataForm").style.opacity = "1";
+    document.getElementById("submitUserInfoBtn").style.opacity = "1";
+    document.getElementById("greetingNotShownBox").style.display = "none";
   }
   else if (!showGreetingSwitch.checked) {
     document.getElementById("greetingDisplay").style.display = "none";
     showGreetingState = "0";
+    document.getElementById("userDataForm").style.opacity = "0.5";
+    document.getElementById("submitUserInfoBtn").style.opacity = "0.5";
+    document.getElementById("greetingNotShownBox").style.display = "flex";
   }
   localStorage.setItem('showGreetingState', showGreetingState);
 }
+
+
+
+
+
+
+
+// ---------------  DATE AND TIME DISPLAY  ---------------
+
+const dayDisplay = document.getElementById("dayDisplay");
+const timeDisplay = document.getElementById("timeDisplay");
+
+updateDateTime();
+function updateDateTime() {
+  // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
+  displayUserToNowTab();
+
+  // UPDATING TIME AND DATE
+  const currentDate = new Date();
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  const dayOfWeek = days[currentDate.getDay()];
+  const dayOfMonth = currentDate.getDate();
+  const month = months[currentDate.getMonth()];
+  const hours = String(currentDate.getHours()).padStart(2, '0');
+  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+
+  dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
+  timeText = hours + ':' + minutes;
+
+  dayDisplay.textContent = dateText;
+  timeDisplay.textContent = timeText;
+}
+
+// Initial call to update immediately and then every 2 seconds
+setInterval(updateDateTime, 2000);
+

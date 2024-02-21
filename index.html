@@ -36,48 +36,12 @@
         <h3 id="schoolDisplay"></h3>
       </div>
       <div id="yourClassBox">
-        <h1 id="userClassroomDisplay">Room 20</h1>
-        <h3 id="userComplexDisplay">Complex C</h3>
-        <h2 id="userSubjectAndTeacher">Maths - Bezos J.</h2>
+        <h1 id="userClassroomDisplay"></h1>
+        <h3 id="userComplexDisplay"></h3>
+        <h2 id="userSubjectAndTeacher"></h2>
       </div>
       <div class="horizontalLine"></div>
       <h3 id="secondaryBoxesLabel">Your mates</h3>
-      <div class="matesBox">
-        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
-        <div class="matesBoxGrid">
-          <p class="matesClass">1BS</p>
-          <p class="matesNotes">Mark, John</p>
-          <p class="matesSubject">English</p>
-          <p class="matesTeacher">Armstrong N.</p>
-        </div>
-      </div>
-      <div class="matesBox">
-        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
-        <div class="matesBoxGrid">
-          <p class="matesClass">1BS</p>
-          <p class="matesNotes">Mark, John</p>
-          <p class="matesSubject">English</p>
-          <p class="matesTeacher">Armstrong N.</p>
-        </div>
-      </div>
-      <div class="matesBox">
-        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
-        <div class="matesBoxGrid">
-          <p class="matesClass">1BS</p>
-          <p class="matesNotes">Mark, John</p>
-          <p class="matesSubject">English</p>
-          <p class="matesTeacher">Armstrong N.</p>
-        </div>
-      </div>
-      <div class="matesBox">
-        <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
-        <div class="matesBoxGrid">
-          <p class="matesClass">1BS</p>
-          <p class="matesNotes">Mark, John</p>
-          <p class="matesSubject">English</p>
-          <p class="matesTeacher">Armstrong N.</p>
-        </div>
-      </div>
       <div class="matesBox">
         <h2 class="matesRoomDisplay">Lab. Elettronica 2</h2>
         <div class="matesBoxGrid">
@@ -103,7 +67,7 @@
             />
             <label for="darkModeSwitch" class="switch-toggle"></label>
           </div>
-          <div class="switch-label">Show Greeting</div>
+          <div class="switch-label">Show greeting</div>
           <div class="switch">
             <input
               type="checkbox"
@@ -123,6 +87,12 @@
       </details>
       <details class="settingsSection" open>
         <summary class="settingHeader">Your data</summary>
+        <div id="greetingNotShownBox">
+          <span class="material-symbols-outlined"> info </span>
+          <label style="opacity: 1; text-align: center; font-weight: 200"
+             >This data is not shown</label
+          >
+        </div>
         <div id="userDataForm">
           <label for="userNameInput">Name </label>
           <input type="text" id="userNameInput" />
