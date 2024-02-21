@@ -382,25 +382,41 @@ mates.push(new matesInfo("", "", ""));
 mates.push(new matesInfo("", "", ""));
 mates.push(new matesInfo("", "", ""));
 
-getMatesInfoFromLocalStorage();
-function getMatesInfoFromLocalStorage() {
-  // If it finds the key "mates_name" in user's browser, it reads the data and writes it to the variables
-  mates.forEach(mate => {
-    if (localStorage.getItem('mates_classMatesNames')) {
-      mate.name = localStorage.getItem('mates_classMatesNames');
-      mate.className = localStorage.getItem('mates_className');
-      // displayInfo(); TO ADD DISPLAY MATES INFO
-    }
-  });
-}
-
 const matesClassInput = document.getElementById("matesClassInput");
 const matesNamesInput = document.getElementById("matesNamesInput");
+
+const matesRoomInput = document.getElementById("matesRoomInput");
+const matesSubjectInput = document.getElementById("matesSubjectInput");
+const matesTeacherInput = document.getElementById("matesTeacherInput");
 
 let mateObjIndex = 0;
 let previousMateObject = 0;
 
-function updateMatesClassInfo() {
+getMatesInfoFromLocalStorage();
+function getMatesInfoFromLocalStorage() {
+  // If it finds the key "mates_name" in user's browser, it reads the data and writes it to the variables
+  if (localStorage.getItem('mates_OBJECT')) {
+    let tempMatesOBJECT = JSON.parse(localStorage.getItem('mates_OBJECT'));
+    mates.forEach((mate, index) => {
+      mate.classMatesNames = tempMatesOBJECT[index].classMatesNames;
+      mate.className = tempMatesOBJECT[index].className;
+      mate.room = tempMatesOBJECT[index].room;
+      mate.subject = tempMatesOBJECT[index].subject;
+      mate.teacher = tempMatesOBJECT[index].teacher;
+    });
+    displayMatesInfo();
+  }
+}
+
+function displayMatesInfo() {
+  matesClassInput.value = mates[mateObjIndex].className;
+  matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+  matesRoomInput.value = mates[mateObjIndex].room[0][0];
+  matesSubjectInput.value = mates[mateObjIndex].subject[0][0];
+  matesTeacherInput.value = mates[mateObjIndex].teacher[0][0];
+}
+
+function updateMatesInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   if (matesClassInput.value) {
@@ -410,7 +426,8 @@ function updateMatesClassInfo() {
     mates[mateObjIndex].classMatesNames = matesNamesInput.value;
   }
 
-  displayUserInfo();
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
+  localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
 }
 
 const classNumberSelection = document.getElementById("classNumberSelection");
@@ -418,22 +435,101 @@ const classNumberSelection = document.getElementById("classNumberSelection");
 classNumberSelection.addEventListener("change", changeMatesIndexLabels);
 
 function changeMatesIndexLabels() {
+  updateMatesClassGrid();
   mates[previousMateObject].className = matesClassInput.value;
   mates[previousMateObject].classMatesNames = matesNamesInput.value;
+  
+  
+  mateObjIndex = classNumberSelection.value - 1;
 
-  mateObjIndex = classNumberSelection.value-1;
-
-  matesClassInput.value = mates[mateObjIndex].className;
-  matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+  matesClassInput.value = mates[mateObjIndex].className.trim();
+  matesNamesInput.value = mates[mateObjIndex].classMatesNames.trim();
+  matesRoomInput.value = mates[mateObjIndex].room[MATEpreviousDayState][MATEpreviousHourState];
+  matesSubjectInput.value = mates[mateObjIndex].subject[MATEpreviousDayState][MATEpreviousHourState];
+  matesTeacherInput.value = mates[mateObjIndex].teacher[MATEpreviousDayState][MATEpreviousHourState];
 
   previousMateObject = mateObjIndex;
 }
 
+function updateMatesClassInfo() {
+  // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
+  updateMatesInfo();
+  updateMatesClassGrid();
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
+  localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
+  console.log("EVATROIA");
+}
 
+// DAYS AND HOURS PART (MATES)
 
+let MATEpreviousDayState = 0;
+let MATEpreviousHourState = 0;
 
+const matesDaySelection = document.getElementById("matesDaySelection");
+const matesHourSelection = document.getElementById("matesHourSelection");
 
+matesDaySelection.addEventListener("change", updateMatesClassGrid);
+matesHourSelection.addEventListener("change", updateMatesClassGrid);
 
+function updateMatesClassGrid() {
+  mates[mateObjIndex].room[MATEpreviousDayState][MATEpreviousHourState] = matesRoomInput.value;
+  mates[mateObjIndex].subject[MATEpreviousDayState][MATEpreviousHourState] = matesSubjectInput.value;
+  mates[mateObjIndex].teacher[MATEpreviousDayState][MATEpreviousHourState] = matesTeacherInput.value;
+
+  let MATEdayIndex = null;
+  switch (matesDaySelection.value) {
+    case 'monday':
+      MATEdayIndex = 0;
+      break;
+    case 'tuesday':
+      MATEdayIndex = 1;
+      break;
+    case 'wednesday':
+      MATEdayIndex = 2;
+      break;
+    case 'thursday':
+      MATEdayIndex = 3;
+      break;
+    case 'friday':
+      MATEdayIndex = 4;
+      break;
+    case 'saturday':
+      MATEdayIndex = 5;
+      break;
+  }
+
+  let MATEhourIndex = null;
+  switch (matesHourSelection.value) {
+    case '1':
+      MATEhourIndex = 0;
+      break;
+    case '2':
+      MATEhourIndex = 1;
+      break;
+    case '3':
+      MATEhourIndex = 2;
+      break;
+    case '4':
+      MATEhourIndex = 3;
+      break;
+    case '5':
+      MATEhourIndex = 4;
+      break;
+    case '6':
+      MATEhourIndex = 5;
+      break;
+  }
+  changeMatesClassInfoLabel(MATEdayIndex, MATEhourIndex);
+}
+
+function changeMatesClassInfoLabel(dayIndex, hourIndex) {
+  matesRoomInput.value = mates[mateObjIndex].room[dayIndex][hourIndex];
+  matesSubjectInput.value = mates[mateObjIndex].subject[dayIndex][hourIndex];
+  matesTeacherInput.value = mates[mateObjIndex].teacher[dayIndex][hourIndex];
+
+  MATEpreviousDayState = dayIndex;
+  MATEpreviousHourState = hourIndex;
+}
 
 // ---------------  DATE AND TIME DISPLAY  ---------------
 

@@ -174,14 +174,14 @@
         <button
           class="submitBtn"
           id="submitUserInfoBtn"
-          onclick="updateMatesClassInfo()"
+          onclick="updateMatesInfo()"
         >
           Confirm
         </button>
         <div class="horizontalLine"></div>
         <div>
           <div class="dataDayAndHourContainer">
-            <select class="matesDaySelection" name="day">
+            <select id="matesDaySelection" name="day">
               <option value="monday">Monday</option>
               <option value="tuesday">Tuesday</option>
               <option value="wednesday">Wednesday</option>
@@ -204,11 +204,11 @@
           </div>
           <div class="dataGrid">
             <label for="matesRoomInput">Room</label>
-            <input type="text" class="matesRoomInput" />
+            <input type="text" id="matesRoomInput" />
             <label for="matesSubjectInput">Subject</label>
-            <input type="text" class="matesSubjectInput" />
+            <input type="text" id="matesSubjectInput" />
             <label for="matesTeacherInput">Teacher</label>
-            <input type="text" class="matesTeacherInput" />
+            <input type="text" id="matesTeacherInput" />
           </div>
         </div>
         <button
