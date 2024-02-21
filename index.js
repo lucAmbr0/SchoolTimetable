@@ -262,10 +262,10 @@ function displayUserToNowTab() {
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
   const date = new Date(); // object containing time info
   let schoolHourStart = 8; // standard hour when school starts is 8
-  const hour = date.getHours() - schoolHourStart;
-  const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
-  // const day = 0; // >>> DEBUG
-  // const hour = 8 - schoolHourStart; // >>> DEBUG
+  // const hour = date.getHours() - schoolHourStart;
+  // const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
+  const day = 0; // >>> DEBUG
+  const hour = 8 - schoolHourStart; // >>> DEBUG
   if (day != 7) {
     userClassroomDisplay.textContent = user.room[day][hour];
     userComplexDisplay.textContent = user.complex[day][hour];
@@ -346,6 +346,87 @@ function toggleShowGreetingState() { // triggered when the switch is clicked
     document.getElementById("greetingNotShownBox").style.display = "flex";
   }
   localStorage.setItem('showGreetingState', showGreetingState);
+}
+
+// ---------------  MANAGING AND SAVING DATA ABOUT MATES  ---------------
+
+// JavaScript variables that contain mates' info
+class matesInfo {
+  constructor(name, className) {
+    this.classMatesNames = name;
+    this.className = className;
+    this.room = [[]];
+    this.subject = [[]];
+    this.teacher = [[]];
+    if (!localStorage.getItem('mates_roomARR')) this.fillArrays();
+  }
+
+  fillArrays() {
+    // Define the size of the arrays
+    const rows = 6;
+    const columns = 6;
+
+    // Fill each array with empty strings
+    for (let i = 0; i < rows; i++) {
+      this.room[i] = Array(columns).fill("");
+      this.subject[i] = Array(columns).fill("");
+      this.teacher[i] = Array(columns).fill("");
+    }
+  }
+}
+
+let mates = [];
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+mates.push(new matesInfo("", "", ""));
+
+getMatesInfoFromLocalStorage();
+function getMatesInfoFromLocalStorage() {
+  // If it finds the key "mates_name" in user's browser, it reads the data and writes it to the variables
+  mates.forEach(mate => {
+    if (localStorage.getItem('mates_classMatesNames')) {
+      mate.name = localStorage.getItem('mates_classMatesNames');
+      mate.className = localStorage.getItem('mates_className');
+      // displayInfo(); TO ADD DISPLAY MATES INFO
+    }
+  });
+}
+
+const matesClassInput = document.getElementById("matesClassInput");
+const matesNamesInput = document.getElementById("matesNamesInput");
+
+let mateObjIndex = 0;
+let previousMateObject = 0;
+
+function updateMatesClassInfo() {
+  // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
+  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
+  if (matesClassInput.value) {
+    mates[mateObjIndex].className = matesClassInput.value;
+  }
+  if (matesNamesInput.value) {
+    mates[mateObjIndex].classMatesNames = matesNamesInput.value;
+  }
+
+  displayUserInfo();
+}
+
+const classNumberSelection = document.getElementById("classNumberSelection");
+
+classNumberSelection.addEventListener("change", changeMatesIndexLabels);
+
+function changeMatesIndexLabels() {
+  mates[previousMateObject].className = matesClassInput.value;
+  mates[previousMateObject].classMatesNames = matesNamesInput.value;
+
+  mateObjIndex = classNumberSelection.value-1;
+
+  matesClassInput.value = mates[mateObjIndex].className;
+  matesNamesInput.value = mates[mateObjIndex].classMatesNames;
+
+  previousMateObject = mateObjIndex;
 }
 
 
