@@ -41,6 +41,12 @@ function navbarAction(tab) {
   }
 }
 
+function getStarted() {
+  setTimeout(() => {
+    navbarAction(2);
+  }, 600)
+}
+
 // ---------------  PERSONAL DATA ON SETTINGS TAB  ---------------
 
 // Here are all the instructions and variables that write data to the frontend html
@@ -71,9 +77,24 @@ function displayUserInfo() {
   // Triggers if there is saved data and fills all html fields that already have data
 
   // Writes data in Now Tab
-  nameDisplay.textContent = ", " + user.name;
-  classDisplay.textContent = " - " + user.className;
-  schoolDisplay.textContent = user.schoolName;
+  if (user.name) {
+    nameDisplay.textContent = ", " + user.name;
+  }
+  else {
+    nameDisplay.textContent = "";
+  }
+  if (user.className) {
+    classDisplay.textContent = " - " + user.className;
+  }
+  else {
+    classDisplay.textContent = "";
+  }
+  if (user.schoolName) {
+    schoolDisplay.textContent = user.schoolName;
+  }
+  else {
+    schoolDisplay.textContent = " ";
+  }
 
   // Writes data to input fields in settings tab
   userNameInput.value = user.name;
@@ -111,7 +132,7 @@ class UserInfo {
   }
 }
 
-let user = new UserInfo("-", "-", "-");
+let user = new UserInfo("", "", "");
 
 getUserInfoFromLocalStorage();
 function getUserInfoFromLocalStorage() {
@@ -127,24 +148,17 @@ function getUserInfoFromLocalStorage() {
 function updateUserInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
-  if (userNameInput.value) {
-    user.name = userNameInput.value;
-    localStorage.setItem('user_name', user.name);
-  }
-  if (userClassInput.value) {
-    user.className = userClassInput.value;
-    localStorage.setItem('user_className', user.className);
-  }
-  if (userSchoolNameInput.value) {
-    user.schoolName = userSchoolNameInput.value;
-    localStorage.setItem('user_schoolName', user.schoolName);
-  }
+  user.name = userNameInput.value;
+  localStorage.setItem('user_name', user.name);
+  user.className = userClassInput.value;
+  localStorage.setItem('user_className', user.className);
+  user.schoolName = userSchoolNameInput.value;
+  localStorage.setItem('user_schoolName', user.schoolName);
 
-  // If there's even one of these items in localStorage, refreshes data in Now Tab
-  if (localStorage.getItem('user_name') || localStorage.getItem('user_className') || localStorage.getItem('user_schoolName')) {
-    displayUserInfo();
-  }
+  // Refreshes data in Now Tab
+  displayUserInfo();
 }
+
 
 let previousDayState = 0;
 let previousHourState = 0;
@@ -225,7 +239,6 @@ function updateUserClassInfo() {
   localStorage.setItem('user_complexARR', JSON.stringify(user.complex));
   localStorage.setItem('user_subjectARR', JSON.stringify(user.subject));
   localStorage.setItem('user_teacherARR', JSON.stringify(user.teacher));
-  displayUserToNowTab();
 }
 
 function displayUserClassInfo() {
@@ -239,13 +252,12 @@ function displayUserClassInfo() {
 getUserClassInfoFromLocalStorage();
 function getUserClassInfoFromLocalStorage() {
   // If it finds a key "isThereData" in user's browser, it reads the data and writes it to the variables
-  if (localStorage.getItem('isThereData')) {
+  if (localStorage.getItem('user_roomARR')) {
     user.room = JSON.parse(localStorage.getItem('user_roomARR'));
     user.complex = JSON.parse(localStorage.getItem('user_complexARR'));
     user.subject = JSON.parse(localStorage.getItem('user_subjectARR'));
     user.teacher = JSON.parse(localStorage.getItem('user_teacherARR'));
     displayUserClassInfo();
-    displayUserToNowTab();
   }
 }
 
@@ -254,25 +266,31 @@ function getUserClassInfoFromLocalStorage() {
 // Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
 
 // USER'S DATA
-displayUserToNowTab()
-function displayUserToNowTab() {
+function displayUserToNowTab(day, hour) {
   // USERS CLASS DATA IN NOW TAB
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
-  const date = new Date(); // object containing time info
   let schoolHourStart = 8; // standard hour when school starts is 8
-  // const hour = date.getHours() - schoolHourStart;
-  // const day = date.getDay() - 1; // minus one because date object sets monday as 1, while the array starts from position 0
-  const day = 0; // >>> DEBUG
-  const hour = 8 - schoolHourStart; // >>> DEBUG
-  if (day != 7) {
-    userClassroomDisplay.textContent = user.room[day][hour];
-    userComplexDisplay.textContent = user.complex[day][hour];
-    if (user.subject[day][hour]) {
-      userSubjectAndTeacher.textContent = user.subject[day][hour] + " - " + user.teacher[day][hour];
-    } else {
-      userSubjectAndTeacher.textContent = "There's no data here :(";
+  hour -= schoolHourStart; // >>> DEBUG
+  if (day !== 7) {
+    if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
+    else userClassroomDisplay.textContent = user.room[day][hour];
+    if (!user.complex[day][hour]) {
+      userComplexDisplay.style.display = "none";
+      userComplexDisplay.textContent = " ";
+    }
+    else {
+      userComplexDisplay.style.display = "block";
+      userComplexDisplay.textContent = user.complex[day][hour];
+    }
+    if (!user.subject[day][hour]) {
+      userSubjectAndTeacher.style.display = "none";
+    }
+    else {
+      userSubjectAndTeacher.style.display = "block";
+      userSubjectAndTeacher.textContent = user.subject[day][hour];
+      if (user.teacher[day][hour]) userSubjectAndTeacher.textContent += " - " + user.teacher[day][hour];
     }
   }
 }
@@ -312,7 +330,7 @@ function toggleDarkMode() { // triggered when the switch is clicked
 const showGreetingSwitch = document.getElementById("showGreetingSwitch"); // reference to the switch <input> item which actually is a checkbox type
 let showGreetingState; // stores whether the option of showing Greeting is active or not (0-1)
 
-findShowGreetingStateAtLoad();  // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes true by default 
+findShowGreetingStateAtLoad();  // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes false by default 
 function findShowGreetingStateAtLoad() {
   if (localStorage.getItem('showGreetingState')) {
     showGreetingState = localStorage.getItem('showGreetingState');
@@ -326,8 +344,12 @@ function findShowGreetingStateAtLoad() {
       toggleShowGreetingState();
     }
   }
-  else showGreetingState = "1";
+  else {
+    showGreetingState = "0";
+    showGreetingSwitch.checked = false;
+  }
   localStorage.setItem('showGreetingState', showGreetingState);
+  toggleShowGreetingState();
 }
 
 function toggleShowGreetingState() { // triggered when the switch is clicked
@@ -419,12 +441,8 @@ function displayMatesInfo() {
 function updateMatesInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
-  if (matesClassInput.value) {
-    mates[mateObjIndex].className = matesClassInput.value;
-  }
-  if (matesNamesInput.value) {
-    mates[mateObjIndex].classMatesNames = matesNamesInput.value;
-  }
+  mates[mateObjIndex].className = matesClassInput.value;
+  mates[mateObjIndex].classMatesNames = matesNamesInput.value;
 
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
@@ -438,8 +456,8 @@ function changeMatesIndexLabels() {
   updateMatesClassGrid();
   mates[previousMateObject].className = matesClassInput.value;
   mates[previousMateObject].classMatesNames = matesNamesInput.value;
-  
-  
+
+
   mateObjIndex = classNumberSelection.value - 1;
 
   matesClassInput.value = mates[mateObjIndex].className.trim();
@@ -457,7 +475,6 @@ function updateMatesClassInfo() {
   updateMatesClassGrid();
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
-  console.log("EVATROIA");
 }
 
 // DAYS AND HOURS PART (MATES)
@@ -531,18 +548,79 @@ function changeMatesClassInfoLabel(dayIndex, hourIndex) {
   MATEpreviousHourState = hourIndex;
 }
 
+// ---------------  SHOWING MATES CLASS DATA TO NOW TAB  ---------------
+
+// Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
+
+// MATES' DATA
+function displayMatesToNowTab(day, hour) {
+  // MATES CLASS DATA IN NOW TAB
+  const matesRoomDisplay = document.querySelectorAll(".matesRoomDisplay");
+  const matesClass = document.querySelectorAll(".matesClass");
+  const matesNotes = document.querySelectorAll(".matesNotes");
+  const matesSubject = document.querySelectorAll(".matesSubject");
+  const matesTeacher = document.querySelectorAll(".matesTeacher");
+
+  let schoolHourStart = 8; // standard hour when school starts is 8
+  hour -= schoolHourStart;
+  if (day != 7) {
+    let atLeastOneMateBoxIsShown = false;
+    for (let i = 0; i < 5; i++) {
+      if (!mates[i].room[day][hour] && mates[i].className) matesRoomDisplay[i].textContent = "No lesson";
+      else matesRoomDisplay[i].textContent = mates[i].room[day][hour];
+      matesSubject[i].textContent = mates[i].subject[day][hour];
+      matesTeacher[i].textContent = mates[i].teacher[day][hour];
+      matesNotes[i].textContent = mates[i].classMatesNames;
+      if (!mates[i].className) {
+        matesClass[i].parentElement.parentElement.style.display = "none";
+        matesClass[i].textContent = "";
+      }
+      else {
+        atLeastOneMateBoxIsShown = true;
+        matesClass[i].parentElement.parentElement.style.display = "block";
+        matesClass[i].textContent = mates[i].className;
+      }
+      if (!atLeastOneMateBoxIsShown) {
+        document.getElementById("userMatesSeparator").style.display = "none";
+        document.getElementById("secondaryBoxesLabel").style.display = "none";
+      }
+      else {
+        document.getElementById("userMatesSeparator").style.display = "block";
+        document.getElementById("secondaryBoxesLabel").style.display = "block";
+      }
+    }
+    if (!atLeastOneMateBoxIsShown && showGreetingState == "0" && userClassroomDisplay.textContent == "No lesson") {
+      document.getElementById("yourClassBox").style.display = "none";
+      document.getElementById("letsStartMessage").style.display = "block";
+    }
+    else {
+      document.getElementById("yourClassBox").style.display = "block";
+      document.getElementById("letsStartMessage").style.display = "none";
+    }
+  }
+}
+
 // ---------------  DATE AND TIME DISPLAY  ---------------
 
 const dayDisplay = document.getElementById("dayDisplay");
 const timeDisplay = document.getElementById("timeDisplay");
-
+let currentDate = new Date();
 updateDateTime();
 function updateDateTime() {
-  // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
-  displayUserToNowTab();
 
   // UPDATING TIME AND DATE
-  const currentDate = new Date();
+  currentDate = new Date();
+  let day = currentDate.getDay();
+  let hour = currentDate.getHours();
+
+  // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
+  day--; // decrements by one because in date object monday is '1' 
+  day = 0;
+  hour = 8;
+
+  displayUserToNowTab(day, hour);
+  displayMatesToNowTab(day, hour);
+
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -560,5 +638,5 @@ function updateDateTime() {
 }
 
 // Initial call to update immediately and then every 2 seconds
-setInterval(updateDateTime, 2000);
+setInterval(updateDateTime, 500);
 
