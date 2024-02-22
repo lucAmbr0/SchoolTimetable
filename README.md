@@ -55,8 +55,6 @@ I will try to keep the repository structure as clean as possible to make mainten
 ```
 .
 |
-├── SingleFile
-|   └── index.html
 ├── index.html
 ├── index.js
 ├── style.css
