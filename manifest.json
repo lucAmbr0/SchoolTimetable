@@ -1,10 +1,10 @@
 {
   "name": "School Timetable",
-  "short_name": "Timetable",
+  "short_name": "School Timetable",
   "description": "An app for students to save and view their school timetables and schedules.",
   "start_url": "index.html",
   "id": "SchoolTimetable",
-  "display": "fullscreen",
+  "display": "standalone",
   "icons": [
     {
       "src": "/icons/icon-48x48.png",

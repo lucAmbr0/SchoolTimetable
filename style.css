@@ -172,6 +172,13 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 ::-webkit-scrollbar {
@@ -184,7 +191,6 @@ body {
     background: var(--bodyBackground);
     width: 100%;
     overflow-x: hidden;
-    user-select: none;
     transition: 0.3s background ease;
 }
 
@@ -245,7 +251,7 @@ h5 {
 @keyframes getStarted {
     from {
         opacity: 0;
-        scale: 0.4;
+        scale: 0.6;
     }
 
     to {
@@ -280,7 +286,7 @@ h5 {
     border-color: var(--boxBorderColor);
     border-radius: 50px;
     transition: 0.4s scale ease;
-    animation: getStarted 0.8s ease;
+    animation: getStarted 0.5s ease;
 }
 
 #letsStartMessage:active {
