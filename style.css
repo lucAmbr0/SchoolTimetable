@@ -234,6 +234,10 @@ body {
     background-color: var(--OPPtranspCol8);
 }
 
+select:focus, input:focus {
+    outline: none;
+}
+
 h1,
 h2,
 h3,
