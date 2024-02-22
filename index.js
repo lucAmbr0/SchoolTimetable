@@ -44,7 +44,7 @@ function navbarAction(tab) {
 function getStarted() {
   setTimeout(() => {
     navbarAction(1);
-  }, 250)
+  }, 350)
 }
 
 // ---------------  PERSONAL DATA ON SETTINGS TAB  ---------------
