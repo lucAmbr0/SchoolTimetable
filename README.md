@@ -31,10 +31,10 @@ From this need I created an html/css/js page where all the timetables I needed w
 Its limitation was that modifying the code was required in order to use it. This problem led me to start this new project, in which I intend to develop a **user-friendly web app** where **each user can enter their personal data** and have a complete and **personalized experience without having to touch up the code**.
 
 ## :zap: Usage
-Once the page is open, the app can be used in **2 ways**:
-* When you open the app, **information about your saved classes during the current time and day on your device is shown**
-* By selecting a timetable adjustment function, **the user chooses to view the class information relating to a day and time chosen by him on a table.**
-There will also be a **"settings" tab where you can configure the app with your data**, such as the name of the school, saved classes, weekly subjects and any notes.
+Once you open the app you will find a navigation bar with 3 buttons:
+* **Now**: This is the main page of the app, where you can easily and quickly check your school times and up to 5 other classes.
+* **Timetables**: In this section you can save and modify your school times and your personal info to be shown in 'Now'
+* **Settings**: Settings contains various type of options to customize the app as you'd like: dark mode, color themes, preferences...
 
 ###  :electric_plug: Installation
 * This project is still at a very early stage. My intention is to conclude the work with a single html file that the user downloads and opens with his web browser, all ready as it is.
