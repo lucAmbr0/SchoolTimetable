@@ -5,6 +5,16 @@
   "start_url": "index.html",
   "id": "SchoolTimetable",
   "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "splash_pages": [
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/splashscreen.png?raw=true",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    }
+  ],
   "icons": [
     {
       "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-any-192x192.png?raw=true",
@@ -31,14 +41,43 @@
       "purpose": "maskable"
     }
   ],
-  "splash_pages": [
-    {
-        "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/splashscreen.png?raw=true",
-        "sizes": "1080x1920",
-        "type": "image/png"
-    }
-  ],
   "screenshots": [
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot2.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot3.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot4.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot5.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot6.png?raw=true",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
     {
       "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot1.png?raw=true",
       "sizes": "1920x1080",
@@ -80,42 +119,6 @@
       "type": "image/png",
       "platform": "desktop",
       "form_factor": "wide"
-    },
-    {
-      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png?raw=true",
-      "sizes": "1082x2402",
-      "type": "image/png",
-      "platform": "mobile"
-    },
-    {
-      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot2.png?raw=true",
-      "sizes": "1082x2402",
-      "type": "image/png",
-      "platform": "mobile"
-    },
-    {
-      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot3.png?raw=true",
-      "sizes": "1082x2402",
-      "type": "image/png",
-      "platform": "mobile"
-    },
-    {
-      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot4.png?raw=true",
-      "sizes": "1082x2402",
-      "type": "image/png",
-      "platform": "mobile"
-    },
-    {
-      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot5.png?raw=true",
-      "sizes": "1082x2402",
-      "type": "image/png",
-      "platform": "mobile"
-    },
-    {
-      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot6.png?raw=true",
-      "sizes": "1082x2402",
-      "type": "image/png",
-      "platform": "mobile"
     }
   ]
 }
