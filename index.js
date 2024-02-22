@@ -634,27 +634,52 @@ function displayMatesToNowTab(day, hour) {
 }
 
 
+// ---------------  FETCH DATA TO APP INFORMATION  ---------------
+
+// // Function to fetch data from github
+// function getGithubStats(username, repository) {
+//   // Effettua una richiesta GET all'API di GitHub
+//   fetch(`https://api.github.com/repos/${username}/${repository}`)
+//     .then(response => response.json())
+//     .then(data => {
+//       // Estrai il numero totale di commit e pull-request
+//       const commitsCount = data.commits_url.substring(data.commits_url.lastIndexOf('/') + 1);
+//       const prCount = data.pulls_url.substring(data.pulls_url.lastIndexOf('/') + 1);
+//       const size = data.size.substring(data.size.lastIndexOf('/') + 1);
+
+//       // Aggiorna il testo del paragrafo con i dati ottenuti
+//       console.log(commitsCount);
+//       console.log(prCount);
+//       console.log(size);
+//     })
+//     .catch(error => console.error('Error fetching Github data:', error));
+// }
+
+// // Chiama la funzione per ottenere le statistiche di GitHub
+// getGithubStats('lucAmbr0', 'SchoolTimetable');
+
+
 // ---------------  WEB APP INSTALL PROMPT  ---------------
 
 // let deferredPrompt;
 
 // window.addEventListener('beforeinstallprompt', (event) => {
-  // Impedisci al browser di gestire l'evento di installazione di default
-  // event.preventDefault();
-  // // Salva l'evento per utilizzarlo successivamente
-  // deferredPrompt = event;
-  // console.log(event);
+// Impedisci al browser di gestire l'evento di installazione di default
+// event.preventDefault();
+// // Salva l'evento per utilizzarlo successivamente
+// deferredPrompt = event;
+// console.log(event);
 
-  // Mostra un pulsante o un messaggio per invitare l'utente ad installare l'app
-  // Ad esempio, puoi mostrare un pulsante "Installa" su una barra di navigazione personalizzata
-  // showInstallButton();
+// Mostra un pulsante o un messaggio per invitare l'utente ad installare l'app
+// Ad esempio, puoi mostrare un pulsante "Installa" su una barra di navigazione personalizzata
+// showInstallButton();
 // });
 
 // function showInstallButton() {
 //   // Mostra un elemento HTML (ad esempio, un pulsante) per invitare l'utente ad installare l'app
 //   const installButton = document.getElementById('install-button');
 //   installButton.style.display = 'block';
-  
+
 //   // Aggiungi un gestore di eventi per installare l'app quando il pulsante viene cliccato
 //   installButton.addEventListener('click', () => {
 //     // Mostra il prompt di installazione salvato

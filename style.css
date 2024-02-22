@@ -796,6 +796,10 @@ label {
     border-color: var(--solidAccentColor2);
 }
 
+.alignToRight {
+    justify-content: right;
+}
+
 .switch-label {
     grid-column: 1;
     font-family: Noto Sans;
@@ -846,8 +850,8 @@ label {
 }
 
 #themeSelection {
-    margin-top: 2.5px;
-    margin-bottom: 2.5px;
+    margin-top: 7.5px;
+    margin-bottom: 7.5px;
     height: 35px;
 }
 
