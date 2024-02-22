@@ -48,6 +48,14 @@
           "type": "image/png",
           "purpose": "any"
         }
-      ]
+      ],
+        "screenshots": [
+          {
+            "src": "/screenshots/mobile-screenshot1.png",
+            "sizes": "1082x2402",
+            "type": "image/png",
+            "platform": "mobile"
+          }
+        ]
   }
   

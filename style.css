@@ -802,3 +802,29 @@ label {
 #timeInput {
     font-family: var(--StandardTextFont);
 }
+
+
+
+/* ----------  DESKTOP SCREEN  ---------- */
+
+@media screen and (min-width: 768px) {
+    html {
+        width: 393px;
+        height: 90%;
+        margin: 30px auto;
+        padding-bottom: 2px;
+        border: solid 4px rgb(30,30,30);
+        border-radius: 19px;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        padding: 4px;
+        box-shadow: 0px 0px 50px rgb(30,30,30);
+        scrollbar-width: 0;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+        scrollbar-width: none;
+    }
+    
+}
