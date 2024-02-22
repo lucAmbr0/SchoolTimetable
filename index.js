@@ -261,6 +261,39 @@ function getUserClassInfoFromLocalStorage() {
   }
 }
 
+// ---------------  LESSON START TIME  ---------------
+
+const startTimeInput = document.getElementById("timeInput");
+let schoolHourStart;
+let selectedStartTime;
+
+getStartTimeFromStorage();
+function getStartTimeFromStorage() {
+  if (localStorage.getItem('lessonStartTime')) {
+    selectedStartTime = localStorage.getItem('lessonStartTime');
+  } else {
+    selectedStartTime = 8;
+    localStorage.setItem('lessonStartTime', selectedStartTime);
+  }
+  startTimeInput.value = selectedStartTime.toString().padStart(2, "0") + ":00";
+  schoolHourStart = selectedStartTime;
+}
+
+startTimeInput.addEventListener("change", () => {
+  let timeParts = startTimeInput.value.split(":");
+  timeParts[1] = "00";
+  selectedStartTime = parseInt(timeParts[0]);
+  if (selectedStartTime < 5) {
+    selectedStartTime = 5;
+  } else if (selectedStartTime > 17) {
+    selectedStartTime = 17;
+  }
+  // Update the input value with the selected hour and ":00" for minutes
+  startTimeInput.value = selectedStartTime.toString().padStart(2, "0") + ":00";
+  localStorage.setItem('lessonStartTime', selectedStartTime);
+  schoolHourStart = selectedStartTime;
+});
+
 // ---------------  SHOWING USER CLASS DATA TO NOW TAB  ---------------
 
 // Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
@@ -271,8 +304,7 @@ function displayUserToNowTab(day, hour) {
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
-  let schoolHourStart = 8; // standard hour when school starts is 8
-  hour -= schoolHourStart; // >>> DEBUG
+  hour -= schoolHourStart;
   if (day !== 7) {
     if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
     else userClassroomDisplay.textContent = user.room[day][hour];
@@ -563,7 +595,6 @@ function displayMatesToNowTab(day, hour) {
   const matesSubject = document.querySelectorAll(".matesSubject");
   const matesTeacher = document.querySelectorAll(".matesTeacher");
 
-  let schoolHourStart = 8; // standard hour when school starts is 8
   hour -= schoolHourStart;
   if (day != 7) {
     let atLeastOneMateBoxIsShown = false;
@@ -627,13 +658,13 @@ function setTheme() {
   document.body.classList.remove("darkModeVariables");
   if (darkModeState == "1") {
     document.body.classList.add("darkModeVariables");
-    document.body.classList.add("DARK"+activeTheme);    
+    document.body.classList.add("DARK" + activeTheme);
   }
   else {
     document.body.classList.remove("darkModeVariables");
-    document.body.classList.add("LIGHT"+activeTheme);    
+    document.body.classList.add("LIGHT" + activeTheme);
   }
-  localStorage.setItem('theme',activeTheme)
+  localStorage.setItem('theme', activeTheme)
 }
 
 
