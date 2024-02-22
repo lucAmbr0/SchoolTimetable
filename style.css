@@ -137,12 +137,12 @@
             rgba(76, 218, 48, 0.3),
             rgba(15, 87, 15, 0.3));
 
-    --solidAccentColor0: rgb(157, 202, 157);
+    --solidAccentColor0: rgb(141, 194, 141);
     --solidAccentColor1: rgb(19, 90, 16);
     --solidAccentColor2: rgb(3, 37, 6);
 
     --transAccentColor0: rgba(118, 174, 121, 0.6);
-    --transAccentColor1: rgba(88, 152, 88, 0.8);
+    --transAccentColor1: rgba(137, 181, 137, 0.8);
     --transAccentColor2: rgba(3, 37, 3, 0.5);
     --transAccentColor3: rgba(0, 115, 12, 0.07);
     --transAccentColor4: rgba(190, 233, 190, 0.4);
@@ -542,6 +542,8 @@ h5 {
     background-color: var(--transAccentColor0);
     color: var(--solidAccentColor1);
     transition: 0.3s background-color ease;
+    font-variation-settings: 
+    'FILL' 1;
 }
 
 .navbarLabelActive {
