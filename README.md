@@ -141,14 +141,14 @@ It's a little cold at home now, I think I'll put on a sweater. Thanks for asking
 
 ##  :camera: Gallery
 <div style="display: flex">
-<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png?raw=true" width="200" />
-<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot2.png?raw=true" width="200" />
-<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot3.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png?raw=true" width="300" />
+<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot2.png?raw=true" width="300" />
+<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot3.png?raw=true" width="300" />
 </div>
 <div style="display: flex">
-<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot4.png?raw=true" width="200" />
-<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot5.png?raw=true" width="200" />
-<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot6.png?raw=true" width="200" />
+<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot4.png?raw=true" width="300" />
+<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot5.png?raw=true" width="300" />
+<img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot6.png?raw=true" width="300" />
 </div>
 
 
