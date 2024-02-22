@@ -51,7 +51,7 @@
   ],
   "screenshots": [
     {
-      "src": "/path/to/desktop-screenshot.png",
+      "src": "/screenshots/desktop-screenshot1.png",
       "sizes": "1280x800",
       "type": "image/png",
       "platform": "desktop",
