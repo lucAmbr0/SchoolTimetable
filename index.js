@@ -634,6 +634,46 @@ function displayMatesToNowTab(day, hour) {
 }
 
 
+// ---------------  WEB APP INSTALL PROMPT  ---------------
+
+// let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  // Impedisci al browser di gestire l'evento di installazione di default
+  // event.preventDefault();
+  // // Salva l'evento per utilizzarlo successivamente
+  // deferredPrompt = event;
+  console.log(event);
+
+  // Mostra un pulsante o un messaggio per invitare l'utente ad installare l'app
+  // Ad esempio, puoi mostrare un pulsante "Installa" su una barra di navigazione personalizzata
+  // showInstallButton();
+});
+
+// function showInstallButton() {
+//   // Mostra un elemento HTML (ad esempio, un pulsante) per invitare l'utente ad installare l'app
+//   const installButton = document.getElementById('install-button');
+//   installButton.style.display = 'block';
+  
+//   // Aggiungi un gestore di eventi per installare l'app quando il pulsante viene cliccato
+//   installButton.addEventListener('click', () => {
+//     // Mostra il prompt di installazione salvato
+//     deferredPrompt.prompt();
+
+//     // Attendiamo che l'utente risponda al prompt di installazione
+//     deferredPrompt.userChoice.then((choiceResult) => {
+//       if (choiceResult.outcome === 'accepted') {
+//         console.log('L\'utente ha accettato l\'installazione');
+//       } else {
+//         console.log('L\'utente ha rifiutato l\'installazione');
+//       }
+//       // Puliamo il riferimento al prompt di installazione, poiché può essere utilizzato solo una volta
+//       deferredPrompt = null;
+//     });
+//   });
+// }
+
+
 // ---------------  THEMES AND COLOR ACCENTS  ---------------
 
 themeSelection.addEventListener("change", () => {

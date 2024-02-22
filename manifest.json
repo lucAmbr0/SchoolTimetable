@@ -2,7 +2,7 @@
     "name": "School Timetable",
     "short_name": "School Timetable",
     "description": "An app for students to save and view their school timetables and schedules.",
-    "start_url": "/index.html",
+    "start_url": "index.html",
     "display": "fullscreen"
   }
   
