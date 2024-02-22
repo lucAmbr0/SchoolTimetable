@@ -638,17 +638,17 @@ function displayMatesToNowTab(day, hour) {
 
 // let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (event) => {
+// window.addEventListener('beforeinstallprompt', (event) => {
   // Impedisci al browser di gestire l'evento di installazione di default
   // event.preventDefault();
   // // Salva l'evento per utilizzarlo successivamente
   // deferredPrompt = event;
-  console.log(event);
+  // console.log(event);
 
   // Mostra un pulsante o un messaggio per invitare l'utente ad installare l'app
   // Ad esempio, puoi mostrare un pulsante "Installa" su una barra di navigazione personalizzata
   // showInstallButton();
-});
+// });
 
 // function showInstallButton() {
 //   // Mostra un elemento HTML (ad esempio, un pulsante) per invitare l'utente ad installare l'app
