@@ -7,46 +7,46 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/icons/icon-48x48.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-48x48.png?raw=true",
       "sizes": "48x48",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-72x72.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-72x72.png?raw=true",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-96x96.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-96x96.png?raw=true",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-128x128.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-128x128.png?raw=true",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-192x192.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-192x192.png?raw=true",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-384x384.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-384x384.png?raw=true",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/icons/icon-512x512.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/icons/icon-512x512.png?raw=true",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     }
   ],
   "screenshots": [
