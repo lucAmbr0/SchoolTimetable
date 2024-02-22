@@ -3,7 +3,7 @@
   "short_name": "Timetable",
   "description": "An app for students to save and view their school timetables and schedules.",
   "start_url": "index.html",
-  "id": "index.html",
+  "id": "SchoolTimetable",
   "display": "fullscreen",
   "icons": [
     {
