@@ -739,7 +739,7 @@ label {
 
 .switch-container input,
 .switch-container label {
-    height: 40px;
+    /* height: 40px; */
     display: flex;
     align-items: center;
     /* font-weight: 500; */
@@ -747,7 +747,6 @@ label {
 }
 
 #themeSelection, #timeInput {
-    width: 90%;
     margin-left: auto;
 }
 
@@ -807,6 +806,7 @@ label {
 }
 
 #timeInput {
+    width: fit-content;
     font-family: var(--StandardTextFont);
 }
 
