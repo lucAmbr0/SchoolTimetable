@@ -1,10 +1,9 @@
-# Introduction
+* Worked on this project for: <a href="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable"><img src="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable.svg?style=flat" alt="wakatime"></a>
 # Introduction
 > This project is in a very early stage, many updates coming soon.
 * **School Timetable** aims to provide a **convenient way for students to access their weekly class schedules**. Users can select their class, choose a day of the week, and specify a time slot to view which subjects are scheduled and in which classroom.
 * This **web-based** tool streamlines the process of **checking timetables**, making it easier for students to **plan** their **academic activities**.
 * This web project offers a **user-friendly interface** for **efficient navigation** and quick access to essential information.
-* Worked on this project for: <a href="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable"><img src="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable.svg?style=flat" alt="wakatime"></a>
 
 ## :ledger: Index
 
@@ -56,9 +55,32 @@ I will try to keep the repository structure as clean as possible to make mainten
 ```
 .
 |
+├── icons
+|   ├── icon-48x48.png
+|   ├── icon-72x72.png
+|   ├── icon-96x96.png
+|   ├── icon-128x128.png
+|   ├── icon-192x192.png
+|   ├── icon-384x384.png
+|   └── icon-512x512.png
+├── screenshots
+|   ├── desktop-screenshot1.png
+|   ├── desktop-screenshot2.png
+|   ├── desktop-screenshot3.png
+|   ├── desktop-screenshot4.png
+|   ├── desktop-screenshot5.png
+|   ├── desktop-screenshot6.png
+|   ├── mobile-screenshot1.png
+|   ├── mobile-screenshot2.png
+|   ├── mobile-screenshot3.png
+|   ├── mobile-screenshot4.png
+|   ├── mobile-screenshot5.png
+|   └── mobile-screenshot6.png
+├── manifest.json
 ├── index.html
 ├── index.js
 ├── style.css
+├── LICENSE
 └── README.md
 ```
 
