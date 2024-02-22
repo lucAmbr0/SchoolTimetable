@@ -695,6 +695,8 @@ function setTheme() {
   document.body.classList.remove("LIGHTblueTheme");
   document.body.classList.remove("DARKgreenTheme");
   document.body.classList.remove("LIGHTgreenTheme");
+  document.body.classList.remove("DARKorangeTheme");
+  document.body.classList.remove("LIGHTorangeTheme");
   document.body.classList.remove("darkModeVariables");
   if (darkModeState == "1") {
     document.body.classList.add("darkModeVariables");
