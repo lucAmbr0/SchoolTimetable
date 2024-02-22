@@ -1,7 +1,7 @@
 {
   "name": "School Timetable",
   "short_name": "School Timetable",
-  "description": "An app for students to save and view their school timetables and schedules.",
+  "description": "School Timetable is a useful tool that allows students to save and view their school timetables and schedules.",
   "start_url": "index.html",
   "id": "SchoolTimetable",
   "display": "standalone",
@@ -51,14 +51,79 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/desktop-screenshot1.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot1.png",
       "sizes": "1920x1080",
       "type": "image/png",
       "platform": "desktop",
       "form_factor": "wide"
     },
     {
-      "src": "screenshots/mobile-screenshot1.png",
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot2.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot3.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot4.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot5.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/desktop-screenshot6.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "platform": "desktop",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot2.png",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot3.png",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot4.png",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot5.png",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot6.png",
+      "sizes": "1082x2402",
+      "type": "image/png",
+      "platform": "mobile"
+    },
+    {
+      "src": "https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png",
       "sizes": "1082x2402",
       "type": "image/png",
       "platform": "mobile"
