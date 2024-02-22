@@ -16,6 +16,10 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
     <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
@@ -26,7 +30,6 @@
       <h2 id="timeDisplay">17:41</h2>
     </div>
     <div id="topNotchFixed"></div>
-    <div class="appTabs" id="setTimeTab"></div>
     <div class="appTabs" id="nowTab">
       <div id="letsStartMessage" onclick="getStarted()">
         <h1>Welcome to<br />School Timetable!<br />Let's get started!</h1>
@@ -92,50 +95,13 @@
         </div>
       </div>
     </div>
-    <div class="appTabs" id="settingsTab">
-      <!-- <h2 class="greetingDisplay">Settings</h2> -->
-      <details class="settingsSection" open>
-        <summary class="settingHeader">App Settings</summary>
-        <div class="switch-container">
-          <div class="switch-label">Dark mode</div>
-          <div class="switch">
-            <input
-              type="checkbox"
-              id="darkModeSwitch"
-              class="switch-input"
-              onchange="toggleDarkMode()"
-            />
-            <label for="darkModeSwitch" class="switch-toggle"></label>
-          </div>
-          <div class="switch-label">Show greeting</div>
-          <div class="switch">
-            <input
-              type="checkbox"
-              id="showGreetingSwitch"
-              class="switch-input"
-              onchange="toggleShowGreetingState()"
-              
-            />
-            <label for="showGreetingSwitch" class="switch-toggle"></label>
-          </div>
-          <!-- <div class="switch-label">IDKSWITCH2</div>
-          <div class="switch">
-            <input type="checkbox" id="IDKSWITCH2" class="switch-input">
-            <label for="IDKSWITCH2" class="switch-toggle"></label>
-          </div> -->
-          <label for="themeSelection" class="switch-label">Color theme:</label>
-          <select name="theme" id="themeSelection">
-            <option value="blueTheme">Blue</option>
-            <option value="greenTheme">Green</option>
-          </select>
-        </div>
-      </details>
-      <details class="settingsSection" open>
-        <summary class="settingHeader">Your data</summary>
+    <div class="appTabs" id="timetablesTab">
+      <div class="settingsSection">
+        <h2 class="settingHeader">Your data</h2>
         <div id="greetingNotShownBox">
           <span class="material-symbols-outlined"> info </span>
-          <label style="opacity: 1; text-align: center; font-weight: 200"
-            >This data is not shown</label
+          <label style="opacity: 1; text-align: center; font-weight: 200" onclick="navbarAction(2)"
+            >Show greeting is disabled</label
           >
         </div>
         <div class="dataForm" id="userDataForm">
@@ -195,10 +161,10 @@
         >
           Confirm
         </button>
-      </details>
+      </div>
 
-      <details class="settingsSection" open>
-        <summary class="settingHeader">Schoolmates</summary>
+      <div class="settingsSection">
+        <h2 class="settingHeader">Schoolmates</h2>
         <div class="matesClassNumSelectionBox">
           <label for="mateClassNumberSelection">Class N.</label>
           <select id="classNumberSelection" name="classNum">
@@ -265,20 +231,56 @@
         >
           Confirm
         </button>
-      </details>
+      </div>
+    </div>
+    <div class="appTabs" id="settingsTab">
+      <!-- <h2 class="greetingDisplay">Settings</h2> -->
+      <div class="settingsSection">
+        <h2 class="settingHeader">App Settings</h2>
+        <div class="switch-container">
+          <div class="switch-label">Dark mode</div>
+          <div class="switch">
+            <input
+              type="checkbox"
+              id="darkModeSwitch"
+              class="switch-input"
+              onchange="toggleDarkMode()"
+            />
+            <label for="darkModeSwitch" class="switch-toggle"></label>
+          </div>
+          <div class="switch-label">Show greeting</div>
+          <div class="switch">
+            <input
+              type="checkbox"
+              id="showGreetingSwitch"
+              class="switch-input"
+              onchange="toggleShowGreetingState()"
+            />
+            <label for="showGreetingSwitch" class="switch-toggle"></label>
+          </div>
+          <!-- <div class="switch-label">IDKSWITCH2</div>
+          <div class="switch">
+            <input type="checkbox" id="IDKSWITCH2" class="switch-input">
+            <label for="IDKSWITCH2" class="switch-toggle"></label>
+          </div> -->
+          <label for="themeSelection" class="switch-label">Color theme:</label>
+          <select name="theme" id="themeSelection">
+            <option value="blueTheme">Blue</option>
+            <option value="greenTheme">Green</option>
+          </select>
+        </div>
+      </div>
     </div>
     <nav id="navbar">
       <div class="navbarBtn" onclick="navbarAction(0)">
-        <span class="material-symbols-outlined navbarIcon">
-          manage_history
-        </span>
-        <p class="navbarLabel">Set Time</p>
+        <span class="material-symbols-outlined navbarIcon"> home </span>
+        <p class="navbarLabel navbarLabelActive">Now</p>
       </div>
       <div class="navbarBtn" onclick="navbarAction(1)">
-        <span class="material-symbols-outlined navbarIcon navbarIconActive">
-          home
+        <span class="material-symbols-outlined navbarIcon">
+          edit_calendar
         </span>
-        <p class="navbarLabel navbarLabelActive">Now</p>
+        <p class="navbarLabel">Timetables</p>
       </div>
       <div class="navbarBtn" onclick="navbarAction(2)">
         <span class="material-symbols-outlined navbarIcon"> settings </span>

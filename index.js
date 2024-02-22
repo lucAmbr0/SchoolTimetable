@@ -20,7 +20,7 @@ let currentTab = -1;
 if (localStorage.getItem('tab')) {
   tab = parseInt(localStorage.getItem('tab'));
 } else {
-  tab = 1;
+  tab = 0;
 }
 
 // Calls the function to display the right tab
@@ -43,8 +43,8 @@ function navbarAction(tab) {
 
 function getStarted() {
   setTimeout(() => {
-    navbarAction(2);
-  }, 600)
+    navbarAction(1);
+  }, 250)
 }
 
 // ---------------  PERSONAL DATA ON SETTINGS TAB  ---------------
