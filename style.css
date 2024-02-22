@@ -808,7 +808,7 @@ label {
 
 /* ----------  DESKTOP SCREEN  ---------- */
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
     html {
         width: 24%;
         height: 90vh;
