@@ -31,6 +31,7 @@
     --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
 
     --boxBorderColor: transparent;
+    --socialIconCol: invert(); /* if light mode active, inverts colors*/
 
     /* OPPOSITES */
     --OPPsolidCol0: rgba(0, 0, 0, 1);
@@ -77,6 +78,8 @@
     --boxShadow2: 0 0 0 rgba(0, 0, 0, 0);
     --boxShadow3: 0 0 0 rgba(0, 0, 0, 0);
     --boxShadow4: 0 0 0 rgba(0, 0, 0, 0);
+
+    --socialIconCol: none; /* if light mode active, inverts colors*/
 
     /* OPPOSITES */
     --OPPsolidCol0: rgba(255, 255, 255, 1);
@@ -823,7 +826,7 @@ label {
     background-color: transparent;
     display: flex;
     bottom: 0;
-    margin: 15px auto 0 auto;
+    margin: 15px auto 25px auto;
     justify-content: center;
     flex-direction: row;
 }
@@ -831,12 +834,13 @@ label {
 #appFooterContainer label {
     margin: auto 10px;
 }
-.socialIcon {
+#socialIcon {
     width: 35px;
     height: 35px;
     align-items: center;
     display: flex;
-    fill: red !important;
+    opacity: 0.8;
+    filter: var(--socialIconCol);
 }
 .appIcon {
     width: 40px;
@@ -852,12 +856,19 @@ a {
 }
 
 .switch-container input,
-.switch-container label {
+.switch-container label,
+.switch-container button {
     /* height: 40px; */
     display: flex;
     align-items: center;
     /* font-weight: 500; */
     margin: 5px 10px;
+    text-align: center;
+}
+
+#resetAllDataBtn {
+    padding: 5px 10px;
+    justify-content: center;
 }
 
 #themeSelection, #timeInput {
