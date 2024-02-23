@@ -715,7 +715,6 @@ label {
 #greetingNotShownBox span {
     margin: auto 2.5px;
     color: var(--OPPtranspCol1);
-
 }
 
 #submitUserInfoBtn {
@@ -826,9 +825,17 @@ label {
     background-color: transparent;
     display: flex;
     bottom: 0;
-    margin: 15px auto 25px auto;
+    margin: 25px auto 5px auto;
     justify-content: center;
     flex-direction: row;
+}
+
+.roundedWakaBadge {
+    margin: 10px;
+    width: 50%;
+    border-radius: 6px;
+    border-color: var(--boxBorderColor);
+    box-shadow: var(--boxShadow4);
 }
 
 #appFooterContainer label {
@@ -848,6 +855,19 @@ label {
     margin: auto 10px;
     justify-content: center;
     align-items: center;
+}
+
+.nerdLinks {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px 5px 5px;
+    font-family: var(--StandardTextFont);
+    font-weight: 300;
+    font-size: 0.75em;
+    text-decoration: underline 1px var(--OPPsolidCol2);
 }
 
 a {
