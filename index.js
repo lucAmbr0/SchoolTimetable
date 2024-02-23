@@ -134,10 +134,36 @@ class UserInfo {
 
 let user = new UserInfo("", "", "");
 
-getUserInfoFromLocalStorage();
+// ---------------  MOVES OLD DATA STORAGE TO NEW (UNRELIABLE)  ---------------
+
+// Since 1.51.xxx a change to how the data is managed in localStorage occured,
+// so this script may save user's old data in the new user object
+
+checkOldStorage();
+function checkOldStorage() {
+  if (localStorage.getItem('user_roomARR')) {
+    user.room = JSON.parse(localStorage.getItem('user_roomARR'));
+    if (localStorage.getItem('user_complexARR'))
+      user.complex = JSON.parse(localStorage.getItem('user_complexARR'));
+    if (localStorage.getItem('user_subjectARR'))
+      user.subject = JSON.parse(localStorage.getItem('user_subjectARR'));
+    if (localStorage.getItem('user_teacherARR'))
+      user.teacher = JSON.parse(localStorage.getItem('user_teacherARR'));
+    localStorage.removeItem('user_roomARR');
+    localStorage.removeItem('user_complexARR');
+    localStorage.removeItem('user_subjectARR');
+    localStorage.removeItem('user_teacherARR');
+    console.log(user.room);
+    // window.location.reload();
+    localStorage.setItem('user_OBJECT',JSON.stringify(user));
+  }
+  getUserInfoFromLocalStorage();
+}
+
 function getUserInfoFromLocalStorage() {
-  // If it finds the key "user_name" in user's browser, it reads the data and writes it to the variables
+  // If it finds the key "user_object" in user's browser, it reads the data and writes it to the variables
   if (localStorage.getItem('user_OBJECT')) {
+    console.log(user.room);
     user = JSON.parse(localStorage.getItem('user_OBJECT'));
     displayUserInfo();
   }
@@ -248,6 +274,7 @@ function getUserClassInfoFromLocalStorage() {
     displayUserClassInfo();
   }
 }
+
 
 // ---------------  LESSON START TIME  ---------------
 
