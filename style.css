@@ -504,7 +504,7 @@ h5 {
 
 .matesBoxGrid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 2fr 3fr;
     margin: 8px 0;
     padding: 0px 15px;
     color: var(--OPPsolidCol3);
