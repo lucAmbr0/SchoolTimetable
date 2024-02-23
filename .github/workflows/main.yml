@@ -1,0 +1,31 @@
+name: Update Version
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  update_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set version
+        id: set_version
+        run: |
+          pull_request_number="${{ github.event.pull_request.number }}"
+          commit_number="${{ github.sha }}"
+          version="1 . $pull_request_number . $commit_number"
+          echo "::set-output name=version::$version"
+
+      - name: Use version in JavaScript
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+        run: |
+          echo "const version = '${{ steps.set_version.outputs.version }}';" > version.js
