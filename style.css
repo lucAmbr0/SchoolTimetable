@@ -649,6 +649,9 @@ label {
 }
 
 .settingHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     font-size: 1.8em;
     font-family: var(--HeadingFont);
     font-weight: 500;
@@ -779,6 +782,45 @@ label {
     grid-template-columns: 7fr 3fr;
     margin: 10px 5px;
     align-items: center;
+}
+
+.appInfoBox {
+    grid-template-columns: 2fr 3fr;
+    text-align: right;
+}
+
+#appFooterContainer {
+    opacity: 0.8;
+    background-color: transparent;
+    display: flex;
+    bottom: 0;
+    margin: 15px auto 0 auto;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#appFooterContainer label {
+    margin: auto 10px;
+}
+.socialIcon {
+    opacity: 0.8;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    display: flex;
+    margin: 0;
+}
+.appIcon {
+    width: 40px;
+    display: flex;
+    margin: auto 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: underline 1px var(--OPPsolidCol2);
+    color: var(--OPPsolidCol2);
 }
 
 .switch-container input,
