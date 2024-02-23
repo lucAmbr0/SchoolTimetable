@@ -635,40 +635,6 @@ function displayMatesToNowTab(day, hour) {
 
 // ---------------  WEB APP INSTALL PROMPT  ---------------
 
-fetch('version.js')
-  .then(response => response.text())
-  .then(data => {
-    // Trova estraendo la versione dal contenuto del file
-    const versionMatch = data.match(/const version = '([^']+)'/);
-    if (versionMatch && versionMatch.length > 1) {
-      const version = versionMatch[1];
-      // Visualizza la versione nel formato desiderato
-      const formattedVersion = formatVersion(version);
-      // Aggiorna l'elemento HTML con l'id "version" con la versione formattata
-      document.getElementById('version').textContent = formattedVersion;
-    } else {
-      console.error('Impossibile trovare la versione nel file version.js');
-    }
-  })
-  .catch(error => {
-    console.error('Errore nel recupero del file version.js:', error);
-  });
-
-// Funzione per formattare la versione nel formato desiderato
-function formatVersion(version) {
-  // Divisione della versione in componenti (1, pull_request, commit)
-  const versionComponents = version.split(' . ');
-  // Assicurati che ci siano tre componenti
-  if (versionComponents.length === 3) {
-    return `${versionComponents[0]} . ${versionComponents[1]} . ${versionComponents[2]}`;
-  } else {
-    return 'Formato versione non valido';
-  }
-}
-
-
-// ---------------  WEB APP INSTALL PROMPT  ---------------
-
 // let deferredPrompt;
 
 // window.addEventListener('beforeinstallprompt', (event) => {
