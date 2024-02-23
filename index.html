@@ -299,6 +299,8 @@
             min="05:00"
             max="17:00"
           />
+          <label for="resetbtn">Reset all data</label>
+          <button class="submitBtn" id="resetAllDataBtn" onclick="deleteLocalStorage()">Reset</button>
         </div>
       </div>
       <div class="settingsSection">
@@ -314,7 +316,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight">1.47.172</label>
+          <label class="alignToRight">1.50.178</label>
           <label class="switch-label">License</label>
           <label class="alignToRight"
             ><a
@@ -325,7 +327,7 @@
         </div>
       </div>
       <div id="appFooterContainer">
-        <img src="icons/github-mark.svg" class="socialIcon" />
+        <img src="icons/github-mark.svg" id="socialIcon"/>
         <label
           ><a href="https://github.com/lucAmbr0">github.com/lucAmbr0</a></label
         >

@@ -633,6 +633,20 @@ function displayMatesToNowTab(day, hour) {
   }
 }
 
+
+// ---------------  RESET LOCALSTORAGE SAVED DATA  ---------------
+
+function deleteLocalStorage() {
+  // Ask for confirmation
+  if (confirm("Are you sure you want to delete all data and reset the app?")) {
+    // If user confirms, delete everything in local storage
+    localStorage.clear();
+    alert("Local storage cleared successfully!");
+    window.location.reload();
+  }
+}
+
+
 // ---------------  WEB APP INSTALL PROMPT  ---------------
 
 // let deferredPrompt;
