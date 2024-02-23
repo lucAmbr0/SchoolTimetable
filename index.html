@@ -307,6 +307,35 @@
           >
             Reset
           </button>
+          <label for="transferData" style="display: none">Transfer data</label>
+          <div class="importExportBtnContainer alignToRight" style="display: none">
+            <button
+              class="submitBtn importExportBtn"
+              id="importDataBtn"
+              onclick=""
+            >
+              <span class="material-symbols-outlined"> upload </span>
+            </button>
+            <button
+              class="submitBtn importExportBtn"
+              id="exportDataBtn"
+              onclick=""
+            >
+              <span class="material-symbols-outlined"> download </span>
+            </button>
+          </div>
+        </div>
+        <div class="exportDialogBox">
+          <label>Select data to export</label>
+          <select name="dataToExport" id="dataToExportSelection">
+            <option value="0">- - -</option>
+            <option value="YourClass">Your class</option>
+            <option value="MatesClass1">Mates class 1</option>
+            <option value="MatesClass2">Mates class 2</option>
+            <option value="MatesClass3">Mates class 3</option>
+            <option value="MatesClass4">Mates class 4</option>
+            <option value="MatesClass5">Mates class 5</option>
+          </select>
         </div>
       </div>
       <div class="settingsSection">
@@ -348,14 +377,14 @@
       </div>
       <div style="display: flex; justify-content: center; margin-bottom: 25px">
         <a
-        class="nerdLinks"
-        href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/"
-        >Changelog</a
+          class="nerdLinks"
+          href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/"
+          >Changelog</a
         >
         <a
-        class="nerdLinks"
-        href="https://github.com/lucAmbr0/SchoolTimetable/archive/refs/heads/master.zip"
-        >Source code</a
+          class="nerdLinks"
+          href="https://github.com/lucAmbr0/SchoolTimetable/archive/refs/heads/master.zip"
+          >Source code</a
         >
       </div>
     </div>
