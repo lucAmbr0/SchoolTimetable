@@ -114,7 +114,7 @@ class UserInfo {
     this.complex = [[]];
     this.subject = [[]];
     this.teacher = [[]];
-    if (!localStorage.getItem('user_roomARR')) this.fillArrays();
+    if (!localStorage.getItem('user_OBJECT')) this.fillArrays();
   }
 
   fillArrays() {
@@ -137,23 +137,18 @@ let user = new UserInfo("", "", "");
 getUserInfoFromLocalStorage();
 function getUserInfoFromLocalStorage() {
   // If it finds the key "user_name" in user's browser, it reads the data and writes it to the variables
-  if (localStorage.getItem('user_name')) {
-    user.name = localStorage.getItem('user_name');
-    user.className = localStorage.getItem('user_className');
-    user.schoolName = localStorage.getItem('user_schoolName');
+  if (localStorage.getItem('user_OBJECT')) {
+    user = JSON.parse(localStorage.getItem('user_OBJECT'));
     displayUserInfo();
   }
 }
 
 function updateUserInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
-  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   user.name = userNameInput.value;
-  localStorage.setItem('user_name', user.name);
   user.className = userClassInput.value;
-  localStorage.setItem('user_className', user.className);
   user.schoolName = userSchoolNameInput.value;
-  localStorage.setItem('user_schoolName', user.schoolName);
+  localStorage.setItem('user_OBJECT', JSON.stringify(user));
 
   // Refreshes data in Now Tab
   displayUserInfo();
@@ -234,11 +229,7 @@ function changeUserInputLabels(dayIndex, hourIndex) {
 function updateUserClassInfo() {
   // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
   updateUserClassGrid();
-  localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
-  localStorage.setItem('user_roomARR', JSON.stringify(user.room));
-  localStorage.setItem('user_complexARR', JSON.stringify(user.complex));
-  localStorage.setItem('user_subjectARR', JSON.stringify(user.subject));
-  localStorage.setItem('user_teacherARR', JSON.stringify(user.teacher));
+  localStorage.setItem('user_OBJECT', JSON.stringify(user));
 }
 
 function displayUserClassInfo() {
@@ -252,11 +243,8 @@ function displayUserClassInfo() {
 getUserClassInfoFromLocalStorage();
 function getUserClassInfoFromLocalStorage() {
   // If it finds a key "isThereData" in user's browser, it reads the data and writes it to the variables
-  if (localStorage.getItem('user_roomARR')) {
-    user.room = JSON.parse(localStorage.getItem('user_roomARR'));
-    user.complex = JSON.parse(localStorage.getItem('user_complexARR'));
-    user.subject = JSON.parse(localStorage.getItem('user_subjectARR'));
-    user.teacher = JSON.parse(localStorage.getItem('user_teacherARR'));
+  if (localStorage.getItem('user_OBJECT')) {
+    user = JSON.parse(localStorage.getItem('user_OBJECT'));
     displayUserClassInfo();
   }
 }
@@ -414,7 +402,7 @@ class matesInfo {
     this.room = [[]];
     this.subject = [[]];
     this.teacher = [[]];
-    if (!localStorage.getItem('mates_roomARR')) this.fillArrays();
+    if (!localStorage.getItem('user')) this.fillArrays();
   }
 
   fillArrays() {
