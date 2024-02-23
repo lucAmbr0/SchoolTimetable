@@ -633,30 +633,38 @@ function displayMatesToNowTab(day, hour) {
   }
 }
 
+// ---------------  WEB APP INSTALL PROMPT  ---------------
 
-// ---------------  FETCH DATA TO APP INFORMATION  ---------------
+fetch('version.js')
+  .then(response => response.text())
+  .then(data => {
+    // Trova estraendo la versione dal contenuto del file
+    const versionMatch = data.match(/const version = '([^']+)'/);
+    if (versionMatch && versionMatch.length > 1) {
+      const version = versionMatch[1];
+      // Visualizza la versione nel formato desiderato
+      const formattedVersion = formatVersion(version);
+      // Aggiorna l'elemento HTML con l'id "version" con la versione formattata
+      document.getElementById('version').textContent = formattedVersion;
+    } else {
+      console.error('Impossibile trovare la versione nel file version.js');
+    }
+  })
+  .catch(error => {
+    console.error('Errore nel recupero del file version.js:', error);
+  });
 
-// // Function to fetch data from github
-// function getGithubStats(username, repository) {
-//   // Effettua una richiesta GET all'API di GitHub
-//   fetch(`https://api.github.com/repos/${username}/${repository}`)
-//     .then(response => response.json())
-//     .then(data => {
-//       // Estrai il numero totale di commit e pull-request
-//       const commitsCount = data.commits_url.substring(data.commits_url.lastIndexOf('/') + 1);
-//       const prCount = data.pulls_url.substring(data.pulls_url.lastIndexOf('/') + 1);
-//       const size = data.size.substring(data.size.lastIndexOf('/') + 1);
-
-//       // Aggiorna il testo del paragrafo con i dati ottenuti
-//       console.log(commitsCount);
-//       console.log(prCount);
-//       console.log(size);
-//     })
-//     .catch(error => console.error('Error fetching Github data:', error));
-// }
-
-// // Chiama la funzione per ottenere le statistiche di GitHub
-// getGithubStats('lucAmbr0', 'SchoolTimetable');
+// Funzione per formattare la versione nel formato desiderato
+function formatVersion(version) {
+  // Divisione della versione in componenti (1, pull_request, commit)
+  const versionComponents = version.split(' . ');
+  // Assicurati che ci siano tre componenti
+  if (versionComponents.length === 3) {
+    return `${versionComponents[0]} . ${versionComponents[1]} . ${versionComponents[2]}`;
+  } else {
+    return 'Formato versione non valido';
+  }
+}
 
 
 // ---------------  WEB APP INSTALL PROMPT  ---------------
