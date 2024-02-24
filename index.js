@@ -735,11 +735,41 @@ dataToExportSelection.addEventListener("change", () => {
       break;
   }
   if (dataToExport) {
-    navigator.clipboard.writeText(JSON.stringify(dataToExport));
+    copyToClipboard(JSON.stringify(dataToExport));
     window.alert("Exported data to clipboard successfully");
   }
   toggleExportTab();
 });
+
+
+function copyToClipboard(data) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(data)
+      .then(() => {
+        console.log('Data copied to clipboard successfully');
+        // Provide feedback to the user indicating successful copy
+      })
+      .catch((error) => {
+        console.error('Unable to copy data to clipboard: ', error);
+        // Handle errors, such as permissions or unsupported browsers
+      });
+  } else {
+    // Fallback for browsers that do not support the Clipboard API
+    var textarea = document.createElement('textarea');
+    textarea.value = data;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    console.log('Data copied to clipboard successfully (fallback)');
+    // Provide feedback to the user indicating successful copy
+  }
+}
+
+// Example usage:
+var data = "Your data here";
+copyToClipboard(data);
+
 
 
 // ---------------  THEMES AND COLOR ACCENTS  ---------------
