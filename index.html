@@ -307,12 +307,12 @@
           >
             Reset
           </button>
-          <label for="transferData" style="display: none">Transfer data</label>
-          <div class="importExportBtnContainer alignToRight" style="display: none">
+          <label for="transferData">Transfer data</label>
+          <div class="importExportBtnContainer alignToRight">
             <button
               class="submitBtn importExportBtn"
               id="importDataBtn"
-              onclick=""
+              onclick="toggleExportTab()"
             >
               <span class="material-symbols-outlined"> upload </span>
             </button>
@@ -325,7 +325,7 @@
             </button>
           </div>
         </div>
-        <div class="exportDialogBox">
+        <div id="exportDialogBox">
           <label>Select data to export</label>
           <select name="dataToExport" id="dataToExportSelection">
             <option value="0">- - -</option>

@@ -914,22 +914,21 @@ a {
     width: 100%;
 }
 
-.exportDialogBox {
-    display: none !important;
+#exportDialogBox {
+    display: none;
     border: solid 2px;
     border-color: var(--OPPtranspCol4);
     margin: -5px 5px 0 5px;
     border-radius: 7px 7px 15px 15px;
-    display: flex;
     justify-content: space-between;
 }
 
-.exportDialogBox select {
+#exportDialogBox select {
     text-align: center;
 }
 
-.exportDialogBox select,
-.exportDialogBox label {
+#exportDialogBox select,
+#exportDialogBox label {
     padding: 0;
     margin: 10px;
 }

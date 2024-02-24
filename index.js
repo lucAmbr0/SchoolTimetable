@@ -153,7 +153,6 @@ function checkOldStorage() {
     localStorage.removeItem('user_complexARR');
     localStorage.removeItem('user_subjectARR');
     localStorage.removeItem('user_teacherARR');
-    console.log(user.room);
     // window.location.reload();
     localStorage.setItem('user_OBJECT',JSON.stringify(user));
   }
@@ -163,7 +162,6 @@ function checkOldStorage() {
 function getUserInfoFromLocalStorage() {
   // If it finds the key "user_object" in user's browser, it reads the data and writes it to the variables
   if (localStorage.getItem('user_OBJECT')) {
-    console.log(user.room);
     user = JSON.parse(localStorage.getItem('user_OBJECT'));
     displayUserInfo();
   }
@@ -700,6 +698,48 @@ function deleteLocalStorage() {
 //     });
 //   });
 // }
+
+
+// ---------------  IMPORT EXPORT FEATURE  ---------------
+
+const exportDialogBox = document.getElementById("exportDialogBox");
+
+toggleExportTab(); // executes once so the next time user clicks the div appears
+function toggleExportTab() {
+  if (exportDialogBox.style.display == "none")
+  exportDialogBox.style.display = "flex";
+  else exportDialogBox.style.display = "none";
+}
+
+const dataToExportSelection = document.getElementById("dataToExportSelection");
+dataToExportSelection.addEventListener("change", () => {
+  let dataToExport = null;
+  switch (dataToExportSelection.value) {
+    case 'YourClass':
+      dataToExport = user;
+      break;
+    case 'MatesClass1':
+      dataToExport = mates[0];
+      break;
+    case 'MatesClass2':
+      dataToExport = mates[1];
+      break;
+    case 'MatesClass3':
+      dataToExport = mates[2];
+      break;
+    case 'MatesClass4':
+      dataToExport = mates[3];
+      break;
+    case 'MatesClass5':
+      dataToExport = mates[4];
+      break;
+  }
+  if (dataToExport) {
+    navigator.clipboard.writeText(JSON.stringify(dataToExport));
+    window.alert("Exported data to clipboard successfully");
+  }
+  toggleExportTab();
+});
 
 
 // ---------------  THEMES AND COLOR ACCENTS  ---------------
