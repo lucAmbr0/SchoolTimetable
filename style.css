@@ -437,7 +437,7 @@ h5 {
     display: flex;
     flex-direction: column;
     margin: 30px auto 20px auto;
-    padding: 5px 0 10px 0;
+    padding: 5px 0;
     background-color: var(--transpCol4);
     border-radius: 20px;
     border: solid 2px;
@@ -456,7 +456,7 @@ h5 {
 #userComplexDisplay {
     line-height: 0.8;
     font-weight: 400;
-    margin-bottom: 2.5px;
+    margin-bottom: 5.5px;
     font-size: 1.3em;
     font-family: var(--StandardTextFont);
     color: var(--OPPsolidCol4);
@@ -467,7 +467,7 @@ h5 {
     font-weight: 500;
     font-family: var(--StandardTextFont);
     color: var(--OPPsolidCol4);
-    margin: 2.5px 0 0 0;
+    margin: 2px 0 5px 0;
 }
 
 .horizontalLine {
@@ -511,8 +511,8 @@ h5 {
 .matesBoxGrid {
     display: grid;
     grid-template-columns: 2fr 3fr;
-    margin: 8px 0;
-    padding: 0px 15px;
+    margin: 3px 0;
+    padding: 0px 13px;
     color: var(--OPPsolidCol3);
     font-family: var(--StandardTextFont);
     font-size: 1.3em;
@@ -532,7 +532,7 @@ h5 {
     margin: 2px 0;
     color: var(--OPPsolidCol3);
     font-family: var(--StandardTextFont);
-    font-weight: 400;
+    font-weight: 300;
 }
 
 #navbar {
@@ -914,22 +914,46 @@ a {
     width: 100%;
 }
 
-.exportDialogBox {
-    display: none !important;
+#exportDialogBox, #importDialogBox {
+    animation: appTab 0.3s ease;
+    display: none;
     border: solid 2px;
     border-color: var(--OPPtranspCol4);
     margin: -5px 5px 0 5px;
     border-radius: 7px 7px 15px 15px;
-    display: flex;
     justify-content: space-between;
 }
 
-.exportDialogBox select {
+#importDialogBox {
+    flex-wrap: wrap;
+    padding: 8px;
+}
+
+#importDialogBox select {
+    text-align: center;
+    padding: 5px 0;
+    margin: 0;
+    width: 40%;
+}
+#importDialogBox input {
+    text-align: left;
+    padding: 5px;
+    margin: 0;
+    width: 53%;
+}
+#importDialogBox button {
+    width: 100%;
+    margin: 8px 0 0 0;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+#exportDialogBox select {
     text-align: center;
 }
 
-.exportDialogBox select,
-.exportDialogBox label {
+#exportDialogBox select,
+#exportDialogBox label {
     padding: 0;
     margin: 10px;
 }
@@ -943,6 +967,13 @@ a {
     margin-left: auto;
     border: solid 1px;
     border-color: var(--solidAccentColor2);
+}
+
+.importExportBtnContainer span {
+    height: 27px;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
 }
 
 .alignToRight {

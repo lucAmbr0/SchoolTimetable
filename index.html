@@ -257,7 +257,7 @@
     </div>
     <div class="appTabs" id="settingsTab">
       <!-- <h2 class="greetingDisplay">Settings</h2> -->
-      <div class="settingsSection">
+      <div class="settingsSection" id="appSettingsSection">
         <h2 class="settingHeader">App Settings</h2>
         <div class="switch-container">
           <div class="switch-label">Dark mode</div>
@@ -307,25 +307,25 @@
           >
             Reset
           </button>
-          <label for="transferData" style="display: none">Transfer data</label>
-          <div class="importExportBtnContainer alignToRight" style="display: none">
+          <label for="transferData">Transfer data</label>
+          <div class="importExportBtnContainer alignToRight">
             <button
               class="submitBtn importExportBtn"
               id="importDataBtn"
-              onclick=""
+              onclick="toggleExportTab()"
             >
               <span class="material-symbols-outlined"> upload </span>
             </button>
             <button
               class="submitBtn importExportBtn"
               id="exportDataBtn"
-              onclick=""
+              onclick="toggleImportTab()"
             >
               <span class="material-symbols-outlined"> download </span>
             </button>
           </div>
         </div>
-        <div class="exportDialogBox">
+        <div id="exportDialogBox">
           <label>Select data to export</label>
           <select name="dataToExport" id="dataToExportSelection">
             <option value="0">- - -</option>
@@ -336,6 +336,19 @@
             <option value="MatesClass4">Mates class 4</option>
             <option value="MatesClass5">Mates class 5</option>
           </select>
+        </div>
+        <div id="importDialogBox">
+          <select name="dataToImport" id="dataToImportSelection">
+            <option value="0">- - -</option>
+            <option value="YourClass">Your class</option>
+            <option value="MatesClass1">Mates class 1</option>
+            <option value="MatesClass2">Mates class 2</option>
+            <option value="MatesClass3">Mates class 3</option>
+            <option value="MatesClass4">Mates class 4</option>
+            <option value="MatesClass5">Mates class 5</option>
+          </select>
+          <input type="text" id="dataToImportInput" placeholder="Paste data here">
+          <button class="submitBtn" id="submitImportDataBtn" onclick="confirmImportData()">Import</button>
         </div>
       </div>
       <div class="settingsSection">
@@ -351,7 +364,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight">1.51.181</label>
+          <label class="alignToRight">1.53.187</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

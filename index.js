@@ -124,10 +124,10 @@ class UserInfo {
 
     // Fill each array with empty strings
     for (let i = 0; i < rows; i++) {
-      this.room[i] = Array(columns).fill("");
-      this.complex[i] = Array(columns).fill("");
-      this.subject[i] = Array(columns).fill("");
-      this.teacher[i] = Array(columns).fill("");
+      if (!this.room[i]) this.room[i] = Array(columns).fill("");
+      if (!this.complex[i]) this.complex[i] = Array(columns).fill("");
+      if (!this.subject[i]) this.subject[i] = Array(columns).fill("");
+      if (!this.teacher[i]) this.teacher[i] = Array(columns).fill("");
     }
   }
 }
@@ -153,9 +153,8 @@ function checkOldStorage() {
     localStorage.removeItem('user_complexARR');
     localStorage.removeItem('user_subjectARR');
     localStorage.removeItem('user_teacherARR');
-    console.log(user.room);
     // window.location.reload();
-    localStorage.setItem('user_OBJECT',JSON.stringify(user));
+    localStorage.setItem('user_OBJECT', JSON.stringify(user));
   }
   getUserInfoFromLocalStorage();
 }
@@ -163,7 +162,6 @@ function checkOldStorage() {
 function getUserInfoFromLocalStorage() {
   // If it finds the key "user_object" in user's browser, it reads the data and writes it to the variables
   if (localStorage.getItem('user_OBJECT')) {
-    console.log(user.room);
     user = JSON.parse(localStorage.getItem('user_OBJECT'));
     displayUserInfo();
   }
@@ -700,6 +698,146 @@ function deleteLocalStorage() {
 //     });
 //   });
 // }
+
+
+// ---------------  IMPORT EXPORT FEATURE  ---------------
+
+// IMPORT FEATURE
+
+const importDialogBox = document.getElementById("importDialogBox");
+
+toggleImportTab();
+function toggleImportTab() {
+  if (importDialogBox.style.display == "none") {
+    importDialogBox.style.display = "flex";
+    // if the opposite dialog box is shown, hides it
+    if (exportDialogBox.style.display == "flex") {
+      exportDialogBox.style.display = "none";
+    }
+  }
+  else {
+    importDialogBox.style.display = "none";
+  }
+}
+
+const dataToImportSelection = document.getElementById("dataToImportSelection");
+const dataToImportInput = document.getElementById("dataToImportInput");
+const submitImportDataBtn = document.getElementById("submitImportDataBtn");
+
+function confirmImportData() {
+  const dataToImport = dataToImportSelection.value;
+  if (dataToImport != "0") {
+    const dataValue = dataToImportInput.value;
+    try {
+      switch (dataToImport) {
+        case 'YourClass':
+          user = JSON.parse(dataValue);
+          user.fillArrays;
+          localStorage.setItem('user_OBJECT', JSON.stringify(user));
+          break;
+        case 'MatesClass1':
+          mates[0] = JSON.parse(dataValue);
+          localStorage.setItem('mates_OBJECT', JSON.stringify(mates))
+          break;
+        case 'MatesClass2':
+          mates[1] = JSON.parse(dataValue);
+          localStorage.setItem('mates_OBJECT', JSON.stringify(mates))
+          break;
+        case 'MatesClass3':
+          mates[2] = JSON.parse(dataValue);
+          localStorage.setItem('mates_OBJECT', JSON.stringify(mates))
+          break;
+        case 'MatesClass4':
+          mates[3] = JSON.parse(dataValue);
+          localStorage.setItem('mates_OBJECT', JSON.stringify(mates))
+          break;
+        case 'MatesClass5':
+          mates[4] = JSON.parse(dataValue);
+          localStorage.setItem('mates_OBJECT', JSON.stringify(mates))
+          break;
+      }
+    } catch (error) {
+      console.error(error);
+      window.alert("Invalid data entered. please only import data obtained from the appropriate export function");
+      return;
+    }
+    window.alert("Data imported succesfully!");
+    window.location.reload();
+  }
+}
+
+// EXPORT FEATURE
+
+const exportDialogBox = document.getElementById("exportDialogBox");
+
+toggleExportTab(); // executes once so the next time user clicks the div appears
+function toggleExportTab() {
+  if (exportDialogBox.style.display == "none") {
+    exportDialogBox.style.display = "flex";
+    // if the opposite dialog box is shown, hides it
+    if (importDialogBox.style.display == "flex") {
+      importDialogBox.style.display = "none";
+    }
+  }
+  else {
+    exportDialogBox.style.display = "none";
+  }
+}
+
+const dataToExportSelection = document.getElementById("dataToExportSelection");
+dataToExportSelection.addEventListener("change", () => {
+  let dataToExport = null;
+  switch (dataToExportSelection.value) {
+    case 'YourClass':
+      dataToExport = user;
+      break;
+    case 'MatesClass1':
+      dataToExport = mates[0];
+      break;
+    case 'MatesClass2':
+      dataToExport = mates[1];
+      break;
+    case 'MatesClass3':
+      dataToExport = mates[2];
+      break;
+    case 'MatesClass4':
+      dataToExport = mates[3];
+      break;
+    case 'MatesClass5':
+      dataToExport = mates[4];
+      break;
+  }
+  if (dataToExport) {
+    copyToClipboard(JSON.stringify(dataToExport));
+    window.alert("Exported data to clipboard successfully");
+  }
+  toggleExportTab();
+});
+
+
+function copyToClipboard(data) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(data)
+      .then(() => {
+        console.log('Data copied to clipboard successfully');
+        // Provide feedback to the user indicating successful copy
+      })
+      .catch((error) => {
+        console.error('Unable to copy data to clipboard: ', error);
+        // Handle errors, such as permissions or unsupported browsers
+      });
+  } else {
+    // Fallback for browsers that do not support the Clipboard API
+    var textarea = document.createElement('textarea');
+    textarea.value = data;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    console.log('Data copied to clipboard successfully (fallback)');
+    // Provide feedback to the user indicating successful copy
+  }
+}
 
 
 // ---------------  THEMES AND COLOR ACCENTS  ---------------
