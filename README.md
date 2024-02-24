@@ -56,13 +56,11 @@ I will try to keep the repository structure as clean as possible to make mainten
 .
 |
 ├── icons
-|   ├── icon-48x48.png
-|   ├── icon-72x72.png
-|   ├── icon-96x96.png
-|   ├── icon-128x128.png
-|   ├── icon-192x192.png
-|   ├── icon-384x384.png
-|   └── icon-512x512.png
+|   ├── github-mark.svg
+|   ├── icon-any-192x192.png
+|   ├── icon-any-512x512.png
+|   ├── icon-masked-192x192.png
+|   ├── icon-masked-512x512.png
 ├── screenshots
 |   ├── desktop-screenshot1.png
 |   ├── desktop-screenshot2.png
@@ -75,7 +73,8 @@ I will try to keep the repository structure as clean as possible to make mainten
 |   ├── mobile-screenshot3.png
 |   ├── mobile-screenshot4.png
 |   ├── mobile-screenshot5.png
-|   └── mobile-screenshot6.png
+|   ├── mobile-screenshot6.png
+|   └── splashscreen.png
 ├── manifest.json
 ├── index.html
 ├── index.js
@@ -131,9 +130,10 @@ This is School Timetable, a web app created to help you organize your school tim
 If you are in a large school, with numerous classes and need a quick tool to organize your studies, or know where a lesson will take place or where your classmates are, this tool is perfect for you!
 
 * **How do I configure this?** <br>
-The app is very user-friendly, navigate to the timetables screen, enter the class, the complete weekly timetables of subjects, teachers and classrooms and quickly find what you need!*
+The app is very user-friendly, navigate to the timetables screen, enter the class, the complete weekly timetables of subjects, teachers and classrooms and quickly find what you need!
+Additionally, since v1.53.187 you can export and import data in a second, if you'd ever need to change device you'll be ready to go in a moment!
 
-**Can I contribute to this** <br>
+* **Can I contribute to this?** <br>
 Yes, absolutely! Contributions are always well-accepted! To know more, go to the contribution section of this readme
 
 * **How are you?** <br>
