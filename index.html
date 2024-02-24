@@ -33,9 +33,27 @@
     />
   </head>
   <body>
-    <div id="topNotchContainer">
+    <div class="topNotchContainer" onclick="toggleChangeTime()">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
       <h2 id="timeDisplay">17:41</h2>
+      <div class="changeTimeContainer changeTimeContainerHidden">
+        <div class="daysHoursGrid">
+          <button>M</button>
+          <button class="timeButtonActive">T</button>
+          <button>W</button>
+          <button>T</button>
+          <button>F</button>
+          <button>S</button>
+        </div>
+        <div class="daysHoursGrid">
+          <button>1</button>
+          <button>2</button>
+          <button>3</button>
+          <button>4</button>
+          <button class="timeButtonActive">5</button>
+          <button>6</button>
+        </div>
+      </div>
     </div>
     <div id="topNotchFixed"></div>
     <div class="appTabs" id="nowTab">
