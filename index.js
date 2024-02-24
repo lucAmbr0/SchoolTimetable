@@ -876,6 +876,26 @@ function setTheme() {
 }
 
 
+// ---------------  CUSTOM SEARCH FOR TIME AND DATE  ---------------
+
+const changeTimeContainer = document.querySelector(".changeTimeContainer");
+const topNotch = document.querySelector(".topNotchContainer");
+
+function toggleChangeTime() {
+  if (topNotch.classList.contains("topNotchContainerTALL")) {
+    topNotch.classList.remove("topNotchContainerTALL");
+    changeTimeContainer.classList.add("changeTimeContainerHidden");
+  }
+  else {
+    topNotch.classList.add("topNotchContainerTALL");
+    setTimeout(() => {
+      changeTimeContainer.classList.remove("changeTimeContainerHidden");
+    }, 300);
+  }
+}
+
+
+
 // ---------------  DATE AND TIME DISPLAY  ---------------
 
 const dayDisplay = document.getElementById("dayDisplay");

@@ -369,7 +369,7 @@ h5 {
     animation: appTab 0.3s ease forwards;
 }
 
-#topNotchContainer {
+.topNotchContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -384,9 +384,88 @@ h5 {
     z-index: 2;
     color: var(--textCol3);
     text-align: center;
-    border-radius: 0 0 10% 10%;
+    border-radius: 2.5vh;
     padding: 1vh 0;
     backdrop-filter: blur(15px);
+    transition: 0.3s all ease;
+}
+
+.changeTimeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: -4vh auto 2vh auto;
+    width: fit-content;
+    height: 12vh;
+    padding: 0;
+    transition: 0.3s all ease;
+}
+
+.changeTimeContainerHidden {
+    transform: translateY(-10vh) !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    height: 0vh !important;
+    scale: 0.7 !important;
+    transition: 0.3s all ease;
+}
+
+.daysHoursGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    width: 36vh;
+    grid-template-rows: 1;
+    width: fit-content;
+    margin: 0 !important;
+}
+
+.changeTimeContainer button {
+    border: solid 3px;
+    border-color: transparent;
+    border-radius: 10px;
+    margin: 2px;
+    width: 6.2vh;
+    height: 6.2vh;
+    font-size: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--HeadingFont);
+    font-weight: 500;
+    color: var(--solidCol1);
+    background-color: var(--OPPtranspCol6);
+    opacity: 0.8;
+    text-shadow: var(--boxShadow4);
+}
+
+.topNotchContainerTALL {
+    height: 20vh;
+    justify-content: flex-start !important;
+    transition: 0.3s all ease !important;
+}
+
+.topNotchContainerTALL h1, .topNotchContainerTALL h2 {
+    font-size: 2em !important;
+    opacity: 0.9 !important;
+    margin: 0.7vh 0 1vh 0 !important;
+    transition: 0.3s ease all !important;
+}
+
+.topNotchContainerTALL h2 {
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateY(2vh) !important;
+    transition: 0.2s ease all !important;
+}
+
+.timeButtonActive {
+    opacity: 1 !important;
+    color: var(--solidCol0);
+    background-color: var(--OPPtranspCol4) !important;
+    border-color: var(--OPPtranspCol4) !important;
+    transition: 0.3s all ease;
 }
 
 #topNotchFixed {
@@ -406,6 +485,7 @@ h5 {
     font-weight: 500;
     font-size: 1.8em;
     line-height: 1.2;
+    transition: 0.3s all ease !important;
 }
 
 #timeDisplay {
@@ -414,6 +494,7 @@ h5 {
     font-weight: 600;
     line-height: 1.1;
     font-size: 2.8em;
+    transition: 0.2s 0.3s all ease !important;
 }
 
 .greetingDisplay {
