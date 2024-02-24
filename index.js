@@ -880,17 +880,22 @@ function setTheme() {
 
 const changeTimeContainer = document.querySelector(".changeTimeContainer");
 const topNotch = document.querySelector(".topNotchContainer");
+const topNotchFixed = document.querySelector(".topNotchFixed");
 
 function toggleChangeTime() {
   if (topNotch.classList.contains("topNotchContainerTALL")) {
-    topNotch.classList.remove("topNotchContainerTALL");
     changeTimeContainer.classList.add("changeTimeContainerHidden");
+    setTimeout(() => {
+      topNotchFixed.classList.remove("topNotchFixedTALL");
+      topNotch.classList.remove("topNotchContainerTALL");
+    }, 200);
   }
   else {
     topNotch.classList.add("topNotchContainerTALL");
+    topNotchFixed.classList.add("topNotchFixedTALL");
     setTimeout(() => {
       changeTimeContainer.classList.remove("changeTimeContainerHidden");
-    }, 300);
+    }, 200);
   }
 }
 

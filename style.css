@@ -373,7 +373,7 @@ h5 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     top: 0;
     left: 0;
     position: fixed;
@@ -384,7 +384,7 @@ h5 {
     z-index: 2;
     color: var(--textCol3);
     text-align: center;
-    border-radius: 2.5vh;
+    border-radius: 0 0 2.5vh 2.5vh;
     padding: 1vh 0;
     backdrop-filter: blur(15px);
     transition: 0.3s all ease;
@@ -395,20 +395,19 @@ h5 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: -4vh auto 2vh auto;
+    margin: -4.5vh auto 2vh auto;
     width: fit-content;
     height: 12vh;
     padding: 0;
-    transition: 0.3s all ease;
+    transition: 0.25s all ease;
 }
 
 .changeTimeContainerHidden {
-    transform: translateY(-10vh) !important;
+    transform: translateY(-1vh) !important;
     opacity: 0 !important;
     margin: 0 !important;
     height: 0vh !important;
-    scale: 0.7 !important;
-    transition: 0.3s all ease;
+    transition: 0.3s all ease-in-out;
 }
 
 .daysHoursGrid {
@@ -440,24 +439,24 @@ h5 {
 }
 
 .topNotchContainerTALL {
-    height: 20vh;
+    height: 20vh !important;
     justify-content: flex-start !important;
     transition: 0.3s all ease !important;
 }
 
 .topNotchContainerTALL h1, .topNotchContainerTALL h2 {
-    font-size: 2em !important;
+    /* font-size: 2em !important; */
     opacity: 0.9 !important;
-    margin: 0.7vh 0 1vh 0 !important;
-    transition: 0.3s ease all !important;
+    /* margin: 0.7vh 0 0 0 !important; */
+    transition: 0s ease all !important;
 }
 
 .topNotchContainerTALL h2 {
     opacity: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    transform: translateY(2vh) !important;
-    transition: 0.2s ease all !important;
+    transform: translateY(3vh) !important;
+    transition: 0.3s ease all !important;
 }
 
 .timeButtonActive {
@@ -468,7 +467,7 @@ h5 {
     transition: 0.3s all ease;
 }
 
-#topNotchFixed {
+.topNotchFixed {
     display: flex;
     position: static;
     top: 0;
@@ -477,6 +476,11 @@ h5 {
     width: 100%;
     margin-bottom: 20px;
     background-color: transparent;
+    transition: 0.3s ease all;
+}
+
+.topNotchFixedTALL {
+    height: 21vh;
 }
 
 #dayDisplay {
@@ -494,7 +498,7 @@ h5 {
     font-weight: 600;
     line-height: 1.1;
     font-size: 2.8em;
-    transition: 0.2s 0.3s all ease !important;
+    transition: 0.3s all ease !important;
 }
 
 .greetingDisplay {
