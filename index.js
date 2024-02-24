@@ -899,6 +899,13 @@ function toggleChangeTime() {
   }
 }
 
+function setCustomDay(selectedDay) {
+  
+}
+function setCustomHour(selectedhour) {
+
+}
+
 
 
 // ---------------  DATE AND TIME DISPLAY  ---------------
