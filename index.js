@@ -317,10 +317,11 @@ function displayUserToNowTab(day, hour) {
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
-  hour -= schoolHourStart;
-  console.log(day);
+  if (!usingCustomSearch) {
+    // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
+    hour -= schoolHourStart;
+  }
   if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
-    console.log("non è domenica");
     if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
     else userClassroomDisplay.textContent = user.room[day][hour];
     if (!user.complex[day][hour]) {
@@ -342,6 +343,8 @@ function displayUserToNowTab(day, hour) {
   }
   else {
     userClassroomDisplay.textContent = "No lesson";
+    userComplexDisplay.textContent = "";
+    userSubjectAndTeacher.textContent = "";
   }
 }
 
@@ -613,7 +616,10 @@ function displayMatesToNowTab(day, hour) {
   const matesSubject = document.querySelectorAll(".matesSubject");
   const matesTeacher = document.querySelectorAll(".matesTeacher");
 
-  hour -= schoolHourStart;
+  if (!usingCustomSearch) {
+    // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
+    hour -= schoolHourStart;
+  }
   let atLeastOneMateBoxIsShown = false;
   if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
@@ -651,6 +657,8 @@ function displayMatesToNowTab(day, hour) {
         matesRoomDisplay[i].textContent = "No lesson";
         matesClass[i].textContent = mates[i].className;
         matesNotes[i].textContent = mates[i].classMatesNames;
+        matesSubject[i].textContent = "";
+        matesTeacher[i].textContent = "";
         atLeastOneMateBoxIsShown = true;
       }
     }
@@ -679,46 +687,6 @@ function deleteLocalStorage() {
     window.location.reload();
   }
 }
-
-
-// ---------------  WEB APP INSTALL PROMPT  ---------------
-
-// let deferredPrompt;
-
-// window.addEventListener('beforeinstallprompt', (event) => {
-// Impedisci al browser di gestire l'evento di installazione di default
-// event.preventDefault();
-// // Salva l'evento per utilizzarlo successivamente
-// deferredPrompt = event;
-// console.log(event);
-
-// Mostra un pulsante o un messaggio per invitare l'utente ad installare l'app
-// Ad esempio, puoi mostrare un pulsante "Installa" su una barra di navigazione personalizzata
-// showInstallButton();
-// });
-
-// function showInstallButton() {
-//   // Mostra un elemento HTML (ad esempio, un pulsante) per invitare l'utente ad installare l'app
-//   const installButton = document.getElementById('install-button');
-//   installButton.style.display = 'block';
-
-//   // Aggiungi un gestore di eventi per installare l'app quando il pulsante viene cliccato
-//   installButton.addEventListener('click', () => {
-//     // Mostra il prompt di installazione salvato
-//     deferredPrompt.prompt();
-
-//     // Attendiamo che l'utente risponda al prompt di installazione
-//     deferredPrompt.userChoice.then((choiceResult) => {
-//       if (choiceResult.outcome === 'accepted') {
-//         console.log('L\'utente ha accettato l\'installazione');
-//       } else {
-//         console.log('L\'utente ha rifiutato l\'installazione');
-//       }
-//       // Puliamo il riferimento al prompt di installazione, poiché può essere utilizzato solo una volta
-//       deferredPrompt = null;
-//     });
-//   });
-// }
 
 
 // ---------------  IMPORT EXPORT FEATURE  ---------------
@@ -840,7 +808,6 @@ function copyToClipboard(data) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(data)
       .then(() => {
-        console.log('Data copied to clipboard successfully');
         // Provide feedback to the user indicating successful copy
       })
       .catch((error) => {
@@ -855,7 +822,6 @@ function copyToClipboard(data) {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    console.log('Data copied to clipboard successfully (fallback)');
     // Provide feedback to the user indicating successful copy
   }
 }
@@ -897,38 +863,82 @@ function setTheme() {
 }
 
 
-// ---------------  CUSTOM SEARCH FOR TIME AND DATE  ---------------
+// ---------------  CUSTOM/ADVANCED SEARCH FOR TIME AND DATE  ---------------
 
 const changeTimeContainer = document.querySelector(".changeTimeContainer");
 const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
 
+let usingCustomSearch = false;
+const daysButtons = document.querySelectorAll(".daysButtons");
+const hoursButtons = document.querySelectorAll(".hoursButtons");
+
+let customHour = null;
+let customDay = null;
+
 function toggleChangeTime() {
+  // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
-    changeTimeContainer.style.display = "flex";
     changeTimeContainer.classList.add("changeTimeContainerHidden");
     setTimeout(() => {
       topNotchFixed.classList.remove("topNotchFixedTALL");
       topNotch.classList.remove("topNotchContainerTALL");
+      changeTimeContainer.style.display = "none";
     }, 200);
+    daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    usingCustomSearch = false;
+    customHour = null;
+    customDay = null;
   }
+  // Opening box
   else {
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
     setTimeout(() => {
-      changeTimeContainer.classList.remove("changeTimeContainerHidden");
+      changeTimeContainer.style.display = "flex";
     }, 200);
     setTimeout(() => {
-      changeTimeContainer.style.display = "none";
-    }, 450);
+      changeTimeContainer.classList.remove("changeTimeContainerHidden");
+    }, 250);
   }
 }
 
 function setCustomDay(event, selectedDay) {
-  event.stopPropagation();
+  event.stopPropagation(); // prevents from closing tab when clicking buttons
+  // Clicking on a button already selected closes the box
+  if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
+    usingCustomSearch = false;
+    toggleChangeTime();
+    return;
+  }
+  daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+  daysButtons[selectedDay].classList.add("timeButtonActive");
+  customDay = selectedDay;
+  usingCustomSearch = true;
+  displayCustomTimes();
 }
-function setCustomHour(event, selectedhour) {
-  event.stopPropagation();
+function setCustomHour(event, selectedHour) {
+  event.stopPropagation(); // prevents from closing tab when clicking buttons
+  // Clicking on a button already selected closes the box
+  if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
+    usingCustomSearch = false;
+    toggleChangeTime();
+    return;
+  }
+  hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+  hoursButtons[selectedHour].classList.add("timeButtonActive");
+  customHour = selectedHour;
+  usingCustomSearch = true;
+  displayCustomTimes();
+}
+
+function displayCustomTimes() {
+  if (customDay != null && customHour != null) {
+    displayUserToNowTab(customDay, customHour);
+    displayMatesToNowTab(customDay, customHour);
+  }
+  else usingCustomSearch = false;
 }
 
 
@@ -942,29 +952,31 @@ updateDateTime();
 function updateDateTime() {
   // UPDATING TIME AND DATE
   currentDate = new Date();
-  let day = currentDate.getDay();
-  console.log(day);
-  let hour = currentDate.getHours();
+  if (!usingCustomSearch) {
+    let day = currentDate.getDay();
+    let hour = currentDate.getHours();
 
-  // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
-  day--; // decrements by one because in date object monday is '1' 
-  console.log(day);
-  day = 0;
-  displayUserToNowTab(day, hour);
-  displayMatesToNowTab(day, hour);
+    // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
+    day--; // decrements by one because in date object monday is '1' 
+    // day = 0; // debug
+    displayUserToNowTab(day, hour);
+    displayMatesToNowTab(day, hour);
 
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  const dayOfWeek = days[currentDate.getDay()];
-  const dayOfMonth = currentDate.getDate();
-  const month = months[currentDate.getMonth()];
-  const hours = String(currentDate.getHours()).padStart(2, '0');
-  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const dayOfWeek = days[currentDate.getDay()];
+    const dayOfMonth = currentDate.getDate();
+    const month = months[currentDate.getMonth()];
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 
-  dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
-  timeText = hours + ':' + minutes;
+    dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
+    timeText = hours + ':' + minutes;
 
+  } else {
+    displayCustomTimes();
+  }
   dayDisplay.textContent = dateText;
   timeDisplay.textContent = timeText;
 }
