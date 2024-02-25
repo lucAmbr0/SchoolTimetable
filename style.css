@@ -437,6 +437,7 @@ h5 {
     background-color: var(--OPPtranspCol6);
     opacity: 0.8;
     text-shadow: var(--boxShadow4);
+    transition: 0.2s all ease;
 }
 
 .topNotchContainerTALL {

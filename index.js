@@ -317,7 +317,10 @@ function displayUserToNowTab(day, hour) {
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
-  hour -= schoolHourStart;
+  if (!usingCustomSearch) {
+    // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
+    hour -= schoolHourStart;
+  }
   if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
     else userClassroomDisplay.textContent = user.room[day][hour];
@@ -340,6 +343,8 @@ function displayUserToNowTab(day, hour) {
   }
   else {
     userClassroomDisplay.textContent = "No lesson";
+    userComplexDisplay.textContent = "";
+    userSubjectAndTeacher.textContent = "";
   }
 }
 
@@ -611,7 +616,10 @@ function displayMatesToNowTab(day, hour) {
   const matesSubject = document.querySelectorAll(".matesSubject");
   const matesTeacher = document.querySelectorAll(".matesTeacher");
 
-  hour -= schoolHourStart;
+  if (!usingCustomSearch) {
+    // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
+    hour -= schoolHourStart;
+  }
   let atLeastOneMateBoxIsShown = false;
   if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
@@ -649,6 +657,8 @@ function displayMatesToNowTab(day, hour) {
         matesRoomDisplay[i].textContent = "No lesson";
         matesClass[i].textContent = mates[i].className;
         matesNotes[i].textContent = mates[i].classMatesNames;
+        matesSubject[i].textContent = "";
+        matesTeacher[i].textContent = "";
         atLeastOneMateBoxIsShown = true;
       }
     }
@@ -859,7 +869,15 @@ const changeTimeContainer = document.querySelector(".changeTimeContainer");
 const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
 
+let usingCustomSearch = false;
+const daysButtons = document.querySelectorAll(".daysButtons");
+const hoursButtons = document.querySelectorAll(".hoursButtons");
+
+let customHour = null;
+let customDay = null;
+
 function toggleChangeTime() {
+  // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
     setTimeout(() => {
@@ -867,7 +885,13 @@ function toggleChangeTime() {
       topNotch.classList.remove("topNotchContainerTALL");
       changeTimeContainer.style.display = "none";
     }, 200);
+    daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    usingCustomSearch = false;
+    customHour = null;
+    customDay = null;
   }
+  // Opening box
   else {
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
@@ -881,12 +905,40 @@ function toggleChangeTime() {
 }
 
 function setCustomDay(event, selectedDay) {
-  event.stopPropagation();
-  console.log("AAA");
+  event.stopPropagation(); // prevents from closing tab when clicking buttons
+  // Clicking on a button already selected closes the box
+  if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
+    usingCustomSearch = false;
+    toggleChangeTime();
+    return;
+  }
+  daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+  daysButtons[selectedDay].classList.add("timeButtonActive");
+  customDay = selectedDay;
+  usingCustomSearch = true;
+  displayCustomTimes();
 }
-function setCustomHour(event, selectedhour) {
-  event.stopPropagation();
-  console.log("BBB");
+function setCustomHour(event, selectedHour) {
+  event.stopPropagation(); // prevents from closing tab when clicking buttons
+  // Clicking on a button already selected closes the box
+  if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
+    usingCustomSearch = false;
+    toggleChangeTime();
+    return;
+  }
+  hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+  hoursButtons[selectedHour].classList.add("timeButtonActive");
+  customHour = selectedHour;
+  usingCustomSearch = true;
+  displayCustomTimes();
+}
+
+function displayCustomTimes() {
+  if (customDay != null && customHour != null) {
+    displayUserToNowTab(customDay, customHour);
+    displayMatesToNowTab(customDay, customHour);
+  }
+  else usingCustomSearch = false;
 }
 
 
@@ -900,27 +952,31 @@ updateDateTime();
 function updateDateTime() {
   // UPDATING TIME AND DATE
   currentDate = new Date();
-  let day = currentDate.getDay();
-  let hour = currentDate.getHours();
+  if (!usingCustomSearch) {
+    let day = currentDate.getDay();
+    let hour = currentDate.getHours();
 
-  // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
-  day--; // decrements by one because in date object monday is '1' 
-  // day = 0;
-  displayUserToNowTab(day, hour);
-  displayMatesToNowTab(day, hour);
+    // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
+    day--; // decrements by one because in date object monday is '1' 
+    // day = 0; // debug
+    displayUserToNowTab(day, hour);
+    displayMatesToNowTab(day, hour);
 
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  const dayOfWeek = days[currentDate.getDay()];
-  const dayOfMonth = currentDate.getDate();
-  const month = months[currentDate.getMonth()];
-  const hours = String(currentDate.getHours()).padStart(2, '0');
-  const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+    const dayOfWeek = days[currentDate.getDay()];
+    const dayOfMonth = currentDate.getDate();
+    const month = months[currentDate.getMonth()];
+    const hours = String(currentDate.getHours()).padStart(2, '0');
+    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 
-  dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
-  timeText = hours + ':' + minutes;
+    dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
+    timeText = hours + ':' + minutes;
 
+  } else {
+    displayCustomTimes();
+  }
   dayDisplay.textContent = dateText;
   timeDisplay.textContent = timeText;
 }
