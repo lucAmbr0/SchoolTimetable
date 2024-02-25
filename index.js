@@ -860,7 +860,6 @@ const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
 
 function toggleChangeTime() {
-  console.log("AAAAA");
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
     setTimeout(() => {
@@ -883,9 +882,11 @@ function toggleChangeTime() {
 
 function setCustomDay(event, selectedDay) {
   event.stopPropagation();
+  console.log("AAA");
 }
 function setCustomHour(event, selectedhour) {
   event.stopPropagation();
+  console.log("BBB");
 }
 
 

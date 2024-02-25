@@ -391,7 +391,7 @@ h5 {
 }
 
 .changeTimeContainer {
-    display: flex;
+    display: "none";
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -403,6 +403,7 @@ h5 {
 }
 
 .changeTimeContainerHidden {
+    display: "none" !important;
     transform: translateY(-1vh) !important;
     opacity: 0 !important;
     margin: 0 !important;
