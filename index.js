@@ -853,30 +853,31 @@ function setTheme() {
 }
 
 
-// ---------------  CUSTOM SEARCH FOR TIME AND DATE  ---------------
+// ---------------  CUSTOM/ADVANCED SEARCH FOR TIME AND DATE  ---------------
 
 const changeTimeContainer = document.querySelector(".changeTimeContainer");
 const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
 
 function toggleChangeTime() {
+  console.log("AAAAA");
   if (topNotch.classList.contains("topNotchContainerTALL")) {
-    changeTimeContainer.style.display = "flex";
     changeTimeContainer.classList.add("changeTimeContainerHidden");
     setTimeout(() => {
       topNotchFixed.classList.remove("topNotchFixedTALL");
       topNotch.classList.remove("topNotchContainerTALL");
+      changeTimeContainer.style.display = "none";
     }, 200);
   }
   else {
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
     setTimeout(() => {
-      changeTimeContainer.classList.remove("changeTimeContainerHidden");
+      changeTimeContainer.style.display = "flex";
     }, 200);
     setTimeout(() => {
-      changeTimeContainer.style.display = "none";
-    }, 450);
+      changeTimeContainer.classList.remove("changeTimeContainerHidden");
+    }, 250);
   }
 }
 
