@@ -34,24 +34,24 @@
   </head>
   <body>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
-      <h1 id="dayDisplay">Saturday 17 Feb</h1>
-      <h2 id="timeDisplay">17:41</h2>
+        <h1 id="dayDisplay">Saturday 17 Feb</h1>
+        <h2 id="timeDisplay">17:41</h2>
       <div class="changeTimeContainer changeTimeContainerHidden">
         <div class="daysHoursGrid">
-          <button onclick="setCustomDay(0)">M</button>
-          <button onclick="setCustomDay(1)">T</button>
-          <button onclick="setCustomDay(2)">W</button>
-          <button onclick="setCustomDay(3)">T</button>
-          <button onclick="setCustomDay(4)">F</button>
-          <button onclick="setCustomDay(5)">S</button>
+          <button onclick="setCustomDay(event, 0)">M</button>
+          <button onclick="setCustomDay(event, 1)">T</button>
+          <button onclick="setCustomDay(event, 2)">W</button>
+          <button onclick="setCustomDay(event, 3)">T</button>
+          <button onclick="setCustomDay(event, 4)">F</button>
+          <button onclick="setCustomDay(event, 5)">S</button>
         </div>
         <div class="daysHoursGrid">
-          <button onclick="setCustomHour(0)">1</button>
-          <button onclick="setCustomHour(1)">2</button>
-          <button onclick="setCustomHour(2)">3</button>
-          <button onclick="setCustomHour(3)">4</button>
-          <button onclick="setCustomHour(4)">5</button>
-          <button onclick="setCustomHour(5)">6</button>
+          <button onclick="setCustomHour(event, 0)">1</button>
+          <button onclick="setCustomHour(event, 1)">2</button>
+          <button onclick="setCustomHour(event, 2)">3</button>
+          <button onclick="setCustomHour(event, 3)">4</button>
+          <button onclick="setCustomHour(event, 4)">5</button>
+          <button onclick="setCustomHour(event, 5)">6</button>
         </div>
       </div>
     </div>
@@ -365,8 +365,18 @@
             <option value="MatesClass4">Mates class 4</option>
             <option value="MatesClass5">Mates class 5</option>
           </select>
-          <input type="text" id="dataToImportInput" placeholder="Paste data here">
-          <button class="submitBtn" id="submitImportDataBtn" onclick="confirmImportData()">Import</button>
+          <input
+            type="text"
+            id="dataToImportInput"
+            placeholder="Paste data here"
+          />
+          <button
+            class="submitBtn"
+            id="submitImportDataBtn"
+            onclick="confirmImportData()"
+          >
+            Import
+          </button>
         </div>
       </div>
       <div class="settingsSection">
@@ -382,7 +392,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight">1.56.195</label>
+          <label class="alignToRight">1.57.199</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

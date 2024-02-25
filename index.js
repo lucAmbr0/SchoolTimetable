@@ -318,7 +318,9 @@ function displayUserToNowTab(day, hour) {
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
   hour -= schoolHourStart;
-  if (day !== 7) {
+  console.log(day);
+  if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
+    console.log("non è domenica");
     if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
     else userClassroomDisplay.textContent = user.room[day][hour];
     if (!user.complex[day][hour]) {
@@ -337,6 +339,9 @@ function displayUserToNowTab(day, hour) {
       userSubjectAndTeacher.textContent = user.subject[day][hour];
       if (user.teacher[day][hour]) userSubjectAndTeacher.textContent += " - " + user.teacher[day][hour];
     }
+  }
+  else {
+    userClassroomDisplay.textContent = "No lesson";
   }
 }
 
@@ -609,8 +614,8 @@ function displayMatesToNowTab(day, hour) {
   const matesTeacher = document.querySelectorAll(".matesTeacher");
 
   hour -= schoolHourStart;
-  if (day != 7) {
-    let atLeastOneMateBoxIsShown = false;
+  let atLeastOneMateBoxIsShown = false;
+  if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
       if (!mates[i].room[day][hour] && mates[i].className) matesRoomDisplay[i].textContent = "No lesson";
       else matesRoomDisplay[i].textContent = mates[i].room[day][hour];
@@ -635,14 +640,30 @@ function displayMatesToNowTab(day, hour) {
         document.getElementById("secondaryBoxesLabel").style.display = "block";
       }
     }
-    if (!atLeastOneMateBoxIsShown && showGreetingState == "0" && userClassroomDisplay.textContent == "No lesson") {
-      document.getElementById("yourClassBox").style.display = "none";
-      document.getElementById("letsStartMessage").style.display = "block";
+  }
+  else {
+    for (let i = 0; i < 5; i++) {
+      if (!mates[i].className) {
+        matesClass[i].parentElement.parentElement.style.display = "none";
+      }
+      else {
+        matesClass[i].parentElement.parentElement.style.display = "block";
+        matesRoomDisplay[i].textContent = "No lesson";
+        matesClass[i].textContent = mates[i].className;
+        matesNotes[i].textContent = mates[i].classMatesNames;
+        atLeastOneMateBoxIsShown = true;
+      }
     }
-    else {
-      document.getElementById("yourClassBox").style.display = "block";
-      document.getElementById("letsStartMessage").style.display = "none";
-    }
+  }
+  if (!atLeastOneMateBoxIsShown && showGreetingState == "0" && userClassroomDisplay.textContent == "No lesson") {
+    document.getElementById("userMatesSeparator").style.display = "none";
+    document.getElementById("secondaryBoxesLabel").style.display = "none";
+    document.getElementById("yourClassBox").style.display = "none";
+    document.getElementById("letsStartMessage").style.display = "block";
+  }
+  else {
+    document.getElementById("yourClassBox").style.display = "block";
+    document.getElementById("letsStartMessage").style.display = "none";
   }
 }
 
@@ -884,6 +905,7 @@ const topNotchFixed = document.querySelector(".topNotchFixed");
 
 function toggleChangeTime() {
   if (topNotch.classList.contains("topNotchContainerTALL")) {
+    changeTimeContainer.style.display = "flex";
     changeTimeContainer.classList.add("changeTimeContainerHidden");
     setTimeout(() => {
       topNotchFixed.classList.remove("topNotchFixedTALL");
@@ -896,14 +918,17 @@ function toggleChangeTime() {
     setTimeout(() => {
       changeTimeContainer.classList.remove("changeTimeContainerHidden");
     }, 200);
+    setTimeout(() => {
+      changeTimeContainer.style.display = "none";
+    }, 450);
   }
 }
 
-function setCustomDay(selectedDay) {
-  
+function setCustomDay(event, selectedDay) {
+  event.stopPropagation();
 }
-function setCustomHour(selectedhour) {
-
+function setCustomHour(event, selectedhour) {
+  event.stopPropagation();
 }
 
 
@@ -918,10 +943,13 @@ function updateDateTime() {
   // UPDATING TIME AND DATE
   currentDate = new Date();
   let day = currentDate.getDay();
+  console.log(day);
   let hour = currentDate.getHours();
 
   // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
   day--; // decrements by one because in date object monday is '1' 
+  console.log(day);
+  day = 0;
   displayUserToNowTab(day, hour);
   displayMatesToNowTab(day, hour);
 
