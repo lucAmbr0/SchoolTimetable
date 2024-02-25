@@ -318,9 +318,7 @@ function displayUserToNowTab(day, hour) {
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
   hour -= schoolHourStart;
-  console.log(day);
   if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
-    console.log("non è domenica");
     if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
     else userClassroomDisplay.textContent = user.room[day][hour];
     if (!user.complex[day][hour]) {
@@ -681,46 +679,6 @@ function deleteLocalStorage() {
 }
 
 
-// ---------------  WEB APP INSTALL PROMPT  ---------------
-
-// let deferredPrompt;
-
-// window.addEventListener('beforeinstallprompt', (event) => {
-// Impedisci al browser di gestire l'evento di installazione di default
-// event.preventDefault();
-// // Salva l'evento per utilizzarlo successivamente
-// deferredPrompt = event;
-// console.log(event);
-
-// Mostra un pulsante o un messaggio per invitare l'utente ad installare l'app
-// Ad esempio, puoi mostrare un pulsante "Installa" su una barra di navigazione personalizzata
-// showInstallButton();
-// });
-
-// function showInstallButton() {
-//   // Mostra un elemento HTML (ad esempio, un pulsante) per invitare l'utente ad installare l'app
-//   const installButton = document.getElementById('install-button');
-//   installButton.style.display = 'block';
-
-//   // Aggiungi un gestore di eventi per installare l'app quando il pulsante viene cliccato
-//   installButton.addEventListener('click', () => {
-//     // Mostra il prompt di installazione salvato
-//     deferredPrompt.prompt();
-
-//     // Attendiamo che l'utente risponda al prompt di installazione
-//     deferredPrompt.userChoice.then((choiceResult) => {
-//       if (choiceResult.outcome === 'accepted') {
-//         console.log('L\'utente ha accettato l\'installazione');
-//       } else {
-//         console.log('L\'utente ha rifiutato l\'installazione');
-//       }
-//       // Puliamo il riferimento al prompt di installazione, poiché può essere utilizzato solo una volta
-//       deferredPrompt = null;
-//     });
-//   });
-// }
-
-
 // ---------------  IMPORT EXPORT FEATURE  ---------------
 
 // IMPORT FEATURE
@@ -840,7 +798,6 @@ function copyToClipboard(data) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(data)
       .then(() => {
-        console.log('Data copied to clipboard successfully');
         // Provide feedback to the user indicating successful copy
       })
       .catch((error) => {
@@ -855,7 +812,6 @@ function copyToClipboard(data) {
     textarea.select();
     document.execCommand('copy');
     document.body.removeChild(textarea);
-    console.log('Data copied to clipboard successfully (fallback)');
     // Provide feedback to the user indicating successful copy
   }
 }
@@ -943,13 +899,11 @@ function updateDateTime() {
   // UPDATING TIME AND DATE
   currentDate = new Date();
   let day = currentDate.getDay();
-  console.log(day);
   let hour = currentDate.getHours();
 
   // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
   day--; // decrements by one because in date object monday is '1' 
-  console.log(day);
-  day = 0;
+  // day = 0;
   displayUserToNowTab(day, hour);
   displayMatesToNowTab(day, hour);
 
