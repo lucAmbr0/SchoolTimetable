@@ -315,7 +315,7 @@ let previousSubject = null;
 let previousRoom = null;
 
 // USER'S DATA
-function displayUserToNowTab(day, hour, ) {
+function displayUserToNowTab(day, hour,) {
   // USERS CLASS DATA IN NOW TAB
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
@@ -353,17 +353,17 @@ function displayUserToNowTab(day, hour, ) {
     userClassroomDisplay.style.animation = "none";
     setTimeout(() => {
       userClassroomDisplay.style.animation = "0.4s room ease";
-    },0);
+    }, 0);
 
     userComplexDisplay.style.animation = "none";
     setTimeout(() => {
       userComplexDisplay.style.animation = "0.5s complex ease";
-    },0);
+    }, 0);
 
     userSubjectAndTeacher.style.animation = "none";
     setTimeout(() => {
       userSubjectAndTeacher.style.animation = "0.6s complex ease";
-    },0);
+    }, 0);
   }
   previousSubject = userSubjectAndTeacher.textContent;
   previousRoom = userClassroomDisplay.textContent;
@@ -628,6 +628,9 @@ function changeMatesClassInfoLabel(dayIndex, hourIndex) {
 
 // Here all the data collected, saved, written and read from previous lines gets displayed to Now tab in the appropriate time
 
+let previousMateSubject = [null, null, null, null, null];
+let previousMateRoom = [null, null, null, null, null];
+
 // MATES' DATA
 function displayMatesToNowTab(day, hour) {
   // MATES CLASS DATA IN NOW TAB
@@ -666,6 +669,20 @@ function displayMatesToNowTab(day, hour) {
         document.getElementById("userMatesSeparator").style.display = "block";
         document.getElementById("secondaryBoxesLabel").style.display = "block";
       }
+      if (previousMateSubject[i] != matesSubject[i].textContent || previousMateRoom[i] != matesRoomDisplay[i].textContent) {
+        console.log("AAA");
+        matesRoomDisplay[i].style.animation = "none";
+        setTimeout(() => {
+          matesRoomDisplay[i].style.animation = "0.4s room ease";
+        }, 0);
+
+        matesSubject[i].style.animation = "none";
+        setTimeout(() => {
+          matesSubject[i].style.animation = "0.6s complex ease";
+        }, 0);
+      }
+      previousMateSubject[i] = matesSubject[i].textContent;
+      previousMateRoom[i] = matesRoomDisplay[i].textContent;
     }
   }
   else {
