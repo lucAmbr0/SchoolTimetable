@@ -284,6 +284,46 @@ h5 {
     }
 }
 
+@keyframes room {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+        /* scale: 0.9; */
+    }
+    
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+        scale: 1;
+    }
+}
+@keyframes complex {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+        /* scale: 0.9; */
+    }
+    
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+        scale: 1;
+    }
+}
+@keyframes subjectTeacher {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+        /* scale: 0.9; */
+    }
+    
+    to {
+        transform: translateY(0px);
+        opacity: 1;
+        scale: 1;
+    }
+}
+
 @keyframes settingContent {
     from {
         opacity: 0.3;
@@ -535,12 +575,14 @@ h5 {
 }
 
 #userClassroomDisplay {
+    animation: 0.3s room both;
     font-size: 2.3em;
     font-weight: 500;
     color: var(--OPPsolidCol3);
 }
 
 #userComplexDisplay {
+    animation: 0.3s 0.25s complex both;
     line-height: 0.8;
     font-weight: 400;
     margin-bottom: 5.5px;
@@ -550,6 +592,7 @@ h5 {
 }
 
 #userSubjectAndTeacher {
+    animation: 0.3s 0.35s complex both;
     font-size: 1.5em;
     font-weight: 500;
     font-family: var(--StandardTextFont);
