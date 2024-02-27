@@ -192,20 +192,55 @@
 
 .DARKorangeTheme {
     --accentColor0: linear-gradient(45deg,
-            rgba(84, 47, 18, 0.4),
-            rgba(53, 15, 8, 0.5));
+            rgba(201, 98, 24, 0.4),
+            rgba(165, 46, 26, 0.5));
 
-    --solidAccentColor0: rgb(97, 48, 31);
-    --solidAccentColor1: rgb(166, 108, 75);
+    --solidAccentColor0: rgb(153, 82, 54);
+    --solidAccentColor1: rgb(198, 93, 58);
     --solidAccentColor2: rgb(46, 24, 17);
 
-    --transAccentColor0: rgba(64, 31, 15, 0.6);
+    --transAccentColor0: rgba(87, 46, 25, 0.6);
     --transAccentColor1: rgba(226, 132, 78, 0.7);
     --transAccentColor2: rgba(59, 31, 5, 0.3);
     --transAccentColor3: rgba(60, 45, 36, 0.1);
     --transAccentColor4: rgba(29, 15, 9, 0.6);
-    --boxBorderColor: rgba(72, 30, 19, 0.7);
-    --bodyBackground: rgb(21, 15, 14);
+    --boxBorderColor: rgba(129, 72, 58, 0.7);
+    --bodyBackground: rgb(30, 19, 13);
+}
+
+.LIGHTpurpleTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(163, 71, 233, 0.4),
+            rgba(80, 10, 161, 0.7));
+
+    --solidAccentColor0: rgb(153, 129, 247);
+    --solidAccentColor1: rgb(85, 28, 208);
+    --solidAccentColor2: rgb(71, 18, 128);
+
+    --transAccentColor0: rgba(141, 111, 225, 0.4);
+    --transAccentColor1: rgba(173, 133, 246, 0.8);
+    --transAccentColor2: rgba(37, 5, 63, 0.5);
+    --transAccentColor3: rgba(38, 0, 115, 0.07);
+    --transAccentColor4: rgba(194, 156, 232, 0.4);
+    --bodyBackground: rgb(218, 209, 231);
+}
+
+.DARKpurpleTheme {
+    --accentColor0: linear-gradient(45deg,
+            rgba(139, 24, 201, 0.4),
+            rgba(63, 26, 165, 0.6));
+
+    --solidAccentColor0: rgb(82, 47, 129);
+    --solidAccentColor1: rgb(149, 102, 236);
+    --solidAccentColor2: rgb(48, 13, 63);
+
+    --transAccentColor0: rgba(55, 29, 171, 0.5);
+    --transAccentColor1: rgba(122, 69, 220, 0.7);
+    --transAccentColor2: rgba(68, 17, 97, 0.5);
+    --transAccentColor3: rgba(45, 36, 60, 0.1);
+    --transAccentColor4: rgba(20, 9, 29, 0.6);
+    --boxBorderColor: rgba(88, 58, 129, 0.7);
+    --bodyBackground: rgb(18, 13, 28);
 }
 
 
