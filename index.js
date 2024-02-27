@@ -670,7 +670,7 @@ function displayMatesToNowTab(day, hour) {
         document.getElementById("secondaryBoxesLabel").style.display = "block";
       }
       if (previousMateSubject[i] != matesSubject[i].textContent || previousMateRoom[i] != matesRoomDisplay[i].textContent) {
-        console.log("AAA");
+        
         matesRoomDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesRoomDisplay[i].style.animation = "0.4s room ease";
@@ -679,6 +679,21 @@ function displayMatesToNowTab(day, hour) {
         matesSubject[i].style.animation = "none";
         setTimeout(() => {
           matesSubject[i].style.animation = "0.6s complex ease";
+        }, 0);
+
+        matesNotes[i].style.animation = "none";
+        setTimeout(() => {
+          matesNotes[i].style.animation = "0.6s complex ease";
+        }, 0);
+        
+        matesClass[i].style.animation = "none";
+        setTimeout(() => {
+          matesClass[i].style.animation = "0.6s complex ease";
+        }, 0);
+
+        matesTeacher[i].style.animation = "none";
+        setTimeout(() => {
+          matesTeacher[i].style.animation = "0.6s complex ease";
         }, 0);
       }
       previousMateSubject[i] = matesSubject[i].textContent;
