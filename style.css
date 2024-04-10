@@ -1206,6 +1206,13 @@ a {
 }
 
 
+@media (display-mode: standalone) {
+    body {
+        user-select: none;
+        overscroll-behavior-y: contain;
+     }
+}
+
 
 /* ----------  DESKTOP SCREEN  ---------- */
 
