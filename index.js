@@ -11,7 +11,7 @@ function serviceWorker() {
     console.log('Service worker compatible');
     window.addEventListener('load', () => {
       navigator.serviceWorker
-        .register('../sw_cached_pages.js')
+        .register('../service_worker.js')
         .then(reg => {
           console.log('Service worker registered');
         })
