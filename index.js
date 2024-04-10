@@ -3,6 +3,25 @@
     What're you doing here?
 */
 
+// ---------------  SERVICE WORKER  ---------------
+
+serviceWorker();
+function serviceWorker() {
+  if ('serviceWorker' in navigator) {
+    console.log('Service worker compatible');
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('../sw_cached_pages.js')
+        .then(reg => {
+          console.log('Service worker registered');
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    })
+  }
+}
+
 // ---------------  NAVBAR  ---------------
 
 const navbar = document.getElementById("navbar");
@@ -670,7 +689,7 @@ function displayMatesToNowTab(day, hour) {
         document.getElementById("secondaryBoxesLabel").style.display = "block";
       }
       if (previousMateSubject[i] != matesSubject[i].textContent || previousMateRoom[i] != matesRoomDisplay[i].textContent) {
-        
+
         matesRoomDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesRoomDisplay[i].style.animation = "0.4s room ease";
@@ -685,7 +704,7 @@ function displayMatesToNowTab(day, hour) {
         setTimeout(() => {
           matesNotes[i].style.animation = "0.6s complex ease";
         }, 0);
-        
+
         matesClass[i].style.animation = "none";
         setTimeout(() => {
           matesClass[i].style.animation = "0.6s complex ease";
