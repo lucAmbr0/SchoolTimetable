@@ -54,33 +54,35 @@ I will try to keep the repository structure as clean as possible to make mainten
 
 ```
 .
-|
-├── icons
-|   ├── github-mark.svg
-|   ├── icon-any-192x192.png
-|   ├── icon-any-512x512.png
-|   ├── icon-masked-192x192.png
-|   ├── icon-masked-512x512.png
-├── screenshots
-|   ├── desktop-screenshot1.png
-|   ├── desktop-screenshot2.png
-|   ├── desktop-screenshot3.png
-|   ├── desktop-screenshot4.png
-|   ├── desktop-screenshot5.png
-|   ├── desktop-screenshot6.png
-|   ├── mobile-screenshot1.png
-|   ├── mobile-screenshot2.png
-|   ├── mobile-screenshot3.png
-|   ├── mobile-screenshot4.png
-|   ├── mobile-screenshot5.png
-|   ├── mobile-screenshot6.png
-|   └── splashscreen.png
-├── manifest.json
-├── index.html
-├── index.js
-├── style.css
-├── LICENSE
-└── README.md
+│   index.html
+│   index.js
+│   LICENSE
+│   manifest.json
+│   README.md
+│   service_worker.js
+│   style.css
+│
+├───icons
+│       github-mark.svg
+│       icon-any-192x192.png
+│       icon-any-512x512.png
+│       icon-maskable-192x192.png
+│       icon-maskable-512x512.png
+│
+└───screenshots
+        desktop-screenshot1.png
+        desktop-screenshot2.png
+        desktop-screenshot3.png
+        desktop-screenshot4.png
+        desktop-screenshot5.png
+        desktop-screenshot6.png
+        mobile-screenshot1.png
+        mobile-screenshot2.png
+        mobile-screenshot3.png
+        mobile-screenshot4.png
+        mobile-screenshot5.png
+        mobile-screenshot6.png
+        splashscreen.png
 ```
 
 ## :cherry_blossom: Community
