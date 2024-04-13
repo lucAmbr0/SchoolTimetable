@@ -551,6 +551,7 @@ h5 {
     left: 0;
     height: 11vh;
     width: 100%;
+    overscroll-behavior: contain;
     margin-bottom: 20px;
     background-color: transparent;
     transition: 0.3s ease all;
@@ -711,6 +712,7 @@ h5 {
     bottom: 0;
     left: 0;
     width: 100vw;
+    overscroll-behavior: contain;
     background-color: var(--solidCol1);
     border-top: solid 2px;
     border-color: var(--boxBorderColor);
