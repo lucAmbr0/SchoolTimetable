@@ -909,6 +909,7 @@ function copyToClipboard(data) {
 
 // ---------------  H1DD3N F34TUR3S  ---------------
 // I'll regret this when ill be famous.
+<<<<<<< HEAD
 // Annoyed cat and rickroll easter eggs were added in April 2024, version 1.70.234
 
 let timesYouAnnoyedTheGitCat = 0;
