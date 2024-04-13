@@ -266,8 +266,9 @@ body {
     overscroll-behavior: contain;
     margin: 0;
     background: var(--bodyBackground);
-    width: 100%;
+    width: 100vw;
     overflow-x: hidden;
+    overscroll-behavior: none;
     transition: 0.3s background ease;
 }
 
@@ -1211,9 +1212,8 @@ a {
 
 @media (display-mode: standalone) {
     body {
-        overscroll-behavior: contain;
+        overscroll-behavior: none;
         user-select: none;
-        overscroll-behavior-y: contain;
      }
 }
 
