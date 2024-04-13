@@ -189,6 +189,14 @@ function getUserInfoFromLocalStorage() {
 function updateUserInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
   user.name = userNameInput.value;
+  if (user.name.toLowerCase() == "Rick Astley".toLowerCase()) {
+    window.location.href = "https://tools.apgy.in/ytl/xvFZjo5PgG0";
+  }
+
+
+
+
+  // window.location.href = "youtube://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUPcmlja3JvbGwgbm8gYWRz";
   user.className = userClassInput.value;
   user.schoolName = userSchoolNameInput.value;
   localStorage.setItem('user_OBJECT', JSON.stringify(user));
@@ -895,6 +903,87 @@ function copyToClipboard(data) {
     document.execCommand('copy');
     document.body.removeChild(textarea);
     // Provide feedback to the user indicating successful copy
+  }
+}
+
+
+// ---------------  H1DD3N F34TUR3S  ---------------
+// I'll regret this when ill be famous.
+// Annoyed cat and rickroll easter eggs were added in April 2024, version 1.70.234
+
+let timesYouAnnoyedTheGitCat = 0;
+function annoyGitCat() {
+  timesYouAnnoyedTheGitCat += 1;
+  if (timesYouAnnoyedTheGitCat % 10 == 0 && timesYouAnnoyedTheGitCat <= 50) {
+    const sentenceNum = Math.floor(Math.random() * 10) + 1;
+    switch (sentenceNum) {
+      case 1:
+        window.alert("Stop annoying the git cat. He tryna sleep.");
+        break;
+      case 2:
+        window.alert("Bruh, chill with the cat clicks. It's vibing, not coding.");
+        break;
+      case 3:
+        window.alert("Yo, the git cat is low-key done with your clicks. Give it a break.");
+        break;
+      case 4:
+        window.alert("Bro, you're clicking like it's a TikTok video. Let the cat be.");
+        break;
+      case 5:
+        window.alert("Stop spamming the cat, it's not a Snapchat streak.");
+        break;
+      case 6:
+        window.alert("Dude, the git cat's patience level is reaching '404 not found'.");
+        break;
+      case 7:
+        window.alert("Seriously, stop poking the cat icon. It's not a 'like' button.");
+        break;
+      case 8:
+        window.alert("Hey, can you not? The git cat is about to yeet outta here.");
+        break;
+      case 9:
+        window.alert("The git cat is this close to throwing shade at your clicking spree.");
+        break;
+      case 10:
+        window.alert("Enough with the cat clicks, fam. It's time to give it some space.");
+        break;
+
+      default:
+        window.alert("Stop annoying the git cat. He tryna sleep.");
+        break;
+    }
+  }
+  if (timesYouAnnoyedTheGitCat > 30) {
+    document.getElementById("socialIcon").style.filter = "red";
+  }
+  if (timesYouAnnoyedTheGitCat > 50) {
+    window.alert("NAH BRO YOU DONE IMMA LEAVE.");
+    document.getElementById("socialIcon").style.transition = "2s all ease-in-out";
+    document.getElementById("socialIcon").style.transform = "translateY(-100vh)";
+    setTimeout(() => {
+      document.getElementById("nowTab").style.display = "none";
+      document.getElementById("timetablesTab").style.display = "none";
+      document.getElementById("settingsTab").style.display = "none";
+      document.getElementById("navbar").style.display = "none";
+      document.querySelector(".topNotchContainer").style.display = "none";
+      setTimeout(() => {
+        var div = document.createElement('div');
+        // Create div
+        div.className = "annoyedCatDiv";
+        // Create image element
+        var image = document.createElement('img');
+        image.src = "/icons/github-mark.svg";
+        image.style.width = '25vh';
+        image.style.height = '25vh';
+        div.appendChild(image);
+        // Create text element
+        var text = document.createElement('h1');
+        text.textContent = "The cat's got beef with you now, no turning back.";
+        div.appendChild(text);
+        // Append div to document body
+        document.body.appendChild(div);
+      }, 1500);
+    }, 2500);
   }
 }
 

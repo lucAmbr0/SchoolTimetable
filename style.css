@@ -295,7 +295,7 @@ h5 {
 /* Normal text: font-family: 'Noto Sans', sans-serif; */
 /* Headings/Titles: font-family: 'PT Sans', 'Poppins', sans-serif; */
 
-/* ---------------  ANIMATION  --------------- */
+/* ---------------  ANIMATIONS --------------- */
 
 @keyframes navbarLabel {
     from {
@@ -1026,12 +1026,49 @@ label {
     filter: var(--socialIconCol);
 }
 
+#socialIcon:active {
+    transition: .2s all;
+    rotate: 360deg;
+}
+
+.annoyedCatDiv {
+    animation: getStarted 0.5s ease-in-out;
+    width: 80vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    border: solid 2px var(--OPPsolidCol1);
+    border-radius: 20px;
+    box-shadow: var(--boxShadow2);
+    justify-content: center;
+    align-items: center;
+    margin: auto auto;
+}
+
+.annoyedCatDiv img {
+    opacity: 0.8;
+    filter: var(--socialIconCol);
+}
+
+.annoyedCatDiv h1 {
+    font-family: var(--StandardTextFont);
+    font-weight: 800;
+    color: var(--OPPsolidCol1);
+    text-align: center;
+    margin-top: 20px;
+}
+
 .appIcon {
     width: 40px;
     display: flex;
     margin: auto 10px;
     justify-content: center;
     align-items: center;
+    transition: 0.3s scale ease-in-out;
+}
+
+.appIcon:active {
+    scale: 0.90;
 }
 
 .nerdLinks {
