@@ -957,6 +957,7 @@ label {
 
 .dataGrid input,
 .dataForm input {
+    overflow: hidden;
     font-weight: 400;
     border-color: var(--solidAccentColor2);
 }
