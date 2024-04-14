@@ -1,6 +1,6 @@
 * Worked on this project for: <a href="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable"><img src="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable.svg?style=flat" alt="wakatime"></a>
 # Introduction
-> This project is in a very early stage, many updates coming soon.
+> This project is considered finished. It won't receive regular updates since it's considered stable.
 * **School Timetable** aims to provide a **convenient way for students to access their weekly class schedules**. Users can select their class, choose a day of the week, and specify a time slot to view which subjects are scheduled and in which classroom.
 * This **web-based** tool streamlines the process of **checking timetables**, making it easier for students to **plan** their **academic activities**.
 * This web project offers a **user-friendly interface** for **efficient navigation** and quick access to essential information.
@@ -54,33 +54,35 @@ I will try to keep the repository structure as clean as possible to make mainten
 
 ```
 .
-|
-├── icons
-|   ├── github-mark.svg
-|   ├── icon-any-192x192.png
-|   ├── icon-any-512x512.png
-|   ├── icon-masked-192x192.png
-|   ├── icon-masked-512x512.png
-├── screenshots
-|   ├── desktop-screenshot1.png
-|   ├── desktop-screenshot2.png
-|   ├── desktop-screenshot3.png
-|   ├── desktop-screenshot4.png
-|   ├── desktop-screenshot5.png
-|   ├── desktop-screenshot6.png
-|   ├── mobile-screenshot1.png
-|   ├── mobile-screenshot2.png
-|   ├── mobile-screenshot3.png
-|   ├── mobile-screenshot4.png
-|   ├── mobile-screenshot5.png
-|   ├── mobile-screenshot6.png
-|   └── splashscreen.png
-├── manifest.json
-├── index.html
-├── index.js
-├── style.css
-├── LICENSE
-└── README.md
+│   index.html
+│   index.js
+│   LICENSE
+│   manifest.json
+│   README.md
+│   service_worker.js
+│   style.css
+│
+├───icons
+│       github-mark.svg
+│       icon-any-192x192.png
+│       icon-any-512x512.png
+│       icon-maskable-192x192.png
+│       icon-maskable-512x512.png
+│
+└───screenshots
+        desktop-screenshot1.png
+        desktop-screenshot2.png
+        desktop-screenshot3.png
+        desktop-screenshot4.png
+        desktop-screenshot5.png
+        desktop-screenshot6.png
+        mobile-screenshot1.png
+        mobile-screenshot2.png
+        mobile-screenshot3.png
+        mobile-screenshot4.png
+        mobile-screenshot5.png
+        mobile-screenshot6.png
+        splashscreen.png
 ```
 
 ## :cherry_blossom: Community
