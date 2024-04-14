@@ -11,7 +11,7 @@ function serviceWorker() {
     console.log('Service worker compatible');
     window.addEventListener('load', () => {
       navigator.serviceWorker
-        .register('../service_worker.js')
+      .register('https://lucambr0.github.io/SchoolTimetable/service_worker.js')
         .then(reg => {
           console.log('Service worker registered');
         })
