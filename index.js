@@ -376,20 +376,22 @@ function displayUserToNowTab(day, hour,) {
     userComplexDisplay.textContent = "";
     userSubjectAndTeacher.textContent = "";
   }
-  if (previousSubject != userSubjectAndTeacher.textContent || previousRoom != userClassroomDisplay.textContent) {
+  if (previousSubject != userSubjectAndTeacher.textContent) {
+    userSubjectAndTeacher.style.animation = "none";
+    setTimeout(() => {
+      userSubjectAndTeacher.style.animation = "0.4s complex ease";
+    }, 0);
+  }
+
+  if (previousRoom != userClassroomDisplay.textContent) {
     userClassroomDisplay.style.animation = "none";
     setTimeout(() => {
       userClassroomDisplay.style.animation = "0.4s room ease";
     }, 0);
-
+    
     userComplexDisplay.style.animation = "none";
     setTimeout(() => {
       userComplexDisplay.style.animation = "0.5s complex ease";
-    }, 0);
-
-    userSubjectAndTeacher.style.animation = "none";
-    setTimeout(() => {
-      userSubjectAndTeacher.style.animation = "0.6s complex ease";
     }, 0);
   }
   previousSubject = userSubjectAndTeacher.textContent;
@@ -696,31 +698,20 @@ function displayMatesToNowTab(day, hour) {
         document.getElementById("userMatesSeparator").style.display = "block";
         document.getElementById("secondaryBoxesLabel").style.display = "block";
       }
-      if (previousMateSubject[i] != matesSubject[i].textContent || previousMateRoom[i] != matesRoomDisplay[i].textContent) {
-
+      if (previousMateSubject[i] != matesSubject[i].textContent) {
+        matesSubject[i].style.animation = "none";
+        setTimeout(() => {
+          matesSubject[i].style.animation = "0.4s complex ease";
+        }, 0);
+        matesTeacher[i].style.animation = "none";
+        setTimeout(() => {
+          matesTeacher[i].style.animation = "0.4s complex ease";
+        }, 0);
+      }
+      if (previousMateRoom[i] != matesRoomDisplay[i].textContent) {
         matesRoomDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesRoomDisplay[i].style.animation = "0.4s room ease";
-        }, 0);
-
-        matesSubject[i].style.animation = "none";
-        setTimeout(() => {
-          matesSubject[i].style.animation = "0.6s complex ease";
-        }, 0);
-
-        matesNotes[i].style.animation = "none";
-        setTimeout(() => {
-          matesNotes[i].style.animation = "0.6s complex ease";
-        }, 0);
-
-        matesClass[i].style.animation = "none";
-        setTimeout(() => {
-          matesClass[i].style.animation = "0.6s complex ease";
-        }, 0);
-
-        matesTeacher[i].style.animation = "none";
-        setTimeout(() => {
-          matesTeacher[i].style.animation = "0.6s complex ease";
         }, 0);
       }
       previousMateSubject[i] = matesSubject[i].textContent;
