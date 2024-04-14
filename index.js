@@ -906,7 +906,7 @@ let timesYouAnnoyedTheGitCat = 0;
 function annoyGitCat() {
   timesYouAnnoyedTheGitCat += 1;
   if (timesYouAnnoyedTheGitCat % 5 == 0 && timesYouAnnoyedTheGitCat <= 50) {
-    const sentenceNum = Math.floor(Math.random() * 10) + 1;
+    const sentenceNum = Math.floor(Math.random() * 20) + 1;
     switch (sentenceNum) {
       case 1:
         window.alert("Stop annoying the git cat. He tryna sleep.");
@@ -938,6 +938,36 @@ function annoyGitCat() {
       case 10:
         window.alert("Enough with the cat clicks, fam. It's time to give it some space.");
         break;
+      case 11:
+        window.alert("Chill with the cat clicks, it's disrupting its vibe.");
+        break;
+      case 12:
+        window.alert("Quit bugging the git cat, it's low-key getting triggered.");
+        break;
+      case 13:
+        window.alert("Bruh, stop spamming the cat icon, it's giving major side-eye.");
+        break;
+      case 14:
+        window.alert("The git cat is fed up with your clicks, it's about to throw some shade.");
+        break;
+      case 15:
+        window.alert("Enough with the cat taps, it's about to yeet outta here.");
+        break;
+      case 16:
+        window.alert("Yo, lay off the cat clicks, it's not a fan of your energy.");
+        break;
+      case 17:
+        window.alert("The git cat's patience is wearing thin, it's ready to ghost you.");
+        break;
+      case 18:
+        window.alert("Quit poking the git cat, it's on the verge of a meltdown.");
+        break;
+      case 19:
+        window.alert("Seriously, stop bothering the cat, it's gonna clap back.");
+        break;
+      case 20:
+        window.alert("The git cat's giving you major 'stop it' vibes, take the hint.");
+        break;
 
       default:
         window.alert("Stop annoying the git cat. He tryna sleep.");
@@ -945,7 +975,7 @@ function annoyGitCat() {
     }
   }
   if (timesYouAnnoyedTheGitCat > 20) {
-    document.getElementById("socialIcon").style.filter = "red";
+    document.getElementById("socialIcon").style.scale = "1.1";
   }
   if (timesYouAnnoyedTheGitCat > 30) {
     window.alert("NAH BRO YOU DONE IMMA LEAVE.");
