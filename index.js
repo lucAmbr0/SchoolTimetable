@@ -905,7 +905,7 @@ function copyToClipboard(data) {
 let timesYouAnnoyedTheGitCat = 0;
 function annoyGitCat() {
   timesYouAnnoyedTheGitCat += 1;
-  if (timesYouAnnoyedTheGitCat % 10 == 0 && timesYouAnnoyedTheGitCat <= 50) {
+  if (timesYouAnnoyedTheGitCat % 5 == 0 && timesYouAnnoyedTheGitCat <= 50) {
     const sentenceNum = Math.floor(Math.random() * 10) + 1;
     switch (sentenceNum) {
       case 1:
@@ -944,10 +944,10 @@ function annoyGitCat() {
         break;
     }
   }
-  if (timesYouAnnoyedTheGitCat > 30) {
+  if (timesYouAnnoyedTheGitCat > 20) {
     document.getElementById("socialIcon").style.filter = "red";
   }
-  if (timesYouAnnoyedTheGitCat > 50) {
+  if (timesYouAnnoyedTheGitCat > 30) {
     window.alert("NAH BRO YOU DONE IMMA LEAVE.");
     document.getElementById("socialIcon").style.transition = "2s all ease-in-out";
     document.getElementById("socialIcon").style.transform = "translateY(-100vh)";
