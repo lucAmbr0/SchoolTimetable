@@ -6,6 +6,7 @@
 /* ---------------  VARIABLES  --------------- */
 
 :root {
+    --red: rgba(255, 0, 0, 1);
 
     /* VAR COLORS */
     --solidCol0: rgba(255, 255, 255, 1);
@@ -327,33 +328,35 @@ h5 {
         opacity: 0;
         /* scale: 0.9; */
     }
-    
+
     to {
         transform: translateY(0px);
         opacity: 1;
         scale: 1;
     }
 }
+
 @keyframes complex {
     from {
         transform: translateY(10px);
         opacity: 0;
         /* scale: 0.9; */
     }
-    
+
     to {
         transform: translateY(0px);
         opacity: 1;
         scale: 1;
     }
 }
+
 @keyframes subjectTeacher {
     from {
         transform: translateY(10px);
         opacity: 0;
         /* scale: 0.9; */
     }
-    
+
     to {
         transform: translateY(0px);
         opacity: 1;
@@ -523,7 +526,8 @@ h5 {
     transition: 0.3s all ease !important;
 }
 
-.topNotchContainerTALL h1, .topNotchContainerTALL h2 {
+.topNotchContainerTALL h1,
+.topNotchContainerTALL h2 {
     /* font-size: 2em !important; */
     opacity: 0.9 !important;
     /* margin: 0.7vh 0 0 0 !important; */
@@ -1047,7 +1051,7 @@ label {
 
 .annoyedCatDiv img {
     opacity: 0.8;
-    filter: var(--socialIconCol);
+    rotate: 180deg;
 }
 
 .annoyedCatDiv h1 {
@@ -1120,7 +1124,8 @@ a {
     width: 100%;
 }
 
-#exportDialogBox, #importDialogBox {
+#exportDialogBox,
+#importDialogBox {
     animation: appTab 0.3s ease;
     display: none;
     border: solid 2px;
@@ -1141,12 +1146,14 @@ a {
     margin: 0;
     width: 40%;
 }
+
 #importDialogBox input {
     text-align: left;
     padding: 5px;
     margin: 0;
     width: 53%;
 }
+
 #importDialogBox button {
     width: 100%;
     margin: 8px 0 0 0;
@@ -1251,7 +1258,7 @@ a {
     body {
         overscroll-behavior: none;
         user-select: none;
-     }
+    }
 }
 
 
