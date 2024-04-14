@@ -957,6 +957,7 @@ label {
 
 .dataGrid input,
 .dataForm input {
+    overflow: hidden;
     font-weight: 400;
     border-color: var(--solidAccentColor2);
 }
@@ -1045,6 +1046,8 @@ label {
     border-radius: 20px;
     box-shadow: var(--boxShadow2);
     justify-content: center;
+    padding: 10px;
+    background-color: rgb(131, 39, 39);
     align-items: center;
     margin: auto auto;
 }
@@ -1057,7 +1060,7 @@ label {
 .annoyedCatDiv h1 {
     font-family: var(--StandardTextFont);
     font-weight: 800;
-    color: var(--OPPsolidCol1);
+    color: var(--OPPsolidCol2);
     text-align: center;
     margin-top: 20px;
 }
