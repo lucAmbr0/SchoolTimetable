@@ -11,7 +11,7 @@ function serviceWorker() {
     console.log('Service worker compatible');
     window.addEventListener('load', () => {
       navigator.serviceWorker
-      .register('https://lucambr0.github.io/SchoolTimetable/service_worker.js')
+        .register('https://lucambr0.github.io/SchoolTimetable/service_worker.js')
         .then(reg => {
           console.log('Service worker registered');
         })
@@ -388,7 +388,7 @@ function displayUserToNowTab(day, hour,) {
     setTimeout(() => {
       userClassroomDisplay.style.animation = "0.4s room ease";
     }, 0);
-    
+
     userComplexDisplay.style.animation = "none";
     setTimeout(() => {
       userComplexDisplay.style.animation = "0.5s complex ease";
@@ -659,6 +659,8 @@ function changeMatesClassInfoLabel(dayIndex, hourIndex) {
 
 let previousMateSubject = [null, null, null, null, null];
 let previousMateRoom = [null, null, null, null, null];
+let nextMatesRoom = [null, null, null, null, null];
+let nextMatesSubject = [null, null, null, null, null];
 
 // MATES' DATA
 function displayMatesToNowTab(day, hour) {
@@ -669,6 +671,9 @@ function displayMatesToNowTab(day, hour) {
   const matesSubject = document.querySelectorAll(".matesSubject");
   const matesTeacher = document.querySelectorAll(".matesTeacher");
 
+  const matesNextRoomDisplay = document.querySelectorAll(".matesNextRoom");
+  const matesNextSubjectDisplay = document.querySelectorAll(".matesNextSubject");
+
   if (!usingCustomSearch) {
     // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
     hour -= schoolHourStart;
@@ -676,11 +681,28 @@ function displayMatesToNowTab(day, hour) {
   let atLeastOneMateBoxIsShown = false;
   if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
-      if (!mates[i].room[day][hour] && mates[i].className) matesRoomDisplay[i].textContent = "No lesson";
-      else matesRoomDisplay[i].textContent = mates[i].room[day][hour];
-      matesSubject[i].textContent = mates[i].subject[day][hour];
-      matesTeacher[i].textContent = mates[i].teacher[day][hour];
-      matesNotes[i].textContent = mates[i].classMatesNames;
+      document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Next hour";
+      document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "0";
+      document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingBottom = "0px";
+      if (!mates[i].room[day][hour] && mates[i].className) {
+        matesRoomDisplay[i].textContent = "No lesson";
+        matesNextRoomDisplay[i].textContent = "No lesson";
+        matesNextSubjectDisplay[i].textContent = "";
+      }
+      else {
+        matesSubject[i].textContent = mates[i].subject[day][hour];
+        matesNextSubjectDisplay[i].textContent = mates[i].subject[day][hour + 1];
+        matesRoomDisplay[i].textContent = mates[i].room[day][hour];
+        matesNextRoomDisplay[i].textContent = mates[i].room[day][hour + 1];
+        matesTeacher[i].textContent = mates[i].teacher[day][hour];
+      }
+      if (!mates[i].room[day][hour + 1]) {
+        matesNotes[i].textContent = mates[i].classMatesNames;
+        document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
+        matesNextRoomDisplay[i].textContent = "";
+        document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "14.4px";
+        document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingBottom = "14.4px";
+      }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
         matesClass[i].textContent = "";
@@ -900,7 +922,7 @@ function copyToClipboard(data) {
 
 // ---------------  EXPAND MATES CARDS  ---------------
 
-let expandedCardsState = [0,0,0,0,0]
+let expandedCardsState = [0, 0, 0, 0, 0]
 let expandedCardsElements = document.querySelectorAll(".expandedMatesCardContainer");
 function toggleExpandedMatesCard(cardIdx) {
   if (expandedCardsState[cardIdx] == 0) {
@@ -908,7 +930,7 @@ function toggleExpandedMatesCard(cardIdx) {
     expandedCardsElements[cardIdx].style.display = "block";
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
-    
+
   }
   else if (expandedCardsState[cardIdx] == 1) {
     expandedCardsState[cardIdx] = 0;
