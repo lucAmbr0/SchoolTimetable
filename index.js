@@ -347,10 +347,10 @@ function displayUserToNowTab(day, hour,) {
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
-  
+
   const userNextRoomDisplay = document.getElementById("userNextRoom");
   const userNextSubjectDisplay = document.getElementById("userNextSubject");
-  
+
   if (!usingCustomSearch) {
     // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
     hour -= schoolHourStart;
@@ -361,7 +361,7 @@ function displayUserToNowTab(day, hour,) {
       userClassroomDisplay.textContent = user.room[day][hour];
       userNextRoomDisplay.textContent = user.room[day][hour + 1];
 
-    } 
+    }
     if (!user.complex[day][hour]) {
       userComplexDisplay.style.display = "none";
       userComplexDisplay.textContent = " ";
@@ -384,8 +384,8 @@ function displayUserToNowTab(day, hour,) {
     if (!user.room[day][hour + 1]) {
       document.getElementById("uNextHourPlaceholder").textContent = "Options";
       if (user.room[day][hour])
-      userNextRoomDisplay.textContent = "Lesson finishes next hour";
-    else userNextRoomDisplay.textContent = "No lesson next hour";
+        userNextRoomDisplay.textContent = "Lesson finishes next hour";
+      else userNextRoomDisplay.textContent = "No lesson next hour";
     }
   }
   else {
@@ -492,6 +492,116 @@ function toggleShowGreetingState() { // triggered when the switch is clicked
   }
   localStorage.setItem('showGreetingState', showGreetingState);
 }
+
+
+
+// ---------------  EXPAND USER CARDS  ---------------
+
+let expandedUserCardState = 0;
+let expandedUserCardElement = document.querySelector(".expandedUserCardContainer");
+function toggleExpandedUserCard() {
+  if (expandedUserCardState == 0) {
+    expandedUserCardState = 1;
+    expandedUserCardElement.style.display = "block";
+    expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
+    expandedUserCardElement.classList.add("expandedUserCardContainerShown");
+    setTimeout(() => {
+      expandedUserCardElement.style.animationDuration = "0s";
+    }, 500);
+  }
+  else if (expandedUserCardState == 1) {
+    expandedUserCardState = 0;
+    expandedUserCardElement.style.animationDuration = "0.5s";
+    expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
+    expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
+    setTimeout(() => {
+      expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
+      expandedUserCardElement.animation = "none";
+    }, 500);
+  }
+}
+
+
+// ---------------  EXPAND MATES CARDS  ---------------
+
+let expandedCardsState = [0, 0, 0, 0, 0]
+let expandedCardsElements = document.querySelectorAll(".expandedMatesCardContainer");
+function toggleExpandedMatesCard(cardIdx) {
+  if (expandedCardsState[cardIdx] == 0) {
+    expandedCardsState[cardIdx] = 1;
+    expandedCardsElements[cardIdx].style.display = "block";
+    expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
+    expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
+    setTimeout(() => {
+      expandedCardsElements[cardIdx].style.animationDuration = "0s";
+    }, 500);
+  }
+  else if (expandedCardsState[cardIdx] == 1) {
+    expandedCardsElements[cardIdx].style.animationDuration = "0.5s";
+    expandedCardsState[cardIdx] = 0;
+    expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerHidden");
+    expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
+    setTimeout(() => {
+      expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
+    }, 500);
+  }
+}
+
+
+// ---------------  TOGGLE ALWAYS EXPAND CARDS SWITCH  ---------------
+
+const alwaysExpandCardsSwitch = document.getElementById("alwaysExpandCardsSwitch"); // reference to the switch <input> item which actually is a checkbox type
+let alwaysExpandCardsState; // stores whether the option of showing Greeting is active or not (0-1)
+
+function toggleAlwaysExpandCards() { // triggered when the switch is clicked
+  if (alwaysExpandCardsSwitch.checked) {
+    alwaysExpandCardsState = "1";
+    expandedCardsState = [0, 0, 0, 0, 0]; // they are reversed because the toggle function sets them to '1'
+    expandedUserCardState = 0;
+  }
+  else if (!alwaysExpandCardsSwitch.checked) {
+    alwaysExpandCardsState = "0";
+    expandedCardsState = [1, 1, 1, 1, 1]; // they are reversed because the toggle function sets them to '0'
+    expandedUserCardState = 1;
+  }
+  toggleExpandedMatesCard(0);
+  toggleExpandedMatesCard(1);
+  toggleExpandedMatesCard(2);
+  toggleExpandedMatesCard(3);
+  toggleExpandedMatesCard(4);
+  toggleExpandedUserCard();
+  localStorage.setItem('alwaysExpandCardsState', alwaysExpandCardsState);
+}
+
+function findAlwaysExpandCards() {
+  if (localStorage.getItem('alwaysExpandCardsState')) {
+    alwaysExpandCardsState = localStorage.getItem('alwaysExpandCardsState');
+    if (alwaysExpandCardsState == "1") {
+      expandedCardsState = [0, 0, 0, 0, 0]; // they are reversed because the toggle function sets them to '1'
+      expandedUserCardState = 0;
+      alwaysExpandCardsSwitch.checked = true;
+    }
+    else {
+      alwaysExpandCardsState = "0";
+      expandedCardsState = [1, 1, 1, 1, 1]; // they are reversed because the toggle function sets them to '0'
+      expandedUserCardState = 1;
+      alwaysExpandCardsSwitch.checked = false;
+    }
+    toggleExpandedMatesCard(0);
+    toggleExpandedMatesCard(1);
+    toggleExpandedMatesCard(2);
+    toggleExpandedMatesCard(3);
+    toggleExpandedMatesCard(4);
+    toggleExpandedUserCard();
+  }
+  else {
+    alwaysExpandCardsState = "0";
+    alwaysExpandCardsSwitch.checked = false;
+  }
+  localStorage.setItem('alwaysExpandCardsState', alwaysExpandCardsState);
+}
+findAlwaysExpandCards();  // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes false by default 
+
 
 // ---------------  MANAGING AND SAVING DATA ABOUT MATES  ---------------
 
@@ -716,8 +826,8 @@ function displayMatesToNowTab(day, hour) {
       if (!mates[i].room[day][hour + 1]) {
         document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
         if (mates[i].room[day][hour])
-        matesNextRoomDisplay[i].textContent = "Lesson finishes next hour";
-      else matesNextRoomDisplay[i].textContent = "No lesson next hour";
+          matesNextRoomDisplay[i].textContent = "Lesson finishes next hour";
+        else matesNextRoomDisplay[i].textContent = "No lesson next hour";
       }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
@@ -934,54 +1044,6 @@ function copyToClipboard(data) {
     document.execCommand('copy');
     document.body.removeChild(textarea);
     // Provide feedback to the user indicating successful copy
-  }
-}
-
-
-// ---------------  EXPAND USER CARDS  ---------------
-
-let expandedUserCardState = 0;
-let expandedUserCardElement = document.querySelector(".expandedUserCardContainer");
-function toggleExpandedUserCard() {
-  if (expandedUserCardState == 0) {
-    expandedUserCardState = 1;
-    expandedUserCardElement.style.display = "block";
-    expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
-    expandedUserCardElement.classList.add("expandedUserCardContainerShown");
-
-  }
-  else if (expandedUserCardState == 1) {
-    expandedUserCardState = 0;
-    expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
-    expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
-    setTimeout(() => {
-      expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
-      expandedUserCardElement.animation = "none";
-    }, 500);
-  }
-}
-
-
-// ---------------  EXPAND MATES CARDS  ---------------
-
-let expandedCardsState = [0, 0, 0, 0, 0]
-let expandedCardsElements = document.querySelectorAll(".expandedMatesCardContainer");
-function toggleExpandedMatesCard(cardIdx) {
-  if (expandedCardsState[cardIdx] == 0) {
-    expandedCardsState[cardIdx] = 1;
-    expandedCardsElements[cardIdx].style.display = "block";
-    expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
-    expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
-
-  }
-  else if (expandedCardsState[cardIdx] == 1) {
-    expandedCardsState[cardIdx] = 0;
-    expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerHidden");
-    expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
-    setTimeout(() => {
-      expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
-      expandedCardsElements[cardIdx].animation = "none";
-    }, 500);
   }
 }
 
