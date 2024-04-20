@@ -898,6 +898,31 @@ function copyToClipboard(data) {
 }
 
 
+// ---------------  EXPAND MATES CARDS  ---------------
+
+let expandedCardsState = [0,0,0,0,0]
+let expandedCardsElements = document.querySelectorAll(".expandedMatesCardContainer");
+function toggleExpandedMatesCard(cardIdx) {
+  if (expandedCardsState[cardIdx] == 0) {
+    expandedCardsState[cardIdx] = 1;
+    expandedCardsElements[cardIdx].style.display = "block";
+    expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
+    expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
+    
+  }
+  else if (expandedCardsState[cardIdx] == 1) {
+    expandedCardsState[cardIdx] = 0;
+    expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerHidden");
+    expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
+    setTimeout(() => {
+      expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
+      expandedCardsElements[cardIdx].animation = "none";
+    }, 500);
+  }
+}
+
+
+
 // ---------------  H1DD3N F34TUR3S  ---------------
 // I'll regret this when ill be famous.
 // Annoyed cat and rickroll easter eggs were added in April 2024, version 1.70.234
