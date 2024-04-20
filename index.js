@@ -682,8 +682,6 @@ function displayMatesToNowTab(day, hour) {
   if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
       document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Next hour";
-      document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "0";
-      document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingBottom = "0px";
       if (!mates[i].room[day][hour] && mates[i].className) {
         matesRoomDisplay[i].textContent = "No lesson";
         matesNextRoomDisplay[i].textContent = "No lesson";
@@ -699,9 +697,9 @@ function displayMatesToNowTab(day, hour) {
       matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
         document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
-        matesNextRoomDisplay[i].textContent = "";
-        document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "14.4px";
-        document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingBottom = "14.4px";
+        if (mates[i].room[day][hour])
+        matesNextRoomDisplay[i].textContent = "Lesson finishes next hour";
+      else matesNextRoomDisplay[i].textContent = "No lesson next hour";
       }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
@@ -922,6 +920,30 @@ function copyToClipboard(data) {
 }
 
 
+// ---------------  EXPAND USER CARDS  ---------------
+
+let expandedUserCardState = 0;
+let expandedUserCardElement = document.querySelector(".expandedUserCardContainer");
+function toggleExpandedUserCard() {
+  if (expandedUserCardState == 0) {
+    expandedUserCardState = 1;
+    expandedUserCardElement.style.display = "block";
+    expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
+    expandedUserCardElement.classList.add("expandedUserCardContainerShown");
+
+  }
+  else if (expandedUserCardState == 1) {
+    expandedUserCardState = 0;
+    expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
+    expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
+    setTimeout(() => {
+      expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
+      expandedUserCardElement.animation = "none";
+    }, 500);
+  }
+}
+
+
 // ---------------  EXPAND MATES CARDS  ---------------
 
 let expandedCardsState = [0, 0, 0, 0, 0]
@@ -944,7 +966,6 @@ function toggleExpandedMatesCard(cardIdx) {
     }, 500);
   }
 }
-
 
 
 // ---------------  H1DD3N F34TUR3S  ---------------

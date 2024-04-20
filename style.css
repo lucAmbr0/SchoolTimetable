@@ -392,23 +392,28 @@ h5 {
         margin-top: -98.4px;
         height: fit-content;
     }
+
     40% {
         opacity: 0;
     }
+
     to {
         opacity: 1;
         margin-top: 0;
         height: fit-content;
     }
 }
+
 @keyframes expandedMatesCardHidden {
     from {
         opacity: 1;
         margin-top: 0;
     }
+
     35% {
         opacity: 0;
     }
+
     to {
         opacity: 0;
         margin-top: -98.4px;
@@ -649,7 +654,7 @@ h5 {
     animation: 0.3s room both;
     font-size: 2.3em;
     font-weight: 500;
-    color: var(--OPPsolidCol3);
+    color: var(--solidAccentColor1);
 }
 
 #userComplexDisplay {
@@ -659,7 +664,7 @@ h5 {
     margin-bottom: 5.5px;
     font-size: 1.3em;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol4);
+    color: var(--solidAccentColor1);
 }
 
 #userSubjectAndTeacher {
@@ -667,7 +672,7 @@ h5 {
     font-size: 1.5em;
     font-weight: 500;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol4);
+    color: var(--solidAccentColor1);
     margin: 2px 0 5px 0;
 }
 
@@ -729,6 +734,7 @@ h5 {
     margin-top: -98.4px;
     opacity: 0;
 }
+
 .expandedMatesCardContainerHidden {
     animation: expandedMatesCardHidden 0.5s forwards;
 }
@@ -738,9 +744,30 @@ h5 {
     animation: expandedMatesCardShown 0.5s forwards;
 }
 
+.expandedUserCardContainerHidden {
+    animation: expandedMatesCardHidden 0.5s forwards;
+}
+
+.expandedUserCardContainerShown {
+    display: block;
+    animation: expandedMatesCardShown 0.5s forwards;
+}
+
+.expandedUserBoxGrid p {
+    margin-bottom: 5px !important;
+}
+
+.expandedUserCardContainer {
+    /* transition: 0.3s all ease-in-out; */
+    display: none;
+    margin-top: -98.4px;
+    opacity: 0;
+}
+
 .matesClass,
 .matesSubject,
-.matesNextRoom {
+.matesNextRoom,
+#userNextRoom {
     text-align: left;
     text-wrap: nowrap;
 }
@@ -760,6 +787,7 @@ h5 {
 .matesNotes,
 .matesTeacher,
 .matesNextSubject,
+#userNextSubject,
 .expandedMatesCardButtonContainer {
     text-align: right;
     text-wrap: nowrap;
@@ -770,6 +798,7 @@ h5 {
 }
 
 .nextHourPlaceholder {
+    text-align: left;
     font-weight: 500 !important;
 }
 
