@@ -677,7 +677,7 @@ h5 {
     font-weight: 500;
     text-align: center;
     font-size: 2em;
-    color: var(--OPPsolidCol3);
+    color: var(--solidAccentColor1);
 }
 
 .matesBoxGrid {
@@ -690,19 +690,47 @@ h5 {
     font-size: 1.3em;
 }
 
+.expandedMatesBoxGrid:first-child {
+    margin-bottom: 5px;
+}
+
 .matesClass,
-.matesSubject {
+.matesSubject,
+.matesNextRoom {
     text-align: left;
 }
 
+.expandedMatesCardIcon {
+    background-color: var(--transpCol4);
+    border-radius: 10px;
+    margin: 0 0 5px 0;
+    border: solid 1px var(--OPPtranspCol5);
+    padding: 5px;
+    color: var(--solidAccentColor1) !important;
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+}
+
 .matesNotes,
-.matesTeacher {
+.matesTeacher,
+.matesNextSubject,
+.expandedMatesCardButtonContainer {
     text-align: right;
+}
+
+.expandedCardSeparator {
+    margin: 10px auto 10px auto;
+}
+
+.nextHourPlaceholder {
+    font-weight: 500 !important;
 }
 
 .matesBoxGrid p {
     margin: 2px 0;
-    color: var(--OPPsolidCol3);
+    /* color: var(--OPPsolidCol3); */
+    color: var(--solidAccentColor1) !important;
     font-family: var(--StandardTextFont);
     font-weight: 300;
 }

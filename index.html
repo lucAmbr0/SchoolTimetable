@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="theme-color" />
-    <meta meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta
+      meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <meta
       name="description"
       content="School Timetable is a useful app that helps students plan their school activities by showing in a convenient way the school times of multiple classes in a beautiful and minimal interface."
@@ -34,24 +38,48 @@
   </head>
   <body>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
-        <h1 id="dayDisplay">Saturday 17 Feb</h1>
-        <h2 id="timeDisplay">17:41</h2>
+      <h1 id="dayDisplay">Saturday 17 Feb</h1>
+      <h2 id="timeDisplay">17:41</h2>
       <div class="changeTimeContainer changeTimeContainerHidden">
         <div class="daysHoursGrid">
-          <button class="daysButtons" onclick="setCustomDay(event, 0)">M</button>
-          <button class="daysButtons" onclick="setCustomDay(event, 1)">T</button>
-          <button class="daysButtons" onclick="setCustomDay(event, 2)">W</button>
-          <button class="daysButtons" onclick="setCustomDay(event, 3)">T</button>
-          <button class="daysButtons" onclick="setCustomDay(event, 4)">F</button>
-          <button class="daysButtons" onclick="setCustomDay(event, 5)">S</button>
+          <button class="daysButtons" onclick="setCustomDay(event, 0)">
+            M
+          </button>
+          <button class="daysButtons" onclick="setCustomDay(event, 1)">
+            T
+          </button>
+          <button class="daysButtons" onclick="setCustomDay(event, 2)">
+            W
+          </button>
+          <button class="daysButtons" onclick="setCustomDay(event, 3)">
+            T
+          </button>
+          <button class="daysButtons" onclick="setCustomDay(event, 4)">
+            F
+          </button>
+          <button class="daysButtons" onclick="setCustomDay(event, 5)">
+            S
+          </button>
         </div>
         <div class="daysHoursGrid">
-          <button class="hoursButtons" onclick="setCustomHour(event, 0)">1</button>
-          <button class="hoursButtons" onclick="setCustomHour(event, 1)">2</button>
-          <button class="hoursButtons" onclick="setCustomHour(event, 2)">3</button>
-          <button class="hoursButtons" onclick="setCustomHour(event, 3)">4</button>
-          <button class="hoursButtons" onclick="setCustomHour(event, 4)">5</button>
-          <button class="hoursButtons" onclick="setCustomHour(event, 5)">6</button>
+          <button class="hoursButtons" onclick="setCustomHour(event, 0)">
+            1
+          </button>
+          <button class="hoursButtons" onclick="setCustomHour(event, 1)">
+            2
+          </button>
+          <button class="hoursButtons" onclick="setCustomHour(event, 2)">
+            3
+          </button>
+          <button class="hoursButtons" onclick="setCustomHour(event, 3)">
+            4
+          </button>
+          <button class="hoursButtons" onclick="setCustomHour(event, 4)">
+            5
+          </button>
+          <button class="hoursButtons" onclick="setCustomHour(event, 5)">
+            6
+          </button>
         </div>
       </div>
     </div>
@@ -83,6 +111,22 @@
           <p class="matesSubject"></p>
           <p class="matesTeacher"></p>
         </div>
+        <!-- <div>
+          <div class="horizontalLine expandedCardSeparator"></div>
+          <div class="matesBoxGrid expandedMatesBoxGrid">
+            <p class="nextHourPlaceholder">Next hour</p>
+            <div class="expandedMatesCardButtonContainer">
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                download
+              </span>
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                edit
+              </span>
+            </div>
+            <p class="matesNextRoom">Room 25</p>
+            <p class="matesNextSubject">TPSIT</p>
+          </div>
+        </div> -->
       </div>
       <div class="matesBox">
         <h2 class="matesRoomDisplay"></h2>
@@ -147,13 +191,13 @@
           <input type="text" id="userSchoolNameInput" maxlength="40" />
         </div>
         <button
-        class="submitBtn"
-        id="submitUserInfoBtn"
-        onclick="updateUserInfo()"
+          class="submitBtn"
+          id="submitUserInfoBtn"
+          onclick="updateUserInfo()"
         >
-        Confirm
-      </button>
-      <div class="horizontalLine"></div>
+          Confirm
+        </button>
+        <div class="horizontalLine"></div>
         <div>
           <div class="dataDayAndHourContainer">
             <select id="userDaySelection" name="day">
@@ -174,7 +218,7 @@
               <option value="6">6</option>
             </select>
             <label for="userHourSelection" style="margin: 5px 10px 2px 0"
-            >hour</label
+              >hour</label
             >
           </div>
           <div class="dataGrid">
@@ -188,7 +232,7 @@
             <input type="text" class="userTeacherInput" maxlength="12" />
           </div>
         </div>
-<button
+        <button
           class="submitBtn"
           id="submitUserClassTimesBtn"
           onclick="updateUserClassInfo()"
@@ -412,7 +456,11 @@
         /></a>
       </div>
       <div id="appFooterContainer">
-        <img src="icons/github-mark.svg" id="socialIcon" onclick="annoyGitCat()" />
+        <img
+          src="icons/github-mark.svg"
+          id="socialIcon"
+          onclick="annoyGitCat()"
+        />
         <label
           ><a href="https://github.com/lucAmbr0">github.com/lucAmbr0</a></label
         >
