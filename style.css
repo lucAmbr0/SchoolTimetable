@@ -797,7 +797,8 @@ h5 {
     margin: 10px auto 10px auto;
 }
 
-.nextHourPlaceholder {
+.nextHourPlaceholder,
+#uNextHourPlaceholder {
     text-align: left;
     font-weight: 500 !important;
 }
