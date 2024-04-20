@@ -27,9 +27,9 @@
 
     --boxShadow0: 0 0 10px rgba(0, 0, 0, 1);
     --boxShadow1: 0 0 20px rgba(0, 0, 0, 0.3);
-    --boxShadow2: 0 2px 10px rgba(0, 0, 0, 0.5);
-    --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.5);
-    --boxShadow4: 0 2px 6px rgba(0, 0, 0, 0.5);
+    --boxShadow2: 0 1px 5px rgba(0, 0, 0, 0.3);
+    --boxShadow3: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --boxShadow4: 0 1px 6px rgba(0, 0, 0, 0.3);
 
     --boxBorderColor: transparent;
     --socialIconCol: invert();
@@ -392,23 +392,28 @@ h5 {
         margin-top: -98.4px;
         height: fit-content;
     }
+
     40% {
         opacity: 0;
     }
+
     to {
         opacity: 1;
         margin-top: 0;
         height: fit-content;
     }
 }
+
 @keyframes expandedMatesCardHidden {
     from {
         opacity: 1;
         margin-top: 0;
     }
+
     35% {
         opacity: 0;
     }
+
     to {
         opacity: 0;
         margin-top: -98.4px;
@@ -489,11 +494,11 @@ h5 {
     width: 100%;
     height: 10vh;
     background: var(--accentColor0);
-    box-shadow: var(--boxShadow4);
+    /* box-shadow: var(--boxShadow4); */
     z-index: 2;
     color: var(--textCol3);
     text-align: center;
-    border-radius: 0 0 2.5vh 2.5vh;
+    border-radius: 0 0 3.5vh 3.5vh;
     padding: 1vh 0;
     backdrop-filter: blur(15px);
     transition: 0.3s all ease;
@@ -619,12 +624,12 @@ h5 {
     margin-top: 0px;
     text-align: center;
     font-size: 1.5em;
-    color: var(--OPPsolidCol3);
+    color: var(--solidAccentColor1);
 }
 
 #schoolDisplay {
     text-align: center;
-    color: var(--OPPsolidCol4);
+    color: var(--solidAccentColor1);
     font-weight: 400;
     margin-bottom: -20px;
 }
@@ -649,7 +654,7 @@ h5 {
     animation: 0.3s room both;
     font-size: 2.3em;
     font-weight: 500;
-    color: var(--OPPsolidCol3);
+    color: var(--solidAccentColor1);
 }
 
 #userComplexDisplay {
@@ -659,7 +664,7 @@ h5 {
     margin-bottom: 5.5px;
     font-size: 1.3em;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol4);
+    color: var(--solidAccentColor1);
 }
 
 #userSubjectAndTeacher {
@@ -667,7 +672,7 @@ h5 {
     font-size: 1.5em;
     font-weight: 500;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol4);
+    color: var(--solidAccentColor1);
     margin: 2px 0 5px 0;
 }
 
@@ -683,7 +688,7 @@ h5 {
 #secondaryBoxesLabel {
     text-align: center;
     font-family: var(--StandardTextFont);
-    color: var(--OPPsolidCol4);
+    color: var(--solidAccentColor1);
     font-size: 1.4em;
     margin: 10px 0 -10px 0;
 }
@@ -729,6 +734,7 @@ h5 {
     margin-top: -98.4px;
     opacity: 0;
 }
+
 .expandedMatesCardContainerHidden {
     animation: expandedMatesCardHidden 0.5s forwards;
 }
@@ -738,9 +744,30 @@ h5 {
     animation: expandedMatesCardShown 0.5s forwards;
 }
 
+.expandedUserCardContainerHidden {
+    animation: expandedMatesCardHidden 0.5s forwards;
+}
+
+.expandedUserCardContainerShown {
+    display: block;
+    animation: expandedMatesCardShown 0.5s forwards;
+}
+
+.expandedUserBoxGrid p {
+    margin-bottom: 5px !important;
+}
+
+.expandedUserCardContainer {
+    /* transition: 0.3s all ease-in-out; */
+    display: none;
+    margin-top: -98.4px;
+    opacity: 0;
+}
+
 .matesClass,
 .matesSubject,
-.matesNextRoom {
+.matesNextRoom,
+#userNextRoom {
     text-align: left;
     text-wrap: nowrap;
 }
@@ -760,6 +787,7 @@ h5 {
 .matesNotes,
 .matesTeacher,
 .matesNextSubject,
+#userNextSubject,
 .expandedMatesCardButtonContainer {
     text-align: right;
     text-wrap: nowrap;
@@ -769,7 +797,9 @@ h5 {
     margin: 10px auto 10px auto;
 }
 
-.nextHourPlaceholder {
+.nextHourPlaceholder,
+#uNextHourPlaceholder {
+    text-align: left;
     font-weight: 500 !important;
 }
 
@@ -796,7 +826,7 @@ h5 {
     background-color: var(--solidCol1);
     border-top: solid 2px;
     border-color: var(--boxBorderColor);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     transition: 0.3s background-color ease;
 }
 

@@ -96,10 +96,26 @@
         </h2>
         <h3 id="schoolDisplay"></h3>
       </div>
-      <div id="yourClassBox">
+      <div id="yourClassBox" onclick="toggleExpandedUserCard()">
         <h1 id="userClassroomDisplay"></h1>
         <h3 id="userComplexDisplay"></h3>
         <h2 id="userSubjectAndTeacher"></h2>
+        <div class="expandedUserCardContainer expandedUserCardContainerHidden">
+          <div class="horizontalLine expandedCardSeparator"></div>
+          <div class="matesBoxGrid expandedUserBoxGrid">
+            <p id="uNextHourPlaceholder">Next hour</p>
+            <div class="expandedMatesCardButtonContainer">
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                download
+              </span>
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                edit
+              </span>
+            </div>
+            <p id="userNextRoom">*********</p>
+            <p id="userNextSubject">******</p>
+          </div>
+        </div>
       </div>
       <div class="horizontalLine" id="userMatesSeparator"></div>
       <h3 id="secondaryBoxesLabel">Your mates</h3>
@@ -501,7 +517,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight">1.76.265</label>
+          <label class="alignToRight">1.77.268</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

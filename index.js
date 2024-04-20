@@ -347,16 +347,26 @@ function displayUserToNowTab(day, hour,) {
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
   const userSubjectAndTeacher = document.getElementById("userSubjectAndTeacher");
+  
+  const userNextRoomDisplay = document.getElementById("userNextRoom");
+  const userNextSubjectDisplay = document.getElementById("userNextSubject");
+  
   if (!usingCustomSearch) {
     // If usingCustomSearch is true than the hour is already compatible with array indexes, otherwise it must be subtracted by the time when school starts defined by the user
     hour -= schoolHourStart;
   }
   if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     if (!user.room[day][hour]) userClassroomDisplay.textContent = "No lesson";
-    else userClassroomDisplay.textContent = user.room[day][hour];
+    else {
+      userClassroomDisplay.textContent = user.room[day][hour];
+      userNextRoomDisplay.textContent = user.room[day][hour + 1];
+
+    } 
     if (!user.complex[day][hour]) {
       userComplexDisplay.style.display = "none";
       userComplexDisplay.textContent = " ";
+      userNextRoomDisplay.textContent = "No lesson";
+      userNextSubjectDisplay.textContent = "";
     }
     else {
       userComplexDisplay.style.display = "block";
@@ -368,7 +378,14 @@ function displayUserToNowTab(day, hour,) {
     else {
       userSubjectAndTeacher.style.display = "block";
       userSubjectAndTeacher.textContent = user.subject[day][hour];
+      userNextSubjectDisplay.textContent = user.subject[day][hour + 1];
       if (user.teacher[day][hour]) userSubjectAndTeacher.textContent += " - " + user.teacher[day][hour];
+    }
+    if (!user.room[day][hour + 1]) {
+      document.getElementById("uNextHourPlaceholder").textContent = "Options";
+      if (user.room[day][hour])
+      userNextRoomDisplay.textContent = "Lesson finishes next hour";
+    else userNextRoomDisplay.textContent = "No lesson next hour";
     }
   }
   else {
@@ -378,19 +395,20 @@ function displayUserToNowTab(day, hour,) {
   }
   if (previousSubject != userSubjectAndTeacher.textContent) {
     userSubjectAndTeacher.style.animation = "none";
+    userNextSubjectDisplay.style.animation = "none";
     setTimeout(() => {
       userSubjectAndTeacher.style.animation = "0.4s complex ease";
+      userNextSubjectDisplay.style.animation = "0.4s complex ease";
     }, 0);
   }
 
   if (previousRoom != userClassroomDisplay.textContent) {
     userClassroomDisplay.style.animation = "none";
-    setTimeout(() => {
-      userClassroomDisplay.style.animation = "0.4s room ease";
-    }, 0);
-
+    userNextRoomDisplay.style.animation = "none";
     userComplexDisplay.style.animation = "none";
     setTimeout(() => {
+      userClassroomDisplay.style.animation = "0.4s room ease";
+      userNextRoomDisplay.style.animation = "0.4s room ease";
       userComplexDisplay.style.animation = "0.5s complex ease";
     }, 0);
   }
@@ -682,8 +700,6 @@ function displayMatesToNowTab(day, hour) {
   if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
       document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Next hour";
-      document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "0";
-      document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingBottom = "0px";
       if (!mates[i].room[day][hour] && mates[i].className) {
         matesRoomDisplay[i].textContent = "No lesson";
         matesNextRoomDisplay[i].textContent = "No lesson";
@@ -699,9 +715,9 @@ function displayMatesToNowTab(day, hour) {
       matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
         document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
-        matesNextRoomDisplay[i].textContent = "";
-        document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "14.4px";
-        document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingBottom = "14.4px";
+        if (mates[i].room[day][hour])
+        matesNextRoomDisplay[i].textContent = "Lesson finishes next hour";
+      else matesNextRoomDisplay[i].textContent = "No lesson next hour";
       }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
@@ -922,6 +938,30 @@ function copyToClipboard(data) {
 }
 
 
+// ---------------  EXPAND USER CARDS  ---------------
+
+let expandedUserCardState = 0;
+let expandedUserCardElement = document.querySelector(".expandedUserCardContainer");
+function toggleExpandedUserCard() {
+  if (expandedUserCardState == 0) {
+    expandedUserCardState = 1;
+    expandedUserCardElement.style.display = "block";
+    expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
+    expandedUserCardElement.classList.add("expandedUserCardContainerShown");
+
+  }
+  else if (expandedUserCardState == 1) {
+    expandedUserCardState = 0;
+    expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
+    expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
+    setTimeout(() => {
+      expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
+      expandedUserCardElement.animation = "none";
+    }, 500);
+  }
+}
+
+
 // ---------------  EXPAND MATES CARDS  ---------------
 
 let expandedCardsState = [0, 0, 0, 0, 0]
@@ -944,7 +984,6 @@ function toggleExpandedMatesCard(cardIdx) {
     }, 500);
   }
 }
-
 
 
 // ---------------  H1DD3N F34TUR3S  ---------------
