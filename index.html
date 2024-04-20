@@ -128,7 +128,7 @@
           </div>
         </div>
       </div>
-      <div class="matesBox">
+      <div class="matesBox" onclick="toggleExpandedMatesCard(1)">
         <h2 class="matesRoomDisplay"></h2>
         <div class="matesBoxGrid">
           <p class="matesClass"></p>
@@ -136,8 +136,24 @@
           <p class="matesSubject"></p>
           <p class="matesTeacher"></p>
         </div>
+        <div class="expandedMatesCardContainer expandedMatesCardContainerHidden">
+          <div class="horizontalLine expandedCardSeparator"></div>
+          <div class="matesBoxGrid expandedMatesBoxGrid">
+            <p class="nextHourPlaceholder">Next hour</p>
+            <div class="expandedMatesCardButtonContainer">
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                download
+              </span>
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                edit
+              </span>
+            </div>
+            <p class="matesNextRoom">*********</p>
+            <p class="matesNextSubject">******</p>
+          </div>
+        </div>
       </div>
-      <div class="matesBox">
+      <div class="matesBox" onclick="toggleExpandedMatesCard(2)">
         <h2 class="matesRoomDisplay"></h2>
         <div class="matesBoxGrid">
           <p class="matesClass"></p>
@@ -145,8 +161,24 @@
           <p class="matesSubject"></p>
           <p class="matesTeacher"></p>
         </div>
+        <div class="expandedMatesCardContainer expandedMatesCardContainerHidden">
+          <div class="horizontalLine expandedCardSeparator"></div>
+          <div class="matesBoxGrid expandedMatesBoxGrid">
+            <p class="nextHourPlaceholder">Next hour</p>
+            <div class="expandedMatesCardButtonContainer">
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                download
+              </span>
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                edit
+              </span>
+            </div>
+            <p class="matesNextRoom">*********</p>
+            <p class="matesNextSubject">******</p>
+          </div>
+        </div>
       </div>
-      <div class="matesBox">
+      <div class="matesBox" onclick="toggleExpandedMatesCard(3)">
         <h2 class="matesRoomDisplay"></h2>
         <div class="matesBoxGrid">
           <p class="matesClass"></p>
@@ -154,14 +186,46 @@
           <p class="matesSubject"></p>
           <p class="matesTeacher"></p>
         </div>
+        <div class="expandedMatesCardContainer expandedMatesCardContainerHidden">
+          <div class="horizontalLine expandedCardSeparator"></div>
+          <div class="matesBoxGrid expandedMatesBoxGrid">
+            <p class="nextHourPlaceholder">Next hour</p>
+            <div class="expandedMatesCardButtonContainer">
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                download
+              </span>
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                edit
+              </span>
+            </div>
+            <p class="matesNextRoom">*********</p>
+            <p class="matesNextSubject">******</p>
+          </div>
+        </div>
       </div>
-      <div class="matesBox">
+      <div class="matesBox" onclick="toggleExpandedMatesCard(4)">
         <h2 class="matesRoomDisplay"></h2>
         <div class="matesBoxGrid">
           <p class="matesClass"></p>
           <p class="matesNotes"></p>
           <p class="matesSubject"></p>
           <p class="matesTeacher"></p>
+        </div>
+        <div class="expandedMatesCardContainer expandedMatesCardContainerHidden">
+          <div class="horizontalLine expandedCardSeparator"></div>
+          <div class="matesBoxGrid expandedMatesBoxGrid">
+            <p class="nextHourPlaceholder">Next hour</p>
+            <div class="expandedMatesCardButtonContainer">
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                download
+              </span>
+              <span class="material-symbols-outlined expandedMatesCardIcon">
+                edit
+              </span>
+            </div>
+            <p class="matesNextRoom">*********</p>
+            <p class="matesNextSubject">******</p>
+          </div>
         </div>
       </div>
     </div>
@@ -437,7 +501,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight">1.74.258</label>
+          <label class="alignToRight">1.75.260</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

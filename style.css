@@ -389,7 +389,7 @@ h5 {
 @keyframes expandedMatesCardShown {
     from {
         opacity: 0;
-        margin-top: -90.4px;
+        margin-top: -98.4px;
         height: fit-content;
     }
     40% {
@@ -411,7 +411,7 @@ h5 {
     }
     to {
         opacity: 0;
-        margin-top: -90.4px;
+        margin-top: -98.4px;
     }
 }
 
@@ -719,14 +719,14 @@ h5 {
     font-size: 1.3em;
 }
 
-.expandedMatesBoxGrid:first-child {
-    margin-bottom: 5px;
+.expandedMatesBoxGrid p {
+    margin-bottom: 5px !important;
 }
 
 .expandedMatesCardContainer {
     /* transition: 0.3s all ease-in-out; */
     display: none;
-    margin-top: -90.4px;
+    margin-top: -98.4px;
     opacity: 0;
 }
 .expandedMatesCardContainerHidden {
@@ -742,6 +742,7 @@ h5 {
 .matesSubject,
 .matesNextRoom {
     text-align: left;
+    text-wrap: nowrap;
 }
 
 .expandedMatesCardIcon {
@@ -761,6 +762,7 @@ h5 {
 .matesNextSubject,
 .expandedMatesCardButtonContainer {
     text-align: right;
+    text-wrap: nowrap;
 }
 
 .expandedCardSeparator {
