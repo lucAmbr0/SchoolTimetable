@@ -696,8 +696,8 @@ function displayMatesToNowTab(day, hour) {
         matesNextRoomDisplay[i].textContent = mates[i].room[day][hour + 1];
         matesTeacher[i].textContent = mates[i].teacher[day][hour];
       }
+      matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
-        matesNotes[i].textContent = mates[i].classMatesNames;
         document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
         matesNextRoomDisplay[i].textContent = "";
         document.querySelectorAll(".expandedMatesBoxGrid")[i].style.paddingTop = "14.4px";
@@ -722,18 +722,20 @@ function displayMatesToNowTab(day, hour) {
       }
       if (previousMateSubject[i] != matesSubject[i].textContent) {
         matesSubject[i].style.animation = "none";
+        matesTeacher[i].style.animation = "none";
+        matesNextSubjectDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesSubject[i].style.animation = "0.4s complex ease";
-        }, 0);
-        matesTeacher[i].style.animation = "none";
-        setTimeout(() => {
           matesTeacher[i].style.animation = "0.4s complex ease";
+          matesNextSubjectDisplay[i].style.animation = "0.4s complex ease";
         }, 0);
       }
       if (previousMateRoom[i] != matesRoomDisplay[i].textContent) {
         matesRoomDisplay[i].style.animation = "none";
+        matesNextRoomDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesRoomDisplay[i].style.animation = "0.4s room ease";
+          matesNextRoomDisplay[i].style.animation = "0.4s room ease";
         }, 0);
       }
       previousMateSubject[i] = matesSubject[i].textContent;
