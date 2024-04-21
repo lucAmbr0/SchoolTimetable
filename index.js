@@ -501,20 +501,22 @@ let expandedUserCardState = 0;
 let expandedUserCardElement = document.querySelector(".expandedUserCardContainer");
 function toggleExpandedUserCard() {
   if (expandedUserCardState == 0) {
-    expandedUserCardState = 1;
+    expandedUserCardState = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
     expandedUserCardElement.style.display = "block";
     expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
     expandedUserCardElement.classList.add("expandedUserCardContainerShown");
     setTimeout(() => {
       expandedUserCardElement.style.animationDuration = "0s";
+      expandedUserCardState = 1;
     }, 350);
   }
   else if (expandedUserCardState == 1) {
-    expandedUserCardState = 0;
+    expandedUserCardState = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
     expandedUserCardElement.style.animationDuration = "0.35s";
     expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
     expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
     setTimeout(() => {
+      expandedUserCardState = 0;
       expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
       expandedUserCardElement.animation = "none";
     }, 350);
@@ -528,21 +530,23 @@ let expandedCardsState = [0, 0, 0, 0, 0]
 let expandedCardsElements = document.querySelectorAll(".expandedMatesCardContainer");
 function toggleExpandedMatesCard(cardIdx) {
   if (expandedCardsState[cardIdx] == 0) {
-    expandedCardsState[cardIdx] = 1;
+    expandedCardsState[cardIdx] = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
     expandedCardsElements[cardIdx].style.display = "block";
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
     setTimeout(() => {
       expandedCardsElements[cardIdx].style.animationDuration = "0s";
+      expandedCardsState[cardIdx] = 1;
     }, 350);
   }
   else if (expandedCardsState[cardIdx] == 1) {
+    expandedCardsState[cardIdx] = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
     expandedCardsElements[cardIdx].style.animationDuration = "0.35s";
-    expandedCardsState[cardIdx] = 0;
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerHidden");
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
     setTimeout(() => {
       expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
+      expandedCardsState[cardIdx] = 0;
     }, 350);
   }
 }
