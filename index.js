@@ -511,7 +511,7 @@ function toggleExpandedUserCard() {
   }
   else if (expandedUserCardState == 1) {
     expandedUserCardState = 0;
-    expandedUserCardElement.style.animationDuration = "0.5s";
+    expandedUserCardElement.style.animationDuration = "0.35s";
     expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
     expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
     setTimeout(() => {
@@ -537,7 +537,7 @@ function toggleExpandedMatesCard(cardIdx) {
     }, 500);
   }
   else if (expandedCardsState[cardIdx] == 1) {
-    expandedCardsElements[cardIdx].style.animationDuration = "0.5s";
+    expandedCardsElements[cardIdx].style.animationDuration = "0.35s";
     expandedCardsState[cardIdx] = 0;
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerHidden");
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
@@ -1204,6 +1204,7 @@ const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
 
 let usingCustomSearch = false;
+let customSearchPanelOpened = false;
 const daysButtons = document.querySelectorAll(".daysButtons");
 const hoursButtons = document.querySelectorAll(".hoursButtons");
 
@@ -1224,9 +1225,11 @@ function toggleChangeTime() {
     usingCustomSearch = false;
     customHour = null;
     customDay = null;
+    customSearchPanelOpened = false;
   }
   // Opening box
   else {
+    customSearchPanelOpened = true;
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
     setTimeout(() => {
@@ -1240,31 +1243,35 @@ function toggleChangeTime() {
 
 function setCustomDay(event, selectedDay) {
   event.stopPropagation(); // prevents from closing tab when clicking buttons
-  // Clicking on a button already selected closes the box
-  if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
-    usingCustomSearch = false;
-    toggleChangeTime();
-    return;
+  if (customSearchPanelOpened) {
+    // Clicking on a button already selected closes the box
+    if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
+      usingCustomSearch = false;
+      toggleChangeTime();
+      return;
+    }
+    daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    daysButtons[selectedDay].classList.add("timeButtonActive");
+    customDay = selectedDay;
+    usingCustomSearch = true;
+    displayCustomTimes();
   }
-  daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
-  daysButtons[selectedDay].classList.add("timeButtonActive");
-  customDay = selectedDay;
-  usingCustomSearch = true;
-  displayCustomTimes();
 }
 function setCustomHour(event, selectedHour) {
   event.stopPropagation(); // prevents from closing tab when clicking buttons
-  // Clicking on a button already selected closes the box
-  if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
-    usingCustomSearch = false;
-    toggleChangeTime();
-    return;
+  if (customSearchPanelOpened) {
+    // Clicking on a button already selected closes the box
+    if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
+      usingCustomSearch = false;
+      toggleChangeTime();
+      return;
+    }
+    hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    hoursButtons[selectedHour].classList.add("timeButtonActive");
+    customHour = selectedHour;
+    usingCustomSearch = true;
+    displayCustomTimes();
   }
-  hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
-  hoursButtons[selectedHour].classList.add("timeButtonActive");
-  customHour = selectedHour;
-  usingCustomSearch = true;
-  displayCustomTimes();
 }
 
 function displayCustomTimes() {
