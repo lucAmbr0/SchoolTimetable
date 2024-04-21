@@ -384,7 +384,7 @@ function displayUserToNowTab(day, hour,) {
     if (!user.room[day][hour + 1]) {
       document.getElementById("uNextHourPlaceholder").textContent = "Options";
       if (user.room[day][hour])
-        userNextRoomDisplay.textContent = "Lesson finishes next hour";
+        userNextRoomDisplay.textContent = "Lesson finished";
       else userNextRoomDisplay.textContent = "No lesson next hour";
     }
   }
@@ -501,23 +501,25 @@ let expandedUserCardState = 0;
 let expandedUserCardElement = document.querySelector(".expandedUserCardContainer");
 function toggleExpandedUserCard() {
   if (expandedUserCardState == 0) {
-    expandedUserCardState = 1;
+    expandedUserCardState = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
     expandedUserCardElement.style.display = "block";
     expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
     expandedUserCardElement.classList.add("expandedUserCardContainerShown");
     setTimeout(() => {
       expandedUserCardElement.style.animationDuration = "0s";
-    }, 500);
+      expandedUserCardState = 1;
+    }, 350);
   }
   else if (expandedUserCardState == 1) {
-    expandedUserCardState = 0;
-    expandedUserCardElement.style.animationDuration = "0.5s";
+    expandedUserCardState = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
+    expandedUserCardElement.style.animationDuration = "0.35s";
     expandedUserCardElement.classList.add("expandedUserCardContainerHidden");
     expandedUserCardElement.classList.remove("expandedUserCardContainerShown");
     setTimeout(() => {
+      expandedUserCardState = 0;
       expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
       expandedUserCardElement.animation = "none";
-    }, 500);
+    }, 350);
   }
 }
 
@@ -528,22 +530,24 @@ let expandedCardsState = [0, 0, 0, 0, 0]
 let expandedCardsElements = document.querySelectorAll(".expandedMatesCardContainer");
 function toggleExpandedMatesCard(cardIdx) {
   if (expandedCardsState[cardIdx] == 0) {
-    expandedCardsState[cardIdx] = 1;
+    expandedCardsState[cardIdx] = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
     expandedCardsElements[cardIdx].style.display = "block";
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
     setTimeout(() => {
       expandedCardsElements[cardIdx].style.animationDuration = "0s";
-    }, 500);
+      expandedCardsState[cardIdx] = 1;
+    }, 350);
   }
   else if (expandedCardsState[cardIdx] == 1) {
-    expandedCardsElements[cardIdx].style.animationDuration = "0.5s";
-    expandedCardsState[cardIdx] = 0;
+    expandedCardsState[cardIdx] = 2; // set state to 2 to avoid users from spamming the same button and glitch the animation
+    expandedCardsElements[cardIdx].style.animationDuration = "0.35s";
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerHidden");
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
     setTimeout(() => {
       expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
-    }, 500);
+      expandedCardsState[cardIdx] = 0;
+    }, 350);
   }
 }
 
@@ -826,7 +830,7 @@ function displayMatesToNowTab(day, hour) {
       if (!mates[i].room[day][hour + 1]) {
         document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
         if (mates[i].room[day][hour])
-          matesNextRoomDisplay[i].textContent = "Lesson finishes next hour";
+          matesNextRoomDisplay[i].textContent = "Lesson finished";
         else matesNextRoomDisplay[i].textContent = "No lesson next hour";
       }
       if (!mates[i].className) {
@@ -1204,6 +1208,7 @@ const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
 
 let usingCustomSearch = false;
+let customSearchPanelOpened = false;
 const daysButtons = document.querySelectorAll(".daysButtons");
 const hoursButtons = document.querySelectorAll(".hoursButtons");
 
@@ -1224,9 +1229,11 @@ function toggleChangeTime() {
     usingCustomSearch = false;
     customHour = null;
     customDay = null;
+    customSearchPanelOpened = false;
   }
   // Opening box
   else {
+    customSearchPanelOpened = true;
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
     setTimeout(() => {
@@ -1240,31 +1247,35 @@ function toggleChangeTime() {
 
 function setCustomDay(event, selectedDay) {
   event.stopPropagation(); // prevents from closing tab when clicking buttons
-  // Clicking on a button already selected closes the box
-  if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
-    usingCustomSearch = false;
-    toggleChangeTime();
-    return;
+  if (customSearchPanelOpened) {
+    // Clicking on a button already selected closes the box
+    if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
+      usingCustomSearch = false;
+      toggleChangeTime();
+      return;
+    }
+    daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    daysButtons[selectedDay].classList.add("timeButtonActive");
+    customDay = selectedDay;
+    usingCustomSearch = true;
+    displayCustomTimes();
   }
-  daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
-  daysButtons[selectedDay].classList.add("timeButtonActive");
-  customDay = selectedDay;
-  usingCustomSearch = true;
-  displayCustomTimes();
 }
 function setCustomHour(event, selectedHour) {
   event.stopPropagation(); // prevents from closing tab when clicking buttons
-  // Clicking on a button already selected closes the box
-  if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
-    usingCustomSearch = false;
-    toggleChangeTime();
-    return;
+  if (customSearchPanelOpened) {
+    // Clicking on a button already selected closes the box
+    if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
+      usingCustomSearch = false;
+      toggleChangeTime();
+      return;
+    }
+    hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    hoursButtons[selectedHour].classList.add("timeButtonActive");
+    customHour = selectedHour;
+    usingCustomSearch = true;
+    displayCustomTimes();
   }
-  hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
-  hoursButtons[selectedHour].classList.add("timeButtonActive");
-  customHour = selectedHour;
-  usingCustomSearch = true;
-  displayCustomTimes();
 }
 
 function displayCustomTimes() {
