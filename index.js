@@ -384,7 +384,7 @@ function displayUserToNowTab(day, hour,) {
     if (!user.room[day][hour + 1]) {
       document.getElementById("uNextHourPlaceholder").textContent = "Options";
       if (user.room[day][hour])
-        userNextRoomDisplay.textContent = "Lesson finishes next hour";
+        userNextRoomDisplay.textContent = "Lesson finished";
       else userNextRoomDisplay.textContent = "No lesson next hour";
     }
   }
@@ -507,7 +507,7 @@ function toggleExpandedUserCard() {
     expandedUserCardElement.classList.add("expandedUserCardContainerShown");
     setTimeout(() => {
       expandedUserCardElement.style.animationDuration = "0s";
-    }, 500);
+    }, 350);
   }
   else if (expandedUserCardState == 1) {
     expandedUserCardState = 0;
@@ -517,7 +517,7 @@ function toggleExpandedUserCard() {
     setTimeout(() => {
       expandedUserCardElement.classList.remove("expandedUserCardContainerHidden");
       expandedUserCardElement.animation = "none";
-    }, 500);
+    }, 350);
   }
 }
 
@@ -534,7 +534,7 @@ function toggleExpandedMatesCard(cardIdx) {
     expandedCardsElements[cardIdx].classList.add("expandedMatesCardContainerShown");
     setTimeout(() => {
       expandedCardsElements[cardIdx].style.animationDuration = "0s";
-    }, 500);
+    }, 350);
   }
   else if (expandedCardsState[cardIdx] == 1) {
     expandedCardsElements[cardIdx].style.animationDuration = "0.35s";
@@ -543,7 +543,7 @@ function toggleExpandedMatesCard(cardIdx) {
     expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerShown");
     setTimeout(() => {
       expandedCardsElements[cardIdx].classList.remove("expandedMatesCardContainerHidden");
-    }, 500);
+    }, 350);
   }
 }
 
@@ -826,7 +826,7 @@ function displayMatesToNowTab(day, hour) {
       if (!mates[i].room[day][hour + 1]) {
         document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
         if (mates[i].room[day][hour])
-          matesNextRoomDisplay[i].textContent = "Lesson finishes next hour";
+          matesNextRoomDisplay[i].textContent = "Lesson finished";
         else matesNextRoomDisplay[i].textContent = "No lesson next hour";
       }
       if (!mates[i].className) {
