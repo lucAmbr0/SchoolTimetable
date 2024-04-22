@@ -604,26 +604,50 @@ findAlwaysExpandCards();  // When the page loads look for user's 'show greeting'
 // ---------------  USER EXPANDED CARD BUTTONS  ---------------
 
 function userCardDownload() {
-  event.stopPropagation();
+  if (expandedUserCardState == 1) {
+    event.stopPropagation();
+    
+  }
+  else return;
 }
 function userCardShare() {
-  event.stopPropagation();
+  if (expandedUserCardState == 1) {
+    event.stopPropagation();
+
+  }
+  else return;
 }
 function userCardEdit() {
-  event.stopPropagation();
+  if (expandedUserCardState == 1) {
+    event.stopPropagation();
+
+  }
+  else return;
 }
 
 
-// ---------------  USER EXPANDED CARD BUTTONS  ---------------
+// ---------------  MATES EXPANDED CARD BUTTONS  ---------------
 
 function matesCardDownload(i) {
-  event.stopPropagation();
+  if (expandedCardsState[i] == 1) {
+    event.stopPropagation();
+
+  }
+  else return;
 }
 function matesCardShare(i) {
-  event.stopPropagation();
+  if (expandedCardsState[i] == 1) {
+    event.stopPropagation();
+
+  }
+  else return;
 }
 function matesCardEdit(i) {
-  event.stopPropagation();
+  if (expandedCardsState[i] == 1) {
+    event.stopPropagation();
+
+  }
+  else return;
 }
 
 // ---------------  MANAGING AND SAVING DATA ABOUT MATES  ---------------

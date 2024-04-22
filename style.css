@@ -700,11 +700,12 @@ h5 {
     border-width: 2px;
     box-shadow: var(--boxShadow2);
     text-align: center;
-    transition: 0.2s scale;
+    transition: 0.2s ease all;
 }
 
 #yourClassBox:active {
     scale: 1.02;
+    border-color: var(--OPPtranspCol7);
 }
 
 #userClassroomDisplay {
