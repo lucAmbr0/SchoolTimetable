@@ -1212,7 +1212,7 @@ const hoursButtons = document.querySelectorAll(".hoursButtons");
 let customHour = null;
 let customDay = null;
 
-function toggleChangeTime() {
+function toggleChangeTime(resetButtons) {
   // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
@@ -1221,11 +1221,13 @@ function toggleChangeTime() {
       topNotch.classList.remove("topNotchContainerTALL");
       changeTimeContainer.style.display = "none";
     }, 200);
-    daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
-    hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
-    usingCustomSearch = false;
-    customHour = null;
-    customDay = null;
+    if (resetButtons) {
+      daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+      hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    }
+    // usingCustomSearch = false;
+    // customHour = null;
+    // customDay = null;
     customSearchPanelOpened = false;
   }
   // Opening box
@@ -1248,14 +1250,14 @@ function setCustomDay(event, selectedDay) {
     // Clicking on a button already selected closes the box
     if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
-      toggleChangeTime();
+      toggleChangeTime(true);
       return;
     }
     daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
     daysButtons[selectedDay].classList.add("timeButtonActive");
     customDay = selectedDay;
     usingCustomSearch = true;
-    displayCustomTimes();
+    displayCustomTimes(true);
   }
 }
 function setCustomHour(event, selectedHour) {
@@ -1264,7 +1266,7 @@ function setCustomHour(event, selectedHour) {
     // Clicking on a button already selected closes the box
     if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
-      toggleChangeTime();
+      toggleChangeTime(true);
       return;
     }
     hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
@@ -1290,6 +1292,9 @@ function displayCustomTimes() {
 const dayDisplay = document.getElementById("dayDisplay");
 const timeDisplay = document.getElementById("timeDisplay");
 let currentDate = new Date();
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 updateDateTime();
 function updateDateTime() {
   // UPDATING TIME AND DATE
@@ -1304,8 +1309,6 @@ function updateDateTime() {
     displayUserToNowTab(day, hour);
     displayMatesToNowTab(day, hour);
 
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const dayOfWeek = days[currentDate.getDay()];
     const dayOfMonth = currentDate.getDate();
@@ -1316,11 +1319,15 @@ function updateDateTime() {
     dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
     timeText = hours + ':' + minutes;
 
+    timeDisplay.textContent = timeText;
+
   } else {
     displayCustomTimes();
+    let k = (parseInt(selectedStartTime) + customHour);
+    timeDisplay.textContent = days[customDay + 1].slice(0, 3) + " at " + k + ":00";
   }
+
   dayDisplay.textContent = dateText;
-  timeDisplay.textContent = timeText;
 }
 
 // Initial call to update immediately and then every 2 seconds

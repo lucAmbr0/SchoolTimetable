@@ -514,7 +514,7 @@ h5 {
 }
 
 .appTabs {
-    animation: appTab 0.25s ease-out forwards;
+    animation: appTab 0.2s ease-out forwards;
 }
 
 .topNotchContainer {
@@ -551,7 +551,6 @@ h5 {
 }
 
 .changeTimeContainerHidden {
-    display: "none" !important;
     transform: translateY(-1vh) !important;
     opacity: 0 !important;
     margin: 0 !important;
@@ -603,9 +602,12 @@ h5 {
 }
 
 .topNotchContainerTALL h2 {
+    visibility: none;
     opacity: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    z-index: 0;
+    pointer-events: none;
     transform: translateY(3vh) !important;
     transition: 0.3s ease all !important;
 }
@@ -640,6 +642,7 @@ h5 {
     color: var(--OPPsolidCol1);
     font-weight: 500;
     font-size: 1.8em;
+    text-wrap: nowrap;
     line-height: 1.2;
     transition: 0.3s all ease !important;
 }
@@ -648,6 +651,9 @@ h5 {
     font-family: var(--HeadingFont);
     color: var(--OPPsolidCol1);
     font-weight: 600;
+    font-feature-settings: "tnum";
+    /* letter-spacing: 1px; */
+    text-wrap: nowrap;
     line-height: 1.1;
     font-size: 2.8em;
     transition: 0.3s all ease !important;
