@@ -601,6 +601,31 @@ function findAlwaysExpandCards() {
 findAlwaysExpandCards();  // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes false by default 
 
 
+// ---------------  USER EXPANDED CARD BUTTONS  ---------------
+
+function userCardDownload() {
+  event.stopPropagation();
+}
+function userCardShare() {
+  event.stopPropagation();
+}
+function userCardEdit() {
+  event.stopPropagation();
+}
+
+
+// ---------------  USER EXPANDED CARD BUTTONS  ---------------
+
+function matesCardDownload(i) {
+  event.stopPropagation();
+}
+function matesCardShare(i) {
+  event.stopPropagation();
+}
+function matesCardEdit(i) {
+  event.stopPropagation();
+}
+
 // ---------------  MANAGING AND SAVING DATA ABOUT MATES  ---------------
 
 // JavaScript variables that contain mates' info
@@ -1276,8 +1301,6 @@ function displayCustomTimes() {
   }
   else usingCustomSearch = false;
 }
-
-
 
 // ---------------  DATE AND TIME DISPLAY  ---------------
 

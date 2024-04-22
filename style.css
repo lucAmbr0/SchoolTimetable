@@ -354,7 +354,7 @@ h5 {
     from {
         opacity: 0;
     }
-    
+
     to {
         opacity: 1;
     }
@@ -763,11 +763,12 @@ h5 {
     border-radius: 20px;
     margin: 20px auto;
     padding: 5px 0;
-    transition: 0.2s scale;
+    transition: 0.2s all;
 }
 
 .matesBox:active {
     scale: 1.02;
+    border-color: var(--OPPtranspCol7);
 }
 
 .matesRoomDisplay {
@@ -854,7 +855,6 @@ h5 {
 
 .expandedMatesCardIcon:active {
     scale: 0.9;
-    background-color: var(--transpCol2);
 }
 
 .matesNotes,
@@ -871,10 +871,12 @@ h5 {
     opacity: 0;
     margin-right: -30px;
 }
+
 .userCardOptionShown {
     opacity: 1;
     margin-right: 0px;
 }
+
 .userCardOptionHidden {
     opacity: 0;
     margin-right: -30px;
@@ -952,6 +954,12 @@ h5 {
     border-radius: 20px;
     font-size: 1.7em;
     font-weight: 500;
+    transition: 0.25s;
+    border: solid 1px transparent;
+}
+
+.navbarBtn:active span {
+    border: solid 1px var(--solidAccentColor1);
 }
 
 .navbarIconActive {
