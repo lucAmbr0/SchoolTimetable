@@ -621,8 +621,7 @@ async function userCardShare() {
     try {
       await navigator.share({
         title: "User data",
-        text: "",
-        url: JSON.stringify(user),
+        text: JSON.stringify(user),
       });
     } catch (err) {
       console.log(`Error: ${err}`);
@@ -704,8 +703,7 @@ async function matesCardShare(i) {
     try {
       await navigator.share({
         title: "Data from class " + mates[i].className,
-        text: "",
-        url: JSON.stringify(mates[i]),
+        text: JSON.stringify(mates[i]),
       });
     } catch (err) {
       console.log(`Error: ${err}`);
@@ -1158,7 +1156,7 @@ function toggleExportTab() {
 }
 
 const dataToExportSelection = document.getElementById("dataToExportSelection");
-dataToExportSelection.addEventListener("change", () => {
+dataToExportSelection.addEventListener("change", async () => {
   let dataToExport = null;
   switch (dataToExportSelection.value) {
     case 'YourClass':
@@ -1181,8 +1179,14 @@ dataToExportSelection.addEventListener("change", () => {
       break;
   }
   if (dataToExport) {
-    copyToClipboard(JSON.stringify(dataToExport));
-    window.alert("Exported data to clipboard successfully");
+    try {
+      await navigator.share({
+        title: "Data from " + dataToExportSelection.value,
+        text: JSON.stringify(dataToExport),
+      });
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
   }
   toggleExportTab();
 });
