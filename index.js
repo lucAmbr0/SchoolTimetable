@@ -342,7 +342,7 @@ let previousSubject = null;
 let previousRoom = null;
 
 // USER'S DATA
-function displayUserToNowTab(day, hour,) {
+function displayUserToNowTab(day, hour) {
   // USERS CLASS DATA IN NOW TAB
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
@@ -809,13 +809,14 @@ function displayMatesToNowTab(day, hour) {
     hour -= schoolHourStart;
   }
   let atLeastOneMateBoxIsShown = false;
-  if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
+  if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
-      document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Next hour";
       if (!mates[i].room[day][hour] && mates[i].className) {
         matesRoomDisplay[i].textContent = "No lesson";
         matesNextRoomDisplay[i].textContent = "No lesson";
+        matesSubject[i].textContent = "";
         matesNextSubjectDisplay[i].textContent = "";
+        matesTeacher[i].textContent = "";
       }
       else {
         matesSubject[i].textContent = mates[i].subject[day][hour];
