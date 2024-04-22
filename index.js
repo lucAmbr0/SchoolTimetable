@@ -57,6 +57,10 @@ function navbarAction(tab) {
     appTabs.forEach(appTab => appTab.classList.add("appTabsHidden"));
     appTabs[tab].classList.remove("appTabsHidden");
     appTabs[tab].classList.add("appTabsShown");
+    window.scrollTo({
+      top: 0,
+      behavior: 'instant'
+    });
   }
 }
 
@@ -606,21 +610,80 @@ findAlwaysExpandCards();  // When the page loads look for user's 'show greeting'
 function userCardDownload() {
   if (expandedUserCardState == 1) {
     event.stopPropagation();
-    
-  }
-  else return;
-}
-function userCardShare() {
-  if (expandedUserCardState == 1) {
-    event.stopPropagation();
 
   }
   else return;
 }
+
+async function userCardShare() {
+  if (expandedUserCardState == 1) {
+    event.stopPropagation();
+    try {
+      await navigator.share({
+        title: "User data",
+        text: "",
+        url: JSON.stringify(user),
+      });
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
+  }
+  else return;
+}
+
 function userCardEdit() {
   if (expandedUserCardState == 1) {
     event.stopPropagation();
-
+    navbarAction(1);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    let day = "";
+    let j, k;
+    if (usingCustomSearch) {
+      j = customHour + 1;
+      k = customDay;
+    }
+    else {
+      j = currentDate.getHours() - selectedStartTime + 1;
+      if (j < 1 || j > 6) j = 1;
+      k = currentDate.getDate() - 1;
+    }
+    switch (k) {
+      case 0:
+        day = "monday";
+        break;
+      case 1:
+        day = "tuesday";
+        break;
+      case 2:
+        day = "wednesday";
+        break;
+      case 3:
+        day = "thursday";
+        break;
+      case 4:
+        day = "friday";
+        break;
+      case 5:
+        day = "saturday";
+        break;
+      default:
+        day = "monday";
+        break;
+    }
+    userDaySelection.value = day;
+    userHourSelection.value = j;
+    setTimeout(() => {
+      userDaySelection.style.borderColor = "red";
+      userHourSelection.style.borderColor = "red";
+    }, 500);
+    setTimeout(() => {
+      userDaySelection.style.borderColor = "var(--solidAccentColor2)";
+      userHourSelection.style.borderColor = "var(--solidAccentColor2)";
+    }, 1000);
+    changeMatesIndexLabels();
   }
   else return;
 }
@@ -635,17 +698,75 @@ function matesCardDownload(i) {
   }
   else return;
 }
-function matesCardShare(i) {
+async function matesCardShare(i) {
   if (expandedCardsState[i] == 1) {
     event.stopPropagation();
-
+    try {
+      await navigator.share({
+        title: "Data from class " + mates[i].className,
+        text: "",
+        url: JSON.stringify(mates[i]),
+      });
+    } catch (err) {
+      console.log(`Error: ${err}`);
+    }
   }
   else return;
 }
+
 function matesCardEdit(i) {
   if (expandedCardsState[i] == 1) {
     event.stopPropagation();
-
+    navbarAction(1);
+    document.querySelectorAll(".settingsSection")[1].scrollIntoView({ behavior: 'smooth' });
+    let day = "";
+    let j, k;
+    if (usingCustomSearch) {
+      j = customHour + 1;
+      k = customDay;
+    }
+    else {
+      j = currentDate.getHours() - selectedStartTime + 1;
+      if (j < 1 || j > 6) j = 1;
+      k = currentDate.getDate() - 1;
+    }
+    switch (k) {
+      case 0:
+        day = "monday";
+        break;
+      case 1:
+        day = "tuesday";
+        break;
+      case 2:
+        day = "wednesday";
+        break;
+      case 3:
+        day = "thursday";
+        break;
+      case 4:
+        day = "friday";
+        break;
+      case 5:
+        day = "saturday";
+        break;
+      default:
+        day = "monday";
+        break;
+    }
+    classNumberSelection.value = i + 1;
+    matesDaySelection.value = day;
+    matesHourSelection.value = j;
+    setTimeout(() => {
+      classNumberSelection.style.borderColor = "red";
+      matesDaySelection.style.borderColor = "red";
+      matesHourSelection.style.borderColor = "red";
+    }, 500);
+    setTimeout(() => {
+      classNumberSelection.style.borderColor = "var(--solidAccentColor2)";
+      matesDaySelection.style.borderColor = "var(--solidAccentColor2)";
+      matesHourSelection.style.borderColor = "var(--solidAccentColor2)";
+    }, 1000);
+    changeMatesIndexLabels();
   }
   else return;
 }
