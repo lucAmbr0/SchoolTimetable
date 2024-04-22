@@ -389,7 +389,7 @@ h5 {
 @keyframes expandedMatesCardShown {
     from {
         opacity: 0;
-        margin-top: -98.4px;
+        margin-top: -92.8px;
         height: fit-content;
     }
 
@@ -416,7 +416,41 @@ h5 {
 
     to {
         opacity: 0;
-        margin-top: -98.4px;
+        margin-top: -92.8px;
+    }
+}
+
+@keyframes userCardOptionShown {
+    from {
+        opacity: 0;
+        margin-right: -30px;
+        height: fit-content;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+        margin-right: 0px;
+        height: fit-content;
+    }
+}
+
+@keyframes userCardOptionHidden {
+    from {
+        opacity: 1;
+        margin-right: 0px;
+    }
+
+    35% {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0;
+        margin-right: -30px;
     }
 }
 
@@ -740,7 +774,7 @@ h5 {
 
 .expandedMatesCardContainer {
     /* transition: 0.3s all ease-in-out; */
-    margin-top: -98.4px;
+    margin-top: -92.8px;
     opacity: 0;
 }
 
@@ -769,7 +803,7 @@ h5 {
 .expandedUserCardContainer {
     /* transition: 0.3s all ease-in-out; */
     display: none;
-    margin-top: -98.4px;
+    margin-top: -92.8px;
     opacity: 0;
 }
 
@@ -782,11 +816,11 @@ h5 {
 }
 
 .expandedMatesCardIcon {
-    background-color: var(--transpCol4);
+    /* background-color: var(--transpCol4); */
     border-radius: 10px;
     margin: 0 0 5px 0;
-    border: solid 1px var(--OPPtranspCol5);
-    padding: 5px;
+    /* border: solid 1px var(--OPPtranspCol5); */
+    padding: 2px;
     color: var(--solidAccentColor1) !important;
     display: flex;
     width: fit-content;
@@ -803,9 +837,23 @@ h5 {
 .matesTeacher,
 .matesNextSubject,
 #userNextSubject,
-.expandedMatesCardButtonContainer {
+.expandedMatesCardButtonContainer,
+.expandedUserCardButtonContainer {
     text-align: right;
     text-wrap: nowrap;
+}
+
+.userCardOption {
+    opacity: 0;
+    margin-right: -30px;
+}
+.userCardOptionShown {
+    opacity: 1;
+    margin-right: 0px;
+}
+.userCardOptionHidden {
+    opacity: 0;
+    margin-right: -30px;
 }
 
 .expandedCardSeparator {
