@@ -607,13 +607,164 @@ findAlwaysExpandCards();  // When the page loads look for user's 'show greeting'
 
 // ---------------  USER EXPANDED CARD BUTTONS  ---------------
 
-function userCardDownload() {
-  if (expandedUserCardState == 1) {
-    event.stopPropagation();
+const metaViewport = document.getElementById('viewportMeta');
+let page = document.body.innerHTML;
+let interruptTimeUpdate = false;
 
+function userCardDownload() {
+  if (expandedUserCardState == 1 && confirm("Download your class timetable as an image?")) {
+    event.stopPropagation();
+      interruptTimeUpdate = true;
+      document.body.style.overflowX = "scroll";
+      document.body.style.overscrollBehavior = "contain";
+      const tableID = document.getElementById("tableContainer");
+      const table =
+      `
+    <div id="tableContainer" class="">
+    <table class="userFullTableContainer">
+    <tr>
+          <td class="hourNum"><img src="icons/icon-any-192x192.png" alt="SchoolTimetable Logo"></td>
+          <th class="dayName">Monday</th>
+          <th class="dayName">Tuesday</th>
+          <th class="dayName">Wednesday</th>
+          <th class="dayName">Thursday</th>
+          <th class="dayName">Friday</th>
+          <th class="dayName">Saturday</th>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 0) + ":00"}</td>
+          <td class="cell"><h2>${user.room[0][0] ? user.room[0][0] : 'No lesson'}</h2><p class="tabSubject">${user.subject[0][0] ? user.subject[0][0] : '.'}</p><p class="tabTeacher">${user.teacher[0][0] ? user.teacher[0][0] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[1][0] ? user.room[1][0] : 'No lesson'}</h2><p class="tabSubject">${user.subject[1][0] ? user.subject[1][0] : '.'}</p><p class="tabTeacher">${user.teacher[1][0] ? user.teacher[1][0] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[2][0] ? user.room[2][0] : 'No lesson'}</h2><p class="tabSubject">${user.subject[2][0] ? user.subject[2][0] : '.'}</p><p class="tabTeacher">${user.teacher[2][0] ? user.teacher[2][0] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[3][0] ? user.room[3][0] : 'No lesson'}</h2><p class="tabSubject">${user.subject[3][0] ? user.subject[3][0] : '.'}</p><p class="tabTeacher">${user.teacher[3][0] ? user.teacher[3][0] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[4][0] ? user.room[4][0] : 'No lesson'}</h2><p class="tabSubject">${user.subject[4][0] ? user.subject[4][0] : '.'}</p><p class="tabTeacher">${user.teacher[4][0] ? user.teacher[4][0] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[5][0] ? user.room[5][0] : 'No lesson'}</h2><p class="tabSubject">${user.subject[5][0] ? user.subject[5][0] : '.'}</p><p class="tabTeacher">${user.teacher[5][0] ? user.teacher[5][0] : '.'}</p></td>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 1) + ":00"}</td>
+          <td class="cell"><h2>${user.room[0][1] ? user.room[0][1] : 'No lesson'}</h2><p class="tabSubject">${user.subject[0][1] ? user.subject[0][1] : '.'}</p><p class="tabTeacher">${user.teacher[0][1] ? user.teacher[0][1] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[1][1] ? user.room[1][1] : 'No lesson'}</h2><p class="tabSubject">${user.subject[1][1] ? user.subject[1][1] : '.'}</p><p class="tabTeacher">${user.teacher[1][1] ? user.teacher[1][1] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[2][1] ? user.room[2][1] : 'No lesson'}</h2><p class="tabSubject">${user.subject[2][1] ? user.subject[2][1] : '.'}</p><p class="tabTeacher">${user.teacher[2][1] ? user.teacher[2][1] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[3][1] ? user.room[3][1] : 'No lesson'}</h2><p class="tabSubject">${user.subject[3][1] ? user.subject[3][1] : '.'}</p><p class="tabTeacher">${user.teacher[3][1] ? user.teacher[3][1] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[4][1] ? user.room[4][1] : 'No lesson'}</h2><p class="tabSubject">${user.subject[4][1] ? user.subject[4][1] : '.'}</p><p class="tabTeacher">${user.teacher[4][1] ? user.teacher[4][1] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[5][1] ? user.room[5][1] : 'No lesson'}</h2><p class="tabSubject">${user.subject[5][1] ? user.subject[5][1] : '.'}</p><p class="tabTeacher">${user.teacher[5][1] ? user.teacher[5][1] : '.'}</p></td>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 2) + ":00"}</td>
+          <td class="cell"><h2>${user.room[0][2] ? user.room[0][2] : 'No lesson'}</h2><p class="tabSubject">${user.subject[0][2] ? user.subject[0][2] : '.'}</p><p class="tabTeacher">${user.teacher[0][2] ? user.teacher[0][2] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[1][2] ? user.room[1][2] : 'No lesson'}</h2><p class="tabSubject">${user.subject[1][2] ? user.subject[1][2] : '.'}</p><p class="tabTeacher">${user.teacher[1][2] ? user.teacher[1][2] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[2][2] ? user.room[2][2] : 'No lesson'}</h2><p class="tabSubject">${user.subject[2][2] ? user.subject[2][2] : '.'}</p><p class="tabTeacher">${user.teacher[2][2] ? user.teacher[2][2] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[3][2] ? user.room[3][2] : 'No lesson'}</h2><p class="tabSubject">${user.subject[3][2] ? user.subject[3][2] : '.'}</p><p class="tabTeacher">${user.teacher[3][2] ? user.teacher[3][2] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[4][2] ? user.room[4][2] : 'No lesson'}</h2><p class="tabSubject">${user.subject[4][2] ? user.subject[4][2] : '.'}</p><p class="tabTeacher">${user.teacher[4][2] ? user.teacher[4][2] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[5][2] ? user.room[5][2] : 'No lesson'}</h2><p class="tabSubject">${user.subject[5][2] ? user.subject[5][2] : '.'}</p><p class="tabTeacher">${user.teacher[5][2] ? user.teacher[5][2] : '.'}</p></td>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 3) + ":00"}</td>
+          <td class="cell"><h2>${user.room[0][3] ? user.room[0][3] : 'No lesson'}</h2><p class="tabSubject">${user.subject[0][3] ? user.subject[0][3] : '.'}</p><p class="tabTeacher">${user.teacher[0][3] ? user.teacher[0][3] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[1][3] ? user.room[1][3] : 'No lesson'}</h2><p class="tabSubject">${user.subject[1][3] ? user.subject[1][3] : '.'}</p><p class="tabTeacher">${user.teacher[1][3] ? user.teacher[1][3] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[2][3] ? user.room[2][3] : 'No lesson'}</h2><p class="tabSubject">${user.subject[2][3] ? user.subject[2][3] : '.'}</p><p class="tabTeacher">${user.teacher[2][3] ? user.teacher[2][3] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[3][3] ? user.room[3][3] : 'No lesson'}</h2><p class="tabSubject">${user.subject[3][3] ? user.subject[3][3] : '.'}</p><p class="tabTeacher">${user.teacher[3][3] ? user.teacher[3][3] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[4][3] ? user.room[4][3] : 'No lesson'}</h2><p class="tabSubject">${user.subject[4][3] ? user.subject[4][3] : '.'}</p><p class="tabTeacher">${user.teacher[4][3] ? user.teacher[4][3] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[5][3] ? user.room[5][3] : 'No lesson'}</h2><p class="tabSubject">${user.subject[5][3] ? user.subject[5][3] : '.'}</p><p class="tabTeacher">${user.teacher[5][3] ? user.teacher[5][3] : '.'}</p></td>
+        </tr>
+        <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 4) + ":00"}</td>
+          <td class="cell"><h2>${user.room[0][4] ? user.room[0][4] : 'No lesson'}</h2><p class="tabSubject">${user.subject[0][4] ? user.subject[0][4] : '.'}</p><p class="tabTeacher">${user.teacher[0][4] ? user.teacher[0][4] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[1][4] ? user.room[1][4] : 'No lesson'}</h2><p class="tabSubject">${user.subject[1][4] ? user.subject[1][4] : '.'}</p><p class="tabTeacher">${user.teacher[1][4] ? user.teacher[1][4] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[2][4] ? user.room[2][4] : 'No lesson'}</h2><p class="tabSubject">${user.subject[2][4] ? user.subject[2][4] : '.'}</p><p class="tabTeacher">${user.teacher[2][4] ? user.teacher[2][4] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[3][4] ? user.room[3][4] : 'No lesson'}</h2><p class="tabSubject">${user.subject[3][4] ? user.subject[3][4] : '.'}</p><p class="tabTeacher">${user.teacher[3][4] ? user.teacher[3][4] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[4][4] ? user.room[4][4] : 'No lesson'}</h2><p class="tabSubject">${user.subject[4][4] ? user.subject[4][4] : '.'}</p><p class="tabTeacher">${user.teacher[4][4] ? user.teacher[4][4] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[5][4] ? user.room[5][4] : 'No lesson'}</h2><p class="tabSubject">${user.subject[5][4] ? user.subject[5][4] : '.'}</p><p class="tabTeacher">${user.teacher[5][4] ? user.teacher[5][4] : '.'}</p></td>
+        </tr>
+        <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 5) + ":00"}</td>
+          <td class="cell"><h2>${user.room[0][5] ? user.room[0][5] : 'No lesson'}</h2><p class="tabSubject">${user.subject[0][5] ? user.subject[0][5] : '.'}</p><p class="tabTeacher">${user.teacher[0][5] ? user.teacher[0][5] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[1][5] ? user.room[1][5] : 'No lesson'}</h2><p class="tabSubject">${user.subject[1][5] ? user.subject[1][5] : '.'}</p><p class="tabTeacher">${user.teacher[1][5] ? user.teacher[1][5] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[2][5] ? user.room[2][5] : 'No lesson'}</h2><p class="tabSubject">${user.subject[2][5] ? user.subject[2][5] : '.'}</p><p class="tabTeacher">${user.teacher[2][5] ? user.teacher[2][5] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[3][5] ? user.room[3][5] : 'No lesson'}</h2><p class="tabSubject">${user.subject[3][5] ? user.subject[3][5] : '.'}</p><p class="tabTeacher">${user.teacher[3][5] ? user.teacher[3][5] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[4][5] ? user.room[4][5] : 'No lesson'}</h2><p class="tabSubject">${user.subject[4][5] ? user.subject[4][5] : '.'}</p><p class="tabTeacher">${user.teacher[4][5] ? user.teacher[4][5] : '.'}</p></td>
+          <td class="cell"><h2>${user.room[5][5] ? user.room[5][5] : 'No lesson'}</h2><p class="tabSubject">${user.subject[5][5] ? user.subject[5][5] : '.'}</p><p class="tabTeacher">${user.teacher[5][5] ? user.teacher[5][5] : '.'}</p></td>
+        </tr>
+    </table>
+  </div>
+    `
+    page = document.body.innerHTML;
+    document.body.innerHTML = table;
+    metaViewport.setAttribute('content', 'width=10, initial-scale=1.0 user-scalable=yes, maximum-scale=5');
+    document.body.style.backgroundColor = "rgba(0,0,0,0)";
+    setTimeout(() => {
+      downloadImage("tableContainer", user.className + " timetables", () => {
+        window.location.reload();
+      });
+    }, 1);
   }
   else return;
 }
+
+function downloadImage(divId, fileName, callback) {
+  return new Promise(function (resolve, reject) {
+    // Get the div element
+    var divElement = document.getElementById(divId);
+
+    // Apply inline styles to the div and its children
+    applyInlineStyles(divElement);
+
+    // Use dom-to-image to render the div to an image
+    domtoimage.toBlob(divElement)
+      .then(function (blob) {
+        // Create a link element
+        var link = document.createElement('a');
+
+        // Create a URL for the blob object
+        var url = URL.createObjectURL(blob);
+
+        // Set the href and download attributes of the link
+        link.href = url;
+        link.download = fileName;
+
+        // Append the link to the document body
+        document.body.appendChild(link);
+
+        // Trigger a click event on the link to initiate download
+        link.click();
+
+        // Remove the link from the document body
+        document.body.removeChild(link);
+
+        // Revoke the URL to release memory
+        URL.revokeObjectURL(url);
+
+        // Resolve the Promise
+
+        // Call the callback function
+        if (callback && typeof callback === 'function') {
+          callback();
+        }
+      })
+      .catch(function (error) {
+        console.error('Error rendering image:', error);
+      });
+    resolve();
+  });
+}
+
+function applyInlineStyles(element) {
+  // Apply inline styles to the element
+  element.style.fontFamily = 'Calibri, Arial, sans-serif'; // Example font family
+  element.style.backgroundColor = "rgb(229, 229, 229)";
+  // Add more styles as needed
+
+  // Apply inline styles to the children of the element recursively
+  var children = element.children;
+  for (var i = 0; i < children.length; i++) {
+    applyInlineStyles(children[i]);
+  }
+}
+
+// Example usage:
+// Call the function with the ID of the div you want to download and the desired file name
+// downloadImage('yourDivId', 'image.png');
+
 
 async function userCardShare() {
   if (expandedUserCardState == 1) {
@@ -1377,6 +1528,7 @@ const hoursButtons = document.querySelectorAll(".hoursButtons");
 
 let customHour = null;
 let customDay = null;
+let closeBox = false;
 
 function toggleChangeTime(resetButtons) {
   // Closing box
@@ -1392,8 +1544,6 @@ function toggleChangeTime(resetButtons) {
       hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
     }
     // usingCustomSearch = false;
-    // customHour = null;
-    // customDay = null;
     customSearchPanelOpened = false;
   }
   // Opening box
@@ -1416,6 +1566,8 @@ function setCustomDay(event, selectedDay) {
     // Clicking on a button already selected closes the box
     if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
+      customHour = null;
+      customDay = null;
       toggleChangeTime(true);
       return;
     }
@@ -1423,6 +1575,7 @@ function setCustomDay(event, selectedDay) {
     daysButtons[selectedDay].classList.add("timeButtonActive");
     customDay = selectedDay;
     usingCustomSearch = true;
+    closeBox = true;
     displayCustomTimes(true);
   }
 }
@@ -1432,6 +1585,8 @@ function setCustomHour(event, selectedHour) {
     // Clicking on a button already selected closes the box
     if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
+      customHour = null;
+      customDay = null;
       toggleChangeTime(true);
       return;
     }
@@ -1439,6 +1594,7 @@ function setCustomHour(event, selectedHour) {
     hoursButtons[selectedHour].classList.add("timeButtonActive");
     customHour = selectedHour;
     usingCustomSearch = true;
+    closeBox = true;
     displayCustomTimes();
   }
 }
@@ -1447,6 +1603,10 @@ function displayCustomTimes() {
   if (customDay != null && customHour != null) {
     displayUserToNowTab(customDay, customHour);
     displayMatesToNowTab(customDay, customHour);
+    if (closeBox) {
+      toggleChangeTime(false);
+    }
+    closeBox = false;
   }
   else usingCustomSearch = false;
 }
@@ -1461,37 +1621,39 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 updateDateTime();
 function updateDateTime() {
-  // UPDATING TIME AND DATE
-  currentDate = new Date();
-  if (!usingCustomSearch) {
-    let day = currentDate.getDay();
-    let hour = currentDate.getHours();
+  if (!interruptTimeUpdate) {
+    // UPDATING TIME AND DATE
+    currentDate = new Date();
+    if (!usingCustomSearch) {
+      let day = currentDate.getDay();
+      let hour = currentDate.getHours();
 
-    // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
-    day--; // decrements by one because in date object monday is '1' 
-    // day = 0; // debug
-    displayUserToNowTab(day, hour);
-    displayMatesToNowTab(day, hour);
+      // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
+      day--; // decrements by one because in date object monday is '1' 
+      // day = 0; // debug
+      displayUserToNowTab(day, hour);
+      displayMatesToNowTab(day, hour);
 
 
-    const dayOfWeek = days[currentDate.getDay()];
-    const dayOfMonth = currentDate.getDate();
-    const month = months[currentDate.getMonth()];
-    const hours = String(currentDate.getHours()).padStart(2, '0');
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+      const dayOfWeek = days[currentDate.getDay()];
+      const dayOfMonth = currentDate.getDate();
+      const month = months[currentDate.getMonth()];
+      const hours = String(currentDate.getHours()).padStart(2, '0');
+      const minutes = String(currentDate.getMinutes()).padStart(2, '0');
 
-    dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
-    timeText = hours + ':' + minutes;
+      dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
+      timeText = hours + ':' + minutes;
 
-    timeDisplay.textContent = timeText;
+      timeDisplay.textContent = timeText;
 
-  } else {
-    displayCustomTimes();
-    let k = (parseInt(selectedStartTime) + customHour);
-    timeDisplay.textContent = days[customDay + 1].slice(0, 3) + " at " + k + ":00";
+    } else {
+      displayCustomTimes();
+      let k = (parseInt(selectedStartTime) + customHour);
+      timeDisplay.textContent = days[customDay + 1].slice(0, 3) + " at " + k + ":00";
+    }
+
+    dayDisplay.textContent = dateText;
   }
-
-  dayDisplay.textContent = dateText;
 }
 
 // Initial call to update immediately and then every 2 seconds
