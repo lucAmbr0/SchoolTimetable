@@ -313,7 +313,7 @@ h5 {
 @keyframes appTab {
     from {
         opacity: 0.3;
-        scale: 0.97;
+        scale: 1.05;
     }
 
     to {
@@ -514,7 +514,7 @@ h5 {
 }
 
 .appTabs {
-    animation: appTab 0.3s ease forwards;
+    animation: appTab 0.25s ease-out forwards;
 }
 
 .topNotchContainer {

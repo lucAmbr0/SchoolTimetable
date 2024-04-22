@@ -360,12 +360,10 @@ function displayUserToNowTab(day, hour,) {
     else {
       userClassroomDisplay.textContent = user.room[day][hour];
       userNextRoomDisplay.textContent = user.room[day][hour + 1];
-
     }
     if (!user.complex[day][hour]) {
       userComplexDisplay.style.display = "none";
       userComplexDisplay.textContent = " ";
-      userNextRoomDisplay.textContent = "No lesson";
       userNextSubjectDisplay.textContent = "";
     }
     else {
@@ -382,7 +380,7 @@ function displayUserToNowTab(day, hour,) {
       if (user.teacher[day][hour]) userSubjectAndTeacher.textContent += " - " + user.teacher[day][hour];
     }
     if (!user.room[day][hour + 1]) {
-      document.getElementById("uNextHourPlaceholder").textContent = "Options";
+      userNextRoomDisplay.textContent = "No lesson";
       if (user.room[day][hour])
         userNextRoomDisplay.textContent = "Lesson finished";
       else userNextRoomDisplay.textContent = "No lesson next hour";
@@ -828,7 +826,6 @@ function displayMatesToNowTab(day, hour) {
       }
       matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
-        document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
         if (mates[i].room[day][hour])
           matesNextRoomDisplay[i].textContent = "Lesson finished";
         else matesNextRoomDisplay[i].textContent = "No lesson next hour";
