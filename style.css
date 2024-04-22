@@ -350,6 +350,16 @@ h5 {
     }
 }
 
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}
+
 @keyframes subjectTeacher {
     from {
         transform: translateY(10px);
@@ -650,6 +660,7 @@ h5 {
 #timeDisplay {
     font-family: var(--HeadingFont);
     color: var(--OPPsolidCol1);
+    opacity: 0.9;
     font-weight: 600;
     font-feature-settings: "tnum";
     /* letter-spacing: 1px; */
@@ -672,6 +683,7 @@ h5 {
     color: var(--solidAccentColor1);
     font-weight: 400;
     margin-bottom: -20px;
+    opacity: 0.8;
 }
 
 #yourClassBox {
@@ -719,6 +731,7 @@ h5 {
     font-family: var(--StandardTextFont);
     color: var(--solidAccentColor1);
     margin: 2px 0 5px 0;
+    opacity: 0.9;
 }
 
 .horizontalLine {
@@ -735,7 +748,7 @@ h5 {
     font-family: var(--StandardTextFont);
     color: var(--solidAccentColor1);
     font-size: 1.4em;
-    margin: 10px 0 -10px 0;
+    margin: 0px 0 -5px 0;
 }
 
 .matesBox {
@@ -774,8 +787,13 @@ h5 {
     font-size: 1.3em;
 }
 
+.matesBoxGrid p {
+    opacity: 0.9;
+}
+
 .expandedMatesBoxGrid p {
     margin-bottom: 5px !important;
+    opacity: 0.9;
 }
 
 .expandedMatesCardContainer {
@@ -785,21 +803,21 @@ h5 {
 }
 
 .expandedMatesCardContainerHidden {
-    animation: expandedMatesCardHidden 0.35s forwards;
+    animation: expandedMatesCardHidden ease 0.35s forwards;
 }
 
 .expandedMatesCardContainerShown {
     display: block !important;
-    animation: expandedMatesCardShown 0.35s forwards;
+    animation: expandedMatesCardShown ease 0.35s forwards;
 }
 
 .expandedUserCardContainerHidden {
-    animation: expandedMatesCardHidden 0.35s forwards;
+    animation: expandedMatesCardHidden ease 0.35s forwards;
 }
 
 .expandedUserCardContainerShown {
     display: block;
-    animation: expandedMatesCardShown 0.35s forwards;
+    animation: expandedMatesCardShown ease 0.35s forwards;
 }
 
 .expandedUserBoxGrid p {

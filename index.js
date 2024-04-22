@@ -382,8 +382,8 @@ function displayUserToNowTab(day, hour) {
     if (!user.room[day][hour + 1]) {
       userNextRoomDisplay.textContent = "No lesson";
       if (user.room[day][hour])
-        userNextRoomDisplay.textContent = "Lesson finished";
-      else userNextRoomDisplay.textContent = "No lesson next hour";
+        userNextRoomDisplay.textContent = "No lesson";
+      else userNextRoomDisplay.textContent = "No lesson ";
     }
   }
   else {
@@ -393,20 +393,16 @@ function displayUserToNowTab(day, hour) {
   }
   if (previousSubject != userSubjectAndTeacher.textContent) {
     userSubjectAndTeacher.style.animation = "none";
-    userNextSubjectDisplay.style.animation = "none";
     setTimeout(() => {
       userSubjectAndTeacher.style.animation = "0.4s complex ease";
-      userNextSubjectDisplay.style.animation = "0.4s complex ease";
     }, 0);
   }
 
   if (previousRoom != userClassroomDisplay.textContent) {
     userClassroomDisplay.style.animation = "none";
-    userNextRoomDisplay.style.animation = "none";
     userComplexDisplay.style.animation = "none";
     setTimeout(() => {
       userClassroomDisplay.style.animation = "0.4s room ease";
-      userNextRoomDisplay.style.animation = "0.4s room ease";
       userComplexDisplay.style.animation = "0.5s complex ease";
     }, 0);
   }
@@ -789,8 +785,6 @@ function changeMatesClassInfoLabel(dayIndex, hourIndex) {
 
 let previousMateSubject = [null, null, null, null, null];
 let previousMateRoom = [null, null, null, null, null];
-let nextMatesRoom = [null, null, null, null, null];
-let nextMatesSubject = [null, null, null, null, null];
 
 // MATES' DATA
 function displayMatesToNowTab(day, hour) {
@@ -828,8 +822,8 @@ function displayMatesToNowTab(day, hour) {
       matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
         if (mates[i].room[day][hour])
-          matesNextRoomDisplay[i].textContent = "Lesson finished";
-        else matesNextRoomDisplay[i].textContent = "No lesson next hour";
+          matesNextRoomDisplay[i].textContent = "No lesson";
+        else matesNextRoomDisplay[i].textContent = "No lesson ";
       }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
@@ -851,19 +845,16 @@ function displayMatesToNowTab(day, hour) {
       if (previousMateSubject[i] != matesSubject[i].textContent) {
         matesSubject[i].style.animation = "none";
         matesTeacher[i].style.animation = "none";
-        matesNextSubjectDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesSubject[i].style.animation = "0.4s complex ease";
           matesTeacher[i].style.animation = "0.4s complex ease";
-          matesNextSubjectDisplay[i].style.animation = "0.4s complex ease";
         }, 0);
       }
+
       if (previousMateRoom[i] != matesRoomDisplay[i].textContent) {
         matesRoomDisplay[i].style.animation = "none";
-        matesNextRoomDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesRoomDisplay[i].style.animation = "0.4s room ease";
-          matesNextRoomDisplay[i].style.animation = "0.4s room ease";
         }, 0);
       }
       previousMateSubject[i] = matesSubject[i].textContent;
