@@ -105,13 +105,13 @@
           <div class="matesBoxGrid expandedUserBoxGrid">
             <p id="uNextHourPlaceholder">Next hour</p>
             <div class="expandedMatesCardButtonContainer">
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="userCardDownload()">
                 download
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="userCardShare()">
                 share
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="userCardEdit()">
                 edit
               </span>
             </div>
@@ -137,13 +137,13 @@
           <div class="matesBoxGrid expandedMatesBoxGrid">
             <p class="nextHourPlaceholder">Next hour</p>
             <div class="expandedMatesCardButtonContainer">
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardDownload(0)">
                 download
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardShare(0)">
                 share
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardEdit(0)">
                 edit
               </span>
             </div>
@@ -167,13 +167,13 @@
           <div class="matesBoxGrid expandedMatesBoxGrid">
             <p class="nextHourPlaceholder">Next hour</p>
             <div class="expandedMatesCardButtonContainer">
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardDownload(1)">
                 download
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardShare(1)">
                 share
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardEdit(1)">
                 edit
               </span>
             </div>
@@ -197,13 +197,13 @@
           <div class="matesBoxGrid expandedMatesBoxGrid">
             <p class="nextHourPlaceholder">Next hour</p>
             <div class="expandedMatesCardButtonContainer">
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardDownload(2)">
                 download
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardShare(2)">
                 share
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardEdit(2)">
                 edit
               </span>
             </div>
@@ -227,13 +227,13 @@
           <div class="matesBoxGrid expandedMatesBoxGrid">
             <p class="nextHourPlaceholder">Next hour</p>
             <div class="expandedMatesCardButtonContainer">
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardDownload(3)">
                 download
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardShare(3)">
                 share
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardEdit(3)">
                 edit
               </span>
             </div>
@@ -257,13 +257,13 @@
           <div class="matesBoxGrid expandedMatesBoxGrid">
             <p class="nextHourPlaceholder">Next hour</p>
             <div class="expandedMatesCardButtonContainer">
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardDownload(4)">
                 download
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardShare(4)">
                 share
               </span>
-              <span class="material-symbols-outlined expandedMatesCardIcon">
+              <span class="material-symbols-outlined expandedMatesCardIcon" onclick="matesCardEdit(4)">
                 edit
               </span>
             </div>
@@ -448,7 +448,7 @@
               class="switch-input"
               onchange="toggleShowGreetingState()"
             />
-            <label for="alwaysExpandCardsSwitch" class="switch-toggle"></label>
+            <label for="showGreetingSwitch" class="switch-toggle"></label>
           </div>
           <div class="switch-label">Always expand cards</div>
           <div class="switch">
@@ -555,7 +555,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight">1.81.280</label>
+          <label class="alignToRight">1.82.283</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

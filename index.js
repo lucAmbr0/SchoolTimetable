@@ -342,7 +342,7 @@ let previousSubject = null;
 let previousRoom = null;
 
 // USER'S DATA
-function displayUserToNowTab(day, hour,) {
+function displayUserToNowTab(day, hour) {
   // USERS CLASS DATA IN NOW TAB
   const userClassroomDisplay = document.getElementById("userClassroomDisplay");
   const userComplexDisplay = document.getElementById("userComplexDisplay");
@@ -360,12 +360,10 @@ function displayUserToNowTab(day, hour,) {
     else {
       userClassroomDisplay.textContent = user.room[day][hour];
       userNextRoomDisplay.textContent = user.room[day][hour + 1];
-
     }
     if (!user.complex[day][hour]) {
       userComplexDisplay.style.display = "none";
       userComplexDisplay.textContent = " ";
-      userNextRoomDisplay.textContent = "No lesson";
       userNextSubjectDisplay.textContent = "";
     }
     else {
@@ -382,10 +380,10 @@ function displayUserToNowTab(day, hour,) {
       if (user.teacher[day][hour]) userSubjectAndTeacher.textContent += " - " + user.teacher[day][hour];
     }
     if (!user.room[day][hour + 1]) {
-      document.getElementById("uNextHourPlaceholder").textContent = "Options";
+      userNextRoomDisplay.textContent = "No lesson";
       if (user.room[day][hour])
-        userNextRoomDisplay.textContent = "Lesson finished";
-      else userNextRoomDisplay.textContent = "No lesson next hour";
+        userNextRoomDisplay.textContent = "No lesson";
+      else userNextRoomDisplay.textContent = "No lesson ";
     }
   }
   else {
@@ -395,20 +393,16 @@ function displayUserToNowTab(day, hour,) {
   }
   if (previousSubject != userSubjectAndTeacher.textContent) {
     userSubjectAndTeacher.style.animation = "none";
-    userNextSubjectDisplay.style.animation = "none";
     setTimeout(() => {
       userSubjectAndTeacher.style.animation = "0.4s complex ease";
-      userNextSubjectDisplay.style.animation = "0.4s complex ease";
     }, 0);
   }
 
   if (previousRoom != userClassroomDisplay.textContent) {
     userClassroomDisplay.style.animation = "none";
-    userNextRoomDisplay.style.animation = "none";
     userComplexDisplay.style.animation = "none";
     setTimeout(() => {
       userClassroomDisplay.style.animation = "0.4s room ease";
-      userNextRoomDisplay.style.animation = "0.4s room ease";
       userComplexDisplay.style.animation = "0.5s complex ease";
     }, 0);
   }
@@ -607,6 +601,31 @@ function findAlwaysExpandCards() {
 findAlwaysExpandCards();  // When the page loads look for user's 'show greeting' choice in local storage, if there isn't it becomes false by default 
 
 
+// ---------------  USER EXPANDED CARD BUTTONS  ---------------
+
+function userCardDownload() {
+  event.stopPropagation();
+}
+function userCardShare() {
+  event.stopPropagation();
+}
+function userCardEdit() {
+  event.stopPropagation();
+}
+
+
+// ---------------  USER EXPANDED CARD BUTTONS  ---------------
+
+function matesCardDownload(i) {
+  event.stopPropagation();
+}
+function matesCardShare(i) {
+  event.stopPropagation();
+}
+function matesCardEdit(i) {
+  event.stopPropagation();
+}
+
 // ---------------  MANAGING AND SAVING DATA ABOUT MATES  ---------------
 
 // JavaScript variables that contain mates' info
@@ -791,8 +810,6 @@ function changeMatesClassInfoLabel(dayIndex, hourIndex) {
 
 let previousMateSubject = [null, null, null, null, null];
 let previousMateRoom = [null, null, null, null, null];
-let nextMatesRoom = [null, null, null, null, null];
-let nextMatesSubject = [null, null, null, null, null];
 
 // MATES' DATA
 function displayMatesToNowTab(day, hour) {
@@ -811,13 +828,14 @@ function displayMatesToNowTab(day, hour) {
     hour -= schoolHourStart;
   }
   let atLeastOneMateBoxIsShown = false;
-  if (day !== -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
+  if (day != -1) { // day is subtracted by 1 in updateTime function, so sunday corresponds to -1 since week starts on sunday (wtf americans?!)
     for (let i = 0; i < 5; i++) {
-      document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Next hour";
       if (!mates[i].room[day][hour] && mates[i].className) {
         matesRoomDisplay[i].textContent = "No lesson";
         matesNextRoomDisplay[i].textContent = "No lesson";
+        matesSubject[i].textContent = "";
         matesNextSubjectDisplay[i].textContent = "";
+        matesTeacher[i].textContent = "";
       }
       else {
         matesSubject[i].textContent = mates[i].subject[day][hour];
@@ -828,10 +846,9 @@ function displayMatesToNowTab(day, hour) {
       }
       matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
-        document.querySelectorAll(".nextHourPlaceholder")[i].textContent = "Options";
         if (mates[i].room[day][hour])
-          matesNextRoomDisplay[i].textContent = "Lesson finished";
-        else matesNextRoomDisplay[i].textContent = "No lesson next hour";
+          matesNextRoomDisplay[i].textContent = "No lesson";
+        else matesNextRoomDisplay[i].textContent = "No lesson ";
       }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
@@ -853,19 +870,16 @@ function displayMatesToNowTab(day, hour) {
       if (previousMateSubject[i] != matesSubject[i].textContent) {
         matesSubject[i].style.animation = "none";
         matesTeacher[i].style.animation = "none";
-        matesNextSubjectDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesSubject[i].style.animation = "0.4s complex ease";
           matesTeacher[i].style.animation = "0.4s complex ease";
-          matesNextSubjectDisplay[i].style.animation = "0.4s complex ease";
         }, 0);
       }
+
       if (previousMateRoom[i] != matesRoomDisplay[i].textContent) {
         matesRoomDisplay[i].style.animation = "none";
-        matesNextRoomDisplay[i].style.animation = "none";
         setTimeout(() => {
           matesRoomDisplay[i].style.animation = "0.4s room ease";
-          matesNextRoomDisplay[i].style.animation = "0.4s room ease";
         }, 0);
       }
       previousMateSubject[i] = matesSubject[i].textContent;
@@ -1215,7 +1229,7 @@ const hoursButtons = document.querySelectorAll(".hoursButtons");
 let customHour = null;
 let customDay = null;
 
-function toggleChangeTime() {
+function toggleChangeTime(resetButtons) {
   // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
@@ -1224,11 +1238,13 @@ function toggleChangeTime() {
       topNotch.classList.remove("topNotchContainerTALL");
       changeTimeContainer.style.display = "none";
     }, 200);
-    daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
-    hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
-    usingCustomSearch = false;
-    customHour = null;
-    customDay = null;
+    if (resetButtons) {
+      daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+      hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    }
+    // usingCustomSearch = false;
+    // customHour = null;
+    // customDay = null;
     customSearchPanelOpened = false;
   }
   // Opening box
@@ -1251,14 +1267,14 @@ function setCustomDay(event, selectedDay) {
     // Clicking on a button already selected closes the box
     if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
-      toggleChangeTime();
+      toggleChangeTime(true);
       return;
     }
     daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
     daysButtons[selectedDay].classList.add("timeButtonActive");
     customDay = selectedDay;
     usingCustomSearch = true;
-    displayCustomTimes();
+    displayCustomTimes(true);
   }
 }
 function setCustomHour(event, selectedHour) {
@@ -1267,7 +1283,7 @@ function setCustomHour(event, selectedHour) {
     // Clicking on a button already selected closes the box
     if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
-      toggleChangeTime();
+      toggleChangeTime(true);
       return;
     }
     hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
@@ -1286,13 +1302,14 @@ function displayCustomTimes() {
   else usingCustomSearch = false;
 }
 
-
-
 // ---------------  DATE AND TIME DISPLAY  ---------------
 
 const dayDisplay = document.getElementById("dayDisplay");
 const timeDisplay = document.getElementById("timeDisplay");
 let currentDate = new Date();
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 updateDateTime();
 function updateDateTime() {
   // UPDATING TIME AND DATE
@@ -1307,8 +1324,6 @@ function updateDateTime() {
     displayUserToNowTab(day, hour);
     displayMatesToNowTab(day, hour);
 
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const dayOfWeek = days[currentDate.getDay()];
     const dayOfMonth = currentDate.getDate();
@@ -1319,11 +1334,15 @@ function updateDateTime() {
     dateText = dayOfWeek + ' ' + dayOfMonth + ' ' + month;
     timeText = hours + ':' + minutes;
 
+    timeDisplay.textContent = timeText;
+
   } else {
     displayCustomTimes();
+    let k = (parseInt(selectedStartTime) + customHour);
+    timeDisplay.textContent = days[customDay + 1].slice(0, 3) + " at " + k + ":00";
   }
+
   dayDisplay.textContent = dateText;
-  timeDisplay.textContent = timeText;
 }
 
 // Initial call to update immediately and then every 2 seconds
