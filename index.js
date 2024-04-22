@@ -1377,6 +1377,7 @@ const hoursButtons = document.querySelectorAll(".hoursButtons");
 
 let customHour = null;
 let customDay = null;
+let closeBox = false;
 
 function toggleChangeTime(resetButtons) {
   // Closing box
@@ -1392,8 +1393,6 @@ function toggleChangeTime(resetButtons) {
       hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
     }
     // usingCustomSearch = false;
-    // customHour = null;
-    // customDay = null;
     customSearchPanelOpened = false;
   }
   // Opening box
@@ -1416,6 +1415,8 @@ function setCustomDay(event, selectedDay) {
     // Clicking on a button already selected closes the box
     if (daysButtons[selectedDay].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
+      customHour = null;
+      customDay = null;
       toggleChangeTime(true);
       return;
     }
@@ -1423,6 +1424,7 @@ function setCustomDay(event, selectedDay) {
     daysButtons[selectedDay].classList.add("timeButtonActive");
     customDay = selectedDay;
     usingCustomSearch = true;
+    closeBox = true;
     displayCustomTimes(true);
   }
 }
@@ -1432,6 +1434,8 @@ function setCustomHour(event, selectedHour) {
     // Clicking on a button already selected closes the box
     if (hoursButtons[selectedHour].classList.contains("timeButtonActive")) {
       usingCustomSearch = false;
+      customHour = null;
+      customDay = null;
       toggleChangeTime(true);
       return;
     }
@@ -1439,6 +1443,7 @@ function setCustomHour(event, selectedHour) {
     hoursButtons[selectedHour].classList.add("timeButtonActive");
     customHour = selectedHour;
     usingCustomSearch = true;
+    closeBox = true;
     displayCustomTimes();
   }
 }
@@ -1447,6 +1452,10 @@ function displayCustomTimes() {
   if (customDay != null && customHour != null) {
     displayUserToNowTab(customDay, customHour);
     displayMatesToNowTab(customDay, customHour);
+    if (closeBox) {
+      toggleChangeTime(false);
+    }
+    closeBox = false;
   }
   else usingCustomSearch = false;
 }
