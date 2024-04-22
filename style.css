@@ -464,6 +464,117 @@ h5 {
     }
 }
 
+/* ---------------  USER FULL TABLE  --------------- */
+
+.userFullTableContainer {
+    margin: 10px;
+    border-radius: 20px;
+    padding-left: 5px;
+    border: solid 2px rgba(150,150,150,1);
+    background-color: rgba(0,0,0,0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+.userFullTableContainer p {
+    margin: 2px 0 2px 0;
+    padding: 2px 5px;
+    font-size: 20px;
+    font-family: var(--StandardTextFont);
+    color: rgb(40,40,40);
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+.tabSubject {
+    font-weight: 500;
+}
+
+.userFullTableContainer div {
+    border: solid 1px black;
+}
+
+.userFullTableContainer tr {
+    margin: 0 !important;
+    padding: 0;
+}
+
+.userFullTableContainer td {
+    /* background-color: aqua; */
+    margin: auto 5px;
+    padding: 10px 0;
+    border-top: 2px solid rgba(150, 150, 150, 1);
+    border-left: 2px solid rgba(150, 150, 150, 1);
+    border-right: 2px solid rgba(150, 150, 150, 1);
+    border-radius: 0px;
+}
+
+.userFullTableContainer h2 {
+    padding: 2px 5px;
+    font-size: 28px;
+    text-align: center;
+    color: rgb(30,30,30);
+    /* background-color: blueviolet; */
+}
+
+.dayName {
+    border-top: 2px solid rgba(150, 150, 150, 1);
+    border-left: 2px solid rgba(150, 150, 150, 1);
+    border-right: 2px solid rgba(150, 150, 150, 1);
+    border-radius: 20px 20px 0 0;
+    font-size: 34px;
+    color: rgb(40,40,40);
+    font-family: var(--StandardTextFont);
+    font-weight: 600;
+    justify-content: center;
+    margin: 10px 5px 0 5px;
+    width: 270px;
+    text-align: center;
+    text-wrap: nowrap;
+    overflow-y: hidden;
+}
+
+.hourNum {
+    font-size: 35px;
+    color: rgb(40,40,40);
+    width: 100px !important;
+    font-family: var(--StandardTextFont);
+    font-weight: 600;
+    padding: 10px;
+    margin: auto 0;
+    text-align: center;
+    /* background-color: lime; */
+    text-wrap: nowrap;
+    overflow-y: hidden;
+    border: none !important;
+}
+
+.hourNum img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90px;
+    height: 90px;
+    margin: 5px auto 0 auto;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+td.cell,th {
+    display: flex;
+    flex-direction: column;
+    width: 272px;
+    text-wrap: nowrap;
+    overflow-y: hidden;
+}
+
+
 /* ---------------  APP TABS  --------------- */
 
 .appTabsShown {
