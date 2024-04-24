@@ -313,7 +313,7 @@ h5 {
 @keyframes appTab {
     from {
         opacity: 0.3;
-        scale: 1.05;
+        scale: 0.98;
     }
 
     to {
@@ -601,7 +601,7 @@ td.cell,th {
     border-color: var(--boxBorderColor);
     border-radius: 50px;
     transition: 0.4s scale ease;
-    animation: getStarted 0.5s ease;
+    /* animation: getStarted 0.5s ease; */
 }
 
 #letsStartMessage:active {
@@ -623,15 +623,18 @@ td.cell,th {
     font-weight: 700;
 }
 
-#letsStartMessage span {
-    font-size: 40vw;
-    color: var(--solidAccentColor1);
+#letsStartMessage img {
+    width: 40vw;
+    height: 40vw;
+    /* filter: var(--socialIconCol) !important; */
+    filter: invert();
+    opacity: 0.8;
     display: flex;
     overflow: hidden;
     justify-content: center;
     display: flex;
     padding: 0;
-    margin: 10% 0 20px 0;
+    margin: 10% auto 20px auto;
 }
 
 .appTabs {
@@ -1623,7 +1626,7 @@ a {
         height: 100%;
     }
 
-    #letsStartMessage span {
+    #letsStartMessage img {
         font-size: 20vh;
         color: var(--solidAccentColor1);
         display: flex;
