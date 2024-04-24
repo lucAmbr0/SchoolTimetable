@@ -833,11 +833,15 @@ function userCardEdit() {
     setTimeout(() => {
       userDaySelection.style.borderColor = "red";
       userHourSelection.style.borderColor = "red";
+      userDaySelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
+      userHourSelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
     }, 500);
     setTimeout(() => {
       userDaySelection.style.borderColor = "var(--solidAccentColor2)";
       userHourSelection.style.borderColor = "var(--solidAccentColor2)";
-    }, 1000);
+      userDaySelection.style.boxShadow = "none";
+      userHourSelection.style.boxShadow = "none";
+    }, 1300);
     updateUserClassGrid();
   }
   else return;
@@ -914,12 +918,18 @@ function matesCardEdit(i) {
       classNumberSelection.style.borderColor = "red";
       matesDaySelection.style.borderColor = "red";
       matesHourSelection.style.borderColor = "red";
+      classNumberSelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
+      matesDaySelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
+      matesHourSelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
     }, 500);
     setTimeout(() => {
       classNumberSelection.style.borderColor = "var(--solidAccentColor2)";
+      classNumberSelection.style.boxShadow = "none";
       matesDaySelection.style.borderColor = "var(--solidAccentColor2)";
+      matesDaySelection.style.boxShadow = "none";
       matesHourSelection.style.borderColor = "var(--solidAccentColor2)";
-    }, 1000);
+      matesHourSelection.style.boxShadow = "none";
+    }, 1300);
     changeMatesIndexLabels();
   }
   else return;

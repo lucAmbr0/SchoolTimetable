@@ -1250,7 +1250,7 @@ label {
     border-color: var(--solidAccentColor2);
     background-color: var(--transAccentColor3);
     font-family: var(--StandardTextFont);
-    transition: 0.25s border-color;
+    transition: 0.25s all;
 }
 
 .dataGrid {
