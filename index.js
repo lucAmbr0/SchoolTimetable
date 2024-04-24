@@ -1747,8 +1747,8 @@ function updateDateTime() {
 
       // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
       day--; // decrements by one because in date object monday is '1' 
-      day = 3; // debug
-      hour = 7; // debug
+      // day = 3; // debug
+      // hour = 7; // debug
       displayUserToNowTab(day, hour);
       displayMatesToNowTab(day, hour);
 
