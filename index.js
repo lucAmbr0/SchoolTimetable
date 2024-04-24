@@ -852,12 +852,96 @@ function userCardEdit() {
 // ---------------  MATES EXPANDED CARD BUTTONS  ---------------
 
 function matesCardDownload(i) {
-  if (expandedCardsState[i] == 1) {
+  console.log("A");
+  if (expandedCardsState[i] == 1 && confirm("Download class '"+ mates[i].className +"' as an image?")) {
     event.stopPropagation();
-
+    interruptTimeUpdate = true;
+    document.body.style.overflowX = "scroll";
+    document.body.style.overscrollBehavior = "contain";
+    const tableID = document.getElementById("tableContainer");
+    const table =
+      `
+    <div id="tableContainer" class="">
+    <table class="userFullTableContainer">
+    <tr>
+          <td class="hourNum"><img src="icons/icon-any-192x192.png" alt="SchoolTimetable Logo"></td>
+          <th class="dayName">Monday</th>
+          <th class="dayName">Tuesday</th>
+          <th class="dayName">Wednesday</th>
+          <th class="dayName">Thursday</th>
+          <th class="dayName">Friday</th>
+          <th class="dayName">Saturday</th>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 0) + ":00"}</td>
+          <td class="cell"><h2>${mates[i].room[0][0] ? mates[i].room[0][0] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[0][0] ? mates[i].subject[0][0] : '.'}</p><p class="tabTeacher">${mates[i].teacher[0][0] ? mates[i].teacher[0][0] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[1][0] ? mates[i].room[1][0] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[1][0] ? mates[i].subject[1][0] : '.'}</p><p class="tabTeacher">${mates[i].teacher[1][0] ? mates[i].teacher[1][0] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[2][0] ? mates[i].room[2][0] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[2][0] ? mates[i].subject[2][0] : '.'}</p><p class="tabTeacher">${mates[i].teacher[2][0] ? mates[i].teacher[2][0] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[3][0] ? mates[i].room[3][0] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[3][0] ? mates[i].subject[3][0] : '.'}</p><p class="tabTeacher">${mates[i].teacher[3][0] ? mates[i].teacher[3][0] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[4][0] ? mates[i].room[4][0] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[4][0] ? mates[i].subject[4][0] : '.'}</p><p class="tabTeacher">${mates[i].teacher[4][0] ? mates[i].teacher[4][0] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[5][0] ? mates[i].room[5][0] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[5][0] ? mates[i].subject[5][0] : '.'}</p><p class="tabTeacher">${mates[i].teacher[5][0] ? mates[i].teacher[5][0] : '.'}</p></td>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 1) + ":00"}</td>
+          <td class="cell"><h2>${mates[i].room[0][1] ? mates[i].room[0][1] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[0][1] ? mates[i].subject[0][1] : '.'}</p><p class="tabTeacher">${mates[i].teacher[0][1] ? mates[i].teacher[0][1] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[1][1] ? mates[i].room[1][1] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[1][1] ? mates[i].subject[1][1] : '.'}</p><p class="tabTeacher">${mates[i].teacher[1][1] ? mates[i].teacher[1][1] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[2][1] ? mates[i].room[2][1] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[2][1] ? mates[i].subject[2][1] : '.'}</p><p class="tabTeacher">${mates[i].teacher[2][1] ? mates[i].teacher[2][1] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[3][1] ? mates[i].room[3][1] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[3][1] ? mates[i].subject[3][1] : '.'}</p><p class="tabTeacher">${mates[i].teacher[3][1] ? mates[i].teacher[3][1] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[4][1] ? mates[i].room[4][1] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[4][1] ? mates[i].subject[4][1] : '.'}</p><p class="tabTeacher">${mates[i].teacher[4][1] ? mates[i].teacher[4][1] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[5][1] ? mates[i].room[5][1] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[5][1] ? mates[i].subject[5][1] : '.'}</p><p class="tabTeacher">${mates[i].teacher[5][1] ? mates[i].teacher[5][1] : '.'}</p></td>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 2) + ":00"}</td>
+          <td class="cell"><h2>${mates[i].room[0][2] ? mates[i].room[0][2] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[0][2] ? mates[i].subject[0][2] : '.'}</p><p class="tabTeacher">${mates[i].teacher[0][2] ? mates[i].teacher[0][2] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[1][2] ? mates[i].room[1][2] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[1][2] ? mates[i].subject[1][2] : '.'}</p><p class="tabTeacher">${mates[i].teacher[1][2] ? mates[i].teacher[1][2] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[2][2] ? mates[i].room[2][2] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[2][2] ? mates[i].subject[2][2] : '.'}</p><p class="tabTeacher">${mates[i].teacher[2][2] ? mates[i].teacher[2][2] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[3][2] ? mates[i].room[3][2] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[3][2] ? mates[i].subject[3][2] : '.'}</p><p class="tabTeacher">${mates[i].teacher[3][2] ? mates[i].teacher[3][2] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[4][2] ? mates[i].room[4][2] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[4][2] ? mates[i].subject[4][2] : '.'}</p><p class="tabTeacher">${mates[i].teacher[4][2] ? mates[i].teacher[4][2] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[5][2] ? mates[i].room[5][2] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[5][2] ? mates[i].subject[5][2] : '.'}</p><p class="tabTeacher">${mates[i].teacher[5][2] ? mates[i].teacher[5][2] : '.'}</p></td>
+          </tr>
+          <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 3) + ":00"}</td>
+          <td class="cell"><h2>${mates[i].room[0][3] ? mates[i].room[0][3] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[0][3] ? mates[i].subject[0][3] : '.'}</p><p class="tabTeacher">${mates[i].teacher[0][3] ? mates[i].teacher[0][3] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[1][3] ? mates[i].room[1][3] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[1][3] ? mates[i].subject[1][3] : '.'}</p><p class="tabTeacher">${mates[i].teacher[1][3] ? mates[i].teacher[1][3] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[2][3] ? mates[i].room[2][3] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[2][3] ? mates[i].subject[2][3] : '.'}</p><p class="tabTeacher">${mates[i].teacher[2][3] ? mates[i].teacher[2][3] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[3][3] ? mates[i].room[3][3] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[3][3] ? mates[i].subject[3][3] : '.'}</p><p class="tabTeacher">${mates[i].teacher[3][3] ? mates[i].teacher[3][3] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[4][3] ? mates[i].room[4][3] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[4][3] ? mates[i].subject[4][3] : '.'}</p><p class="tabTeacher">${mates[i].teacher[4][3] ? mates[i].teacher[4][3] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[5][3] ? mates[i].room[5][3] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[5][3] ? mates[i].subject[5][3] : '.'}</p><p class="tabTeacher">${mates[i].teacher[5][3] ? mates[i].teacher[5][3] : '.'}</p></td>
+        </tr>
+        <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 4) + ":00"}</td>
+          <td class="cell"><h2>${mates[i].room[0][4] ? mates[i].room[0][4] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[0][4] ? mates[i].subject[0][4] : '.'}</p><p class="tabTeacher">${mates[i].teacher[0][4] ? mates[i].teacher[0][4] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[1][4] ? mates[i].room[1][4] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[1][4] ? mates[i].subject[1][4] : '.'}</p><p class="tabTeacher">${mates[i].teacher[1][4] ? mates[i].teacher[1][4] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[2][4] ? mates[i].room[2][4] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[2][4] ? mates[i].subject[2][4] : '.'}</p><p class="tabTeacher">${mates[i].teacher[2][4] ? mates[i].teacher[2][4] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[3][4] ? mates[i].room[3][4] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[3][4] ? mates[i].subject[3][4] : '.'}</p><p class="tabTeacher">${mates[i].teacher[3][4] ? mates[i].teacher[3][4] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[4][4] ? mates[i].room[4][4] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[4][4] ? mates[i].subject[4][4] : '.'}</p><p class="tabTeacher">${mates[i].teacher[4][4] ? mates[i].teacher[4][4] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[5][4] ? mates[i].room[5][4] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[5][4] ? mates[i].subject[5][4] : '.'}</p><p class="tabTeacher">${mates[i].teacher[5][4] ? mates[i].teacher[5][4] : '.'}</p></td>
+        </tr>
+        <tr>
+          <td class="hourNum">${(parseInt(selectedStartTime) + 5) + ":00"}</td>
+          <td class="cell"><h2>${mates[i].room[0][5] ? mates[i].room[0][5] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[0][5] ? mates[i].subject[0][5] : '.'}</p><p class="tabTeacher">${mates[i].teacher[0][5] ? mates[i].teacher[0][5] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[1][5] ? mates[i].room[1][5] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[1][5] ? mates[i].subject[1][5] : '.'}</p><p class="tabTeacher">${mates[i].teacher[1][5] ? mates[i].teacher[1][5] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[2][5] ? mates[i].room[2][5] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[2][5] ? mates[i].subject[2][5] : '.'}</p><p class="tabTeacher">${mates[i].teacher[2][5] ? mates[i].teacher[2][5] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[3][5] ? mates[i].room[3][5] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[3][5] ? mates[i].subject[3][5] : '.'}</p><p class="tabTeacher">${mates[i].teacher[3][5] ? mates[i].teacher[3][5] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[4][5] ? mates[i].room[4][5] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[4][5] ? mates[i].subject[4][5] : '.'}</p><p class="tabTeacher">${mates[i].teacher[4][5] ? mates[i].teacher[4][5] : '.'}</p></td>
+          <td class="cell"><h2>${mates[i].room[5][5] ? mates[i].room[5][5] : 'No lesson'}</h2><p class="tabSubject">${mates[i].subject[5][5] ? mates[i].subject[5][5] : '.'}</p><p class="tabTeacher">${mates[i].teacher[5][5] ? mates[i].teacher[5][5] : '.'}</p></td>
+        </tr>
+    </table>
+  </div>
+    `
+    page = document.body.innerHTML;
+    document.body.innerHTML = table;
+    metaViewport.setAttribute('content', 'width=10, initial-scale=1.0 user-scalable=yes, maximum-scale=5');
+    document.body.style.backgroundColor = "rgba(0,0,0,0)";
+    setTimeout(() => {
+      downloadImage("tableContainer", mates[i].className + " timetables", () => {
+        window.location.reload();
+      });
+    }, 1);
   }
   else return;
 }
+
 async function matesCardShare(i) {
   if (expandedCardsState[i] == 1) {
     event.stopPropagation();
