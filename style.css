@@ -946,8 +946,8 @@ td.cell,th {
 
 .matesClass,
 .matesSubject,
-.matesNextRoom,
-#userNextRoom {
+.matesNextSubject,
+#userNextSubject {
     text-align: left;
     text-wrap: nowrap;
 }
@@ -971,8 +971,8 @@ td.cell,th {
 
 .matesNotes,
 .matesTeacher,
-.matesNextSubject,
-#userNextSubject,
+.matesNextRoom,
+#userNextRoom,
 .expandedMatesCardButtonContainer,
 .expandedUserCardButtonContainer {
     text-align: right;
