@@ -68,6 +68,7 @@ I will try to keep the repository structure as clean as possible to make mainten
 │       icon-any-512x512.png
 │       icon-maskable-192x192.png
 │       icon-maskable-512x512.png
+│       welcome_icon.svg
 │
 └───screenshots
         desktop-screenshot1.png
