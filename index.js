@@ -385,13 +385,14 @@ function displayUserToNowTab(day, hour) {
     }
     if (!user.room[day][hour + 1]) {
       userNextSubjectDisplay.textContent = "No lesson";
-      if (user.room[day][hour]) {
-        userNextSubjectDisplay.textContent = "No lesson";
-        userNextRoomDisplay.textContent = "";
-      }
-      else {
-        userNextSubjectDisplay.textContent = "No lesson ";
-        userNextRoomDisplay.textContent = "";
+      userNextRoomDisplay.textContent = "";
+    }
+    else if (!user.room[day][hour]) {
+      userNextSubjectDisplay.textContent = "No lesson";
+      userNextRoomDisplay.textContent = "";
+      if (user.room[day][hour + 1]) {
+        userNextSubjectDisplay.textContent = user.subject[day][hour + 1];
+        userNextRoomDisplay.textContent = user.room[day][hour + 1];
       }
     }
   }
@@ -1164,6 +1165,18 @@ function displayMatesToNowTab(day, hour) {
           matesNextRoomDisplay[i].textContent = "";
         }
       }
+      if (!mates[i].room[day][hour + 1]) {
+        matesNextSubjectDisplay[i].textContent = "No lesson";
+        matesNextRoomDisplay[i].textContent = "";
+      }
+      else if (!mates[i].room[day][hour]) {
+        matesNextSubjectDisplay[i].textContent = "No lesson";
+        matesNextRoomDisplay[i].textContent = "";
+        if (mates[i].room[day][hour + 1]) {
+          matesNextSubjectDisplay[i].textContent = mates[i].subject[day][hour + 1];
+          matesNextRoomDisplay[i].textContent = mates[i].room[day][hour + 1];
+        }
+      }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
         matesClass[i].textContent = "";
@@ -1650,7 +1663,8 @@ function updateDateTime() {
 
       // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
       day--; // decrements by one because in date object monday is '1' 
-      // day = 0; // debug
+      day = 3; // debug
+      hour = 7; // debug
       displayUserToNowTab(day, hour);
       displayMatesToNowTab(day, hour);
 
