@@ -384,10 +384,16 @@ function displayUserToNowTab(day, hour) {
       if (user.teacher[day][hour]) userSubjectAndTeacher.textContent += " - " + user.teacher[day][hour];
     }
     if (!user.room[day][hour + 1]) {
-      userNextRoomDisplay.textContent = "No lesson";
-      if (user.room[day][hour])
-        userNextRoomDisplay.textContent = "No lesson";
-      else userNextRoomDisplay.textContent = "No lesson ";
+      userNextSubjectDisplay.textContent = "No lesson";
+      userNextRoomDisplay.textContent = "";
+    }
+    else if (!user.room[day][hour]) {
+      userNextSubjectDisplay.textContent = "No lesson";
+      userNextRoomDisplay.textContent = "";
+      if (user.room[day][hour + 1]) {
+        userNextSubjectDisplay.textContent = user.subject[day][hour + 1];
+        userNextRoomDisplay.textContent = user.room[day][hour + 1];
+      }
     }
   }
   else {
@@ -614,11 +620,11 @@ let interruptTimeUpdate = false;
 function userCardDownload() {
   if (expandedUserCardState == 1 && confirm("Download your class timetable as an image?")) {
     event.stopPropagation();
-      interruptTimeUpdate = true;
-      document.body.style.overflowX = "scroll";
-      document.body.style.overscrollBehavior = "contain";
-      const tableID = document.getElementById("tableContainer");
-      const table =
+    interruptTimeUpdate = true;
+    document.body.style.overflowX = "scroll";
+    document.body.style.overscrollBehavior = "contain";
+    const tableID = document.getElementById("tableContainer");
+    const table =
       `
     <div id="tableContainer" class="">
     <table class="userFullTableContainer">
@@ -828,12 +834,16 @@ function userCardEdit() {
     setTimeout(() => {
       userDaySelection.style.borderColor = "red";
       userHourSelection.style.borderColor = "red";
+      userDaySelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
+      userHourSelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
     }, 500);
     setTimeout(() => {
       userDaySelection.style.borderColor = "var(--solidAccentColor2)";
       userHourSelection.style.borderColor = "var(--solidAccentColor2)";
-    }, 1000);
-    changeMatesIndexLabels();
+      userDaySelection.style.boxShadow = "none";
+      userHourSelection.style.boxShadow = "none";
+    }, 1300);
+    updateUserClassGrid();
   }
   else return;
 }
@@ -909,12 +919,18 @@ function matesCardEdit(i) {
       classNumberSelection.style.borderColor = "red";
       matesDaySelection.style.borderColor = "red";
       matesHourSelection.style.borderColor = "red";
+      classNumberSelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
+      matesDaySelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
+      matesHourSelection.style.boxShadow = "0 0 18px rgb(255,0,0,0.4)";
     }, 500);
     setTimeout(() => {
       classNumberSelection.style.borderColor = "var(--solidAccentColor2)";
+      classNumberSelection.style.boxShadow = "none";
       matesDaySelection.style.borderColor = "var(--solidAccentColor2)";
+      matesDaySelection.style.boxShadow = "none";
       matesHourSelection.style.borderColor = "var(--solidAccentColor2)";
-    }, 1000);
+      matesHourSelection.style.boxShadow = "none";
+    }, 1300);
     changeMatesIndexLabels();
   }
   else return;
@@ -1126,7 +1142,7 @@ function displayMatesToNowTab(day, hour) {
     for (let i = 0; i < 5; i++) {
       if (!mates[i].room[day][hour] && mates[i].className) {
         matesRoomDisplay[i].textContent = "No lesson";
-        matesNextRoomDisplay[i].textContent = "No lesson";
+        matesNextSubjectDisplay[i].textContent = "No lesson";
         matesSubject[i].textContent = "";
         matesNextSubjectDisplay[i].textContent = "";
         matesTeacher[i].textContent = "";
@@ -1140,9 +1156,26 @@ function displayMatesToNowTab(day, hour) {
       }
       matesNotes[i].textContent = mates[i].classMatesNames;
       if (!mates[i].room[day][hour + 1]) {
-        if (mates[i].room[day][hour])
-          matesNextRoomDisplay[i].textContent = "No lesson";
-        else matesNextRoomDisplay[i].textContent = "No lesson ";
+        if (mates[i].room[day][hour]) {
+          matesNextSubjectDisplay[i].textContent = "No lesson";
+          matesNextRoomDisplay[i].textContent = "";
+        }
+        else {
+          matesNextSubjectDisplay[i].textContent = "No lesson ";
+          matesNextRoomDisplay[i].textContent = "";
+        }
+      }
+      if (!mates[i].room[day][hour + 1]) {
+        matesNextSubjectDisplay[i].textContent = "No lesson";
+        matesNextRoomDisplay[i].textContent = "";
+      }
+      else if (!mates[i].room[day][hour]) {
+        matesNextSubjectDisplay[i].textContent = "No lesson";
+        matesNextRoomDisplay[i].textContent = "";
+        if (mates[i].room[day][hour + 1]) {
+          matesNextSubjectDisplay[i].textContent = mates[i].subject[day][hour + 1];
+          matesNextRoomDisplay[i].textContent = mates[i].room[day][hour + 1];
+        }
       }
       if (!mates[i].className) {
         matesClass[i].parentElement.parentElement.style.display = "none";
@@ -1630,7 +1663,8 @@ function updateDateTime() {
 
       // CALLING FUNCTION TO UPDATE DATA CONSTANTLY
       day--; // decrements by one because in date object monday is '1' 
-      // day = 0; // debug
+      day = 3; // debug
+      hour = 7; // debug
       displayUserToNowTab(day, hour);
       displayMatesToNowTab(day, hour);
 
