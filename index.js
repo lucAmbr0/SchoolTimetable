@@ -853,7 +853,7 @@ function userCardEdit() {
 
 function matesCardDownload(i) {
   console.log("A");
-  if (expandedCardsState[i] == 1 && confirm("Download class '"+ mates[i].className +"' as an image?")) {
+  if (expandedCardsState[i] == 1 && confirm("Download class '" + mates[i].className + "' as an image?")) {
     event.stopPropagation();
     interruptTimeUpdate = true;
     document.body.style.overflowX = "scroll";
@@ -1480,6 +1480,30 @@ function copyToClipboard(data) {
     document.body.removeChild(textarea);
     // Provide feedback to the user indicating successful copy
   }
+}
+
+// ---------------  CHECK IF THERE'S A NEW VERSION  ---------------
+
+let deviceVersion;
+let latestVersion;
+checkVersion();
+function checkVersion() {
+  if (localStorage.getItem("version")) {
+    deviceVersion = localStorage.getItem("version");
+    latestVersion = document.getElementById("latestVersionDisplay").textContent;
+    if (deviceVersion != latestVersion) {
+      console.log("THE APP GOT UPDATED");
+    }
+    else {
+      console.log("NOPE");
+    }
+  }
+  else {
+    localStorage.setItem('version', document.getElementById("latestVersionDisplay").textContent);
+  }
+  localStorage.setItem("version", latestVersion);
+  deviceVersion = localStorage.getItem("version");
+  console.log(deviceVersion);
 }
 
 
