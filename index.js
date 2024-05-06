@@ -1527,39 +1527,39 @@ function reloadApp() {
 
 // ---------------  CHECK IF THERE'S A NEW VERSION  ---------------
 
-let deviceVersion;
-let latestVersion;
-checkVersion();
-function checkVersion() {
-  if (localStorage.getItem("version")) {
-    deviceVersion = localStorage.getItem("version");
-    latestVersion = document.getElementById("latestVersionDisplay").textContent;
-    if (deviceVersion != latestVersion) {
-      // document.getElementById("prevVer").textContent = deviceVersion;
-      // document.getElementById("newVer").textContent = latestVersion;
-      // document.getElementById("blurOverlay").style.display = "block";
-      // document.getElementById("newVersionBox").style.display = "block";
-    }
-    else {
-      // document.getElementById("blurOverlay").display = "none";
-      // document.getElementById("newVersionBox").display = "none";
-    }
-  }
-  else {
-    localStorage.setItem('version', document.getElementById("latestVersionDisplay").textContent);
-  }
-  localStorage.setItem("version", latestVersion);
-  deviceVersion = localStorage.getItem("version");
-}
+// let deviceVersion;
+// let latestVersion;
+// checkVersion();
+// function checkVersion() {
+//   if (localStorage.getItem("version")) {
+//     deviceVersion = localStorage.getItem("version");
+//     latestVersion = document.getElementById("latestVersionDisplay").textContent;
+//     if (deviceVersion != latestVersion) {
+//       // document.getElementById("prevVer").textContent = deviceVersion;
+//       // document.getElementById("newVer").textContent = latestVersion;
+//       // document.getElementById("blurOverlay").style.display = "block";
+//       // document.getElementById("newVersionBox").style.display = "block";
+//     }
+//     else {
+//       // document.getElementById("blurOverlay").display = "none";
+//       // document.getElementById("newVersionBox").display = "none";
+//     }
+//   }
+//   else {
+//     localStorage.setItem('version', document.getElementById("latestVersionDisplay").textContent);
+//   }
+//   localStorage.setItem("version", latestVersion);
+//   deviceVersion = localStorage.getItem("version");
+// }
 
-function closeUpdateNotice() {
-  document.getElementById('blurOverlay').style.animation = 'settingContent 0.3s reverse';
-  document.getElementById('newVersionBox').style.animation = 'settingContent 0.3s reverse';
-  setTimeout(() => {
-    document.getElementById('blurOverlay').style.display = 'none';
-    document.getElementById('newVersionBox').style.display = 'none';
-  }, 300);
-}
+// function closeUpdateNotice() {
+//   document.getElementById('blurOverlay').style.animation = 'settingContent 0.3s reverse';
+//   document.getElementById('newVersionBox').style.animation = 'settingContent 0.3s reverse';
+//   setTimeout(() => {
+//     document.getElementById('blurOverlay').style.display = 'none';
+//     document.getElementById('newVersionBox').style.display = 'none';
+//   }, 300);
+// }
 
 
 // ---------------  H1DD3N F34TUR3S  ---------------
