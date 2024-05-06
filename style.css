@@ -1231,6 +1231,10 @@ label {
     transition: 0.5s ease;
 }
 
+.iconForButton {
+    margin: auto 0;
+    margin-right: 6px;
+}
 
 .submitBtn:active {
     scale: 0.9;

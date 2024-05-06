@@ -1482,6 +1482,42 @@ function copyToClipboard(data) {
   }
 }
 
+// ---------------  DELETE CLASS DATA  ---------------
+
+function deleteUserClass() {
+  if (confirm("Are you sure you want to delete your entire timetable?")) {
+    user.className = "";
+    user.schoolName = "";
+    user.name = "";
+    for (let i = 0; i < 6; i++) {
+      user.room[i] = Array(6).fill("");
+      user.subject[i] = Array(6).fill("");
+      user.teacher[i] = Array(6).fill("");
+      user.complex[i] = Array(6).fill("");
+    }
+    localStorage.setItem('user_OBJECT', JSON.stringify(user));
+    window.alert("Class timetable deleted.");
+    window.location.reload();
+  }
+}
+
+function deleteMatesClass() {
+  let selectedClass = document.getElementById("classNumberSelection").value - 1;
+  if (confirm("Are you sure you want to delete all timetables about class " + mates[selectedClass].className + "? This operation cannot be reversed.")) {
+    mates[selectedClass].className = "";
+    mates[selectedClass].classMatesNames = "";
+    for (let i = 0; i < 6; i++) {
+      mates[selectedClass].room[i] = Array(6).fill("");
+      mates[selectedClass].subject[i] = Array(6).fill("");
+      mates[selectedClass].teacher[i] = Array(6).fill("");
+    }
+    localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
+    window.alert("Class timetable deleted.");
+    window.location.reload();
+  }
+}
+
+
 // ---------------  CHECK IF THERE'S A NEW VERSION  ---------------
 
 let deviceVersion;
