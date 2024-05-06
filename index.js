@@ -1535,10 +1535,14 @@ function checkVersion() {
     deviceVersion = localStorage.getItem("version");
     latestVersion = document.getElementById("latestVersionDisplay").textContent;
     if (deviceVersion != latestVersion) {
-      console.log("THE APP GOT UPDATED");
+      document.getElementById("prevVer").textContent = deviceVersion;
+      document.getElementById("newVer").textContent = latestVersion;
+      document.getElementById("blurOverlay").style.display = "block";
+      document.getElementById("newVersionBox").style.display = "block";
     }
     else {
-      console.log("NOPE");
+      document.getElementById("blurOverlay").display = "none";
+      document.getElementById("newVersionBox").display = "none";
     }
   }
   else {
@@ -1546,7 +1550,15 @@ function checkVersion() {
   }
   localStorage.setItem("version", latestVersion);
   deviceVersion = localStorage.getItem("version");
-  console.log(deviceVersion);
+}
+
+function closeUpdateNotice() {
+  document.getElementById('blurOverlay').style.animation = 'settingContent 0.3s reverse';
+  document.getElementById('newVersionBox').style.animation = 'settingContent 0.3s reverse';
+  setTimeout(() => {
+    document.getElementById('blurOverlay').style.display = 'none';
+    document.getElementById('newVersionBox').style.display = 'none';
+  }, 300);
 }
 
 

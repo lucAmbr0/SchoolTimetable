@@ -38,8 +38,13 @@
     />
   </head>
   <body>
-    <div class="newVersionBox">
-      <h1 id="latest-pr-title"></h1>
+    <div id="blurOverlay"></div>
+    <div id="newVersionBox">
+      <h1>The app just got updated, YAY!</h1>
+      <h3>Take a look at the new changes and features!</h3>
+      <p>Your old version <span id="prevVer"></span></p>
+      <p>Updated to <span id="newVer"></span></p>
+      <button class="submitBtn" style="margin: 0 0 0 auto;" onclick="closeUpdateNotice()"><span class="material-symbols-outlined iconForButton">check</span>Okay</button>
     </div>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
@@ -655,7 +660,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight" id="latestVersionDisplay">1.89.312</label>
+          <label class="alignToRight" id="latestVersionDisplay">1.90.312</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a
