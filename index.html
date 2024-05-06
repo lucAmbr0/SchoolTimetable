@@ -572,6 +572,9 @@
             id="resetAllDataBtn"
             onclick="deleteLocalStorage()"
           >
+          <span class="material-symbols-outlined iconForButton">
+            close
+            </span>
             Reset
           </button>
           <label for="transferData">Transfer data</label>
@@ -591,6 +594,17 @@
               <span class="material-symbols-outlined"> download </span>
             </button>
           </div>
+          <label for="reloadAppBtn">Force restart app</label>
+          <button
+            class="submitBtn"
+            id="reloadAppBtn"
+            onclick="reloadApp()"
+          >
+          <span class="material-symbols-outlined iconForButton">
+            restart_alt
+            </span>
+            Reload
+          </button>
         </div>
         <div id="exportDialogBox">
           <label>Select data to export</label>

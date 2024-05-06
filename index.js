@@ -1518,6 +1518,13 @@ function deleteMatesClass() {
 }
 
 
+// ---------------  FORCE RELOAD APP  ---------------
+
+function reloadApp() {
+  window.location.reload(true);
+}
+
+
 // ---------------  CHECK IF THERE'S A NEW VERSION  ---------------
 
 let deviceVersion;

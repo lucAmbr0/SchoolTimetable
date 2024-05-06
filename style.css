@@ -1224,6 +1224,7 @@ label {
     font-family: Noto Sans;
     border-radius: 15px;
     border: none;
+    width: fit-content;
     font-weight: 600;
     background-color: var(--solidAccentColor0);
     color: var(--OPPsolidCol3);
@@ -1313,6 +1314,10 @@ label {
     grid-template-columns: 7fr 3fr;
     margin: 10px 5px;
     align-items: center;
+}
+
+.switch-container button {
+    margin-left: auto !important;
 }
 
 .appInfoBox {
