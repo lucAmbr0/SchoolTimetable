@@ -1283,7 +1283,7 @@ label {
     padding: 5px 10px;
     font-size: 20px;
     font-family: Noto Sans;
-    border-radius: 15px;
+    border-radius: 150px;
     border: none;
     width: fit-content;
     font-weight: 600;
@@ -1509,7 +1509,7 @@ a {
 
 .importExportBtnContainer button {
     margin: 0px 0.5px;
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 150px 150px 0;
     width: 100%;
 }
 
@@ -1561,7 +1561,7 @@ a {
 }
 
 #importDataBtn {
-    border-radius: 15px 0 0 15px;
+    border-radius: 150px 0 0 150px;
 }
 
 #themeSelection,
