@@ -466,6 +466,14 @@ h5 {
 
 /* ---------------  USER FULL TABLE  --------------- */
 
+#blankOverlay {
+    z-index: 20;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: var(--bodyBackground);
+}
+
 #blurOverlay {
     z-index: 10;
     position: fixed;
@@ -521,7 +529,6 @@ h5 {
 }
 
 .userFullTableContainer {
-    margin: 10px;
     border-radius: 20px;
     padding-left: 5px;
     border: solid 2px rgba(150,150,150,1);

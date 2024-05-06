@@ -626,6 +626,7 @@ function userCardDownload() {
     const tableID = document.getElementById("tableContainer");
     const table =
       `
+      <div id="blankOverlay"></div>
     <div id="tableContainer" class="">
     <table class="userFullTableContainer">
     <tr>
@@ -861,6 +862,7 @@ function matesCardDownload(i) {
     const tableID = document.getElementById("tableContainer");
     const table =
       `
+      <div id="blankOverlay"></div>
     <div id="tableContainer" class="">
     <table class="userFullTableContainer">
     <tr>
