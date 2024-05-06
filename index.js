@@ -1535,14 +1535,14 @@ function checkVersion() {
     deviceVersion = localStorage.getItem("version");
     latestVersion = document.getElementById("latestVersionDisplay").textContent;
     if (deviceVersion != latestVersion) {
-      document.getElementById("prevVer").textContent = deviceVersion;
-      document.getElementById("newVer").textContent = latestVersion;
-      document.getElementById("blurOverlay").style.display = "block";
-      document.getElementById("newVersionBox").style.display = "block";
+      // document.getElementById("prevVer").textContent = deviceVersion;
+      // document.getElementById("newVer").textContent = latestVersion;
+      // document.getElementById("blurOverlay").style.display = "block";
+      // document.getElementById("newVersionBox").style.display = "block";
     }
     else {
-      document.getElementById("blurOverlay").display = "none";
-      document.getElementById("newVersionBox").display = "none";
+      // document.getElementById("blurOverlay").display = "none";
+      // document.getElementById("newVersionBox").display = "none";
     }
   }
   else {
