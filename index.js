@@ -1482,6 +1482,49 @@ function copyToClipboard(data) {
   }
 }
 
+// ---------------  DELETE CLASS DATA  ---------------
+
+function deleteUserClass() {
+  if (confirm("Are you sure you want to delete your entire timetable?")) {
+    user.className = "";
+    user.schoolName = "";
+    user.name = "";
+    for (let i = 0; i < 6; i++) {
+      user.room[i] = Array(6).fill("");
+      user.subject[i] = Array(6).fill("");
+      user.teacher[i] = Array(6).fill("");
+      user.complex[i] = Array(6).fill("");
+    }
+    localStorage.setItem('user_OBJECT', JSON.stringify(user));
+    window.alert("Class timetable deleted.");
+    window.location.reload();
+  }
+}
+
+function deleteMatesClass() {
+  let selectedClass = document.getElementById("classNumberSelection").value - 1;
+  if (confirm("Are you sure you want to delete all timetables about class " + mates[selectedClass].className + "? This operation cannot be reversed.")) {
+    mates[selectedClass].className = "";
+    mates[selectedClass].classMatesNames = "";
+    for (let i = 0; i < 6; i++) {
+      mates[selectedClass].room[i] = Array(6).fill("");
+      mates[selectedClass].subject[i] = Array(6).fill("");
+      mates[selectedClass].teacher[i] = Array(6).fill("");
+    }
+    localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
+    window.alert("Class timetable deleted.");
+    window.location.reload();
+  }
+}
+
+
+// ---------------  FORCE RELOAD APP  ---------------
+
+function reloadApp() {
+  window.location.reload(true);
+}
+
+
 // ---------------  CHECK IF THERE'S A NEW VERSION  ---------------
 
 let deviceVersion;
@@ -1492,10 +1535,14 @@ function checkVersion() {
     deviceVersion = localStorage.getItem("version");
     latestVersion = document.getElementById("latestVersionDisplay").textContent;
     if (deviceVersion != latestVersion) {
-      console.log("THE APP GOT UPDATED");
+      document.getElementById("prevVer").textContent = deviceVersion;
+      document.getElementById("newVer").textContent = latestVersion;
+      document.getElementById("blurOverlay").style.display = "block";
+      document.getElementById("newVersionBox").style.display = "block";
     }
     else {
-      console.log("NOPE");
+      document.getElementById("blurOverlay").display = "none";
+      document.getElementById("newVersionBox").display = "none";
     }
   }
   else {
@@ -1503,7 +1550,15 @@ function checkVersion() {
   }
   localStorage.setItem("version", latestVersion);
   deviceVersion = localStorage.getItem("version");
-  console.log(deviceVersion);
+}
+
+function closeUpdateNotice() {
+  document.getElementById('blurOverlay').style.animation = 'settingContent 0.3s reverse';
+  document.getElementById('newVersionBox').style.animation = 'settingContent 0.3s reverse';
+  setTimeout(() => {
+    document.getElementById('blurOverlay').style.display = 'none';
+    document.getElementById('newVersionBox').style.display = 'none';
+  }, 300);
 }
 
 
