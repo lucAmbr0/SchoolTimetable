@@ -193,12 +193,10 @@ function getUserInfoFromLocalStorage() {
 function updateUserInfo() {
   // When updateUserInfo is triggered the user class gets updated only if the input fields are not empty
   user.name = userNameInput.value;
-  if (user.name.toLowerCase() == "Rick Astley".toLowerCase()) {
-    window.location.href = "https://tools.apgy.in/ytl/xvFZjo5PgG0";
-  }
+  // that's it.
 
-
-
+  // Easter eggs!
+  checkEasterEggNames(user.name);
 
   // window.location.href = "youtube://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUPcmlja3JvbGwgbm8gYWRz";
   user.className = userClassInput.value;
@@ -1096,6 +1094,7 @@ function updateMatesInfo() {
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   mates[mateObjIndex].className = matesClassInput.value;
   mates[mateObjIndex].classMatesNames = matesNamesInput.value;
+  checkEasterEggNames(mates[mateObjIndex].classMatesNames);
 
   localStorage.setItem('isThereData', "HEYYY I'M HEREEE");
   localStorage.setItem('mates_OBJECT', JSON.stringify(mates));
@@ -1672,6 +1671,34 @@ function annoyGitCat() {
         document.body.appendChild(div);
       }, 1500);
     }, 2500);
+  }
+}
+
+
+function checkEasterEggNames(userInput) {
+  switch (userInput.toLowerCase()) {
+    case "rick astley":
+    case "rickroll":
+      window.location.href = "https://tools.apgy.in/ytl/xvFZjo5PgG0";
+      window.location.reload()
+      break;
+    case "kendrick lamar":
+    case "kendrick":
+    case "drizzy":
+    case "drake":
+    case "lamar":
+      document.body.innerHTML = `<h1 style="color: var(--OPPsolidCol2); text-align: center; display: flex; height: 100vh; margin: auto 13%; align-items: center">Kendrick >> Drake</h1>`;
+      setTimeout(() => {
+        window.location.href = "https://tools.apgy.in/ytl/T6eK-2OQtew";
+      }, 1500);
+      break;
+    case "joe mama":
+      // You deserve this
+      document.body.innerHTML = `<h1 style="color: var(--OPPsolidCol2); text-align: center; display: flex; height: 100vh; margin: auto 13%; align-items: center">You clearly don't have friends</h1>`;
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000);
+      break;
   }
 }
 
