@@ -14,7 +14,11 @@
     <meta
       meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      content="
+      width=device-width,
+      initial-scale=1,
+      maximum-scale=1,
+      user-scalable=no"
       id="viewportMeta"
     />
     <meta
@@ -41,10 +45,24 @@
     <div id="blurOverlay"></div>
     <div id="newVersionBox">
       <h1>The app just got updated, YAY!</h1>
-      <h3>This app has just received a new stable update. You can read about any changes at the <a href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/" style="color: black; text-decoration: none;">changelog</a></h3>
+      <h3>
+        This app has just received a new stable update. You can read about any
+        changes at the
+        <a
+          href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/"
+          style="color: black; text-decoration: none"
+          >changelog</a
+        >
+      </h3>
       <p>Your old version <span id="prevVer"></span></p>
       <p>Updated to <span id="newVer"></span></p>
-      <button class="submitBtn" style="margin: 0 0 0 auto;" onclick="closeUpdateNotice()"><span class="material-symbols-outlined iconForButton">check</span>Okay</button>
+      <button
+        class="submitBtn"
+        style="margin: 0 0 0 auto"
+        onclick="closeUpdateNotice()"
+      >
+        <span class="material-symbols-outlined iconForButton">check</span>Okay
+      </button>
     </div>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
@@ -400,22 +418,25 @@
             <input type="text" class="userTeacherInput" maxlength="12" />
           </div>
         </div>
-        <div style="display: flex; margin-top: 10px;">
-          <button class="submitBtn" style="background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteUserClass()">
-            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
+        <div style="display: flex; margin-top: 10px">
+          <button
+            class="submitBtn"
+            style="background-color: var(--transAccentColor4); font-weight: 400"
+            onclick="deleteUserClass()"
+          >
+            <span class="material-symbols-outlined iconForButton"> delete </span
+            >Delete
           </button>
           <button
-          class="submitBtn"
-          id="submitUserInfoBtn"
-          onclick="updateUserClassInfo()"
-          style="margin-left: 0;"
+            class="submitBtn"
+            id="submitUserInfoBtn"
+            onclick="updateUserClassInfo()"
+            style="margin-left: 0"
           >
-          <span class="material-symbols-outlined iconForButton">
-            check
-          </span>
-          Confirm
-        </button>
-      </div>
+            <span class="material-symbols-outlined iconForButton"> check </span>
+            Confirm
+          </button>
+        </div>
       </div>
       <div class="settingsSection">
         <h2 class="settingHeader">Schoolmates</h2>
@@ -477,19 +498,22 @@
             <input type="text" id="matesTeacherInput" maxlength="12" />
           </div>
         </div>
-        <div style="display: flex; margin-top: 10px;">
-          <button class="submitBtn" style="background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteMatesClass()">
-            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
+        <div style="display: flex; margin-top: 10px">
+          <button
+            class="submitBtn"
+            style="background-color: var(--transAccentColor4); font-weight: 400"
+            onclick="deleteMatesClass()"
+          >
+            <span class="material-symbols-outlined iconForButton"> delete </span
+            >Delete
           </button>
           <button
             class="submitBtn"
-            id="submitUserInfoBtn"
+            id="submitMatesInfoBtn"
             onclick="updateMatesClassInfo()"
-            style="margin-left: 0;"
+            style="margin-left: 0"
           >
-          <span class="material-symbols-outlined iconForButton">
-            check
-            </span>
+            <span class="material-symbols-outlined iconForButton"> check </span>
             Confirm
           </button>
         </div>
@@ -556,9 +580,7 @@
             id="resetAllDataBtn"
             onclick="deleteLocalStorage()"
           >
-          <span class="material-symbols-outlined iconForButton">
-            close
-            </span>
+            <span class="material-symbols-outlined iconForButton"> close </span>
             Reset
           </button>
           <label for="transferData">Transfer data</label>
@@ -579,13 +601,9 @@
             </button>
           </div>
           <label for="reloadAppBtn">Force restart app</label>
-          <button
-            class="submitBtn"
-            id="reloadAppBtn"
-            onclick="reloadApp()"
-          >
-          <span class="material-symbols-outlined iconForButton">
-            restart_alt
+          <button class="submitBtn" id="reloadAppBtn" onclick="reloadApp()">
+            <span class="material-symbols-outlined iconForButton">
+              restart_alt
             </span>
             Reload
           </button>

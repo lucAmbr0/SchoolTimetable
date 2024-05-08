@@ -1271,7 +1271,7 @@ label {
     color: var(--OPPtranspCol1);
 }
 
-#submitUserInfoBtn {
+#submitUserInfoBtn, submitMatesInfoBtn {
     transition: all 0.3s ease;
     margin-top: 0px;
     margin-bottom: 0;
