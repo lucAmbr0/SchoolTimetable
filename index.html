@@ -365,22 +365,6 @@
           <label for="userSchoolNameInput">School name </label>
           <input type="text" id="userSchoolNameInput" maxlength="40" />
         </div>
-        <div style="display: flex;">
-          <button class="submitBtn" style="margin: 10px 15px 10px auto; background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteUserClass()">
-            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
-          </button>
-          <button
-          class="submitBtn"
-          id="submitUserInfoBtn"
-          onclick="updateUserInfo()"
-          style="margin-left: 0;"
-          >
-          <span class="material-symbols-outlined iconForButton">
-            check
-          </span>
-          Confirm
-        </button>
-      </div>
         <div class="horizontalLine"></div>
         <div>
           <div class="dataDayAndHourContainer">
@@ -416,18 +400,23 @@
             <input type="text" class="userTeacherInput" maxlength="12" />
           </div>
         </div>
-        <button
+        <div style="display: flex; margin-top: 10px;">
+          <button class="submitBtn" style="background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteUserClass()">
+            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
+          </button>
+          <button
           class="submitBtn"
-          id="submitUserClassTimesBtn"
+          id="submitUserInfoBtn"
           onclick="updateUserClassInfo()"
-        >
-        <span class="material-symbols-outlined iconForButton">
-          check
+          style="margin-left: 0;"
+          >
+          <span class="material-symbols-outlined iconForButton">
+            check
           </span>
           Confirm
         </button>
       </div>
-
+      </div>
       <div class="settingsSection">
         <h2 class="settingHeader">Schoolmates</h2>
         <div class="matesClassNumSelectionBox">
@@ -452,22 +441,6 @@
               <input type="text" id="matesClassInput" maxlength="5" />
             </div>
           </div>
-        </div>
-        <div style="display: flex">
-          <button class="submitBtn" style="margin: 10px 15px 10px auto; background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteMatesClass()">
-            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
-          </button>
-          <button
-            class="submitBtn"
-            id="submitUserInfoBtn"
-            onclick="updateMatesInfo()"
-            style="margin-left: 0;"
-          >
-          <span class="material-symbols-outlined iconForButton">
-            check
-            </span>
-            Confirm
-          </button>
         </div>
         <div class="horizontalLine"></div>
         <div>
@@ -504,16 +477,22 @@
             <input type="text" id="matesTeacherInput" maxlength="12" />
           </div>
         </div>
-        <button
-          class="submitBtn"
-          id="submitMatesClassTimesBtn"
-          onclick="updateMatesClassInfo()"
-        >
-        <span class="material-symbols-outlined iconForButton">
-          check
-          </span>
-          Confirm
-        </button>
+        <div style="display: flex; margin-top: 10px;">
+          <button class="submitBtn" style="background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteMatesClass()">
+            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
+          </button>
+          <button
+            class="submitBtn"
+            id="submitUserInfoBtn"
+            onclick="updateMatesClassInfo()"
+            style="margin-left: 0;"
+          >
+          <span class="material-symbols-outlined iconForButton">
+            check
+            </span>
+            Confirm
+          </button>
+        </div>
       </div>
     </div>
     <div class="appTabs" id="settingsTab">
@@ -660,7 +639,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight" id="latestVersionDisplay">1.98.330</label>
+          <label class="alignToRight" id="latestVersionDisplay">1.98.332</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

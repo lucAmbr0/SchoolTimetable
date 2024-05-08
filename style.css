@@ -1273,13 +1273,14 @@ label {
 
 #submitUserInfoBtn {
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 0px;
+    margin-bottom: 0;
 }
 
 .submitBtn {
     text-align: center;
     display: flex;
-    margin: 0px 15px 10px auto;
+    margin: 0px 10px 10px auto;
     padding: 5px 10px;
     font-size: 20px;
     font-family: Noto Sans;
@@ -1290,7 +1291,13 @@ label {
     background-color: var(--solidAccentColor0);
     color: var(--OPPsolidCol3);
     scale: 1;
+    height: fit-content;
     transition: 0.5s ease;
+}
+
+.submitBtn span {
+    display: flex;
+    margin: auto 5px auto 0;
 }
 
 .iconForButton {

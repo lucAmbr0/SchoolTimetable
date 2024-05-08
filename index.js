@@ -283,6 +283,7 @@ function changeUserInputLabels(dayIndex, hourIndex) {
 
 function updateUserClassInfo() {
   // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
+  updateUserInfo();
   updateUserClassGrid();
   localStorage.setItem('user_OBJECT', JSON.stringify(user));
 }
