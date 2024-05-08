@@ -10,18 +10,24 @@
     <title>School Timetable</title>
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
-    <meta name="theme-color" />
+    <meta name="theme-color" content="var(--solidCol1)"/>
     <meta
       meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+      content="
+      width=device-width,
+      initial-scale=1,
+      maximum-scale=5,
+      user-scalable=yes"
       id="viewportMeta"
     />
     <meta
       name="description"
       content="School Timetable is a useful app that helps students plan their school activities by showing in a convenient way the school times of multiple classes in a beautiful and minimal interface."
     />
+    <meta name="theme-color" content="var(--body)"/>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="icon" href="icons/icon-any-192x192.png" />
     <link rel="manifest" href="manifest.json" />
     <link
@@ -41,10 +47,24 @@
     <div id="blurOverlay"></div>
     <div id="newVersionBox">
       <h1>The app just got updated, YAY!</h1>
-      <h3>This app has just received a new stable update. You can read about any changes at the <a href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/" style="color: black; text-decoration: none;">changelog</a></h3>
+      <h3>
+        This app has just received a new stable update. You can read about any
+        changes at the
+        <a
+          href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/"
+          style="color: black; text-decoration: none"
+          >changelog</a
+        >
+      </h3>
       <p>Your old version <span id="prevVer"></span></p>
       <p>Updated to <span id="newVer"></span></p>
-      <button class="submitBtn" style="margin: 0 0 0 auto;" onclick="closeUpdateNotice()"><span class="material-symbols-outlined iconForButton">check</span>Okay</button>
+      <button
+        class="submitBtn"
+        style="margin: 0 0 0 auto"
+        onclick="closeUpdateNotice()"
+      >
+        <span class="material-symbols-outlined iconForButton">check</span>Okay
+      </button>
     </div>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
@@ -365,22 +385,6 @@
           <label for="userSchoolNameInput">School name </label>
           <input type="text" id="userSchoolNameInput" maxlength="40" />
         </div>
-        <div style="display: flex;">
-          <button class="submitBtn" style="margin: 10px 15px 10px auto; background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteUserClass()">
-            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
-          </button>
-          <button
-          class="submitBtn"
-          id="submitUserInfoBtn"
-          onclick="updateUserInfo()"
-          style="margin-left: 0;"
-          >
-          <span class="material-symbols-outlined iconForButton">
-            check
-          </span>
-          Confirm
-        </button>
-      </div>
         <div class="horizontalLine"></div>
         <div>
           <div class="dataDayAndHourContainer">
@@ -407,32 +411,40 @@
           </div>
           <div class="dataGrid">
             <label for="userRoomInput">Room</label>
-            <input type="text" class="userRoomInput" maxlength="18" />
+            <input type="text" class="userRoomInput" maxlength="18" aria-label="Room input" />
             <label for="userComplexInput">Complex</label>
-            <input type="text" class="userComplexInput" maxlength="10" />
+            <input type="text" class="userComplexInput" maxlength="10" aria-label="Complex input" />
             <label for="userSubjectInput">Subject</label>
-            <input type="text" class="userSubjectInput" maxlength="15" />
+            <input type="text" class="userSubjectInput" maxlength="15" aria-label="Teacher input" />
             <label for="userTeacherInput">Teacher</label>
-            <input type="text" class="userTeacherInput" maxlength="12" />
+            <input type="text" class="userTeacherInput" maxlength="12" aria-label="Teacher input" />
           </div>
         </div>
-        <button
-          class="submitBtn"
-          id="submitUserClassTimesBtn"
-          onclick="updateUserClassInfo()"
-        >
-        <span class="material-symbols-outlined iconForButton">
-          check
-          </span>
-          Confirm
-        </button>
+        <div style="display: flex; margin-top: 10px">
+          <button
+            class="submitBtn"
+            style="background-color: var(--transAccentColor4); font-weight: 400"
+            onclick="deleteUserClass()"
+          >
+            <span class="material-symbols-outlined iconForButton"> delete </span
+            >Delete
+          </button>
+          <button
+            class="submitBtn"
+            id="submitUserInfoBtn"
+            onclick="updateUserClassInfo()"
+            style="margin-left: 0"
+          >
+            <span class="material-symbols-outlined iconForButton"> check </span>
+            Confirm
+          </button>
+        </div>
       </div>
-
       <div class="settingsSection">
         <h2 class="settingHeader">Schoolmates</h2>
         <div class="matesClassNumSelectionBox">
           <label for="mateClassNumberSelection">Class N.</label>
-          <select id="classNumberSelection" name="classNum">
+          <select id="classNumberSelection" name="classNum" aria-label="Class number selection">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -452,22 +464,6 @@
               <input type="text" id="matesClassInput" maxlength="5" />
             </div>
           </div>
-        </div>
-        <div style="display: flex">
-          <button class="submitBtn" style="margin: 10px 15px 10px auto; background-color: var(--transAccentColor4); font-weight: 400;" onclick="deleteMatesClass()">
-            <span class="material-symbols-outlined iconForButton"> delete </span>Delete
-          </button>
-          <button
-            class="submitBtn"
-            id="submitUserInfoBtn"
-            onclick="updateMatesInfo()"
-            style="margin-left: 0;"
-          >
-          <span class="material-symbols-outlined iconForButton">
-            check
-            </span>
-            Confirm
-          </button>
         </div>
         <div class="horizontalLine"></div>
         <div>
@@ -504,16 +500,25 @@
             <input type="text" id="matesTeacherInput" maxlength="12" />
           </div>
         </div>
-        <button
-          class="submitBtn"
-          id="submitMatesClassTimesBtn"
-          onclick="updateMatesClassInfo()"
-        >
-        <span class="material-symbols-outlined iconForButton">
-          check
-          </span>
-          Confirm
-        </button>
+        <div style="display: flex; margin-top: 10px">
+          <button
+            class="submitBtn"
+            style="background-color: var(--transAccentColor4); font-weight: 400"
+            onclick="deleteMatesClass()"
+          >
+            <span class="material-symbols-outlined iconForButton"> delete </span
+            >Delete
+          </button>
+          <button
+            class="submitBtn"
+            id="submitMatesInfoBtn"
+            onclick="updateMatesClassInfo()"
+            style="margin-left: 0"
+          >
+            <span class="material-symbols-outlined iconForButton"> check </span>
+            Confirm
+          </button>
+        </div>
       </div>
     </div>
     <div class="appTabs" id="settingsTab">
@@ -577,9 +582,7 @@
             id="resetAllDataBtn"
             onclick="deleteLocalStorage()"
           >
-          <span class="material-symbols-outlined iconForButton">
-            close
-            </span>
+            <span class="material-symbols-outlined iconForButton"> close </span>
             Reset
           </button>
           <label for="transferData">Transfer data</label>
@@ -600,13 +603,9 @@
             </button>
           </div>
           <label for="reloadAppBtn">Force restart app</label>
-          <button
-            class="submitBtn"
-            id="reloadAppBtn"
-            onclick="reloadApp()"
-          >
-          <span class="material-symbols-outlined iconForButton">
-            restart_alt
+          <button class="submitBtn" id="reloadAppBtn" onclick="reloadApp()">
+            <span class="material-symbols-outlined iconForButton">
+              restart_alt
             </span>
             Reload
           </button>
@@ -660,7 +659,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight" id="latestVersionDisplay">1.98.330</label>
+          <label class="alignToRight" id="latestVersionDisplay">1.99.332</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a
