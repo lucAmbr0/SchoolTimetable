@@ -18,7 +18,9 @@
       width=device-width,
       initial-scale=1,
       maximum-scale=5,
-      user-scalable=yes"
+      user-scalable=yes
+      viewport-fit=cover,
+      orientation=portrait"
       id="viewportMeta"
     />
     <meta
@@ -56,6 +58,7 @@
           >changelog</a
         >
       </h3>
+      <h3>Enjoy version 100!</h3>
       <p>Your old version <span id="prevVer"></span></p>
       <p>Updated to <span id="newVer"></span></p>
       <button
@@ -367,7 +370,7 @@
           <span class="material-symbols-outlined"> info </span>
           <label
             style="opacity: 1; text-align: center; font-weight: 200"
-            onclick="navbarAction(2)"
+            onclick="enableShowGreetingFromNotice()"
             >Show greeting is disabled</label
           >
         </div>
@@ -544,7 +547,7 @@
               class="switch-input"
               onchange="toggleShowGreetingState()"
             />
-            <label for="showGreetingSwitch" class="switch-toggle"></label>
+            <label for="showGreetingSwitch" class="switch-toggle" id="greetingSwitchEffect"></label>
           </div>
           <div class="switch-label">Always expand cards</div>
           <div class="switch">
@@ -659,7 +662,7 @@
           <label class="switch-label">PWA Name</label>
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
-          <label class="alignToRight" id="latestVersionDisplay">1.99.332</label>
+          <label class="alignToRight" id="latestVersionDisplay">1.100.338</label>
           <label class="switch-label">License</label>
           <label class="alignToRight">
             <a

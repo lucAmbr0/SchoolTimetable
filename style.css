@@ -1401,6 +1401,12 @@ label {
 
 /* ---------------  APP SETTINGS SECTION  --------------- */
 
+#greetingSwitchEffect {
+    display: flex;
+    border-radius: 50px;
+    transition: 0.3s all ease-in-out;
+}
+
 .switch-container {
     display: grid;
     grid-template-columns: 7fr 3fr;
@@ -1688,67 +1694,51 @@ a {
 /* ----------  DESKTOP SCREEN  ---------- */
 
 @media screen and (min-width: 1000px) {
-    html {
-        width: 24%;
-        height: 90vh;
-        margin: 30px auto;
-        border: solid 4px;
-        border-color: var(--boxBorderColor);
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        overflow: scroll;
-        box-shadow: var(--boxShadow0);
-        scrollbar-width: 0;
-        z-index: 3;
-    }
 
-    ::-webkit-scrollbar {
-        display: none;
-        scrollbar-width: none;
+    body {
+        margin: 0 auto;
+        width: 32.4vw;
+        height: 72vw;
+        border-radius: 20px;
     }
-
+    
     #navbar {
-        width: 8%;
-        height: 40%;
-        border-radius: 30px;
-        justify-content: space-around;
-        flex-direction: column;
-        left: 25%;
-        top: 30%;
+        width: fit-content;
+        padding: 10px;
+        border-top: none;
         border: solid 2px;
         border-color: var(--boxBorderColor);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        display: flex;
+        bottom: 50%;
+        left: 27vw;
+        transform: translateY(50%) translateX(-50%);
+        border-radius: 30px;
+        position: fixed;
+        height: fit-content;
+        flex-direction: column;
+    }
+    .navbarLabelActive {
+        font-weight: 400;
+    }
+    .navbarBtn {
+        margin: 20px 10px;
     }
 
     #navbarFixed {
         display: none;
     }
 
-    .navbarBtn {
-        width: 100%;
-        height: 100%;
-    }
-
-    #letsStartMessage img {
-        font-size: 20vh;
-        color: var(--solidAccentColor1);
+    .topNotchContainer {
         display: flex;
-        overflow: hidden;
-        justify-content: center;
-        display: flex;
-        padding: 0;
-        margin: 0% 0 20px 0;
-    }
-
-    #topNotchContainer {
-        width: 24%;
+        position: relative;
+        width: 29vw;
         border-radius: 20px;
-        z-index: 2;
-        left: 38%;
-        margin: 34px auto;
-        border: none;
-        border-color: var(--boxBorderColor);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        margin: 10px auto 10px auto;
     }
+
+    .topNotchFixed {
+        display: none;
+    }
+    
 }
