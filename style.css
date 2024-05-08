@@ -1694,7 +1694,56 @@ a {
 /* ----------  DESKTOP SCREEN  ---------- */
 
 @media screen and (min-width: 1000px) {
-    html {
+
+    body {
+        margin: 0 auto;
+        width: 32.4vw;
+        height: 72vw;
+        border-radius: 20px;
+    }
+    
+    #navbar {
+        width: fit-content;
+        padding: 10px;
+        border-top: none;
+        border: solid 2px;
+        border-color: var(--boxBorderColor);
+        display: flex;
+        bottom: 50%;
+        left: 27vw;
+        transform: translateY(50%) translateX(-50%);
+        border-radius: 30px;
+        position: fixed;
+        height: fit-content;
+        flex-direction: column;
+    }
+    .navbarLabelActive {
+        font-weight: 400;
+    }
+    .navbarBtn {
+        margin: 20px 10px;
+    }
+
+    #navbarFixed {
+        display: none;
+    }
+
+    .topNotchContainer {
+        display: flex;
+        position: relative;
+        width: 29vw;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 10px auto 10px auto;
+    }
+
+    .topNotchFixed {
+        display: none;
+    }
+    
+    
+    
+    /* html {
         width: 100vh;
         height: 90vh;
         margin: 30px auto;
@@ -1710,6 +1759,7 @@ a {
     }
 
     body {
+        margin: 0 auto;
         width: 80vw;
         height: 36vw;
     }
@@ -1761,5 +1811,5 @@ a {
         border: none;
         border-color: var(--boxBorderColor);
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    }
+    } */
 }
