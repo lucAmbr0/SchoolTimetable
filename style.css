@@ -1401,6 +1401,12 @@ label {
 
 /* ---------------  APP SETTINGS SECTION  --------------- */
 
+#greetingSwitchEffect {
+    display: flex;
+    border-radius: 50px;
+    transition: 0.3s all ease-in-out;
+}
+
 .switch-container {
     display: grid;
     grid-template-columns: 7fr 3fr;
@@ -1689,7 +1695,7 @@ a {
 
 @media screen and (min-width: 1000px) {
     html {
-        width: 24%;
+        width: 100vh;
         height: 90vh;
         margin: 30px auto;
         border: solid 4px;
@@ -1701,6 +1707,11 @@ a {
         box-shadow: var(--boxShadow0);
         scrollbar-width: 0;
         z-index: 3;
+    }
+
+    body {
+        width: 80vw;
+        height: 36vw;
     }
 
     ::-webkit-scrollbar {

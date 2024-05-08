@@ -367,7 +367,7 @@
           <span class="material-symbols-outlined"> info </span>
           <label
             style="opacity: 1; text-align: center; font-weight: 200"
-            onclick="navbarAction(2)"
+            onclick="enableShowGreetingFromNotice()"
             >Show greeting is disabled</label
           >
         </div>
@@ -544,7 +544,7 @@
               class="switch-input"
               onchange="toggleShowGreetingState()"
             />
-            <label for="showGreetingSwitch" class="switch-toggle"></label>
+            <label for="showGreetingSwitch" class="switch-toggle" id="greetingSwitchEffect"></label>
           </div>
           <div class="switch-label">Always expand cards</div>
           <div class="switch">

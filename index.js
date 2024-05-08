@@ -483,19 +483,29 @@ function toggleShowGreetingState() { // triggered when the switch is clicked
     document.getElementById("greetingDisplay").style.display = "block";
     showGreetingState = "1";
     document.getElementById("userDataForm").style.opacity = "1";
-    document.getElementById("submitUserInfoBtn").style.opacity = "1";
     document.getElementById("greetingNotShownBox").style.display = "none";
   }
   else if (!showGreetingSwitch.checked) {
     document.getElementById("greetingDisplay").style.display = "none";
     showGreetingState = "0";
     document.getElementById("userDataForm").style.opacity = "0.5";
-    document.getElementById("submitUserInfoBtn").style.opacity = "0.5";
     document.getElementById("greetingNotShownBox").style.display = "flex";
   }
   localStorage.setItem('showGreetingState', showGreetingState);
 }
 
+// Enables showgreeting if the user clicks on the link notice
+function enableShowGreetingFromNotice() {
+  navbarAction(2);
+  document.getElementById("greetingSwitchEffect").style.boxShadow = "0 0 24px rgb(255,0,0,1)";
+  setTimeout(() => {
+    document.getElementById("showGreetingSwitch").checked = true;
+    toggleShowGreetingState();
+  }, 500);
+  setTimeout(() => {
+    document.getElementById("greetingSwitchEffect").style.boxShadow = "0 0 0px rgb(0,0,0)";
+  }, 800);
+}
 
 
 // ---------------  EXPAND USER CARDS  ---------------
