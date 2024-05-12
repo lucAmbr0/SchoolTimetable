@@ -397,6 +397,7 @@ function displayUserToNowTab(day, hour) {
   }
   else {
     userClassroomDisplay.textContent = "No lesson";
+    userNextSubjectDisplay.textContent = "No lesson";
     userComplexDisplay.textContent = "";
     userSubjectAndTeacher.textContent = "";
   }
