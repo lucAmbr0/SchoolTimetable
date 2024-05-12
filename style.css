@@ -5,47 +5,6 @@
 
 /* ---------------  VARIABLES  --------------- */
 
-@font-face {
-    font-family: 'Poppins';
-    src: url('Fonts/Poppins/Poppins-Light.ttf') format('truetype');
-    font-weight: 300; /* Normal */
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('Fonts/Poppins/Poppins-Normal.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('Fonts/Poppins/Poppins-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('Fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('Fonts/Poppins/Poppins-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Noto Sans';
-    src: url('Fonts/Noto_Sans/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Rubik';
-    src: url('Fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype');
-    font-style: normal;
-}
-
 :root {
     --red: rgba(255, 0, 0, 1);
 
@@ -336,8 +295,46 @@ h5 {
 
 /* -------------------- FONTS --------------------*/
 
-/* Normal text: font-family: 'Noto Sans', sans-serif; */
-/* Headings/Titles: font-family: 'PT Sans', 'Poppins', sans-serif; */
+@font-face {
+    font-family: 'Poppins';
+    src: url('Fonts/Poppins/Poppins-Light.ttf') format('truetype');
+    font-weight: 300; /* Normal */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('Fonts/Poppins/Poppins-Normal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('Fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('Fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('Fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('Fonts/Noto_Sans/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rubik';
+    src: url('Fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype');
+    font-style: normal;
+}
 
 /* ---------------  ANIMATIONS --------------- */
 
