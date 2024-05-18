@@ -1812,7 +1812,7 @@ function setCustomDay(event, selectedDay) {
     daysButtons[selectedDay].classList.add("timeButtonActive");
     customDay = selectedDay;
     usingCustomSearch = true;
-    closeBox = true;
+    closeBox = false;
     displayCustomTimes(true);
   }
 }
@@ -1831,7 +1831,7 @@ function setCustomHour(event, selectedHour) {
     hoursButtons[selectedHour].classList.add("timeButtonActive");
     customHour = selectedHour;
     usingCustomSearch = true;
-    closeBox = true;
+    closeBox = false;
     displayCustomTimes();
   }
 }
