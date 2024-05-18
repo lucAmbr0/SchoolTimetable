@@ -245,6 +245,42 @@
     --bodyBackground: rgb(18, 13, 28);
 }
 
+.LIGHThighContrast {
+    --accentColor0: linear-gradient(45deg,
+            rgba(140, 140, 140, 0.4),
+            rgba(140, 140, 140, 0.5));
+
+    --solidAccentColor0: rgb(198, 198, 198);
+    --solidAccentColor1: rgb(10, 10, 10);
+    --solidAccentColor2: rgb(20, 20, 20);
+
+    --transAccentColor0: rgba(199, 199, 199, 0.6);
+    --transAccentColor1: rgba(0, 0, 0, 0.7);
+    --transAccentColor2: rgba(0, 0, 0, 0.3);
+    --transAccentColor3: rgba(221, 221, 221, 0.1);
+    --transAccentColor4: rgba(224, 224, 224, 0.6);
+    --boxBorderColor: rgba(0, 0, 0, 0.7);
+    --bodyBackground: rgb(240, 240, 240);
+}
+
+.DARKhighContrast {
+    --accentColor0: linear-gradient(45deg,
+            rgba(80, 80, 80, 0.4),
+            rgba(80, 80, 80, 0.5));
+
+    --solidAccentColor0: rgb(18, 18, 18);
+    --solidAccentColor1: rgb(245, 245, 245);
+    --solidAccentColor2: rgb(235, 235, 235);
+
+    --transAccentColor0: rgba(59, 59, 59, 0.6);
+    --transAccentColor1: rgba(204, 204, 204, 0.7);
+    --transAccentColor2: rgba(255, 255, 255, 0.3);
+    --transAccentColor3: rgba(53, 53, 53, 0.1);
+    --transAccentColor4: rgba(21, 21, 21, 0.6);
+    --boxBorderColor: rgba(255, 255, 255, 0.7);
+    --bodyBackground: rgb(0, 0, 0);
+}
+
 
 /* ---------------  MAIN RULES  --------------- */
 
@@ -298,38 +334,45 @@ h5 {
 @font-face {
     font-family: 'Poppins';
     src: url('Fonts/Poppins/Poppins-Light.ttf') format('truetype');
-    font-weight: 300; /* Normal */
+    font-weight: 300;
+    /* Normal */
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Poppins';
     src: url('Fonts/Poppins/Poppins-Normal.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Poppins';
     src: url('Fonts/Poppins/Poppins-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Poppins';
     src: url('Fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Poppins';
     src: url('Fonts/Poppins/Poppins-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Noto Sans';
     src: url('Fonts/Noto_Sans/NotoSans-VariableFont_wdth\,wght.ttf') format('truetype');
     font-style: normal;
 }
+
 @font-face {
     font-family: 'Rubik';
     src: url('Fonts/Rubik/Rubik-VariableFont_wght.ttf') format('truetype');
@@ -573,8 +616,8 @@ h5 {
 .userFullTableContainer {
     border-radius: 20px;
     padding-left: 5px;
-    border: solid 2px rgba(150,150,150,1);
-    background-color: rgba(0,0,0,0.1);
+    border: solid 2px rgba(150, 150, 150, 1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .hidden {
@@ -587,7 +630,7 @@ h5 {
     font-size: 20px;
     font-family: var(--StandardTextFont);
     font-display: swap;
-    color: rgb(40,40,40);
+    color: rgb(40, 40, 40);
     text-align: center;
     text-wrap: nowrap;
 }
@@ -619,7 +662,7 @@ h5 {
     padding: 2px 5px;
     font-size: 28px;
     text-align: center;
-    color: rgb(30,30,30);
+    color: rgb(30, 30, 30);
     /* background-color: blueviolet; */
 }
 
@@ -629,7 +672,7 @@ h5 {
     border-right: 2px solid rgba(150, 150, 150, 1);
     border-radius: 20px 20px 0 0;
     font-size: 40px;
-    color: rgb(40,40,40);
+    color: rgb(40, 40, 40);
     font-family: var(--StandardTextFont);
     font-display: swap;
     font-weight: 600;
@@ -643,7 +686,7 @@ h5 {
 
 .hourNum {
     font-size: 35px;
-    color: rgb(40,40,40);
+    color: rgb(40, 40, 40);
     width: 100px !important;
     font-family: var(--StandardTextFont);
     font-display: swap;
@@ -672,7 +715,9 @@ tr {
     flex-direction: row;
     padding: 10px;
 }
-td.cell,th {
+
+td.cell,
+th {
     display: flex;
     flex-direction: column;
     width: 272px;
@@ -1334,7 +1379,8 @@ label {
     color: var(--OPPtranspCol1);
 }
 
-#submitUserInfoBtn, submitMatesInfoBtn {
+#submitUserInfoBtn,
+submitMatesInfoBtn {
     transition: all 0.3s ease;
     margin-top: 0px;
     margin-bottom: 0;
@@ -1649,6 +1695,8 @@ a {
     margin-left: auto;
     border: solid 1px;
     border-color: var(--solidAccentColor2);
+    text-overflow: clip;
+    width: 80%;
 }
 
 .importExportBtnContainer span {
@@ -1742,7 +1790,7 @@ a {
         height: 72vw;
         border-radius: 20px;
     }
-    
+
     #navbar {
         width: fit-content;
         padding: 10px;
@@ -1758,9 +1806,11 @@ a {
         height: fit-content;
         flex-direction: column;
     }
+
     .navbarLabelActive {
         font-weight: 400;
     }
+
     .navbarBtn {
         margin: 20px 10px;
     }
@@ -1781,5 +1831,5 @@ a {
     .topNotchFixed {
         display: none;
     }
-    
+
 }

@@ -1691,7 +1691,6 @@ function checkEasterEggNames(userInput) {
     case "rick astley":
     case "rickroll":
       window.location.href = "https://tools.apgy.in/ytl/xvFZjo5PgG0";
-      window.location.reload()
       break;
     case "kendrick lamar":
     case "kendrick":
@@ -1739,6 +1738,8 @@ function setTheme() {
   document.body.classList.remove("LIGHTorangeTheme");
   document.body.classList.remove("DARKpurpleTheme");
   document.body.classList.remove("LIGHTpurpleTheme");
+  document.body.classList.remove("DARKhighContrast");
+  document.body.classList.remove("LIGHThighContrast");
   document.body.classList.remove("darkModeVariables");
   if (darkModeState == "1") {
     document.body.classList.add("darkModeVariables");
