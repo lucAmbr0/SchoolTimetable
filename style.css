@@ -844,10 +844,10 @@ th {
 }
 
 .changeTimeContainer button {
-    border: solid 3px;
+    border: solid 0.5vh;
     border-color: transparent;
-    border-radius: 10px;
-    margin: 2px;
+    border-radius: 1.5vh;
+    margin: 0.3vh;
     width: 6.2vh;
     height: 6.2vh;
     font-size: 4vh;
@@ -865,7 +865,7 @@ th {
 }
 
 .topNotchContainerTALL {
-    height: 20vh !important;
+    height: 19vh !important;
     justify-content: flex-start !important;
     transition: 0.3s all ease !important;
 }
@@ -919,7 +919,7 @@ th {
     font-display: swap;
     color: var(--OPPsolidCol1);
     font-weight: 500;
-    font-size: 1.8em;
+    font-size: 3.8vh;
     text-wrap: nowrap;
     line-height: 1.2;
     transition: 0.3s all ease !important;
@@ -935,7 +935,7 @@ th {
     /* letter-spacing: 1px; */
     text-wrap: nowrap;
     line-height: 1.1;
-    font-size: 2.8em;
+    font-size: 5vh;
     transition: 0.3s all ease !important;
 }
 
