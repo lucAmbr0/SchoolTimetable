@@ -1776,20 +1776,12 @@ function toggleChangeTime(resetButtons) {
   // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
-    if (usingCustomSearch) {
-      stopAdvancedSeekBtn.style.display = "flex";
-      expandBar.style.display = "none";
-    }
-    else {
-      stopAdvancedSeekBtn.style.display = "none";
-      expandBar.style.display = "flex";
-    }
+    expandBar.style.rotate = "0deg";
+    stopAdvancedSeekBtn.style.display = "none";
     setTimeout(() => {
       topNotchFixed.classList.remove("topNotchFixedTALL");
       topNotch.classList.remove("topNotchContainerTALL");
       changeTimeContainer.style.display = "none";
-      stopAdvancedSeekBtn.style.opacity = "1";
-      expandBar.style.opacity = "1";
     }, 200);
     if (resetButtons) {
       daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
@@ -1797,14 +1789,14 @@ function toggleChangeTime(resetButtons) {
     }
     // usingCustomSearch = false;
     customSearchPanelOpened = false;
+    updateDateTime();
   }
   // Opening box
   else {
     customSearchPanelOpened = true;
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
-    stopAdvancedSeekBtn.style.opacity = "0";
-    expandBar.style.opacity = "0";
+    expandBar.style.rotate = "-180deg";
     setTimeout(() => {
       changeTimeContainer.style.display = "flex";
     }, 200);
@@ -1860,21 +1852,27 @@ function stopAdvancedSearch(event) {
   customDay = null;
       if (usingCustomSearch) {
         stopAdvancedSeekBtn.style.display = "flex";
-        expandBar.style.display = "none";
       }
       else {
         stopAdvancedSeekBtn.style.display = "none";
-        expandBar.style.display = "flex";
       }
       stopAdvancedSeekBtn.style.opacity = "1";
       expandBar.style.opacity = "1";
       daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
       hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
-    customSearchPanelOpened = false;
+    if (customSearchPanelOpened) {
+      toggleChangeTime();
+    }
 }
 
 function displayCustomTimes() {
   if (customDay != null && customHour != null) {
+    if (usingCustomSearch) {
+      stopAdvancedSeekBtn.style.display = "flex";
+    }
+    else {
+      stopAdvancedSeekBtn.style.display = "none";
+    }
     displayUserToNowTab(customDay, customHour);
     displayMatesToNowTab(customDay, customHour);
     if (closeBox) {

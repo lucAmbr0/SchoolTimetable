@@ -62,16 +62,21 @@
     </div>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
-      <div style="display: flex">
-        <h2 id="timeDisplay">17:41</h2>
-        <span class="material-symbols-outlined" id="stopAdvancedSeekBtn" style="display: none;"
-          onclick="stopAdvancedSearch(event)">
-            cancel
+      <div id="topNotchControls">
+        <span
+          class="material-symbols-outlined"
+          id="stopAdvancedSeekBtn"
+          style="display: none"
+          onclick="stopAdvancedSearch(event)"
+        >
+          cancel
         </span>
         <span class="material-symbols-outlined" id="expandBar">
-            expand_circle_down
+          expand_circle_down
         </span>
       </div>
+      <h2 id="timeDisplay">17:41</h2>
+
       <div class="changeTimeContainer changeTimeContainerHidden">
         <div class="daysHoursGrid">
           <button class="daysButtons" onclick="setCustomDay(event, 0)">
@@ -692,7 +697,7 @@
           <label class="alignToRight">School Timetable</label>
           <label class="switch-label">App version</label>
           <label class="alignToRight" id="latestVersionDisplay"
-            >1.108.355</label
+            >1.110.361</label
           >
           <label class="switch-label">License</label>
           <label class="alignToRight">
