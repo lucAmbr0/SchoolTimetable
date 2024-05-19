@@ -1760,6 +1760,8 @@ function setTheme() {
 const changeTimeContainer = document.querySelector(".changeTimeContainer");
 const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
+const stopAdvancedSeekBtn = document.getElementById("stopAdvancedSeekBtn");
+const expandBar = document.getElementById("expandBar");
 
 let usingCustomSearch = false;
 let customSearchPanelOpened = false;
@@ -1774,10 +1776,20 @@ function toggleChangeTime(resetButtons) {
   // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
+    if (usingCustomSearch) {
+      stopAdvancedSeekBtn.style.display = "flex";
+      expandBar.style.display = "none";
+    }
+    else {
+      stopAdvancedSeekBtn.style.display = "none";
+      expandBar.style.display = "flex";
+    }
     setTimeout(() => {
       topNotchFixed.classList.remove("topNotchFixedTALL");
       topNotch.classList.remove("topNotchContainerTALL");
       changeTimeContainer.style.display = "none";
+      stopAdvancedSeekBtn.style.opacity = "1";
+      expandBar.style.opacity = "1";
     }, 200);
     if (resetButtons) {
       daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
@@ -1791,6 +1803,8 @@ function toggleChangeTime(resetButtons) {
     customSearchPanelOpened = true;
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
+    stopAdvancedSeekBtn.style.opacity = "0";
+    expandBar.style.opacity = "0";
     setTimeout(() => {
       changeTimeContainer.style.display = "flex";
     }, 200);
@@ -1837,6 +1851,26 @@ function setCustomHour(event, selectedHour) {
     closeBox = false;
     displayCustomTimes();
   }
+}
+
+function stopAdvancedSearch(event) {
+  event.stopPropagation();
+  usingCustomSearch = false;
+  customHour = null;
+  customDay = null;
+      if (usingCustomSearch) {
+        stopAdvancedSeekBtn.style.display = "flex";
+        expandBar.style.display = "none";
+      }
+      else {
+        stopAdvancedSeekBtn.style.display = "none";
+        expandBar.style.display = "flex";
+      }
+      stopAdvancedSeekBtn.style.opacity = "1";
+      expandBar.style.opacity = "1";
+      daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+      hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    customSearchPanelOpened = false;
 }
 
 function displayCustomTimes() {

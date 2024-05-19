@@ -939,6 +939,16 @@ th {
     transition: 0.3s all ease !important;
 }
 
+#stopAdvancedSeekBtn,
+#expandBar {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    margin: 0.5vh 20px;
+    font-size: 4vh !important;
+    transition: 0.25s ease-in-out opacity;
+}
+
 .greetingDisplay {
     font-weight: 600;
     margin-top: 0px;
