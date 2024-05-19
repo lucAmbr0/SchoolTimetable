@@ -1333,6 +1333,8 @@ function displayMatesToNowTab(day, hour) {
     document.getElementById("letsStartMessage").style.display = "block";
   }
   else {
+    document.getElementById("userMatesSeparator").style.display = "block";
+    document.getElementById("secondaryBoxesLabel").style.display = "block";
     document.getElementById("yourClassBox").style.display = "block";
     document.getElementById("letsStartMessage").style.display = "none";
   }
