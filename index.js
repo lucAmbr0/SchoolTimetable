@@ -1333,6 +1333,8 @@ function displayMatesToNowTab(day, hour) {
     document.getElementById("letsStartMessage").style.display = "block";
   }
   else {
+    document.getElementById("userMatesSeparator").style.display = "block";
+    document.getElementById("secondaryBoxesLabel").style.display = "block";
     document.getElementById("yourClassBox").style.display = "block";
     document.getElementById("letsStartMessage").style.display = "none";
   }
@@ -1758,6 +1760,8 @@ function setTheme() {
 const changeTimeContainer = document.querySelector(".changeTimeContainer");
 const topNotch = document.querySelector(".topNotchContainer");
 const topNotchFixed = document.querySelector(".topNotchFixed");
+const stopAdvancedSeekBtn = document.getElementById("stopAdvancedSeekBtn");
+const expandBar = document.getElementById("expandBar");
 
 let usingCustomSearch = false;
 let customSearchPanelOpened = false;
@@ -1772,6 +1776,8 @@ function toggleChangeTime(resetButtons) {
   // Closing box
   if (topNotch.classList.contains("topNotchContainerTALL")) {
     changeTimeContainer.classList.add("changeTimeContainerHidden");
+    expandBar.style.rotate = "0deg";
+    stopAdvancedSeekBtn.style.display = "none";
     setTimeout(() => {
       topNotchFixed.classList.remove("topNotchFixedTALL");
       topNotch.classList.remove("topNotchContainerTALL");
@@ -1783,12 +1789,14 @@ function toggleChangeTime(resetButtons) {
     }
     // usingCustomSearch = false;
     customSearchPanelOpened = false;
+    updateDateTime();
   }
   // Opening box
   else {
     customSearchPanelOpened = true;
     topNotch.classList.add("topNotchContainerTALL");
     topNotchFixed.classList.add("topNotchFixedTALL");
+    expandBar.style.rotate = "-180deg";
     setTimeout(() => {
       changeTimeContainer.style.display = "flex";
     }, 200);
@@ -1837,8 +1845,34 @@ function setCustomHour(event, selectedHour) {
   }
 }
 
+function stopAdvancedSearch(event) {
+  event.stopPropagation();
+  usingCustomSearch = false;
+  customHour = null;
+  customDay = null;
+      if (usingCustomSearch) {
+        stopAdvancedSeekBtn.style.display = "flex";
+      }
+      else {
+        stopAdvancedSeekBtn.style.display = "none";
+      }
+      stopAdvancedSeekBtn.style.opacity = "1";
+      expandBar.style.opacity = "1";
+      daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+      hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+    if (customSearchPanelOpened) {
+      toggleChangeTime();
+    }
+}
+
 function displayCustomTimes() {
   if (customDay != null && customHour != null) {
+    if (usingCustomSearch) {
+      stopAdvancedSeekBtn.style.display = "flex";
+    }
+    else {
+      stopAdvancedSeekBtn.style.display = "none";
+    }
     displayUserToNowTab(customDay, customHour);
     displayMatesToNowTab(customDay, customHour);
     if (closeBox) {
