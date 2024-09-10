@@ -139,9 +139,6 @@ Additionally, since v1.53.187 you can export and import data in a second, if you
 * **Can I contribute to this?** <br>
 Yes, absolutely! Contributions are always well-accepted! To know more, go to the contribution section of this readme
 
-* **How are you?** <br>
-It's a little cold at home now, I think I'll put on a sweater. Thanks for asking <3
-
 ##  :camera: Gallery
 <div style="display: flex">
 <img src="https://github.com/lucAmbr0/SchoolTimetable/blob/master/screenshots/mobile-screenshot1.png?raw=true" width="200" />
