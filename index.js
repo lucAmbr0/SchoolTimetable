@@ -78,6 +78,7 @@ function getStarted() {
 const userNameInput = document.getElementById("userNameInput");
 const userClassInput = document.getElementById("userClassInput");
 const userSchoolNameInput = document.getElementById("userSchoolNameInput");
+const userSchoolWebsiteLink = document.getElementById("userSchoolWebsiteLink");
 const submitUserInfoBtn = document.getElementById("submitUserInfoBtn");
 
 // Variable reference to user class HTML inputs
@@ -96,9 +97,10 @@ const nameDisplay = document.getElementById("nameDisplay");
 const classDisplay = document.getElementById("classDisplay");
 const schoolDisplay = document.getElementById("schoolDisplay");
 
+
+let schoolWebsite = "";
 function displayUserInfo() {
   // Triggers if there is saved data and fills all html fields that already have data
-
   // Writes data in Now Tab
   if (user.name) {
     nameDisplay.textContent = ", " + user.name;
@@ -113,16 +115,20 @@ function displayUserInfo() {
     classDisplay.textContent = "";
   }
   if (user.schoolName) {
-    schoolDisplay.textContent = user.schoolName;
+    schoolDisplay.innerHTML = `<a href="${schoolWebsite}" target="_blank">${user.schoolName}</a>`;
+    schoolDisplay.firstChild.style.textDecoration = "underline";
   }
   else {
-    schoolDisplay.textContent = " ";
+    schoolDisplay.innerHTML = `<a href="${schoolWebsite}" target="_blank"></a>`;
+    schoolDisplay.firstChild.style.textDecoration = "underline";
   }
+  if (!schoolWebsite) schoolDisplay.firstChild.style.textDecoration = "none";
 
   // Writes data to input fields in settings tab
   userNameInput.value = user.name;
   userClassInput.value = user.className;
   userSchoolNameInput.value = user.schoolName;
+  userSchoolWebsiteLink.value = schoolWebsite;
 }
 
 // ---------------  PERSONAL DATA INPUT  ---------------
@@ -186,6 +192,7 @@ function getUserInfoFromLocalStorage() {
   // If it finds the key "user_object" in user's browser, it reads the data and writes it to the variables
   if (localStorage.getItem('user_OBJECT')) {
     user = JSON.parse(localStorage.getItem('user_OBJECT'));
+    schoolWebsite = localStorage.getItem("schoolWebsite");
     displayUserInfo();
   }
 }
@@ -201,6 +208,8 @@ function updateUserInfo() {
   // window.location.href = "youtube://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUPcmlja3JvbGwgbm8gYWRz";
   user.className = userClassInput.value;
   user.schoolName = userSchoolNameInput.value;
+  schoolWebsite = userSchoolWebsiteLink.value;
+
   localStorage.setItem('user_OBJECT', JSON.stringify(user));
 
   // Refreshes data in Now Tab
@@ -283,6 +292,7 @@ function updateUserClassInfo() {
   // This function is triggered when the user clicks submit on the user class data. When this happens, all data in input fields get saved in variables AND in localStorage
   updateUserInfo();
   updateUserClassGrid();
+  localStorage.setItem('schoolWebsite', schoolWebsite);
   localStorage.setItem('user_OBJECT', JSON.stringify(user));
 }
 
@@ -296,6 +306,11 @@ function displayUserClassInfo() {
 
 getUserClassInfoFromLocalStorage();
 function getUserClassInfoFromLocalStorage() {
+  if (localStorage.getItem('schoolWebsite')) {
+    schoolWebsite = localStorage.getItem('schoolWebsite');
+    userSchoolWebsiteLink.value = schoolWebsite;
+  }
+  else schoolWebsite = "";
   // If it finds a key "isThereData" in user's browser, it reads the data and writes it to the variables
   if (localStorage.getItem('user_OBJECT')) {
     user = JSON.parse(localStorage.getItem('user_OBJECT'));

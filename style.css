@@ -974,11 +974,17 @@ th {
     color: var(--solidAccentColor1);
 }
 
+a {
+    color: inherit !important;
+}
+
 #schoolDisplay {
+    font-family: var(--HeadingFont);
+    font-display: swap;
     text-align: center;
     color: var(--solidAccentColor1);
     font-weight: 400;
-    margin-bottom: -20px;
+    margin: 0 auto -20px auto;
     opacity: 0.8;
 }
 
