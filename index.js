@@ -1,6 +1,5 @@
 /* 
     School Timetable - JavaScript Functions
-    What're you doing here?
 */
 
 // ---------------  SERVICE WORKER  ---------------
