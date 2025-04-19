@@ -1557,27 +1557,16 @@ function reloadApp() {
 
 // ---------------  CHECK IF THERE'S A NEW VERSION  ---------------
 
+function getNewApp() {
+  window.open("https://www.github.com/lucAmbr0/school-times", "_blank")
+}
+
 let deviceVersion;
 let latestVersion;
 checkVersion();
 function checkVersion() {
-  if (localStorage.getItem("version")) {
-    deviceVersion = localStorage.getItem("version");
-    latestVersion = document.getElementById("latestVersionDisplay").textContent;
-    if (deviceVersion != latestVersion) {
-      document.getElementById("prevVer").textContent = deviceVersion;
-      document.getElementById("newVer").textContent = latestVersion;
-      document.getElementById("blurOverlay").style.display = "block";
-      document.getElementById("newVersionBox").style.display = "block";
-    }
-    else {
-      document.getElementById("blurOverlay").display = "none";
-      document.getElementById("newVersionBox").display = "none";
-    }
-  }
-  else {
-    localStorage.setItem('version', document.getElementById("latestVersionDisplay").textContent);
-  }
+  document.getElementById("blurOverlay").style.display = "block";
+  document.getElementById("newVersionBox").style.display = "block";
   localStorage.setItem("version", latestVersion);
   deviceVersion = localStorage.getItem("version");
 }
@@ -1865,19 +1854,19 @@ function stopAdvancedSearch(event) {
   usingCustomSearch = false;
   customHour = null;
   customDay = null;
-      if (usingCustomSearch) {
-        stopAdvancedSeekBtn.style.display = "flex";
-      }
-      else {
-        stopAdvancedSeekBtn.style.display = "none";
-      }
-      stopAdvancedSeekBtn.style.opacity = "1";
-      expandBar.style.opacity = "1";
-      daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
-      hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
-    if (customSearchPanelOpened) {
-      toggleChangeTime();
-    }
+  if (usingCustomSearch) {
+    stopAdvancedSeekBtn.style.display = "flex";
+  }
+  else {
+    stopAdvancedSeekBtn.style.display = "none";
+  }
+  stopAdvancedSeekBtn.style.opacity = "1";
+  expandBar.style.opacity = "1";
+  daysButtons.forEach(button => button.classList.remove("timeButtonActive"));
+  hoursButtons.forEach(button => button.classList.remove("timeButtonActive"));
+  if (customSearchPanelOpened) {
+    toggleChangeTime();
+  }
 }
 
 function displayCustomTimes() {
