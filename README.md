@@ -1,4 +1,7 @@
 * Worked on this project for: <a href="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable"><img src="https://wakatime.com/badge/github/lucAmbr0/SchoolTimetable.svg?style=flat" alt="wakatime"></a>
+
+# ⚠This project is deprecated. Please upgrade to <a href="https://github.com/lucAmbr0/school-times">School Times</a> which is a new and improved version⚠
+
 # Introduction
 > This project is considered finished. It won't receive regular updates since it's considered stable.
 * **School Timetable** aims to provide a **convenient way for students to access their weekly class schedules**. Users can select their class, choose a day of the week, and specify a time slot to view which subjects are scheduled and in which classroom.
