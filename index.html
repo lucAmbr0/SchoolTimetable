@@ -38,25 +38,27 @@
   <body>
     <div id="blurOverlay"></div>
     <div id="newVersionBox">
-      <h1>The app just got updated, YAY!</h1>
+      <h1>School Timetable is moving to School Times!</h1>
       <h3>
-        This app has just received a new stable update. You can read about any
-        changes at the
-        <a
-          href="https://github.com/lucAmbr0/SchoolTimetable/commits/master/"
-          style="color: black; text-decoration: none"
-          >changelog</a
-        >
+        This app is being replaced by a new, improved version. Please upgrade to
+        School Times to get the best from your best school app!<br />
       </h3>
-      <p>Your old version <span id="prevVer"></span></p>
-      <p>Updated to <span id="newVer"></span></p>
-      <button
-        class="submitBtn"
+      <div style="display: flex; flex-direction: column;">
+        <button
+        class="outlineBtn"
         style="margin: 0 0 0 auto"
         onclick="closeUpdateNotice()"
-      >
-        <span class="material-symbols-outlined iconForButton">check</span>Okay
+        >
+        <span class="material-symbols-outlined iconForButton">close</span>Close
       </button>
+      <button
+      class="submitBtn"
+      style="margin: 0 0 0 auto"
+      onclick="getNewApp()"
+      >
+      <span class="material-symbols-outlined iconForButton">open_in_new</span>Get the new app
+    </button>
+  </div>
     </div>
     <div class="topNotchContainer" onclick="toggleChangeTime()">
       <h1 id="dayDisplay">Saturday 17 Feb</h1>
@@ -75,7 +77,10 @@
       </div>
       <h2 id="timeDisplay">17:41</h2>
 
-      <div class="changeTimeContainer changeTimeContainerHidden" style="display: none;">
+      <div
+        class="changeTimeContainer changeTimeContainerHidden"
+        style="display: none"
+      >
         <div class="daysHoursGrid">
           <button class="daysButtons" onclick="setCustomDay(event, 0)">
             M
